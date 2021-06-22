@@ -1,0 +1,2364 @@
+﻿
+@model ContractManagementSystem.Models.CommonModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    string CurrentUserID()
+    {
+        string userName = string.Empty;
+
+        if (HttpContext.Current.Request.IsAuthenticated)
+        {
+            userName = HttpContext.Current.User.Identity.Name.Split('|')[1];
+        }
+
+        return userName;
+
+    }
+}
+
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            <div class="page-header">
+                <h4 class="page-title">Contract</h4>
+                <ul class="breadcrumbs">
+                    <li class="nav-home">
+                        <a href="~/Home/Dashboard">
+                            <i class="flaticon-home"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Contract/Repository">Contract</a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        New
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+
+                            @*<div class="card-title"><b>Contract</b></div>*@
+                            <div class="row">
+                                <div class="col-sm-10">
+                                    <div class="card-title"><b>New Contract</b></div>
+                                </div>
+                                <div class="col-sm-2 text-right redirectionallink">
+                                    <button @*onclick="window.location = '/Contract/Repository'"*@ id="discard" value="Discard" class="btn btn-sm btn-light"><i class="flaticon-interface-5" aria-hidden="true"></i>&nbsp;&nbsp;Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="Cluster">Contract Name <span class="asteriskicon"> *</span></label>
+                                            <input type="text" maxlength="65" class="form-control" title="Numbers and Special characters not allowed" onkeyup="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');" id="contractname" name="contractname" placeholder="Enter Contract Name" required="required">
+                                            <input type="hidden" class="form-control" id="Initiator" name="Initiator" value="@CurrentUserID()" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="Finance">Contract Type <span class="asteriskicon"> *</span></label>
+                                            @*<input type="text" class="form-control" name="ContractType" placeholder="Enter Type" required="required">*@
+                                            @*<input type="text" maxlength="180" title="Numbers and Special characters not allowed" class="form-control" onkeyup="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');" name="ContractType" id="ContractType" list="type_of_contract" placeholder="Enter Contract Type" required />
+                                            <datalist id="type_of_contract">
+                                            </datalist>*@
+                                            <select class="form-control" id="ContractType" name="ContractType" required="required" style="padding-bottom:3px;padding-top:3px;">
+                                                <option value="" selected>-- Select --</option>
+                                                <option>Critical</option>
+                                                <option>Non Critical</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label for="description">Contract Description</label>
+                                            <textarea class="form-control text_area" maxlength="180" title="Special characters not allowed" onkeyup="this.value = this.value.replace(/[^a-zA-Z0-9.,\s]/g, '');" id="contractdescription" name="Description" placeholder="Enter Contract Description"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="Cluster">Department <span class="asteriskicon"> *</span></label>
+                                            @if (User.IsInRole("admin") || User.IsInRole("legal"))
+                                            {
+                                            <select class="form-control" onchange="GetApproverTable();" id="Contractcategory" name="ContractCategory" required="required" style="padding-bottom:3px;padding-top:3px;">
+                                                 
+                                            </select>
+                                            }
+                                            else
+                                            {
+                                            <input type="text" class="form-control" maxlength="180" id="Contractcategory" name="ContractCategory" required="required" disabled />
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="Finance">Sub Department <span class="asteriskicon"> *</span></label>
+                                            @if (User.IsInRole("admin") || User.IsInRole("legal"))
+                                            {
+                                                <select class="form-control" id="Contractsubcategory" onchange="GetApproverTable();" name="ContractSubCategory" required="required" style="padding-bottom:3px;padding-top:3px;">
+                                                </select>
+                                            }
+                                            else
+                                            {
+                                                <input type="text" class="form-control" maxlength="180" id="Contractsubcategory" name="ContractSubCategory" required="required" disabled />
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="Category">Create Contract Using <span class="asteriskicon"> *</span></label>
+                                            <select class="form-control" id="typeformtemplate" @*onchange="GetApproverTable();"*@ name="TemplateType" required="required" style="padding-bottom:3px;padding-top:3px;">
+                                                <option value="" selected>-- Select --</option>
+                                                <option>From Template</option>
+                                                <option>Upload Existing Contract</option>
+                                                <option>Fresh Contract</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="Cluster">Category <span class="asteriskicon"> *</span></label>
+                                            <select class="form-control" id="Contractcategory_temp" name="ContractCategory" required="required" style="padding-bottom:3px;padding-top:3px;">
+                                                <option value="" selected>-- Select --</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="Finance">Sub Category <span class="asteriskicon"> *</span></label>
+                                            <select class="form-control" id="Contractsubcategory_temp" name="ContractSubCategory" required="required" style="padding-bottom:3px;padding-top:3px;">
+                                                <option value="" selected>-- Select --</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br />
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header CardHeader_Approvers">
+                                                <div class="row align-items-center">
+                                                    <div class="col-sm-6">
+                                                        <div class="card-title"><h5><b>Approver (s) <span class="asteriskicon"> *</span></b></h5></div>
+                                                    </div>
+                                                    <div class="col-sm-6 text-right">
+                                                        @*<button type="button" id="btnRemoveApprover" class="btn btn-sm btn-danger" title="Remove Approvers from List"><i class="flaticon-interface-5" aria-hidden="true"></i>&nbsp; Remove</button>
+                                                            &nbsp;&nbsp;<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#searchmodal"> <i class="fa fa-search" aria-hidden="true"></i>&nbsp; Search User</button>*@
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+
+                                                <div class="row">
+                                                    <div class="col-lg-12 text-right">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="table-responsive">
+                                                                    <table id="ApproversTable" class="display table table-bordered  appoverTabel">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th><center>Approval Level</center></th>
+                                                                                <th><center>Select Approvers</center></th>
+                                                                                <th><center>Employee ID</center></th>
+                                                                                <th><center>Employee Name</center></th>
+                                                                                <th><center>Employee Email Address</center></th>
+                                                                                <th><center>Employee Designation</center></th>
+                                                                                <th><center>Employee Role (s)</center></th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody id="aprrovallist">
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-action text-right card_footer_button">
+                                    <input type="hidden" id="ApproverErrorCode" />
+                                    <button type="button" onclick="SubmitContract();" class="btn btn-success" style="font-size:17px;"><b>Save and Continue</b></button>
+                                    @*<button type="button" onclick="SubmitContractdraft();" class="btn btn-success"><i class="fa fa-bookmark" aria-hidden="true"></i>&nbsp;  Draft</button>*@
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<div class="modal fade" id="searchmodal" role="dialog" tabindex="-1">
+        <div class="text-right model_body_position">
+            <a href="" data-dismiss="modal" class="modaldismissarrow"><i class="fa fa-times fa-3x " aria-hidden="true"></i></a>
+        </div>
+
+        <div class="modal-dialog" style="max-width:80%;">
+
+            <div class="modal-content">
+
+
+                <div class="modal-header modalheadercolor websitecolour">
+                    <label style="font-size: 20px !important;"><b>Search Employee</b></label>
+                    <button href="" data-dismiss="modal" class="modaldismissarrow text-right btn btn-sm btn-danger" style="color:white;"><i class="fa fa-times" aria-hidden="true"></i>&nbsp; Close</button>
+                </div>
+                <div class="modal-body" style="height:450px; overflow: auto;">
+                    <div class="row">
+
+                        <div class="col-sm-12">
+                            <div class="form-group form-inline">
+                                <div class="col-md-2">
+                                    <label class="col-form-label"><b>Search By :</b></label>
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-control" id="UserSearchOption" name="UserSearchType" style="padding-bottom:3px;padding-top:3px;">
+                                        <option> Employee ID </option>
+                                        <option> Employee Name </option>
+                                        <option> Employee Email Address </option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" onkeyup="this.value = this.value.replace(/[^a-zA-Z0-9@('@')\s]/g, '');" class="form-control input-full" placeholder="Type here and click search" id="EmployeeDetail" />
+                                </div>
+                                <div class="col-md-2">
+                                    <center>
+                                        <button class="btn btn-primary" id="valbtn" onclick="UserID();">&nbsp;&nbsp;<i class="fa fa-search" aria-hidden="true"></i>&nbsp; Search&nbsp;&nbsp;</button>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <br />
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <center><h3><b id="UsererrorCode"></b></h3></center>
+                        </div>
+                    </div>
+
+                    <br />
+
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="table-responsive">
+                                <table id="Approvers_Table" class="display table table-bordered  appoverTabel">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th><center>Employee ID</center></th>
+                                            <th><center>Employee Name</center></th>
+                                            <th><center>Employee Email Address</center></th>
+                                            <th><center>Category</center></th>
+                                            <th><center>SubCategory</center></th>
+                                            <th><center>Employee Desgination</center></th>
+                                            <th><center>Employee Role (s)</center></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tblUsersSearchList"></tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>*@
+<div class="modalload"><!-- Place at bottom of page --></div>
+
+
+
+<script src="../../Content/assets/js/core/jquery.3.2.1.min.js"></script>
+
+<script>
+
+    $(".form_validation").keyup(function () {
+        //if (this.validity.patternMismatch) {
+
+        //        this.style.borderColor = "red";
+        //         this.focus();
+
+        //    }
+        //alert('Alphabets and Special Characters are not allowed');
+        //return (false);
+        this.value = this.value.replace(/[^a-zA-Z\s]/g, "");
+        this.focus();
+    });
+
+</script>
+<script>
+    var tempCatRefresh2 = 0;
+    // $("#TemplateName").focusout(function () {
+    $(function () {
+
+        if (tempCatRefresh2 == 0) {
+
+            tempCatRefresh2 = tempCatRefresh2 + 1;
+            tempCatRefresh2 = tempCatRefresh2 + 1
+            $.ajax({
+                async: false,
+                type: "POST",
+                url: "/Contract/getDepartment",
+                data: '{name: "' + $("#txtName").val() + '" }',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+
+
+                success: function (response) {
+                    //alert("Hello: " + response);
+                    var x = document.getElementById("Contractcategory");
+                    x.innerHTML = "";
+                    var option = document.createElement("option");
+                    option.text = '-- select --';
+                    option.value = "";
+                    try {
+                        x.add(option);
+                    } catch{}
+                    $.each(response, function (index, value) {
+
+                        var option = document.createElement("option");
+
+                        option.text = value;
+                         try {
+                        x.add(option);
+                    } catch{}
+                    });
+                }
+
+            });
+        }
+    });
+
+
+
+    $("#Contractcategory").change(function () {
+        var user_category_id = $(this).val();
+        //alert("data :" + user_category_id);
+        $.ajax({
+            url: '/Contract/getSubDepartment',
+            type: 'post',
+            data: { user_category_id: user_category_id },
+
+            dataType: 'json',
+            success: function (response) {
+
+                $('#Contractsubcategory')
+                    .find('option')
+                    .remove();
+
+                var x = document.getElementById("Contractsubcategory");
+
+                var option = document.createElement("option");
+                option.text = "-- Select --";
+                option.value = "";
+                x.add(option);
+                $.each(response, function (index, value) {
+                    //alert("s : " + value);
+                    var option = document.createElement("option");
+                    option.text = value;
+                    x.add(option);
+                });
+            }
+        });
+    });
+
+
+</script>
+<script>
+    function InvalidName(textbox) {
+        if (textbox.value === '') {
+            textbox.setCustomValidity
+                ('Enter an Contract Name');
+            //document.getElementById("myDiv").style.borderColor = "red";
+            textbox.style.borderColor = "red";
+        }
+        else if (textbox.validity.patternMismatch) {
+            textbox.setCustomValidity('Numbers and Special Characters are not allowed');
+        } else {
+            textbox.setCustomValidity('');
+            textbox.style.borderColor = "#31ce36";
+        }
+
+        return true;
+    }
+    function InvalidDescription(textbox) {
+        if (textbox.value === '') {
+            textbox.setCustomValidity
+                ('Enter an Contract Description');
+            //document.getElementById("myDiv").style.borderColor = "red";
+            textbox.style.borderColor = "red";
+        }
+        else if (textbox.validity.patternMismatch) {
+            textbox.setCustomValidity('Numbers and Special Characters are not allowed');
+        } else {
+            textbox.setCustomValidity('');
+            textbox.style.borderColor = "#31ce36";
+        }
+
+        return true;
+    }
+    function InvalidType(textbox) {
+        if (textbox.value === '') {
+            textbox.setCustomValidity
+                ('select an Contract Type');
+            //document.getElementById("myDiv").style.borderColor = "red";
+            textbox.style.borderColor = "red";
+        }
+        else if (textbox.validity.patternMismatch) {
+            textbox.setCustomValidity('Numbers and Special Characters are not allowed');
+        } else {
+            textbox.setCustomValidity('');
+            textbox.style.borderColor = "#31ce36";
+        }
+
+        return true;
+    }
+
+    function InvalidCategory(textbox) {
+        if (textbox.value === '') {
+            textbox.setCustomValidity
+                ('Select an Category type');
+            //document.getElementById("myDiv").style.borderColor = "red";
+            textbox.style.borderColor = "red";
+        }
+        else if (textbox.validity.patternMismatch) {
+            textbox.setCustomValidity('Numbers and Special Characters are not allowed');
+        } else {
+            textbox.setCustomValidity('');
+            textbox.style.borderColor = "#31ce36";
+        }
+
+        return true;
+    }
+    function InvalidSubCategory(textbox) {
+        if (textbox.value === '') {
+            textbox.setCustomValidity
+                ('Select an SubCategory');
+            //document.getElementById("myDiv").style.borderColor = "red";
+            textbox.style.borderColor = "red";
+        }
+        else if (textbox.validity.patternMismatch) {
+            textbox.setCustomValidity('Numbers and Special Characters are not allowed');
+        } else {
+            textbox.setCustomValidity('');
+            textbox.style.borderColor = "#31ce36";
+        }
+
+        return true;
+    }
+    function InvalidContractType(textbox) {
+        if (textbox.value === '') {
+            textbox.setCustomValidity
+                ('Select an Type');
+            //document.getElementById("myDiv").style.borderColor = "red";
+            textbox.style.borderColor = "red";
+        }
+        else if (textbox.validity.patternMismatch) {
+            textbox.setCustomValidity('Numbers and Special Characters are not allowed');
+        } else {
+            textbox.setCustomValidity('');
+            textbox.style.borderColor = "#31ce36";
+        }
+
+        return true;
+    }
+</script>
+
+<script>
+    function expandTextarea(Class) {
+        var x = document.getElementsByClassName(Class);
+        for (i = 0; i < x.length; i++) {
+            x[i].addEventListener('keyup', function () {
+                this.style.overflow = 'hidden';
+                this.style.height = 0;
+                this.style.height = this.scrollHeight + 'px';
+            }, false);
+        }
+    }
+    expandTextarea("text_area");
+</script>
+
+
+
+<script>
+    $(document).ready(function () {
+        $('#basic-datatables').DataTable({
+        });
+    });
+</script>
+
+
+<script>
+
+
+    var tempCatRefresh = 0;
+    $(function () {
+        // $("#contractname").focusout(function () {
+        //  alert("hello");
+        if (tempCatRefresh == 0) {
+            tempCatRefresh = tempCatRefresh + 1;
+            tempCatRefresh = tempCatRefresh + 1
+            $.ajax({
+                type: "POST",
+                url: "/Contract/getCategory",
+                data: '{name: "' + $("#txtName").val() + '" }',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+
+
+                success: function (response) {
+                    //alert("Hello: " + response);
+                    var x = document.getElementById("Contractcategory_temp");
+                    //x.innerHTML = "";
+                    //var option = document.createElement("option");
+
+                    //option.text = "-- Select --";
+                    //option.disabled = true;
+                    //x.add(option);
+                    $.each(response, function (index, value) {
+                        var option = document.createElement("option");
+                        option.text = value;
+                        x.add(option);
+                    });
+                }
+
+            });
+        }
+    });
+
+    $("#Contractcategory_temp").change(function () {
+        var user_category_id = $(this).val();
+        //alert("data :" + deptid);
+        $.ajax({
+            url: '/Contract/getSubCategory',
+            type: 'post',
+            data: { user_category_id: user_category_id },
+
+            dataType: 'json',
+            success: function (response) {
+
+                $('#Contractsubcategory_temp')
+                    .find('option')
+                    .remove();
+
+                var x = document.getElementById("Contractsubcategory_temp");
+
+                var option = document.createElement("option");
+                option.text = "-- Select --";
+                option.value = "";
+                x.add(option);
+                $.each(response, function (index, value) {
+                    var option = document.createElement("option");
+                    option.text = value;
+                    x.add(option);
+                });
+            }
+        });
+    });
+
+
+</script>
+
+
+
+@*<script>
+        $("#contractname").keyup(function () {
+            //alert("changed");
+            var name = $("#contractname").val();
+
+            var selectedtexttype = $('#typeformtemplate').find("option:selected").text();
+            (selectedtexttype == "Fresh Contract")
+            {
+                $("#ContractName").val(name);
+            }
+
+        });
+    </script>*@
+
+
+
+
+
+
+
+<script>
+
+    $(document).on('click', '.browse', function () {
+        var file = $(this).parent().parent().parent().find('.file');
+        file.trigger('click');
+    });
+    $(document).on('change', '.file', function () {
+        $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
+    });
+
+</script>
+
+
+@*<script>
+    $(function () {
+        $.ajax({
+            type: "POST",
+            url: "/Contract/GetType_List",
+            data: '{name: "' + $("#txtName").val() + '" }',
+
+            success: function (response) {
+
+                str = "";
+                for (var i = 0; i < response.length; ++i) {
+                    //alert(response[i]);
+                    str += '<option value="' + response[i] + '" />'; // Storing options in variable
+                }
+
+                var my_list = document.getElementById("type_of_contract");
+                my_list.innerHTML = str;
+
+            },
+
+
+        });
+    });
+
+</script>*@
+
+<script>
+        $(function () {
+            var currentuserid = "@CurrentUserID()";
+            var Cluster = "";
+            var Function = "";
+            $.ajax({
+                async: false,
+                url: '/Contract/getclusterandfunction',
+                type: 'POST',
+                data: { currentuserid: currentuserid },
+
+                dataType: 'json',
+                success: function (response) {
+                    if (response[0] == "success") {
+                            //alert(response[1]);
+                            $('#Contractcategory').val(response[2]);
+                        $("#Contractsubcategory").val(response[1]);
+                        Cluster = Cluster + response[2];
+                        Function = Function + response[1];
+
+                          //-----------SubDepartment List on Load----------//;
+                                    var user_category_id = Cluster;
+                                    $.ajax({
+                                        url: '/Contract/getSubDepartment',
+                                        type: 'post',
+                                        data: { user_category_id: user_category_id },
+
+                                        dataType: 'json',
+                                        success: function (response) {
+
+                                            $('#Contractsubcategory')
+                                                .find('option')
+                                                .remove();
+
+                                            var x = document.getElementById("Contractsubcategory");
+
+                                            var option = document.createElement("option");
+                                            option.text = "-- Select --";
+                                            option.value = "";
+                                             try {
+                        x.add(option);
+                    } catch{}
+                                            $.each(response, function (index, value) {
+                                                //alert("s : " + value);
+                                                var option = document.createElement("option");
+                                                option.text = value;
+                                                if (option.text == Function) {
+                                                    option.defaultSelected = true;
+                                                }
+                                                 try {
+                        x.add(option);
+                    } catch{}
+                                            });
+                                        }
+                                    });
+                    //----------------------------------------------//
+                    }
+                    var ContractDept = Cluster;
+            var ContractSubDept = Function;
+        //alert(TemplateCluster);
+                    if ((ContractDept).length > 1 && (ContractSubDept).length > 1) {
+
+
+                        $.ajax({
+                            async: false,
+                            type: "POST",
+                            url: "/Contract/GetApprovalLevel",
+                            data: { ContractDept: ContractDept, ContractSubDept: ContractSubDept },
+                            dataType: "json",
+
+
+                            success: function (response) {
+
+                                var Level1 = response[1];
+                                var Level2 = response[2];
+                                var Level3 = response[3];
+                                var Level4 = response[4];
+                                var Level5 = response[5];
+                                var Level6 = response[6];
+                                var Level7 = response[7];
+                                var Level8 = response[8];
+                                var Level9 = response[9];
+                                var Level10 = response[10];
+
+                                if (Level1 == "Level1") {
+
+                                    var htmlData = "<tr><td>Approver 1</td><td><select class='form-control' id='Level1_Id' onchange='SelectApprover1(this.value);' style='padding-bottom:3px;padding-top:3px;'></select></td><td class = 'EmployeeIdDetails' id='EmpID1'></td><td id='Name1'></td><td id='Email1'></td><td id='Desg1'></td><td id='Role1'></td></tr>";
+                                    $("#ApproversTable tbody").append(htmlData);
+
+                                    var LevelNumber = 1;
+                                    $.ajax({
+
+                                            async: false,
+                                            url: '/Contract/GetApproversBasedOnDeptAndSubDept',
+                                            type: 'POST',
+                                                   data: { ContractDept: ContractDept, ContractSubDept: ContractSubDept, LevelNumber: LevelNumber },
+
+                                            dataType: 'json',
+                                        success: function (response) {
+                                            $.each(response, function (index, value) {
+                                                var EmployeeID = value;
+                                                if (currentuserid != EmployeeID) {
+                                                    $.ajax({
+
+                                                        async: false,
+                                                        url: '/Contract/GetUserById',
+                                                        type: 'POST',
+                                                        data: { EmployeeID: EmployeeID },
+
+                                                        dataType: 'json',
+                                                        success: function (response) {
+                                                            var ApproverDetail = EmployeeID + " - " + response[1];
+                                                            var x = document.getElementById("Level1_Id");
+                                                            var option = document.createElement("option");
+                                                            option.text = ApproverDetail;
+                                                            option.value = EmployeeID;
+                                                            x.add(option);
+                                                        }
+                                                    });
+
+                                                    var EmpId = $('#Level1_Id').val();
+                                                    var EmployeeID = EmpId;
+                                                    $.ajax({
+
+                                                        async: false,
+                                                        url: '/Template/GetUserById',
+                                                        type: 'POST',
+                                                        data: { EmployeeID: EmployeeID },
+
+                                                        dataType: 'json',
+                                                        success: function (response) {
+                                                            $("#EmpID1").html(EmployeeID);
+                                                            $("#Name1").html(response[1]);
+                                                            $("#Email1").html(response[2]);
+                                                            $("#Desg1").html(response[3]);
+                                                            $("#Role1").html(response[4]);
+                                                        }
+                                                    });
+                                                }
+
+                                            });
+                                        }
+                                                   
+                                    });
+                                }
+                                if (Level2 == "Level2") {
+
+                                    var htmlData = "<tr><td>Approver 2</td><td><select class='form-control' id='Level2_Id' onchange='SelectApprover2(this.value);' style='padding-bottom:3px;padding-top:3px;'></select></td><td class = 'EmployeeIdDetails' id='EmpID2'></td><td id='Name2'></td><td id='Email2'></td><td id='Desg2'></td><td id='Role2'></td></tr>";
+                                    $("#ApproversTable tbody").append(htmlData);
+
+                                    var LevelNumber = 2;
+                                    $.ajax({
+
+                                        async: false,
+                                            url: '/Contract/GetApproversBasedOnDeptAndSubDept',
+                                            type: 'POST',
+                                                   data: { ContractDept: ContractDept, ContractSubDept: ContractSubDept, LevelNumber: LevelNumber },
+
+                                            dataType: 'json',
+                                        success: function (response) {
+                                                $.each(response, function (index, value) {
+                                                    var EmployeeID = value;
+
+                                                    if (currentuserid != EmployeeID) {
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Contract/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                var ApproverDetail = EmployeeID + " - " + response[1];
+                                                                var x = document.getElementById("Level2_Id");
+                                                                var option = document.createElement("option");
+                                                                option.text = ApproverDetail;
+                                                                option.value = EmployeeID;
+                                                                x.add(option);
+                                                            }
+                                                        });
+                                                        var EmpId = $('#Level2_Id').val();
+                                                        var EmployeeID = EmpId;
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Template/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                $("#EmpID2").html(EmployeeID);
+                                                                $("#Name2").html(response[1]);
+                                                                $("#Email2").html(response[2]);
+                                                                $("#Desg2").html(response[3]);
+                                                                $("#Role2").html(response[4]);
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                    });
+                                }
+                                if (Level3 == "Level3") {
+
+                                    var htmlData = "<tr><td>Approver 3</td><td><select class='form-control' id='Level3_Id' onchange='SelectApprover3(this.value);' style='padding-bottom:3px;padding-top:3px;'></select></td><td class = 'EmployeeIdDetails' id='EmpID3'></td><td id='Name3'></td><td id='Email3'></td><td id='Desg3'></td><td id='Role3'></td></tr>";
+                                    $("#ApproversTable tbody").append(htmlData);
+
+                                    var LevelNumber = 3;
+                                    $.ajax({
+
+                                        async: false,
+                                            url: '/Contract/GetApproversBasedOnDeptAndSubDept',
+                                            type: 'POST',
+                                                   data: { ContractDept: ContractDept, ContractSubDept: ContractSubDept, LevelNumber: LevelNumber },
+
+                                            dataType: 'json',
+                                        success: function (response) {
+                                                $.each(response, function (index, value) {
+
+                                                    var EmployeeID = value;
+
+                                                    if (currentuserid != EmployeeID) {
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Contract/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                var ApproverDetail = EmployeeID + " - " + response[1];
+                                                                var x = document.getElementById("Level3_Id");
+                                                                var option = document.createElement("option");
+                                                                option.text = ApproverDetail;
+                                                                option.value = EmployeeID;
+                                                                x.add(option);
+                                                            }
+                                                        });
+                                                        var EmpId = $('#Level3_Id').val();
+                                                        var EmployeeID = EmpId;
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Template/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                $("#EmpID3").html(EmployeeID);
+                                                                $("#Name3").html(response[1]);
+                                                                $("#Email3").html(response[2]);
+                                                                $("#Desg3").html(response[3]);
+                                                                $("#Role3").html(response[4]);
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                    });
+                                }
+                                if (Level4 == "Level4") {
+
+                                    var htmlData = "<tr><td>Approver 4</td><td><select class='form-control' id='Level4_Id' onchange='SelectApprover4(this.value);' style='padding-bottom:3px;padding-top:3px;'></select></td><td class = 'EmployeeIdDetails' id='EmpID4'></td><td id='Name4'></td><td id='Email4'></td><td id='Desg4'></td><td id='Role4'></td></tr>";
+                                    $("#ApproversTable tbody").append(htmlData);
+
+                                    var LevelNumber = 4;
+                                    $.ajax({
+
+                                        async: false,
+                                            url: '/Contract/GetApproversBasedOnDeptAndSubDept',
+                                            type: 'POST',
+                                                   data: { ContractDept: ContractDept, ContractSubDept: ContractSubDept, LevelNumber: LevelNumber },
+
+                                            dataType: 'json',
+                                        success: function (response) {
+                                              
+                                                $.each(response, function (index, value) {
+
+                                                    var EmployeeID = value;
+
+                                                    if (currentuserid != EmployeeID) {
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Contract/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                var ApproverDetail = EmployeeID + " - " + response[1];
+                                                                var x = document.getElementById("Level4_Id");
+                                                                var option = document.createElement("option");
+                                                                option.text = ApproverDetail;
+                                                                option.value = EmployeeID;
+                                                                x.add(option);
+                                                            }
+                                                        });
+
+                                                        var EmpId = $('#Level4_Id').val();
+                                                        var EmployeeID = EmpId;
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Template/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                $("#EmpID4").html(EmployeeID);
+                                                                $("#Name4").html(response[1]);
+                                                                $("#Email4").html(response[2]);
+                                                                $("#Desg4").html(response[3]);
+                                                                $("#Role4").html(response[4]);
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                    });
+                                }
+                                if (Level5 == "Level5") {
+
+                                    var htmlData = "<tr><td>Approver 5</td><td><select class='form-control' id='Level5_Id' onchange='SelectApprover5(this.value);' style='padding-bottom:3px;padding-top:3px;'></select></td><td class = 'EmployeeIdDetails' id='EmpID5'></td><td id='Name5'></td><td id='Email5'></td><td id='Desg5'></td><td id='Role5'></td></tr>";
+                                    $("#ApproversTable tbody").append(htmlData);
+
+                                    var LevelNumber = 5;
+                                    $.ajax({
+
+                                        async: false,
+                                            url: '/Contract/GetApproversBasedOnDeptAndSubDept',
+                                            type: 'POST',
+                                                   data: { ContractDept: ContractDept, ContractSubDept: ContractSubDept, LevelNumber: LevelNumber },
+
+                                            dataType: 'json',
+                                        success: function (response) {
+                                                $.each(response, function (index, value) {
+
+                                                    var EmployeeID = value;
+
+                                                    if (currentuserid != EmployeeID) {
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Contract/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                var ApproverDetail = EmployeeID + " - " + response[1];
+                                                                var x = document.getElementById("Level5_Id");
+                                                                var option = document.createElement("option");
+                                                                option.text = ApproverDetail;
+                                                                option.value = EmployeeID;
+                                                                x.add(option);
+                                                            }
+                                                        });
+                                                        var EmpId = $('#Level5_Id').val();
+                                                        var EmployeeID = EmpId;
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Template/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                $("#EmpID5").html(EmployeeID);
+                                                                $("#Name5").html(response[1]);
+                                                                $("#Email5").html(response[2]);
+                                                                $("#Desg5").html(response[3]);
+                                                                $("#Role5").html(response[4]);
+                                                            }
+                                                        });
+                                                    }
+
+                                                });
+                                            }
+                                    });
+                                }
+                                if (Level6 == "Level6") {
+
+                                    var htmlData = "<tr><td>Approver 6</td><td><select class='form-control' id='Level6_Id' onchange='SelectApprover6(this.value);' style='padding-bottom:3px;padding-top:3px;'></select></td><td class = 'EmployeeIdDetails' id='EmpID6'></td><td id='Name6'></td><td id='Email6'></td><td id='Desg6'></td><td id='Role6'></td></tr>";
+                                    $("#ApproversTable tbody").append(htmlData);
+
+                                    var LevelNumber = 6;
+                                    $.ajax({
+
+                                        async: false,
+                                            url: '/Contract/GetApproversBasedOnDeptAndSubDept',
+                                            type: 'POST',
+                                                   data: { ContractDept: ContractDept, ContractSubDept: ContractSubDept, LevelNumber: LevelNumber },
+
+                                            dataType: 'json',
+                                        success: function (response) {
+                                                $.each(response, function (index, value) {
+
+                                                    var EmployeeID = value;
+
+                                                    if (currentuserid != EmployeeID) {
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Contract/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                var ApproverDetail = EmployeeID + " - " + response[1];
+                                                                var x = document.getElementById("Level6_Id");
+                                                                var option = document.createElement("option");
+                                                                option.text = ApproverDetail;
+                                                                option.value = EmployeeID;
+                                                                x.add(option);
+                                                            }
+                                                        });
+                                                        var EmpId = $('#Level6_Id').val();
+                                                        var EmployeeID = EmpId;
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Template/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                $("#EmpID6").html(EmployeeID);
+                                                                $("#Name6").html(response[1]);
+                                                                $("#Email6").html(response[2]);
+                                                                $("#Desg6").html(response[3]);
+                                                                $("#Role6").html(response[4]);
+                                                            }
+                                                        });
+                                                    }
+
+                                                });
+                                            }
+                                    });
+                                }
+                                if (Level7 == "Level7") {
+
+                                    var htmlData = "<tr><td>Approver 7</td><td><select class='form-control' id='Level7_Id' onchange='SelectApprover7(this.value);' style='padding-bottom:3px;padding-top:3px;'></select></td><td class = 'EmployeeIdDetails' id='EmpID7'></td><td id='Name7'></td><td id='Email7'></td><td id='Desg7'></td><td id='Role7'></td></tr>";
+                                    $("#ApproversTable tbody").append(htmlData);
+
+                                    var LevelNumber = 7;
+                                    $.ajax({
+
+                                        async: false,
+                                            url: '/Contract/GetApproversBasedOnDeptAndSubDept',
+                                            type: 'POST',
+                                                   data: { ContractDept: ContractDept, ContractSubDept: ContractSubDept, LevelNumber: LevelNumber },
+
+                                            dataType: 'json',
+                                        success: function (response) {
+                                                $.each(response, function (index, value) {
+
+                                                    var EmployeeID = value;
+                                                    if (currentuserid != EmployeeID) {
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Contract/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                var ApproverDetail = EmployeeID + " - " + response[1];
+                                                                var x = document.getElementById("Level7_Id");
+                                                                var option = document.createElement("option");
+                                                                option.text = ApproverDetail;
+                                                                option.value = EmployeeID;
+                                                                x.add(option);
+                                                            }
+                                                        });
+                                                        var EmpId = $('#Level7_Id').val();
+                                                        var EmployeeID = EmpId;
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Template/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                $("#EmpID7").html(EmployeeID);
+                                                                $("#Name7").html(response[1]);
+                                                                $("#Email7").html(response[2]);
+                                                                $("#Desg7").html(response[3]);
+                                                                $("#Role7").html(response[4]);
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                    });
+                                }
+                                if (Level8 == "Level8") {
+
+                                    var htmlData = "<tr><td>Approver 8</td><td><select class='form-control' id='Level8_Id' onchange='SelectApprover8(this.value);' style='padding-bottom:3px;padding-top:3px;'></select></td><td class = 'EmployeeIdDetails' id='EmpID8'></td><td id='Name8'></td><td id='Email8'></td><td id='Desg8'></td><td id='Role8'></td></tr>";
+                                    $("#ApproversTable tbody").append(htmlData);
+
+                                    var LevelNumber = 8;
+                                    $.ajax({
+
+                                        async: false,
+                                            url: '/Contract/GetApproversBasedOnDeptAndSubDept',
+                                            type: 'POST',
+                                                   data: { ContractDept: ContractDept, ContractSubDept: ContractSubDept, LevelNumber: LevelNumber },
+
+                                            dataType: 'json',
+                                        success: function (response) {
+                                                $.each(response, function (index, value) {
+
+                                                    var EmployeeID = value;
+
+                                                    if (currentuserid != EmployeeID) {
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Contract/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                var ApproverDetail = EmployeeID + " - " + response[1];
+                                                                var x = document.getElementById("Level8_Id");
+                                                                var option = document.createElement("option");
+                                                                option.text = ApproverDetail;
+                                                                option.value = EmployeeID;
+                                                                x.add(option);
+                                                            }
+                                                        });
+
+                                                        var EmpId = $('#Level8_Id').val();
+                                                        var EmployeeID = EmpId;
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Template/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                $("#EmpID8").html(EmployeeID);
+                                                                $("#Name8").html(response[1]);
+                                                                $("#Email8").html(response[2]);
+                                                                $("#Desg8").html(response[3]);
+                                                                $("#Role8").html(response[4]);
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                    });
+                                }
+                                if (Level9 == "Level9") {
+
+                                    var htmlData = "<tr><td>Approver 9</td><td><select class='form-control' id='Level9_Id' onchange='SelectApprover9(this.value);' style='padding-bottom:3px;padding-top:3px;'></select></td><td class = 'EmployeeIdDetails' id='EmpID9'></td><td id='Name9'></td><td id='Email9'></td><td id='Desg9'></td><td id='Role9'></td></tr>";
+                                    $("#ApproversTable tbody").append(htmlData);
+
+                                    var LevelNumber = 9;
+                                    $.ajax({
+
+                                        async: false,
+                                            url: '/Contract/GetApproversBasedOnDeptAndSubDept',
+                                            type: 'POST',
+                                                   data: { ContractDept: ContractDept, ContractSubDept: ContractSubDept, LevelNumber: LevelNumber },
+
+                                            dataType: 'json',
+                                        success: function (response) {
+                                                $.each(response, function (index, value) {
+
+                                                    var EmployeeID = value;
+
+                                                    if (currentuserid != EmployeeID) {
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Contract/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                var ApproverDetail = EmployeeID + " - " + response[1];
+                                                                var x = document.getElementById("Level9_Id");
+                                                                var option = document.createElement("option");
+                                                                option.text = ApproverDetail;
+                                                                option.value = EmployeeID;
+                                                                x.add(option);
+                                                            }
+                                                        });
+
+                                                        var EmpId = $('#Level9_Id').val();
+                                                        var EmployeeID = EmpId;
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Template/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                $("#EmpID9").html(EmployeeID);
+                                                                $("#Name9").html(response[1]);
+                                                                $("#Email9").html(response[2]);
+                                                                $("#Desg9").html(response[3]);
+                                                                $("#Role9").html(response[4]);
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                    });
+                                }
+                                if (Level10 == "Level10") {
+
+                                    var htmlData = "<tr><td>Approver 10</td><td><select class='form-control' id='Level10_Id' onchange='SelectApprover10(this.value);' style='padding-bottom:3px;padding-top:3px;'></select></td><td class = 'EmployeeIdDetails' id='EmpID10'></td><td id='Name10'></td><td id='Email10'></td><td id='Desg10'></td><td id='Role10'></td></tr>";
+                                    $("#ApproversTable tbody").append(htmlData);
+
+                                    var LevelNumber = 10;
+                                    $.ajax({
+
+                                        async: false,
+                                            url: '/Contract/GetApproversBasedOnDeptAndSubDept',
+                                            type: 'POST',
+                                                   data: { ContractDept: ContractDept, ContractSubDept: ContractSubDept, LevelNumber: LevelNumber },
+
+                                            dataType: 'json',
+                                        success: function (response) {
+                                                $.each(response, function (index, value) {
+
+                                                    var EmployeeID = value;
+
+                                                    if (currentuserid != EmployeeID) {
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Contract/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                var ApproverDetail = EmployeeID + " - " + response[1];
+                                                                var x = document.getElementById("Level10_Id");
+                                                                var option = document.createElement("option");
+                                                                option.text = ApproverDetail;
+                                                                option.value = EmployeeID;
+                                                                x.add(option);
+                                                            }
+                                                        });
+                                                        var EmpId = $('#Level10_Id').val();
+                                                        var EmployeeID = EmpId;
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Template/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                $("#EmpID10").html(EmployeeID);
+                                                                $("#Name10").html(response[1]);
+                                                                $("#Email10").html(response[2]);
+                                                                $("#Desg10").html(response[3]);
+                                                                $("#Role10").html(response[4]);
+                                                            }
+                                                        });
+                                                    }
+
+                                                });
+                                            }
+                                    });
+                                }
+                            }
+                        });
+
+                    }
+                }
+            });
+
+        });
+</script>
+
+
+@**************************Integrated*****************************@
+
+<script>
+    function SubmitContract() {
+        var ContractName = $("#contractname").val();
+
+        var ContractType = $("#ContractType").val();
+        var ContractDescription = $("#contractdescription").val();
+        var ContractCluster = $("#Contractcategory_temp").val();
+        var ContractFunction = $("#Contractsubcategory_temp").val();
+        var ContractDepartment = $("#Contractcategory").val();
+        var ContractSubDepartment = $("#Contractsubcategory").val();
+        var ContractTemplateType = $("#typeformtemplate").val();
+        var CuurrentUserID = $("#Initiator").val();
+        //var ContractIDforTemplate = $("#ContractIDforTemplate").val();
+
+        var UID = [];
+        var Userlist = document.getElementsByClassName("EmployeeIdDetails");
+        for (var i = 0; i < Userlist.length; i++) {
+            if ((Userlist[i].innerHTML).length > 0) {
+              UID.push(Userlist[i].innerHTML);
+            }
+            else {
+                $("#ApproverErrorCode").val("ADMINISTRATOR");
+            }
+        }
+        var ApproverErrorCode = $("#ApproverErrorCode").val();
+        if (ApproverErrorCode == "ADMINISTRATOR") {
+            swal({
+                title: "Contract Creation Restricted !",
+                text: "Initiator can not be the approver and there is no other approvers to select. Contact Application Administrator !",
+                icon: "warning",
+            });
+        }
+        else {
+             if ((ContractName.length > 0) && (ContractType.length > 0) && (ContractCluster.length > 0) && (ContractFunction.length > 0) && (ContractTemplateType.length > 0)) {
+            if (Userlist.length > 1) {
+                $.ajax({
+                    url: '/Contract/SaveApproversToDB',
+                    type: 'POST',
+                    data: { UID: UID, ContractName: ContractName, ContractType: ContractType, ContractDescription: ContractDescription, ContractCluster: ContractCluster, ContractFunction: ContractFunction, ContractTemplateType: ContractTemplateType, CuurrentUserID: CuurrentUserID, ContractDepartment: ContractDepartment, ContractSubDepartment: ContractSubDepartment },
+
+                    dataType: 'json',
+                    success: function (response) {
+                        // console.log(response);
+                        if (response[0] == "success") {
+                            if (ContractTemplateType == "Upload Existing Contract") {
+
+                                swal("Contract details saved successfully", {
+                                    icon: "success",
+                                    buttons: {
+                                        confirm: {
+                                            visible: true
+                                        }
+                                    }
+                                }).then(function (result) {
+                                    if (result == true) {
+                                        window.location = '/Contract/ExistingContractView/' + response[1];
+                                    }
+                                });
+                            }
+                            else {
+
+                                swal("Contract details saved successfully", {
+
+                                    icon: "success",
+                                    buttons: {
+                                        confirm: {
+                                            visible: true
+                                        }
+                                    }
+                                }).then(function (result) {
+                                    if (result == true) {
+                                        window.location = '/Contract/DraftView/' + response[1];
+                                    }
+                                });
+                            }
+                        }
+                        else {
+                            swal("Error in Creating", {
+
+                                icon: "error",
+                                buttons: {
+                                    confirm: {
+                                        visible: true
+                                    }
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+            else {
+                swal("Minimum of two Approvers Required", {
+                    icon: "warning",
+                });
+            }
+        }
+        else {
+            swal("All fields are required", {
+                icon: "warning",
+            });
+        }
+        }
+       
+    }
+</script>
+
+
+<script>
+
+    $('#discard').click(function (e) {
+
+        swal({
+            title: 'Are you sure?',
+            text: "You want to Cancel !",
+            type: 'warning',
+              buttons: {
+                cancel: {
+                    visible: true,
+                    text: 'No, Keep it !',
+                    className: 'btn btn-success'
+                },
+                confirm: {
+                    text: 'Yes, Cancel it !',
+                    className: 'btn btn-danger'
+                },
+
+            }
+        }).then(function (value) {
+            if (value == true) {
+                window.location = '/Contract/Repository'
+
+            }
+        });
+    });
+</script>
+
+
+<script>
+    function SelectApprover1(EmployeeID) {
+
+        if (EmployeeID.length > 0) {
+            $.ajax({
+                url: '/Contract/GetUserById',
+                type: 'POST',
+                data: { EmployeeID: EmployeeID },
+                dataType: 'json',
+                success: function (response) {
+                    if (response[0] == "success") {
+                        $("#EmpID1").html(EmployeeID);
+                        $("#Name1").html(response[1]);
+                        $("#Email1").html(response[2]);
+                        $("#Desg1").html(response[3]);
+                        $("#Role1").html(response[4]);
+                    }
+
+                }
+            });
+
+        }
+    }
+    function SelectApprover2(EmployeeID) {
+
+        if (EmployeeID.length > 0) {
+            $.ajax({
+                url: '/Contract/GetUserById',
+                type: 'POST',
+                data: { EmployeeID: EmployeeID },
+                dataType: 'json',
+                success: function (response) {
+                    if (response[0] == "success") {
+                        $("#EmpID2").html(EmployeeID);
+                        $("#Name2").html(response[1]);
+                        $("#Email2").html(response[2]);
+                        $("#Desg2").html(response[3]);
+                        $("#Role2").html(response[4]);
+                    }
+
+                }
+            });
+
+        }
+    }
+    function SelectApprover3(EmployeeID) {
+
+        if (EmployeeID.length > 0) {
+            $.ajax({
+                url: '/Contract/GetUserById',
+                type: 'POST',
+                data: { EmployeeID: EmployeeID },
+                dataType: 'json',
+                success: function (response) {
+                    if (response[0] == "success") {
+                        $("#EmpID3").html(EmployeeID);
+                        $("#Name3").html(response[1]);
+                        $("#Email3").html(response[2]);
+                        $("#Desg3").html(response[3]);
+                        $("#Role3").html(response[4]);
+                    }
+
+                }
+            });
+
+        }
+    }
+    function SelectApprover4(EmployeeID) {
+
+        if (EmployeeID.length > 0) {
+            $.ajax({
+                url: '/Contract/GetUserById',
+                type: 'POST',
+                data: { EmployeeID: EmployeeID },
+                dataType: 'json',
+                success: function (response) {
+                    if (response[0] == "success") {
+                        $("#EmpID4").html(EmployeeID);
+                        $("#Name4").html(response[1]);
+                        $("#Email4").html(response[2]);
+                        $("#Desg4").html(response[3]);
+                        $("#Role4").html(response[4]);
+                    }
+
+                }
+            });
+
+        }
+    }
+    function SelectApprover5(EmployeeID) {
+
+        if (EmployeeID.length > 0) {
+            $.ajax({
+                url: '/Contract/GetUserById',
+                type: 'POST',
+                data: { EmployeeID: EmployeeID },
+                dataType: 'json',
+                success: function (response) {
+                    if (response[0] == "success") {
+                        $("#EmpID5").html(EmployeeID);
+                        $("#Name5").html(response[1]);
+                        $("#Email5").html(response[2]);
+                        $("#Desg5").html(response[3]);
+                        $("#Role5").html(response[4]);
+                    }
+
+                }
+            });
+
+        }
+    }
+    function SelectApprover6(EmployeeID) {
+
+        if (EmployeeID.length > 0) {
+            $.ajax({
+                url: '/Contract/GetUserById',
+                type: 'POST',
+                data: { EmployeeID: EmployeeID },
+                dataType: 'json',
+                success: function (response) {
+                    if (response[0] == "success") {
+                        $("#EmpID6").html(EmployeeID);
+                        $("#Name6").html(response[1]);
+                        $("#Email6").html(response[2]);
+                        $("#Desg6").html(response[3]);
+                        $("#Role6").html(response[4]);
+                    }
+
+                }
+            });
+
+        }
+    }
+    function SelectApprover7(EmployeeID) {
+
+        if (EmployeeID.length > 0) {
+            $.ajax({
+                url: '/Contract/GetUserById',
+                type: 'POST',
+                data: { EmployeeID: EmployeeID },
+                dataType: 'json',
+                success: function (response) {
+                    if (response[0] == "success") {
+                        $("#EmpID7").html(EmployeeID);
+                        $("#Name7").html(response[1]);
+                        $("#Email7").html(response[2]);
+                        $("#Desg7").html(response[3]);
+                        $("#Role7").html(response[4]);
+                    }
+
+                }
+            });
+
+        }
+    }
+    function SelectApprover8(EmployeeID) {
+
+        if (EmployeeID.length > 0) {
+            $.ajax({
+                url: '/Contract/GetUserById',
+                type: 'POST',
+                data: { EmployeeID: EmployeeID },
+                dataType: 'json',
+                success: function (response) {
+                    if (response[0] == "success") {
+                        $("#EmpID8").html(EmployeeID);
+                        $("#Name8").html(response[1]);
+                        $("#Email8").html(response[2]);
+                        $("#Desg8").html(response[3]);
+                        $("#Role8").html(response[4]);
+                    }
+
+                }
+            });
+
+        }
+    }
+    function SelectApprover9(EmployeeID) {
+
+        if (EmployeeID.length > 0) {
+            $.ajax({
+                url: '/Contract/GetUserById',
+                type: 'POST',
+                data: { EmployeeID: EmployeeID },
+                dataType: 'json',
+                success: function (response) {
+                    if (response[0] == "success") {
+                        $("#EmpID9").html(EmployeeID);
+                        $("#Name9").html(response[1]);
+                        $("#Email9").html(response[2]);
+                        $("#Desg9").html(response[3]);
+                        $("#Role9").html(response[4]);
+                    }
+
+                }
+            });
+
+        }
+    }
+    function SelectApprover10(EmployeeID) {
+
+        if (EmployeeID.length > 0) {
+            $.ajax({
+                url: '/Contract/GetUserById',
+                type: 'POST',
+                data: { EmployeeID: EmployeeID },
+                dataType: 'json',
+                success: function (response) {
+                    if (response[0] == "success") {
+                        $("#EmpID10").html(EmployeeID);
+                        $("#Name10").html(response[1]);
+                        $("#Email10").html(response[2]);
+                        $("#Desg10").html(response[3]);
+                        $("#Role10").html(response[4]);
+                    }
+
+                }
+            });
+
+        }
+    }
+</script>
+<script>
+    function GetApproverTable() {
+
+        var currentuserid = "@CurrentUserID()";
+         var ContractDept = $("#Contractcategory").val();;
+        var ContractSubDept = $("#Contractsubcategory").val();
+        $("#ApproverErrorCode").val("");
+        //var Type = $("#typeformtemplate").val();
+        var Type = "";
+        var Modified = "";
+        //alert(TemplateCluster);
+                    if ((ContractDept).length > 1 && (ContractSubDept).length > 1 /*&& (Type).length > 1*/) {
+
+
+                        $.ajax({
+                            async: false,
+                            type: "POST",
+                            url: "/Contract/GetApprovalLevel",
+                            data: { ContractDept: ContractDept, ContractSubDept: ContractSubDept, Type:Type },
+                            dataType: "json",
+
+
+                            success: function (response) {
+
+                                var Level1 = response[1];
+                                var Level2 = response[2];
+                                var Level3 = response[3];
+                                var Level4 = response[4];
+                                var Level5 = response[5];
+                                var Level6 = response[6];
+                                var Level7 = response[7];
+                                var Level8 = response[8];
+                                var Level9 = response[9];
+                                var Level10 = response[10];
+
+                                $("#ApproversTable tbody").html("");
+
+                                if (Level1 == "Level1") {
+
+                                    var htmlData = "<tr><td>Approver 1</td><td><select class='form-control' id='Level1_Id' onchange='SelectApprover1(this.value);' style='padding-bottom:3px;padding-top:3px;'></select></td><td class = 'EmployeeIdDetails' id='EmpID1'></td><td id='Name1'></td><td id='Email1'></td><td id='Desg1'></td><td id='Role1'></td></tr>";
+                                    $("#ApproversTable tbody").append(htmlData);
+
+                                    var LevelNumber = 1;
+                                    $.ajax({
+
+                                            async: false,
+                                            url: '/Contract/GetApproversBasedOnDeptAndSubDept',
+                                            type: 'POST',
+                                                   data: { ContractDept: ContractDept, ContractSubDept: ContractSubDept, LevelNumber: LevelNumber, Type:Type , Modified:Modified},
+
+                                            dataType: 'json',
+                                        success: function (response) {
+                                            $.each(response, function (index, value) {
+                                                var EmployeeID = value;
+
+                                                if (currentuserid != EmployeeID) {
+                                                    $.ajax({
+
+                                                        async: false,
+                                                        url: '/Contract/GetUserById',
+                                                        type: 'POST',
+                                                        data: { EmployeeID: EmployeeID },
+
+                                                        dataType: 'json',
+                                                        success: function (response) {
+                                                            var ApproverDetail = EmployeeID + " - " + response[1];
+                                                            var x = document.getElementById("Level1_Id");
+                                                            var option = document.createElement("option");
+                                                            option.text = ApproverDetail;
+                                                            option.value = EmployeeID;
+                                                            x.add(option);
+                                                        }
+                                                    });
+
+                                                    var EmpId = $('#Level1_Id').val();
+                                                    var EmployeeID = EmpId;
+                                                    $.ajax({
+
+                                                        async: false,
+                                                        url: '/Template/GetUserById',
+                                                        type: 'POST',
+                                                        data: { EmployeeID: EmployeeID },
+
+                                                        dataType: 'json',
+                                                        success: function (response) {
+                                                            $("#EmpID1").html(EmployeeID);
+                                                            $("#Name1").html(response[1]);
+                                                            $("#Email1").html(response[2]);
+                                                            $("#Desg1").html(response[3]);
+                                                            $("#Role1").html(response[4]);
+                                                        }
+                                                    });
+
+                                                }
+                                            });
+                                        }
+                                                   
+                                    });
+                                }
+                                if (Level2 == "Level2") {
+
+                                    var htmlData = "<tr><td>Approver 2</td><td><select class='form-control' id='Level2_Id' onchange='SelectApprover2(this.value);' style='padding-bottom:3px;padding-top:3px;'></select></td><td class = 'EmployeeIdDetails' id='EmpID2'></td><td id='Name2'></td><td id='Email2'></td><td id='Desg2'></td><td id='Role2'></td></tr>";
+                                    $("#ApproversTable tbody").append(htmlData);
+
+                                    var LevelNumber = 2;
+                                    $.ajax({
+
+                                        async: false,
+                                            url: '/Contract/GetApproversBasedOnDeptAndSubDept',
+                                            type: 'POST',
+                                                   data: { ContractDept: ContractDept, ContractSubDept: ContractSubDept, LevelNumber: LevelNumber, Type:Type , Modified:Modified},
+
+                                            dataType: 'json',
+                                        success: function (response) {
+                                                $.each(response, function (index, value) {
+                                                    var EmployeeID = value;
+
+                                                    if (currentuserid != EmployeeID) {
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Contract/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                var ApproverDetail = EmployeeID + " - " + response[1];
+                                                                var x = document.getElementById("Level2_Id");
+                                                                var option = document.createElement("option");
+                                                                option.text = ApproverDetail;
+                                                                option.value = EmployeeID;
+                                                                x.add(option);
+                                                            }
+                                                        });
+                                                        var EmpId = $('#Level2_Id').val();
+                                                        var EmployeeID = EmpId;
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Template/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                $("#EmpID2").html(EmployeeID);
+                                                                $("#Name2").html(response[1]);
+                                                                $("#Email2").html(response[2]);
+                                                                $("#Desg2").html(response[3]);
+                                                                $("#Role2").html(response[4]);
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                    });
+                                }
+                                if (Level3 == "Level3") {
+
+                                    var htmlData = "<tr><td>Approver 3</td><td><select class='form-control' id='Level3_Id' onchange='SelectApprover3(this.value);' style='padding-bottom:3px;padding-top:3px;'></select></td><td class = 'EmployeeIdDetails' id='EmpID3'></td><td id='Name3'></td><td id='Email3'></td><td id='Desg3'></td><td id='Role3'></td></tr>";
+                                    $("#ApproversTable tbody").append(htmlData);
+
+                                    var LevelNumber = 3;
+                                    $.ajax({
+
+                                        async: false,
+                                            url: '/Contract/GetApproversBasedOnDeptAndSubDept',
+                                            type: 'POST',
+                                                   data: { ContractDept: ContractDept, ContractSubDept: ContractSubDept, LevelNumber: LevelNumber , Type:Type, Modified:Modified},
+
+                                            dataType: 'json',
+                                        success: function (response) {
+                                                $.each(response, function (index, value) {
+
+                                                    var EmployeeID = value;
+                                                    if (currentuserid != EmployeeID) {
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Contract/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                var ApproverDetail = EmployeeID + " - " + response[1];
+                                                                var x = document.getElementById("Level3_Id");
+                                                                var option = document.createElement("option");
+                                                                option.text = ApproverDetail;
+                                                                option.value = EmployeeID;
+                                                                x.add(option);
+                                                            }
+                                                        });
+                                                        var EmpId = $('#Level3_Id').val();
+                                                        var EmployeeID = EmpId;
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Template/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                $("#EmpID3").html(EmployeeID);
+                                                                $("#Name3").html(response[1]);
+                                                                $("#Email3").html(response[2]);
+                                                                $("#Desg3").html(response[3]);
+                                                                $("#Role3").html(response[4]);
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                    });
+                                }
+                                if (Level4 == "Level4") {
+
+                                    var htmlData = "<tr><td>Approver 4</td><td><select class='form-control' id='Level4_Id' onchange='SelectApprover4(this.value);' style='padding-bottom:3px;padding-top:3px;'></select></td><td class = 'EmployeeIdDetails' id='EmpID4'></td><td id='Name4'></td><td id='Email4'></td><td id='Desg4'></td><td id='Role4'></td></tr>";
+                                    $("#ApproversTable tbody").append(htmlData);
+
+                                    var LevelNumber = 4;
+                                    $.ajax({
+
+                                        async: false,
+                                            url: '/Contract/GetApproversBasedOnDeptAndSubDept',
+                                            type: 'POST',
+                                                   data: { ContractDept: ContractDept, ContractSubDept: ContractSubDept, LevelNumber: LevelNumber, Type:Type , Modified:Modified},
+
+                                            dataType: 'json',
+                                        success: function (response) {
+                                              
+                                                $.each(response, function (index, value) {
+
+                                                    var EmployeeID = value;
+
+                                                    if (currentuserid != EmployeeID) {
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Contract/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                var ApproverDetail = EmployeeID + " - " + response[1];
+                                                                var x = document.getElementById("Level4_Id");
+                                                                var option = document.createElement("option");
+                                                                option.text = ApproverDetail;
+                                                                option.value = EmployeeID;
+                                                                x.add(option);
+                                                            }
+                                                        });
+
+                                                        var EmpId = $('#Level4_Id').val();
+                                                        var EmployeeID = EmpId;
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Template/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                $("#EmpID4").html(EmployeeID);
+                                                                $("#Name4").html(response[1]);
+                                                                $("#Email4").html(response[2]);
+                                                                $("#Desg4").html(response[3]);
+                                                                $("#Role4").html(response[4]);
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                    });
+                                }
+                                if (Level5 == "Level5") {
+
+                                    var htmlData = "<tr><td>Approver 5</td><td><select class='form-control' id='Level5_Id' onchange='SelectApprover5(this.value);' style='padding-bottom:3px;padding-top:3px;'></select></td><td class = 'EmployeeIdDetails' id='EmpID5'></td><td id='Name5'></td><td id='Email5'></td><td id='Desg5'></td><td id='Role5'></td></tr>";
+                                    $("#ApproversTable tbody").append(htmlData);
+
+                                    var LevelNumber = 5;
+                                    $.ajax({
+
+                                        async: false,
+                                            url: '/Contract/GetApproversBasedOnDeptAndSubDept',
+                                            type: 'POST',
+                                                   data: { ContractDept: ContractDept, ContractSubDept: ContractSubDept, LevelNumber: LevelNumber, Type:Type, Modified:Modified },
+
+                                            dataType: 'json',
+                                        success: function (response) {
+                                                $.each(response, function (index, value) {
+
+                                                    var EmployeeID = value;
+                                                    if (currentuserid != EmployeeID) {
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Contract/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                var ApproverDetail = EmployeeID + " - " + response[1];
+                                                                var x = document.getElementById("Level5_Id");
+                                                                var option = document.createElement("option");
+                                                                option.text = ApproverDetail;
+                                                                option.value = EmployeeID;
+                                                                x.add(option);
+                                                            }
+                                                        });
+                                                        var EmpId = $('#Level5_Id').val();
+                                                        var EmployeeID = EmpId;
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Template/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                $("#EmpID5").html(EmployeeID);
+                                                                $("#Name5").html(response[1]);
+                                                                $("#Email5").html(response[2]);
+                                                                $("#Desg5").html(response[3]);
+                                                                $("#Role5").html(response[4]);
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                    });
+                                }
+                                if (Level6 == "Level6") {
+
+                                    var htmlData = "<tr><td>Approver 6</td><td><select class='form-control' id='Level6_Id' onchange='SelectApprover6(this.value);' style='padding-bottom:3px;padding-top:3px;'></select></td><td class = 'EmployeeIdDetails' id='EmpID6'></td><td id='Name6'></td><td id='Email6'></td><td id='Desg6'></td><td id='Role6'></td></tr>";
+                                    $("#ApproversTable tbody").append(htmlData);
+
+                                    var LevelNumber = 6;
+                                    $.ajax({
+
+                                        async: false,
+                                            url: '/Contract/GetApproversBasedOnDeptAndSubDept',
+                                            type: 'POST',
+                                                   data: { ContractDept: ContractDept, ContractSubDept: ContractSubDept, LevelNumber: LevelNumber , Type:Type, Modified:Modified},
+
+                                            dataType: 'json',
+                                        success: function (response) {
+                                                $.each(response, function (index, value) {
+
+                                                    var EmployeeID = value;
+                                                    if (currentuserid != EmployeeID) {
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Contract/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                var ApproverDetail = EmployeeID + " - " + response[1];
+                                                                var x = document.getElementById("Level6_Id");
+                                                                var option = document.createElement("option");
+                                                                option.text = ApproverDetail;
+                                                                option.value = EmployeeID;
+                                                                x.add(option);
+                                                            }
+                                                        });
+                                                        var EmpId = $('#Level6_Id').val();
+                                                        var EmployeeID = EmpId;
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Template/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                $("#EmpID6").html(EmployeeID);
+                                                                $("#Name6").html(response[1]);
+                                                                $("#Email6").html(response[2]);
+                                                                $("#Desg6").html(response[3]);
+                                                                $("#Role6").html(response[4]);
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                    });
+                                }
+                                if (Level7 == "Level7") {
+
+                                    var htmlData = "<tr><td>Approver 7</td><td><select class='form-control' id='Level7_Id' onchange='SelectApprover7(this.value);' style='padding-bottom:3px;padding-top:3px;'></select></td><td class = 'EmployeeIdDetails' id='EmpID7'></td><td id='Name7'></td><td id='Email7'></td><td id='Desg7'></td><td id='Role7'></td></tr>";
+                                    $("#ApproversTable tbody").append(htmlData);
+
+                                    var LevelNumber = 7;
+                                    $.ajax({
+
+                                        async: false,
+                                            url: '/Contract/GetApproversBasedOnDeptAndSubDept',
+                                            type: 'POST',
+                                                   data: { ContractDept: ContractDept, ContractSubDept: ContractSubDept, LevelNumber: LevelNumber, Type:Type , Modified:Modified},
+
+                                            dataType: 'json',
+                                        success: function (response) {
+                                                $.each(response, function (index, value) {
+
+                                                    var EmployeeID = value;
+
+                                                    if (currentuserid != EmployeeID) {
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Contract/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                var ApproverDetail = EmployeeID + " - " + response[1];
+                                                                var x = document.getElementById("Level7_Id");
+                                                                var option = document.createElement("option");
+                                                                option.text = ApproverDetail;
+                                                                option.value = EmployeeID;
+                                                                x.add(option);
+                                                            }
+                                                        });
+                                                        var EmpId = $('#Level7_Id').val();
+                                                        var EmployeeID = EmpId;
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Template/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                $("#EmpID7").html(EmployeeID);
+                                                                $("#Name7").html(response[1]);
+                                                                $("#Email7").html(response[2]);
+                                                                $("#Desg7").html(response[3]);
+                                                                $("#Role7").html(response[4]);
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                    });
+                                }
+                                if (Level8 == "Level8") {
+
+                                    var htmlData = "<tr><td>Approver 8</td><td><select class='form-control' id='Level8_Id' onchange='SelectApprover8(this.value);' style='padding-bottom:3px;padding-top:3px;'></select></td><td class = 'EmployeeIdDetails' id='EmpID8'></td><td id='Name8'></td><td id='Email8'></td><td id='Desg8'></td><td id='Role8'></td></tr>";
+                                    $("#ApproversTable tbody").append(htmlData);
+
+                                    var LevelNumber = 8;
+                                    $.ajax({
+
+                                        async: false,
+                                            url: '/Contract/GetApproversBasedOnDeptAndSubDept',
+                                            type: 'POST',
+                                                   data: { ContractDept: ContractDept, ContractSubDept: ContractSubDept, LevelNumber: LevelNumber, Type:Type, Modified:Modified },
+
+                                            dataType: 'json',
+                                        success: function (response) {
+                                                $.each(response, function (index, value) {
+
+                                                    var EmployeeID = value;
+                                                    if (currentuserid != EmployeeID) {
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Contract/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                var ApproverDetail = EmployeeID + " - " + response[1];
+                                                                var x = document.getElementById("Level8_Id");
+                                                                var option = document.createElement("option");
+                                                                option.text = ApproverDetail;
+                                                                option.value = EmployeeID;
+                                                                x.add(option);
+                                                            }
+                                                        });
+
+                                                        var EmpId = $('#Level8_Id').val();
+                                                        var EmployeeID = EmpId;
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Template/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                $("#EmpID8").html(EmployeeID);
+                                                                $("#Name8").html(response[1]);
+                                                                $("#Email8").html(response[2]);
+                                                                $("#Desg8").html(response[3]);
+                                                                $("#Role8").html(response[4]);
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                    });
+                                }
+                                if (Level9 == "Level9") {
+
+                                    var htmlData = "<tr><td>Approver 9</td><td><select class='form-control' id='Level9_Id' onchange='SelectApprover9(this.value);' style='padding-bottom:3px;padding-top:3px;'></select></td><td class = 'EmployeeIdDetails' id='EmpID9'></td><td id='Name9'></td><td id='Email9'></td><td id='Desg9'></td><td id='Role9'></td></tr>";
+                                    $("#ApproversTable tbody").append(htmlData);
+
+                                    var LevelNumber = 9;
+                                    $.ajax({
+
+                                        async: false,
+                                            url: '/Contract/GetApproversBasedOnDeptAndSubDept',
+                                            type: 'POST',
+                                                   data: { ContractDept: ContractDept, ContractSubDept: ContractSubDept, LevelNumber: LevelNumber, Type:Type, Modified:Modified },
+
+                                            dataType: 'json',
+                                        success: function (response) {
+                                                $.each(response, function (index, value) {
+
+                                                    var EmployeeID = value;
+
+                                                    if (currentuserid != EmployeeID) {
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Contract/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                var ApproverDetail = EmployeeID + " - " + response[1];
+                                                                var x = document.getElementById("Level9_Id");
+                                                                var option = document.createElement("option");
+                                                                option.text = ApproverDetail;
+                                                                option.value = EmployeeID;
+                                                                x.add(option);
+                                                            }
+                                                        });
+
+                                                        var EmpId = $('#Level9_Id').val();
+                                                        var EmployeeID = EmpId;
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Template/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                $("#EmpID9").html(EmployeeID);
+                                                                $("#Name9").html(response[1]);
+                                                                $("#Email9").html(response[2]);
+                                                                $("#Desg9").html(response[3]);
+                                                                $("#Role9").html(response[4]);
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                    });
+                                }
+                                if (Level10 == "Level10") {
+
+                                    var htmlData = "<tr><td>Approver 10</td><td><select class='form-control' id='Level10_Id' onchange='SelectApprover10(this.value);' style='padding-bottom:3px;padding-top:3px;'></select></td><td class = 'EmployeeIdDetails' id='EmpID10'></td><td id='Name10'></td><td id='Email10'></td><td id='Desg10'></td><td id='Role10'></td></tr>";
+                                    $("#ApproversTable tbody").append(htmlData);
+
+                                    var LevelNumber = 10;
+                                    $.ajax({
+
+                                        async: false,
+                                            url: '/Contract/GetApproversBasedOnDeptAndSubDept',
+                                            type: 'POST',
+                                                   data: { ContractDept: ContractDept, ContractSubDept: ContractSubDept, LevelNumber: LevelNumber , Type:Type, Modified:Modified},
+
+                                            dataType: 'json',
+                                        success: function (response) {
+                                                $.each(response, function (index, value) {
+
+                                                    var EmployeeID = value;
+
+                                                    if (currentuserid != EmployeeID) {
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Contract/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                var ApproverDetail = EmployeeID + " - " + response[1];
+                                                                var x = document.getElementById("Level10_Id");
+                                                                var option = document.createElement("option");
+                                                                option.text = ApproverDetail;
+                                                                option.value = EmployeeID;
+                                                                x.add(option);
+                                                            }
+                                                        });
+                                                        var EmpId = $('#Level10_Id').val();
+                                                        var EmployeeID = EmpId;
+                                                        $.ajax({
+
+                                                            async: false,
+                                                            url: '/Template/GetUserById',
+                                                            type: 'POST',
+                                                            data: { EmployeeID: EmployeeID },
+
+                                                            dataType: 'json',
+                                                            success: function (response) {
+                                                                $("#EmpID10").html(EmployeeID);
+                                                                $("#Name10").html(response[1]);
+                                                                $("#Email10").html(response[2]);
+                                                                $("#Desg10").html(response[3]);
+                                                                $("#Role10").html(response[4]);
+                                                            }
+                                                        });
+                                                    }
+
+                                                });
+                                            }
+                                    });
+                                }
+                            }
+                        });
+
+                    }
+    }
+</script>

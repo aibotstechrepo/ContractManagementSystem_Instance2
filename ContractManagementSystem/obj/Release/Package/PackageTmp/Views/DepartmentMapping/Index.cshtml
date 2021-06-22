@@ -1,0 +1,768 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+   
+<div class="main-panel">
+    <div class="content"> 
+        <div class="page-inner" style="padding-top:0px;">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-head-row">
+                                <div class="card-title">
+                                    <b>Employee Department Mapping</b>
+                                </div>
+                                <div class="card-tools form-inline">
+                                    <button type="button" class="btn btn-sm btn-light" data-toggle="modal" data-target="#searchmodal" style="color:blue;"> <i class="flaticon-search-2" aria-hidden="true"></i>&nbsp; Search Employee</button>
+                                    &nbsp;&nbsp;
+                                    <button class="btn btn-sm btn-light" title="Edit" id="editalert" style="display:none;"><i class="flaticon-pencil" aria-hidden="true"></i>&nbsp; Edit</button>
+                                    <button class="btn btn-sm btn-light" id="Save_button" title="Save" onclick="SaveMappingMatrix();" style="display:none; color:green;"><i class="flaticon-success" aria-hidden="true"></i> &nbsp;Save</button>
+                                    &nbsp;&nbsp;<button class="btn btn-sm btn-light" onclick="DiscardChanges();" title="Cancel" id="Cancel_button" style="display:none; color:red;"><i class="flaticon-error" aria-hidden="true"></i>&nbsp;Cancel</button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="card-body">
+                            @*@using (Html.BeginForm("Approver", "Approvals", FormMethod.Post))
+                                {*@
+                            <form>
+                                <input type="hidden" id="EmployeePlantName" />
+                                <div class="row">
+                                    <div class="col-lg-12 text-center">
+                                        <table class="table table-bordered">
+                                            <thead></thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td width="30%"><label><span style="color:#001d55;"><b>Employee ID : </b> </span><span id="ApproverEmployeeID"></span></label></td>
+                                                    <td width="30%"><label><span style="color:#001d55;"><b>Employee Name : </b> </span><span id="ApproverEmployeeName"></span></label></td>
+                                                    <td width="30%"><label><span style="color:#001d55;"><b> Employee Email : </b>  </span><span id="ApproverEmployeeEmail"></span></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label><span style="color:#001d55;"><b> Plant : </b>  </span><span id="ApproverEmployeePlant"></span></label></td>
+                                                    <td>
+                                                        <label><span style="color:#001d55;"><b> Primary Department : </b>  </span><span id="ApproverEmployeeCategory"></span></label>
+                                                    </td>
+                                                    <td>
+                                                        <label><span style="color:#001d55;"><b> Primary Sub Department : </b>  </span><span id="ApproverEmployeeSubCategory"></span></label>
+                                                    </td>
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header CardHeader_Approvers">
+                                                <div class="row align-items-center">
+                                                    <div class="col-sm-4 form-inline">
+
+                                                        <label><b>Department  &nbsp;: </b></label> &nbsp;&nbsp;&nbsp;
+                                                        <select class="form-control" id="department_id" disabled style="padding:0;text-align-last:center; width:160px;">
+                                                            <option selected value="">-- Select --</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-4 form-inline">
+                                                        <label><b>Sub Department  &nbsp;: </b></label> &nbsp;&nbsp;&nbsp;
+                                                        <select class="form-control" id="subdepartment_id" onchange="MappingExistCheck();" disabled style="padding:0;text-align-last:center; width:160px;">
+                                                            <option id="subdepartment_id2" selected value="">-- Select --</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-4 text-right">
+                                                        <button type="button" id="btnAddApprover" disabled class="btn btn-sm btn_add btn-light" style="color:green;"><i class="flaticon-plus" aria-hidden="true"></i>&nbsp; Add</button>
+                                                        &nbsp;
+                                                        <button type="button" id="btnRemoveApprover" disabled class="btn btn-sm btn-light" style="color:red;"><i class="flaticon-interface-5" aria-hidden="true"></i>&nbsp; Remove</button>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <center><h3><b id="UsererrorCode2"></b></h3></center>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+
+                                                        <div class="table-responsive">
+                                                            <table id="ApproversTable" class="display table table-bordered  appoverTabel">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th width="10%"><center>Select to remove</center></th>
+                                                                        <th width="45%"><center>Department</center></th>
+                                                                        <th width="45%"><center>Sub Department</center></th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody id="aprrovallist">
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="searchmodal" role="dialog" tabindex="-1">
+    @*<div class="text-right model_body_position">
+            <a href="" data-dismiss="modal" class="modaldismissarrow"><i class="flaticon-error fa-3x " aria-hidden="true"></i></a>
+        </div>*@
+
+    <div class="modal-dialog" style="max-width:80%;">
+        <div class="modal-content">
+            <div class="modal-header modalheadercolor websitecolour">
+                <label style="font-size: 20px !important;"><b>Search Employee</b></label>
+                <button data-dismiss="modal" class="modaldismissarrow text-right btn btn-sm btn-light btn_close" title="Close">Close</button>
+            </div>
+            <div class="modal-body" style="height:480px; overflow: auto;">
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <div class="form-group form-inline">
+                            <div class="col-md-2">
+                                <label class="col-form-label"><b>Search By :</b></label>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-control" id="UserSearchOption" name="UserSearchType" style="padding-bottom:3px;padding-top:3px;">
+                                    <option> Employee ID </option>
+                                    <option> Employee Name </option>
+                                    <option> Employee Email Address </option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" onkeyup="this.value = this.value.replace(/[^a-zA-Z0-9@('@')._-\s]/g, '');" class="form-control input-full" placeholder="Type here and click search" id="EmployeeDetail" />
+                            </div>
+                            <div class="col-md-2">
+                                <center>
+                                    <button class="btn btn-sm btn-light btn_create" id="valbtn" onclick="UserID();">Search Employee</button>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <center><h3><b id="UsererrorCode"></b></h3></center>
+                    </div>
+                </div>
+
+                <br />
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="tableFixHead_search">
+                            <table id="Approvers_Table" class="display table table-bordered appoverTabel">
+                                <thead>
+                                    <tr>
+                                        <th><center>Select User</center></th>
+                                        <th><center>Employee ID</center></th>
+                                        <th><center>Employee Name</center></th>
+                                        <th><center>Employee Email Address</center></th>
+                                        <th><center>Department</center></th>
+                                        <th><center>SubDepartment</center></th>
+                                        <th><center>Employee Designation</center></th>
+                                        <th><center>Employee Role (s)</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblUsersSearchList"></tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+<div class="modalload"><!-- Place at bottom of page --></div>
+
+
+
+
+<script src="../../Content/assets/js/core/jquery.3.2.1.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#basic-datatables').DataTable({
+
+            "columnDefs": [
+                { "width": "10%", "targets": 0 },
+                { "width": "45%", "targets": 1 },
+                { "width": "45%", "targets": 2 },
+
+            ]
+        });
+    });
+</script>
+<script>
+    //Edit button alert design
+    $('#editalert').click(function (e) {
+        e.preventDefault();
+        swal(" Are you sure you want to Edit !", {
+            icon: "warning",
+        buttons: {
+                cancel: {
+                    visible: true,
+                    text: 'No, Cancel it !',
+                    className: 'btn btn-danger'
+                },
+                confirm: {
+                    text: 'Yes, Edit it !',
+                    className: 'btn btn-success'
+                    //className: 'btn btn-success'
+                }
+            }
+        }).then(function (result) {
+
+            if (result == true) {
+
+                // if (willDelete) {
+                $("#editalert").hide();
+                $("#Save_button").show();
+                $("#Cancel_button").show();
+                $('select').removeAttr('disabled');
+                $('button').removeAttr('disabled');
+                $('input[type=checkbox]').removeAttr('disabled');
+            } else {
+                //swal("Cancelled", " ", "error");
+            }
+        });
+    });
+</script>
+<script>
+    $(function () {
+        //  alert("hello");
+        $.ajax({
+            type: "POST",
+            url: "/DepartmentMapping/GetDepartment",
+            data: '{name: "' + $("#txtName").val() + '" }',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+
+
+            success: function (response) {
+                //alert("Hello: " + response);
+                var x = document.getElementById("department_id");
+                x.innerHTML = "";
+
+                var option = document.createElement("option");
+
+                option.text = "-- select --";
+                option.value = "";
+
+                x.add(option);
+                $.each(response, function (index, value) {
+                    var option = document.createElement("option");
+                    option.text = value;
+                    x.add(option);
+                });
+            },
+
+            failure: function (response) {
+                //alert(response.responseText);
+            },
+            error: function (response) {
+                //alert(response.responseText);
+            }
+
+        });
+
+        $("#department_id").change(function () {
+            var department = $(this).val();
+            //alert("data :" + deptid);
+            $.ajax({
+                url: '/DepartmentMapping/GetSubDepartment',
+                type: 'post',
+                data: { department: department },
+
+                dataType: 'json',
+                success: function (response) {
+
+                    $('#subdepartment_id')
+                        .find('option')
+                        .remove();
+
+                    var x = document.getElementById("subdepartment_id");
+
+                    var option = document.createElement("option");
+                    option.text = "-- Select --";
+                    option.value = "";
+                    x.add(option);
+                    $.each(response, function (index, value) {
+                        var option = document.createElement("option");
+                        option.text = value;
+                        x.add(option);
+                    });
+                }
+            });
+        });
+    });
+
+</script>
+<script>
+    function UserID() {
+        var EmployeeDetails = $("#EmployeeDetail").val();
+        var tblBasicUser = "";
+        if (EmployeeDetails.length > 0) {
+            $("#UsererrorCode").html("");
+            var OptionToSearch = $("#UserSearchOption").val();
+            $.ajax({
+                type: "POST",
+                url: "/DepartmentMapping/getHodDetails",
+                data: { EmployeeDetails: EmployeeDetails, OptionToSearch: OptionToSearch },
+
+
+                success: function (response) {
+                    tblUserList = "";
+                    console.log(response);
+                    if (response.length > 0) {
+
+                        $("#UsererrorCode").css({ "color": "green" });
+                        $("#UsererrorCode").html("Record found.");
+
+                        $.each($(response), function (index, value) {
+                            var UserRole = "";
+                            if (value.UserRoleAdmin == true) {
+                                UserRole = UserRole + "Admin";
+                            }
+
+                            if (value.UserRoleInitiator == true) {
+
+                                if (UserRole.length > 0) {
+                                    UserRole = UserRole + ", Initiator";
+                                }
+                                else {
+                                    UserRole = UserRole + "Initiator";
+                                }
+                            }
+                            if (value.UserRoleApprover == true) {
+                                if (UserRole.length > 0) {
+                                    UserRole = UserRole + ", Approver";
+                                }
+                                else {
+                                    UserRole = UserRole + "Approver";
+                                }
+                            }
+                            if (value.UserRoleFinance == true) {
+                                if (UserRole.length > 0) {
+                                    UserRole = UserRole + ", Finance Approver";
+                                }
+                                else {
+                                    UserRole = UserRole + "Finance Approver";
+                                }
+                            }
+                            if (value.UserRoleFinance2 == true) {
+                                if (UserRole.length > 0) {
+                                    UserRole = UserRole + ", Finance 2";
+                                }
+                                else {
+                                    UserRole = UserRole + "Finance 2";
+                                }
+                            }
+
+                            if (value.UserRoleLegal == true) {
+                                if (UserRole.length > 0) {
+
+                                    UserRole = UserRole + ", Legal Approver";
+                                }
+                                else {
+                                    UserRole = UserRole + "Legal Approver";
+                                }
+                            }
+                            if (value.UserRoleReviewer == true) {
+
+                                if (UserRole.length > 0) {
+                                    UserRole = UserRole + ", Reviewer";
+                                }
+                                else {
+                                    UserRole = UserRole + "Reviewer";
+                                }
+                            }
+
+                            $("#EmployeePlantName").val(value.UserPlant);
+
+                            tblBasicUser = tblBasicUser + '<tr><td><center><button class="btn btn-sm btn-primary" data-dismiss="modal" id="' + value.UserEmployeeID + '" onclick="SelectFunction(' + value.UserEmployeeID + ');">Select</button></center></td><td id="' + value.UserEmployeeID + '_ID">' + value.UserEmployeeID + '</td><td id="' + value.UserEmployeeID + '_Name">' + value.UserEmployeeName + '</td><td id="' + value.UserEmployeeID + '_Email">' + value.UserEmployeeEmail + '</td><td id="' + value.UserEmployeeID + '_Cat">' + value.UserCategory + '</td><td id="' + value.UserEmployeeID + '_Sub">' + value.UserSubCategory + '</td><td id="' + value.UserEmployeeID + '_Desg">' + value.UserEmployeeDesignation + '</td><td id="' + value.UserEmployeeID + '_Role">' + UserRole + '</td></tr>';
+                        });
+                        $("#tblUsersSearchList").html(tblBasicUser);
+
+
+
+                    }
+                    else {
+                        $("#UsererrorCode").css({ "color": "red" });
+                        $("#UsererrorCode").html("No Record found.");
+                    }
+                }
+            });
+        }
+        else {
+            $("#hodemployeeid").val("");
+            $("#UsererrorCode").css({ "color": "red" });
+            $("#UsererrorCode").html("Please enter the Employee ID / Name / Email to search");
+        }
+    }
+
+</script>
+<script>
+    function SelectFunction(EmployeeID) {
+
+        $("#searchmodal").modal('hide');
+        $('#ApproverEmployeeID').html($('#' + EmployeeID + '_ID').html());
+        $('#ApproverEmployeeName').html($('#' + EmployeeID + '_Name').html());
+        $('#ApproverEmployeeEmail').html($('#' + EmployeeID + '_Email').html());
+        $('#ApproverEmployeePlant').html($('#EmployeePlantName').val());
+        $('#ApproverEmployeeCategory').html($('#' + EmployeeID + '_Cat').html());
+        $('#ApproverEmployeeSubCategory').html($('#' + EmployeeID + '_Sub').html());
+        var EmployeeID = $("#ApproverEmployeeID").text();
+        //var EmployeeName = $("#ApproverEmployeeName").val();
+        //var EmployeeEmail = $("#ApproverEmployeeEmail").val();
+        //var EmployeeDesignation = $("#ApproverEmployeeDesignation").val();
+        //var EmployeeRole = $("#ApproverEmployeeRoles").val();
+
+        if (EmployeeID.length > 0) {
+
+            $.ajax({
+                url: '/DepartmentMapping/DepartmentMappingExistCheck',
+                type: 'POST',
+                data: { EmployeeID: EmployeeID },
+
+                dataType: 'json',
+                success: function (response) {
+                    $("#editalert").show();
+                    $("#ApproversTable tbody").html("");
+                    $.each(response, function (index, value) {
+                        var htmlData = "<tr><td width='20%'><input type='checkbox' name='record' class = 'larger' disabled/></td><td width='40%' class = 'EmployeeDepartment'>" + value.Department + "</td><td width='40%' class = 'EmployeeSubDepartment'>" + value.SubDepartment + "</td></tr>";
+
+                        $("#ApproversTable tbody").append(htmlData);
+                    });
+                }
+            });
+
+        }
+
+
+    }
+</script>
+
+@*<script>
+
+    function CheckLimit() {
+        var Userlist = document.getElementsByClassName("EmployeeDepartment").length;
+        if (Userlist < 10) {
+
+            $('.btn_add').attr('disabled', false);
+            return true;
+        }
+        $('.btn_add').attr('disabled', true);
+        return false;
+
+    }
+
+</script>*@
+
+<script>
+   
+</script>
+<script>
+    $("#btnAddApprover").click(function () {
+
+        //function AddToTable() {
+        var EmployeeID = $("#ApproverEmployeeID").html();
+        var Department = $("#department_id").val();
+        var SubDepartment = $("#subdepartment_id").val();
+
+        var PrimaryDept = $("#ApproverEmployeeCategory").html();
+         var PrimarySubDept = $("#ApproverEmployeeSubCategory").html();
+
+        var all = $(".EmployeeDepartment").map(function () {
+            var Department_Name = this.innerHTML;
+            var SubDepartment_Name = $(this).parents("tr").children().last().html();
+
+            if ((Department == Department_Name) && (SubDepartment == SubDepartment_Name)) { return this.innerHTML }
+        }).get();
+
+
+        if (EmployeeID.length > 0) {
+            if ((Department.length > 0) && (SubDepartment.length > 0)) {
+                //if (CheckLimit()) {
+                    if ((Department == PrimaryDept) && (SubDepartment == PrimarySubDept)) {
+                        $("#UsererrorCode2").css({ "color": "red" });
+                        $("#UsererrorCode2").html("Already added to list.");
+
+                        var department = $("#department_id").val();
+
+                        $.ajax({
+                            url: '/DepartmentMapping/GetSubDepartment',
+                            type: 'post',
+                            data: { department: department },
+
+                            dataType: 'json',
+                            success: function (response) {
+
+                                $('#subdepartment_id')
+                                    .find('option')
+                                    .remove();
+
+                                var x = document.getElementById("subdepartment_id");
+
+                                var option = document.createElement("option");
+                                option.text = "-- Select --";
+                                option.value = "";
+                                x.add(option);
+                                $.each(response, function (index, value) {
+                                    var option = document.createElement("option");
+                                    option.text = value;
+                                    x.add(option);
+                                });
+                            }
+                        });
+
+                    }
+                    else {
+                         if (all.length < 1) {
+                       
+                             var htmlData = "<tr><td><input type='checkbox' name='record' class = 'larger'/></td><td class = 'EmployeeDepartment'>" + Department + "</td><td class = 'EmployeeSubDepartment'>" + SubDepartment + "</td></tr>";
+                        $("#ApproversTable tbody").append(htmlData);
+                        // $("#searchmodal").modal('hide');
+                        $("#UsererrorCode2").css({ "color": "green" });
+                        $("#UsererrorCode2").html("Department and Sub Department added to list.");
+                        CheckLimit();
+
+                    }
+                    else {
+                        $("#UsererrorCode2").css({ "color": "red" });
+                        $("#UsererrorCode2").html("Already added to list.");
+                        var department = $("#department_id").val();
+
+                        $.ajax({
+                            url: '/DepartmentMapping/GetSubDepartment',
+                            type: 'post',
+                            data: { department: department },
+
+                            dataType: 'json',
+                            success: function (response) {
+
+                                $('#subdepartment_id')
+                                    .find('option')
+                                    .remove();
+
+                                var x = document.getElementById("subdepartment_id");
+
+                                var option = document.createElement("option");
+                                option.text = "-- Select --";
+                                option.value = "";
+                                x.add(option);
+                                $.each(response, function (index, value) {
+                                    var option = document.createElement("option");
+                                    option.text = value;
+                                    x.add(option);
+                                });
+                            }
+                        });
+                    }
+                    }
+                   
+                //}
+            } else {
+                swal({
+                    text: 'Please select a Department and Sub Department',
+                    icon: 'warning',
+                });
+            }
+        }
+        else {
+            swal({
+                text: 'Please search for a Employee',
+                icon: 'warning',
+            }).then(function (value) {
+                if (value == true) {
+                    window.location.reload();
+                }
+            });
+        }
+
+
+    });
+</script>
+
+<script>
+    $("#btnRemoveApprover").click(function () {
+        //function RemoveFromTable() {
+        var numberOfChecked = $('.larger:input:checkbox:checked').length;
+        if (numberOfChecked > 0) {
+            //alert(numberOfChecked);
+            swal({
+                title: 'Are you sure ?',
+                icon: 'warning',
+                buttons: {
+                    cancel: {
+                        visible: true,
+                        text: "No, Don't remove !",
+                        className: 'btn btn-success'
+                    },
+                    confirm: {
+                        text: 'Yes, Remove it !',
+                        className: 'btn btn-danger'
+                    }
+                }
+            }).then(function (value) {
+                if (value == true) {
+
+                    try {
+                        $("#aprrovallist").find('input[name="record"]').each(function () {
+                            if ($(this).is(":checked")) {
+                       
+                                $(this).parents("tr").remove();
+                                 $("#UsererrorCode2").css({ "color": "red" });
+                        $("#UsererrorCode2").html("Department and Sub Department Removed from list.");
+                            }
+                            
+                            //CheckLimit();
+                        });
+                    } catch (error) { }
+
+
+                }
+                else {
+                    swal("Your Data is safe", {
+                        buttons: {
+                            confirm: {
+                                className: 'btn btn-success'
+                            }
+                        }
+                    });
+                }
+            });
+        }
+        else {
+            swal({
+                text: "Please select Department(s) to remove.",
+                icon: "warning",
+            })
+        }
+
+    });
+
+</script>
+
+<script>
+    function SaveMappingMatrix() {
+        var EmployeeID = $("#ApproverEmployeeID").html();
+        var EmployeeDepartment = document.getElementsByClassName("EmployeeDepartment");
+        var EmployeeSubDepartment = document.getElementsByClassName("EmployeeSubDepartment");
+        var arrDepartment = [];
+        for (i = 0; i < EmployeeDepartment.length; i++) {
+            arrDepartment.push(EmployeeDepartment[i].innerHTML);
+        }
+        var arrSubDepartment = [];
+        for (i = 0; i < EmployeeSubDepartment.length; i++) {
+            //  alert(VariableValue[i].value);
+            arrSubDepartment.push(EmployeeSubDepartment[i].innerHTML);
+        }
+
+        if (EmployeeDepartment.length > 0) {
+            $.ajax({
+                type: "POST",
+                url: "/DepartmentMapping/SaveDepartmentMappingList",
+                traditional: true,
+
+                data: { EmployeeID: EmployeeID, arrDepartment: arrDepartment, arrSubDepartment: arrSubDepartment },
+
+                //,VariableValue, VariableName },
+                //data: JSON.stringify(my_array),//content, ID ,VariableValue, VariableName },
+
+                success: function (response) {
+                    if (response == "success") {
+                        swal("Mapping Saved", {
+                            icon: "success",
+                        }).then(function (result) {
+                            if (result) {
+                                window.location.reload();
+                            }
+                        });
+                    }
+                    else {
+                        swal({
+                            icon: "error",
+                            text: "Unable to Save Data. Please try again",
+                        }).then(function (error) {
+                            if (error) {
+                                window.location.reload();
+                            }
+                        });
+                    }
+                }
+            });
+        } else {
+            swal({
+                text: 'Minimum one list is required',
+                icon: 'warning',
+            });
+        }
+    }
+</script>
+
+<script>
+    function MappingExistCheck() {
+        var EmployeeID = $("#ApproverEmployeeID").text();
+        var Department = $("#department_id").val();
+        var SubDepartment = $("#subdepartment_id").val();
+
+
+
+
+
+    }
+</script>
+
+<script>
+    function DiscardChanges() {
+        swal({
+            title: 'Are you sure?',
+            text: "You want to Cancel !",
+            type: 'warning',
+            buttons: {
+                cancel: {
+                    visible: true,
+                    text: 'No, Keep it !',
+                    className: 'btn btn-success'
+                },
+                confirm: {
+                    text: 'Yes, Cancel it !',
+                    className: 'btn btn-danger'
+                },
+            }
+        }).then(function (value) {
+            if (value == true) {
+                window.location.reload();
+            }
+        });
+    }
+</script>

@@ -1,0 +1,731 @@
+﻿@model IEnumerable<ContractManagementSystem.Models.tblPlant>
+@{
+    ViewBag.Title = "Plant";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+
+    string getRelativeDateTime(DateTime date)
+    {
+        TimeSpan ts = DateTime.Now - date;
+        if (ts.TotalMinutes < 1)//seconds ago
+            return "just now";
+        if (ts.TotalHours < 1)//min ago
+            return (int)ts.TotalMinutes == 1 ? "1 Minute ago" : (int)ts.TotalMinutes + " Minutes ago";
+        if (ts.TotalDays < 1)//hours ago
+            return (int)ts.TotalHours == 1 ? "1 Hour ago" : (int)ts.TotalHours + " Hours ago";
+        if (ts.TotalDays < 7)//days ago
+            return (int)ts.TotalDays == 1 ? "1 Day ago" : (int)ts.TotalDays + " Days ago";
+        if (ts.TotalDays < 30.4368)//weeks ago
+            return (int)(ts.TotalDays / 7) == 1 ? "1 Week ago" : (int)(ts.TotalDays / 7) + " Weeks ago";
+        if (ts.TotalDays < 365.242)//months ago
+            return (int)(ts.TotalDays / 30.4368) == 1 ? "1 Month ago" : (int)(ts.TotalDays / 30.4368) + " Months ago";
+        //years ago
+        return (int)(ts.TotalDays / 365.242) == 1 ? "1 Year ago" : (int)(ts.TotalDays / 365.242) + " Years ago";
+    }
+    string CurrentUserID()
+    {
+        string userName = string.Empty;
+
+        if (HttpContext.Current.Request.IsAuthenticated)
+        {
+            userName = HttpContext.Current.User.Identity.Name.Split('|')[1];
+        }
+
+        return userName;
+
+    }
+    string CurrentUserName()
+    {
+        string userName = string.Empty;
+
+        if (HttpContext.Current.Request.IsAuthenticated)
+        {
+            userName = HttpContext.Current.User.Identity.Name.Split('|')[0];
+        }
+
+        return userName;
+
+    }
+    int CurrentLoggedUserID = Convert.ToInt32(CurrentUserID());
+    string CurrentLoggedUserName = CurrentUserName();
+}
+
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            <div class="page-header">
+                <h4 class="page-title">Plant Master</h4>
+                <ul class="breadcrumbs">
+                    <li class="nav-home">
+                        <a href="~/Home/Dashboard">
+                            <i class="flaticon-home"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+
+                    <li class="nav-item">
+                        Plant Master
+                    </li>
+
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <div class="card-title"><b>Repository</b></div>
+                                </div>
+                                <div class="col-sm-3 text-right">
+                                    @if (User.IsInRole("admin"))
+                                    {
+                                        <button type="button" class="btn btn-sm btn-light btn_create" data-toggle="modal" data-target="#myModal1">
+                                            @*<i class="flaticon-plus"></i>&nbsp;*@ Create New Plant
+                                        </button>
+
+
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+
+                            <br />
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                        <table id="basic-datatables" class="display table table-striped table-hover table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th><center>View</center></th>
+                                                    @*<th>Cluster ID</th>*@
+                                                    <th><center>Plant Name</center></th>
+
+                                                    <th><center>Last Modified</center></th>
+
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                @foreach (var item in Model)
+                                                {
+                                                    <tr>
+
+                                                        <td class="redirectionallink">
+                                                            <center>
+                                                                <a href="" id="@item.PlantID" onclick="LoadPlant(this.id);" data-toggle="modal" data-target="#ViewModel1">
+                                                                    <i class="fa fa-eye fa-1x" aria-hidden="true"></i>
+                                                                </a>
+                                                            </center>
+                                                        </td>
+                                                        @*<td>@item.CategoryID</td>*@
+                                                        <td>
+                                                            <center>
+                                                                @item.PlantName
+                                                            </center>
+                                                        </td>
+
+                                                        <td>
+                                                            <center>
+                                                                @getRelativeDateTime(item.LastModified)
+                                                            </center>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal fade" id="myModal1" role="dialog" tabindex="-1">
+    <div class="text-right model_body_position">
+    </div>
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content">
+
+            @using (Html.BeginForm("SaveRecord1", "PlantMaster", FormMethod.Post, new { id = "form1" }))
+            {
+                <div class="modal-header modalheadercolor websitecolour">
+                    <label style="font-size: 20px !important;"><b>Create New Plant</b></label>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="Name">Enter Plant Name</label>
+                        <input type="text" onkeyup="this.value = this.value.replace(/[^a-zA-Z-,_\s]/g, '');" id="Plant_Name" maxlength="180" name="PlantName" class="form-control" required>
+                        <input type="hidden" value="@CurrentUserID()" name="UserID" />
+                    </div>
+
+
+                    <div class="card-action text-right card_footer_button">
+                        <button type="button" onclick="CreatePlant();" class="btn  btn-success" title="Save" style="padding-left:30px; padding-right:30px;">
+                            @*<i class="flaticon-success"></i>
+                                &nbsp;*@<h5>Save</h5>
+                        </button>&nbsp;&nbsp;
+                        <button type="button" onclick="DiscardChanges1();" class="btn btn-danger" style="padding-left:25px; padding-right:25px;" title="Cancel">@*<i class="flaticon-error" aria-hidden="true"></i>&nbsp;&nbsp;*@<h5>Cancel</h5></button>&nbsp;
+                    </div>
+                </div>
+            }
+
+        </div>
+
+    </div>
+</div>
+<div class="modal fade" id="ViewModel1" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered model_body_position" style="max-width:40%;">
+        <div class="modal-content">
+
+            @using (Html.BeginForm("SaveRecordPlant", "PlantMaster", FormMethod.Post, new { id = "form2" }))
+            {
+
+                <div class="modal-header modalheadercolor websitecolour" style="padding-top:6px; padding-bottom:6px;">
+
+                    <label style="font-size: 20px !important;  padding-top:10px; padding-bottom:10px;"><b>Plant Details</b></label>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <div class="form-group text-right card_footer_button" style="padding:5px;">
+                            @*<button class="btn btn-sm btn-primary" id="modaleditalert" title="Edit" style="color:white;">
+                                    <i class="flaticon-pencil" aria-hidden="true"></i>&nbsp; Edit
+                                </button>&nbsp;*@
+                            @*<button class="btn btn-sm btn-danger" title="Delete" id="deletealert" style="color:white;">
+                                    <i class="flaticon-interface-5" aria-hidden="true"></i> &nbsp;Delete
+                                </button>&nbsp;*@
+                            <button type="button" class="modaldismissarrow text-right btn btn-sm btn-light btn_history" title="History" data-toggle="modal" data-target="#LogModel" onclick="Log();" style="color:white;">@*<i class="flaticon-time" aria-hidden="true"></i>&nbsp;&nbsp;*@History</button>
+                            &nbsp;<button type="button" class="modaldismissarrow text-right btn btn-sm btn-light btn_close" title="Close" id="Close_button" data-dismiss="modal" style="color:white;">@*<i class="flaticon-error" aria-hidden="true"></i>&nbsp;&nbsp;Close*@Close</button>
+
+                        </div>
+                    }
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        &nbsp;&nbsp;&nbsp;<label for="Name">Plant Name</label>
+                        <input type="text" maxlength="180" onkeyup="this.value = this.value.replace(/[^a-zA-Z-,_\s]/g, '');" id="ViewPlantName" name="PlantName" class="form-control input_text" readonly required>
+                        <input type="hidden" id="ViewPlantID" name="PlantID">
+                        <input type="hidden" id="UserID" class="form-control" value="@CurrentUserID()" />
+                    </div>
+                    <hr />
+                    <div class="card-action text-right card_footer_button">
+                        <button class="btn  btn-primary" id="modaleditalert" title="Edit" style="color:white; padding-left:30px; padding-right:30px;">
+                            @*<i class="flaticon-pencil" aria-hidden="true"></i>&nbsp;*@ <h5>Edit</h5>
+                        </button>&nbsp;
+                        <button class="btn  btn-danger" title="Delete" id="deletealert" style="color:white; padding-left:25px; padding-right:25px;">
+                            @*<i class="flaticon-interface-5" aria-hidden="true"></i> &nbsp;*@<h5>Delete</h5>
+                        </button>
+                        <button type="button" onclick="UpdatePlant();" id="UpdateButton" class="btn btn-success" style="display:none; padding-left:30px; padding-right:30px;">@*<i class="flaticon-success"></i>&nbsp;&nbsp;*@<h5>Save</h5></button>&nbsp;
+                        <button type="button" onclick="DiscardChanges();" class="btn btn-danger" title="Cancel" style="display:none; color:white; padding-left:25px; padding-right:25px;" id="cancelbutton">@*<i class="flaticon-error" aria-hidden="true"></i>&nbsp;&nbsp;*@<h5>Cancel</h5></button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="LogModel" role="dialog" tabindex="-1" style="overflow:auto;">
+    @*<div class="text-right model_body_position">
+            <a href="" data-dismiss="modal" class="modaldismissarrow"><i class="flaticon-error fa-3x " aria-hidden="true"></i></a>
+        </div>*@
+
+    <div class="modal-dialog" style="max-width:80%;">
+
+        <div class="modal-content">
+
+            <div class="modal-header modalheadercolor websitecolour">
+                <label style="font-size: 20px !important;"><b>Plant Modified History</b></label>
+                <button type="button" class="modaldismissarrow text-right btn btn-sm btn-light btn_close" title="Close" data-dismiss="modal" style="font-size:13px;">@*<i class="flaticon-error" aria-hidden="true"></i> &nbsp;*@ Close</button>
+
+            </div>
+            <div class="modal-body" style="height:450px; overflow: auto;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="tableFixHead_LogHistory">
+                            <table class="table table-bordered">
+
+                                <thead>
+
+                                    <tr>
+                                        <th><center>Date and Time</center></th>
+                                        <th><center>Modified By</center></th>
+                                        <th><center>Activity</center></th>
+                                        <th><center>Changed From</center></th>
+                                        <th><center>Changed To</center></th>
+
+                                    </tr>
+
+                                </thead>
+
+                                <tbody id="tblCategoryLogList">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                @*<hr />
+
+                    <div class="card-action text-right card_footer_button">
+                        <input type="submit" class="btn btn-success" value="Select" id="CaptureHodList">
+                        <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel" />
+
+                    </div>*@
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modalload"><!-- Place at bottom of page --></div>
+
+
+
+<script src="../../Content/assets/js/core/jquery.3.2.1.min.js"></script>
+
+
+<script>
+    function Invalidcategory(textbox) {
+        //alert("Hello" );
+        if (textbox.value === '') {
+            textbox.setCustomValidity
+                ('Enter an Plant');
+            textbox.style.borderColor = "red";
+
+        }
+        else if (textbox.validity.patternMismatch) {
+            textbox.setCustomValidity('Numbers and Special Characters are not allowed');
+        }
+        else {
+            textbox.setCustomValidity('');
+            textbox.style.borderColor = "#31ce36";
+        }
+        return true;
+    }
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('#basic-datatables').DataTable({
+            "columnDefs": [
+                { "width": "15%", "targets": 0 },
+                { "width": "45%", "targets": 1 },
+                { "width": "40%", "targets": 2 },
+
+            ]
+        });
+
+    });
+</script>
+
+<script>
+    function LoadPlant(PlantID) {
+        //alert(DivisionID);
+        $.ajax({
+            url: '/PlantMaster/EditPlant',
+
+            type: 'post',
+            data: { PlantID: PlantID },
+
+            dataType: 'json',
+            success: function (response) {
+                $('#ViewPlantName').val(response.PlantName);
+                $('#ViewPlantID').val(response.PlantID);
+            }
+        });
+    }
+
+</script>
+
+<script>
+    $('#modaleditalert').click(function (e) {
+        e.preventDefault();
+        swal(" Are you sure you want to Edit !", {
+            icon: "warning",
+         buttons: {
+                cancel: {
+                    visible: true,
+                    text: 'No, Cancel it !',
+                    className: 'btn btn-danger'
+                },
+                confirm: {
+                    text: 'Yes, Edit it !',
+                    className: 'btn btn-success'
+                    //className: 'btn btn-success'
+                }
+            }
+        }).then(function (value) {
+            if (value == true) {
+                $('.input_text').removeAttr('readonly');
+                $('textarea').removeAttr('readonly');
+                $("#UpdateButton").show();
+                $("#cancelbutton").show();
+                $("#Close_button").hide();
+                document.getElementById("modaleditalert").hidden = true;
+                document.getElementById("deletealert").hidden = true;
+
+            } else {
+                //swal("Cancelled", " ", "error");
+            }
+        });
+    })
+</script>
+<script>
+    //Delete button alert design
+    $('#deletealert').click(function (e) {
+        e.preventDefault();
+        //var _form = $(this).closest("form");
+        swal({
+            title: 'Are you sure ?',
+            text: "You won't be able to revert this !",
+            type: 'warning',
+            buttons: {
+                cancel: {
+                    visible: true,
+                    text: 'No, Cancel it !',
+                    className: 'btn btn-success'
+                },
+                confirm: {
+                    text: 'Yes, Delete it !',
+                    className: 'btn btn-danger'
+                }
+            }
+        }).then(function (value) {
+            if (value == true) {
+                //_form.submit();
+                var PlantID = $("#ViewPlantID").val();
+                var UserID = $("#UserID").val();
+                //  alert("hello");
+                $.ajax({
+                    url: '/PlantMaster/DeleteConfirmedPlant',
+                    type: 'POST',
+                    data: { PlantID: PlantID, UserID: UserID },
+
+                    dataType: 'json',
+                    success: function (response) {
+                        //alert(response);
+                        if (response == "success") {
+                            swal("Successfully removed the record", {
+                                icon: "success",
+                            }).then(function (result) {
+                                if (result) {
+                                    window.location = "/PlantMaster/Plant";
+                                }
+                            });
+                        }
+                        else {
+                            swal("Cancelled", {
+                                icon: "error",
+                                text: response,
+                                //}).then((error) => {
+                                //    if (error) {
+
+                                //    }
+                            });
+                        }
+                    },
+                });
+
+            } else {
+                swal("Your Data is safe", {
+                    buttons: {
+                        confirm: {
+                            className: 'btn btn-success'
+                        }
+                    }
+                });
+            }
+        });
+    })
+</script>
+
+
+
+
+<script>
+
+    function Log() {
+        // alert("hello");
+        var tblLog = "";
+        var ID = $("#ViewPlantID").val();
+        //alert(ID);
+        $.ajax({
+            type: "POST",
+            url: "/PlantMaster/getLogDetail",
+            data: { ID: ID },
+
+
+            success: function (response) {
+
+                //alert(response.LogUserID);
+                $.each($(response), function (index, value) {
+                    tblLog = tblLog + '<tr><td><center>' + value.DateandTime + '</center</td><td><center>' + value.ModifiedBy + '</center></td><td style="text-align: left;">' + value.LogActivity + '</td><td style="text-align: left;">' + value.ChangedFrom + '</td><td style="text-align: left;">' + value.ChangedTo + '</td></tr>';
+                });
+                $("#tblCategoryLogList").html(tblLog);
+                $("#LogModel").show();
+
+            },
+
+        });
+    }
+
+</script>
+
+
+@*<script>
+        $(function () {
+            var UserID = "@CurrentLoggedUserID - @CurrentLoggedUserName";
+
+            $("#ViewPlantName").focus(function () {
+                $(this).data('categoryval', $(this).val());
+            });
+            $("#ViewPlantName").change(function () {
+                var initialvalue = "Department : " + $(this).data('categoryval');
+                var details = "Department : " + $(this).val();
+                var ID = $("#ViewPlantID").val();
+                 $.ajax({
+                    type: "POST",
+                    url: "/DepartmentMaster/SaveLog",
+                    data: { initialvalue: initialvalue, details: details, ID: ID, UserID: UserID },
+
+
+                    success: function (response) {
+
+                        //alert(response.LogUserID);
+                        // alert(called);
+                    },
+
+                });
+            });
+
+        });
+    </script>*@
+<script>
+    $(function () {
+        var msg = '@ViewBag.Status';
+        if (msg == "PlantSuccess") {
+           // alert("updated");
+
+            swal("Updated successfully !", {
+            icon: "success",
+
+        })
+               .then(function (result) {
+                        if (result){
+
+                   // window.location = "/DepartmentMaster/Department";
+                }
+            });
+        }
+    });
+</script>
+
+<script>
+    $(function () {
+        var msg = '@ViewBag.Status';
+        if (msg == "NewSuccess") {
+           // alert("updated");
+
+            swal("New Plant created successfully !", {
+            icon: "success",
+            })
+               .then(function (result) {
+                        if (result){
+                   // window.location = "/DepartmentMaster/Department";
+                }
+            });
+        }
+    });
+</script>
+
+<script>
+    function CreatePlant() {
+        var Plant = $("#Plant_Name").val();
+        Plant = Plant.trim();
+        if (Plant.length > 0) {
+            $.ajax({
+                url: '/PlantMaster/PlantNameVerification',
+                type: 'POST',
+                data: { Plant: Plant },
+
+                dataType: 'json',
+                success: function (response) {
+                    // console.log(response);
+
+                    if (response == Plant) {
+                        $("#Plant_Name").val("");
+                        swal({
+                            title: 'Creation of New Plant',
+                            text: "Plant : " + Plant + " already Exists !",
+                            icon: "warning",
+                        });
+                    }
+                    else {
+                        $("#form1").submit();
+                    }
+                }
+            });
+        }
+        else {
+            swal({
+                text: 'Please Enter Plant Name',
+                icon: 'warning',
+            });
+        }
+    }
+
+    function UpdatePlant() {
+        var ID = $("#ViewPlantID").val();
+        var Plant = $("#ViewPlantName").val();
+        Plant = Plant.trim();
+        if (Plant.length > 0) {
+            $.ajax({
+                url: '/PlantMaster/PlantNameVerification2',
+                type: 'POST',
+                data: { Plant: Plant, ID: ID },
+                dataType: 'json',
+                success: function (response) {
+                    // console.log(response);
+                    // alert(response);
+
+                    if (response == Plant) {
+                        $("#Plant_Name").val("");
+                        swal({
+                            title: 'Updating the Plant Details',
+                            text: "Plant : " + Plant + " already Exists !",
+                            icon: "warning",
+                        });
+                    }
+                    else {
+                        $("#form2").submit();
+                    }
+                }
+            });
+        }
+        else {
+            swal({
+                text: 'Please Enter Plant Name',
+                icon: 'warning',
+            });
+        }
+    }
+
+
+</script>
+
+<script>
+    function CancelFunction() {
+        $("#Plant_Name").val("");
+        $("#myModal1").modal('hide');
+    }
+</script>
+
+<script>
+    function CancelUpdateFunction() {
+        var PlantID = $("#ViewPlantID").val();
+        $.ajax({
+            url: '/PlantMaster/EditPlant',
+            type: 'post',
+            data: { PlantID: PlantID },
+            dataType: 'json',
+            success: function (response) {
+                $('#ViewPlantName').val(response.PlantName);
+                $('#ViewPlantID').val(response.PlantID);
+            }
+        });
+        $('.input_text').attr('readonly', 'readonly');
+        $("#UpdateButton").hide();
+        $("#cancelbutton").hide();
+        $("#Close_button").show();
+        document.getElementById("modaleditalert").hidden = false;
+        document.getElementById("deletealert").hidden = false;
+    }
+</script>
+
+<script src="../../Content/assets/js/core/jquery.3.2.1.min.js"></script>
+<script src="../../Content/assets/js/core/bootstrap.min.js"></script>
+
+<script>
+    $("#ViewModel1").on('hide.bs.modal', function () {
+        //alert('The modal is about to be hidden.');
+        CancelUpdateFunction();
+    });
+</script>
+
+
+<script>
+    function DiscardChanges() {
+        swal({
+            title: 'Are you sure?',
+            text: "You want to Cancel !",
+            type: 'warning',
+            buttons: {
+                cancel: {
+                    visible: true,
+                    text: 'No, Keep it !',
+                    className: 'btn btn-success'
+                },
+                confirm: {
+                    text: 'Yes, Cancel it !',
+                    className: 'btn btn-danger'
+                },
+            }
+        }).then(function (value) {
+            if (value == true) {
+                var PlantID = $("#ViewPlantID").val();
+                $.ajax({
+                    url: '/PlantMaster/EditPlant',
+                    type: 'post',
+                    data: { PlantID: PlantID },
+                    dataType: 'json',
+                    success: function (response) {
+                        $('#ViewPlantName').val(response.PlantName);
+                        $('#ViewPlantID').val(response.PlantID);
+                    }
+                });
+                $('.input_text').attr('readonly', 'readonly');
+                $("#UpdateButton").hide();
+                $("#cancelbutton").hide();
+                $("#Close_button").show();
+                document.getElementById("modaleditalert").hidden = false;
+                document.getElementById("deletealert").hidden = false;
+            }
+        });
+    }
+</script>
+
+<script>
+    function DiscardChanges1() {
+        swal({
+            title: 'Are you sure?',
+            text: "You want to Cancel !",
+            type: 'warning',
+            buttons: {
+                cancel: {
+                    visible: true,
+                    text: 'No, Keep it !',
+                    className: 'btn btn-success'
+                },
+                confirm: {
+                    text: 'Yes, Cancel it !',
+                    className: 'btn btn-danger'
+                },
+            }
+        }).then(function (value) {
+            if (value == true) {
+                window.location = '/PlantMaster/Plant'
+            }
+        });
+    }
+</script>

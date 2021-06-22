@@ -1,0 +1,640 @@
+﻿@model ContractManagementSystem.Models.tblTemplateAmendment
+@{
+    ViewBag.Title = "Addendum";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    string CurrentUserID()
+    {
+        string userName = string.Empty;
+
+        if (HttpContext.Current.Request.IsAuthenticated)
+        {
+            userName = HttpContext.Current.User.Identity.Name.Split('|')[1];
+        }
+        return userName;
+
+    }
+    string CurrentUserName()
+    {
+        string userName = string.Empty;
+
+        if (HttpContext.Current.Request.IsAuthenticated)
+        {
+            userName = HttpContext.Current.User.Identity.Name.Split('|')[0];
+        }
+
+        return userName;
+
+    }
+    int CurrentLoggedUserID = Convert.ToInt32(CurrentUserID());
+    string CurrentLoggedUserName = CurrentUserName();
+
+}
+
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            @*<div class="page-header">*@
+            <div class="row align-items-center">
+                <div class="col-md-4 form-inline align-items-center">
+                    <div class="form-group">
+                        <label class="page-title" style="font-size:24px !important;">Template - Addendum</label>
+                    </div>
+                </div>
+                <div class="col-md-3 form-inline align-items-center">
+                    <select class="form-control" id="templateamendments" style="width:11rem; text-align-last:center; padding:0;">
+                        <option disabled selected value="">--Select--</option>
+                        <option value="Amendments">Amendments</option>
+                        <option>Termination</option>
+                        <option>Extension</option>
+                    </select>
+                </div>
+                <div class="col-md-5 text-right">
+                    &nbsp; <button type="button" class="btn btn-xs btn-light" id="DocumentUpload" title="Upload Word Document" data-toggle="modal" data-target="#SignedContractModal" style="display:none;"><i class="flaticon-archive"></i>&nbsp; Upload</button>
+
+                    <span id="BackButtton_2">&nbsp;</span><a href="~/Template/Repository" class="btn btn-sm btn-light" id="BackButtton" title="Back to Repository"><i class="flaticon-back" aria-hidden="true"></i>&nbsp; Back</a>
+
+                    <span id="Save_2" style="display:none;">&nbsp;</span><button type="submit" @*onclick="updated();"*@ class="btn btn-light btn-sm saverecord" id="save" onclick="SaveTemplate();" style="display:none; color:green;"><i class="flaticon-success"></i>&nbsp;&nbsp;Save</button>
+                    <span id="discard_2" style="display:none;">&nbsp;</span><button type="button" @*onclick="window.location.reload();"*@ class="btn btn-sm btn-light" id="discard" style="display:none; color:red;"><i class="flaticon-interface-5" aria-hidden="true"></i>&nbsp;&nbsp;Discard</button>
+                    <span id="editalert_2">&nbsp;</span><button class="btn btn-sm btn-light" type="button" title="Edit" id="editalert" disabled><i class="flaticon-pencil" aria-hidden="true"></i>&nbsp; Edit</button>
+                    &nbsp;<button class="btn btn-sm btn-light" id="LogModal" title="History" data-toggle="modal" data-target="#LogModel"><i class="flaticon-clock-1" aria-hidden="true"></i>&nbsp;&nbsp;History</button>
+
+                </div>
+            </div>
+
+
+            @*</div>*@
+
+
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <textarea name="editor1" id="IDofEditor"></textarea>
+                        <input type="hidden" name="Select" id="SelectValue" />
+                        <input type="hidden" id="TempID" />
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+<div class="modal fade" id="LogModel" role="dialog" tabindex="-1">
+    <div class="text-right model_body_position">
+    </div>
+
+    <div class="modal-dialog" style="max-width:80%;">
+
+        <div class="modal-content">
+
+            <div class="modal-header modalheadercolor websitecolour">
+                <label style="font-size: 20px !important;"><b>Amendments Modified History</b></label>
+                <button type="button" class="modaldismissarrow text-right btn btn-sm btn-light btn_close" title="Close" data-dismiss="modal" style="font-size:13px;"> @*<i class="flaticon-error" aria-hidden="true"></i> &nbsp;*@ Close</button>
+
+            </div>
+            <div class="modal-body" style="height:450px; overflow: auto;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="tableFixHead_LogHistory">
+                            <table class="table table-bordered">
+
+                                <thead>
+
+                                    <tr>
+                                        <th><center>Date and Time</center></th>
+                                        <th><center>Modified By</center></th>
+                                        <th><center>Activity</center></th>
+                                        @*<th><center>Changed From</center></th>
+                                        <th><center>Changed To</center></th>*@
+
+                                    </tr>
+
+                                </thead>
+
+                                <tbody id="tblLogList">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                @*<hr />*@
+
+                @*<div class="card-action text-right card_footer_button">*@
+                @*<input type="submit" class="btn btn-success" value="Select" id="CaptureHodList">*@
+
+                @*</div>*@
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="SignedContractModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered" style="max-width:50%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <label style="font-size: 20px !important;">
+                    <b>Upload Word document(.DOCX only)</b>
+                </label>
+                <div class="text-right model_body_position">
+                    <button data-dismiss="modal" class="modaldismissarrow text-right btn btn-sm btn-light btn_close" title="Close">Close</button>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <input type="file" name="UploadSignOffContractFile" id="UploadSignOffContractFile" class="file" accept=".doc,.docx,.txt,.pdf,.xlx,.xlsx,.zip">
+                                    <div class="input-group col-xs-10">
+                                        <span class="input-group-addon "><i class="glyphicon glyphicon-picture"></i></span>
+                                        <input type="text" class="form-control input-lg browse" id="UploadSignOffContractFile2" name="UploadSignOffContractFile" placeholder="Choose File">
+                                        <span class="input-group-btn ">
+                                            <button class="browse btn btn-primary uploadbtnsizing" type="button"><i class="glyphicon glyphicon-search"></i><i class="flaticon-search-2" aria-hidden="true"></i>&nbsp;&nbsp;Browse </button>&nbsp;
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <button type="button" id="UploadButton" style="display:none;" class="btn btn-primary uploadbtnsizing" data-dismiss="modal" data-toggle="modal" onclick="UploadSignOff();"><i class="flaticon-archive" aria-hidden="true"></i>&nbsp;&nbsp;Upload</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modalload"><!-- Place at bottom of page --></div>
+
+<script src="../../Content/assets/js/core/jquery.3.2.1.min.js"></script>
+
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+<script type="text/javascript">
+    CKEDITOR.replace('editor1', {
+        bodyClass: 'document-editor',
+        contentsCss: ['../../Content/ckeditor/contents.css', '../../Content/ckeditor/mystyles.css'],
+        height: 600,
+        removePlugins: 'lite,autogrow',
+
+        // extraAllowedContent: 'span',
+        //         on :
+        //{
+        //     instanceReady : function ( evt )
+        //   {
+        //     // Hide the editor top bar.
+        //     document.getElementById('cke_1_top').style.display = 'none';
+        // }
+
+        // blockedKeystrokes: [13]
+    });
+    //CKEDITOR.config.enterMode = CKEDITOR.ENTER_BR;
+    // CKEDITOR.instances.IDofEditor.execCommand('lite-acceptall');
+    //CKEDITOR.config.removeButtons = 'lite-acceptall';
+    CKEDITOR.disableAutoInLine = true;
+    CKEDITOR.config.allowedContent = true;
+    CKEDITOR.config.readOnly = true;
+
+    //CKEDITOR.config.enterMode = CKEDITOR.ENTER_BR;
+
+
+    CKEDITOR.scriptLoader.load('../../Content/assets/js/plugin/webfont/webfont.min.js');
+    // CKEDITOR.config.fullPage = true;
+    // CKEDITOR.config.blockedKeystrokes( CKEDITOR.CTRL + 120, false );
+    CKEDITOR.config.keystrokes = [[CKEDITOR.CTRL + 90 /*Shift-Enter*/, 'null ']];
+    CKEDITOR.config.removePlugins = 'elementspath,resize';
+
+    //CKEDITOR.config.removePlugins = 'contextmenu,liststyle,tabletools,tableselection';
+    //CKEDITOR.config.keystrokes =
+    // [
+    //     [ CKEDITOR.CTRL + 90 /*Z*/, 'undo' ],
+    // ];
+    // CKEDITOR.inline('editor1', {
+    //     blockedKeystrokes: [120, CKEDITOR.CTRL + 120]
+    // });
+    //CKEDITOR.config.readOnly = true;
+    // Add code to display your toolbar here (example)
+    CKEDITOR.on('paste', function (evt) {
+        // Create a standalone filter passing 'p' and 'b' elements.
+        var filter = new CKEDITOR.filter('p b'),
+            // Parse the HTML string to a pseudo-DOM structure.
+            fragment = CKEDITOR.htmlParser.fragment.fromHtml(evt.data.dataValue),
+            writer = new CKEDITOR.htmlParser.basicWriter();
+        filter.applyTo(fragment);
+        fragment.writeHtml(writer);
+        evt.data.dataValue = writer.getHtml();
+    });
+
+
+    CKEDITOR.instances.IDofEditor.on("contentDom", function () {
+        CKEDITOR.instances.IDofEditor.editable().on("contextmenu", function (ev) {
+            var sel = CKEDITOR.instances.IDofEditor.getSelection();
+            if (!(sel && !sel.isLocked)) { retrun; }
+            var el = sel.getStartElement();
+            if ((el && el.is && el.is("del"))) {
+                ev.cancel();
+                CKEDITOR.instances.IDofEditor.on("contentDom", function () {
+                    CKEDITOR.instances.IDofEditor.editable().on("contextmenu", function (ev) {
+                        var sel = CKEDITOR.instances.IDofEditor.getSelection();
+                        if (!(sel && !sel.isLocked)) { retrun; }
+                        var el = sel.getStartElement();
+                        if ((el && el.is && el.is("del"))) {
+                            ev.cancel();
+                            ev.stop();
+                        }
+                    }, null, null, 1);
+                });
+            }
+            if ((el && el.is && el.is("ins"))) {
+                ev.cancel();
+                CKEDITOR.instances.IDofEditor.on("contentDom", function () {
+                    CKEDITOR.instances.IDofEditor.editable().on("contextmenu", function (ev) {
+                        var sel = CKEDITOR.instances.IDofEditor.getSelection();
+                        if (!(sel && !sel.isLocked)) { retrun; }
+                        var el = sel.getStartElement();
+                        if ((el && el.is && el.is("ins"))) {
+                            ev.cancel();
+                            ev.stop();
+                        }
+                    }, null, null, 1);
+                });
+            }
+            if ((el && el.is && el.is("h4"))) {
+                ev.cancel();
+                CKEDITOR.instances.IDofEditor.on("contentDom", function () {
+                    CKEDITOR.instances.IDofEditor.editable().on("contextmenu", function (ev) {
+                        var sel = CKEDITOR.instances.IDofEditor.getSelection();
+                        if (!(sel && !sel.isLocked)) { retrun; }
+                        var el = sel.getStartElement();
+                        if ((el && el.is && el.is("h4"))) {
+                            ev.cancel();
+                            ev.stop();
+                        }
+                    }, null, null, 1);
+                });
+            }
+            if ((el && el.is && el.is("p"))) {
+                ev.cancel();
+                CKEDITOR.instances.IDofEditor.on("contentDom", function () {
+                    CKEDITOR.instances.IDofEditor.editable().on("contextmenu", function (ev) {
+                        var sel = CKEDITOR.instances.IDofEditor.getSelection();
+                        if (!(sel && !sel.isLocked)) { retrun; }
+                        var el = sel.getStartElement();
+                        if ((el && el.is && el.is("p"))) {
+                            ev.cancel();
+                            ev.stop();
+                        }
+                    }, null, null, 1);
+                });
+            }
+            if ((el && el.is && el.is("span"))) {
+                ev.cancel();
+                CKEDITOR.instances.IDofEditor.on("contentDom", function () {
+                    CKEDITOR.instances.IDofEditor.editable().on("contextmenu", function (ev) {
+                        var sel = CKEDITOR.instances.IDofEditor.getSelection();
+                        if (!(sel && !sel.isLocked)) { retrun; }
+                        var el = sel.getStartElement();
+                        if ((el && el.is && el.is("span"))) {
+                            ev.cancel();
+                            ev.stop();
+                        }
+                    }, null, null, 1);
+                });
+            }
+        });
+    });
+</script>
+<script>
+    $('#editalert').click(function (e) {
+        e.preventDefault();
+        swal(" Are you sure you want to Edit !", {
+            icon: "warning",
+           buttons: {
+                cancel: {
+                    visible: true,
+                    text: 'No, Cancel it !',
+                    className: 'btn btn-danger'
+                },
+                confirm: {
+                    text: 'Yes, Edit it !',
+                    className: 'btn btn-success'
+                    //className: 'btn btn-success'
+                }
+            }
+        }).then(function (value) {
+            if (value == true) {
+                //document.getElementById("save").disabled = false;
+                // document.getElementById("discard").disabled = true;
+               $("#save").show();
+                 $("#save_2").show();
+                $("#discard").show();
+                $("#discard_2").show();
+                $("#DocumentUpload").show();
+                $("#editalert").hide();
+                $("#BackButtton").hide();
+                $("#editalert_2").hide();
+                $("#BackButtton_2").hide();
+                CKEDITOR.instances.IDofEditor.setReadOnly(false);
+                $("#templateamendments").attr("disabled", true);
+
+
+                var ID = $("#TempID").val();
+               var UserID = "@CurrentLoggedUserID - @CurrentLoggedUserName";
+                  var Ammendment = $("#templateamendments").val();
+                var initialvalue = "From old content in :" + Ammendment;
+                var details = "User modified the new content";
+            //$.ajax({
+            //    type: "POST",
+            //    url: "/Template/SaveTemplateAddendumLog",
+            //    data: { initialvalue: initialvalue, details: details, ID: ID, UserID: UserID },
+            //    success: function (response) {
+
+            //        //alert(response.LogUserID);
+            //        // alert(called);
+            //    }
+            //});
+            } else {
+                //swal("Cancelled", " ", "error");
+            }
+        });
+    });
+
+
+    $("#templateamendments").change(function () {
+
+        var select = $(this).val();
+        //alert(select);
+        var template = "";
+        $.ajax({
+            type: "POST",
+            url: '/Template/getTemplateAmendments',
+            data: { select: select },
+            success: function (response) {
+                //alert(response);
+                if (response[1] == null) {
+                    response[1] = "";
+                }
+                template = template + response[1];
+                CKEDITOR.instances.IDofEditor.setData(template);
+                CKEDITOR.instances.IDofEditor.setReadOnly(true);
+                $("#TempID").val(response[0]);
+                $("#SelectValue").val(select);
+                $("#editalert").removeAttr("disabled");
+            }
+        });
+    });
+
+    $(function () {
+        var select = $(this).val();
+        //alert(select);
+        var template = "";
+        $.ajax({
+            type: "POST",
+            url: '/Template/getTemplateAmendments',
+            data: { select: select },
+            success: function (response) {
+
+                $("#TempID").val(response[0]);
+                setTimeout(function () {
+                    var ID = $("#TempID").val();
+                     if (ID.length > 0) {
+                            GetLog();
+                        }
+                }, 2000);
+            }
+        });
+    })
+
+    function SaveTemplate() {
+        CKEDITOR.config.enterMode = CKEDITOR.ENTER_BR;
+        //CKEDITOR.instances.IDofEditor.execCommand('lite-acceptall');
+        var content = CKEDITOR.instances.IDofEditor.getData();
+        var Select = $("#SelectValue").val();
+        var ID = $("#TempID").val();
+        $.ajax({
+            type: "POST",
+            url: "/Template/SaveTemplateAmendments",
+            traditional: true,
+
+            data: { content: content, Select: Select, ID:ID },
+
+            //,VariableValue, VariableName },
+            //data: JSON.stringify(my_array),//content, ID ,VariableValue, VariableName },
+
+            success: function (response) {
+                if (response == "success") {
+                    swal("Saved Successfully", {
+                        icon: "success",
+                    }).then(function (result) {
+                        if (result) {
+                            window.location = '/Template/Addendum';
+                        }
+                    });
+                }
+                else {
+                    swal("Unable to Save Data", {
+                        icon: "error",
+                        text: "Unable to Save Data. Please try again",
+                    }).then(function (error) {
+                        if (error) {
+                            window.location = '/Template/Addendum';
+                        }
+                    });
+                }
+            },
+
+        });
+    }
+
+</script>
+
+<script>
+    $(document).on('click', '.browse', function () {
+        var file = $(this).parent().parent().parent().find('.file');
+        file.trigger('click');
+    });
+    $(document).on('change', '.file', function () {
+        $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
+        var data = $(this).parent().find('.form-control').val();
+        var extension = data.substr(data.lastIndexOf('.') + 1).toLowerCase();
+
+        var allowedExtensions = ['doc', 'docx', 'txt', 'pdf', 'xlx', 'xlsx', 'zip'];
+        if (data.length > 0) {
+            if (allowedExtensions.indexOf(extension) === -1) {
+                //alert('Invalid file Format. Only ' + allowedExtensions.join(', ') + ' are allowed.');
+                $.notify(
+                    {
+                        // options
+                        title: 'Uploading Files',
+                        message: 'Invalid file Format. Only ' + allowedExtensions.join(', ') + ' are allowed.',
+                        target: '_blank',
+                        icon: 'fa fa-exclamation-triangle'
+                    },
+                    {
+                        // settings
+                        element: 'body',
+                        position: null,
+                        type: "danger",
+                        allow_dismiss: true,
+                        newest_on_top: false,
+                        showProgressbar: false,
+                        placement: {
+                            from: "top",
+                            align: "right"
+                        },
+                        offset: 20,
+                        spacing: 10,
+                        z_index: 1031,
+                        delay: 5000,
+                        timer: 1000,
+                        url_target: '_blank',
+                        mouse_over: null,
+                        animate: {
+                            enter: 'animated fadeInDown',
+                            exit: 'animated fadeOutUp'
+                        },
+                        onShow: null,
+                        onShown: null,
+                        onClose: null,
+                        onClosed: null,
+                        icon_type: 'class',
+                        template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' +
+                            '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
+                            '<span data-notify="icon"></span> ' +
+                            '<span data-notify="title">{1}</span> ' +
+                            '<span data-notify="message">{2}</span>' +
+                            '<div class="progress" data-notify="progressbar">' +
+                            '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+                            '</div>' +
+                            '<a href="{3}" target="{4}" data-notify="url"></a>' +
+                            '</div>'
+                    });
+                $(this).parent().find('.form-control').val('');
+                $("#UploadButton").hide();
+            }
+        }
+        else {
+            $(this).parent().find('.form-control').val('');
+
+        }
+    });
+
+</script>
+
+<script>
+    $(".file").change(function () {
+        var file = $(".file").val();
+        if (file != "") {
+            $("#UploadButton").show();
+        }
+        else {
+            $("#UploadButton").hide();
+        }
+    });
+</script>
+<script>
+
+    function UploadSignOff() {
+        var url = window.location.href;
+        var page = url.split('/');
+        var ID = page[page.length - 1];
+        $.ajax({
+            url: "/Template/UploadForSignOff",
+            type: "POST",
+            data: function () {
+                var data = new FormData();
+                data.append("UploadSignOffContractFile", jQuery("#UploadSignOffContractFile").get(0).files[0]);
+                return data;
+            }(),
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                if (response.length > 0) {
+
+                    CKEDITOR.instances.IDofEditor.setData(response);
+                    $("#UploadSignOffContractFile2").val("");
+                    $("#UploadButton").hide();
+                    swal("Uploaded Successfully", {
+                        icon: "success",
+                    });
+                }
+
+                //else
+                //    swal("Error", {
+                //        icon: "error",
+                //    });
+            },
+            error: function (jqXHR, textStatus, errorMessage) {
+                console.log(errorMessage);
+            }
+        });
+    }
+</script>
+
+<script>
+    function GetLog() {
+        // alert("hello");
+
+        var tblLog = "";
+        //var url = window.location.href;
+        //var page = url.split('/');
+        var ID = $("#TempID").val();
+
+        //alert(ID);
+        $.ajax({
+            type: "POST",
+            url: "/Template/getTemplateAddendumLogDetail",
+            data: { ID: ID },
+
+            dataType: 'json',
+            success: function (response) {
+
+                //alert(response.LogUserID);
+                $.each($(response), function (index, value) {
+                    tblLog = tblLog + '<tr><td><center>' + value.DateandTime + '</center></td><td><center>' + value.ModifiedBy + '</center></td><td style="text-align: left;">' + value.LogActivity + '</td></tr>';
+                });
+                $("#tblLogList").html(tblLog);
+            }
+        });
+    }
+</script>
+
+
+<script>
+
+    $('#discard').click(function (e) {
+
+        swal({
+            title: 'Are you sure?',
+            text: "You want to Discard !",
+            type: 'warning',
+            buttons: {
+                cancel: {
+                    visible: true,
+                    text: 'No, Keep it !',
+                    className: 'btn btn-success'
+                },
+                confirm: {
+                    text: 'Yes, Discard it !',
+                    className: 'btn btn-danger'
+                },
+            }
+        }).then(function (value) {
+            if (value == true) {
+                window.location = '/Template/Addendum'
+
+            }
+        });
+    });
+
+</script>

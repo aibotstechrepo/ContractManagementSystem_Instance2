@@ -1,0 +1,832 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ContractManagementSystemDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ContractManagementSystemDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblAlertLogs" EntityType="ContractManagementSystemDBModel.tblAlertLog" />
+    <EntitySet Name="tblAlertSystems" EntityType="ContractManagementSystemDBModel.tblAlertSystem" />
+    <EntitySet Name="tblApprovalLogs" EntityType="ContractManagementSystemDBModel.tblApprovalLog" />
+    <EntitySet Name="tblApprovalMasters" EntityType="ContractManagementSystemDBModel.tblApprovalMaster" />
+    <EntitySet Name="tblCategories" EntityType="ContractManagementSystemDBModel.tblCategory" />
+    <EntitySet Name="tblCategoryLogs" EntityType="ContractManagementSystemDBModel.tblCategoryLog" />
+    <EntitySet Name="tblClauseAudits" EntityType="ContractManagementSystemDBModel.tblClauseAudit" />
+    <EntitySet Name="tblClauseLogs" EntityType="ContractManagementSystemDBModel.tblClauseLog" />
+    <EntitySet Name="tblClauseMasters" EntityType="ContractManagementSystemDBModel.tblClauseMaster" />
+    <EntitySet Name="tblContractAudits" EntityType="ContractManagementSystemDBModel.tblContractAudit" />
+    <EntitySet Name="tblContractLogs" EntityType="ContractManagementSystemDBModel.tblContractLog" />
+    <EntitySet Name="tblContractMasters" EntityType="ContractManagementSystemDBModel.tblContractMaster" />
+    <EntitySet Name="tblContractModifications" EntityType="ContractManagementSystemDBModel.tblContractModification" />
+    <EntitySet Name="tblDeligationMatrices" EntityType="ContractManagementSystemDBModel.tblDeligationMatrix" />
+    <EntitySet Name="tblDepartments" EntityType="ContractManagementSystemDBModel.tblDepartment" />
+    <EntitySet Name="tblDepartmentLogs" EntityType="ContractManagementSystemDBModel.tblDepartmentLog" />
+    <EntitySet Name="tblDepartmentMappings" EntityType="ContractManagementSystemDBModel.tblDepartmentMapping" />
+    <EntitySet Name="tblSubCategories" EntityType="ContractManagementSystemDBModel.tblSubCategory" />
+    <EntitySet Name="tblSubCategoryLogs" EntityType="ContractManagementSystemDBModel.tblSubCategoryLog" />
+    <EntitySet Name="tblSubDepartments" EntityType="ContractManagementSystemDBModel.tblSubDepartment" />
+    <EntitySet Name="tblSubDepartmentLogs" EntityType="ContractManagementSystemDBModel.tblSubDepartmentLog" />
+    <EntitySet Name="tblTemplateAddendumLogs" EntityType="ContractManagementSystemDBModel.tblTemplateAddendumLog" />
+    <EntitySet Name="tblTemplateAmendments" EntityType="ContractManagementSystemDBModel.tblTemplateAmendment" />
+    <EntitySet Name="tblTemplateAudits" EntityType="ContractManagementSystemDBModel.tblTemplateAudit" />
+    <EntitySet Name="tblTemplateLogs" EntityType="ContractManagementSystemDBModel.tblTemplateLog" />
+    <EntitySet Name="tblTemplateMasters" EntityType="ContractManagementSystemDBModel.tblTemplateMaster" />
+    <EntitySet Name="tblUserLogs" EntityType="ContractManagementSystemDBModel.tblUserLog" />
+    <EntitySet Name="tblUserLogins" EntityType="ContractManagementSystemDBModel.tblUserLogin" />
+    <EntitySet Name="tblUserMasters" EntityType="ContractManagementSystemDBModel.tblUserMaster" />
+    <EntitySet Name="tblVariableDatas" EntityType="ContractManagementSystemDBModel.tblVariableData" />
+    <EntitySet Name="tblVariables" EntityType="ContractManagementSystemDBModel.tblVariable" />
+    <EntitySet Name="tblVendorLogs" EntityType="ContractManagementSystemDBModel.tblVendorLog" />
+    <EntitySet Name="tblVendorMasters" EntityType="ContractManagementSystemDBModel.tblVendorMaster" />
+    <AssociationSet Name="FK_tblClauseAudit_tblClauseMaster" Association="ContractManagementSystemDBModel.FK_tblClauseAudit_tblClauseMaster">
+      <End Role="tblClauseMaster" EntitySet="tblClauseMasters" />
+      <End Role="tblClauseAudit" EntitySet="tblClauseAudits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblContractAudit_tblContractAudit" Association="ContractManagementSystemDBModel.FK_tblContractAudit_tblContractAudit">
+      <End Role="tblContractMaster" EntitySet="tblContractMasters" />
+      <End Role="tblContractAudit" EntitySet="tblContractAudits" />
+    </AssociationSet>
+    <EntitySet Name="tblDeligationLogs" EntityType="ContractManagementSystemDBModel.tblDeligationLog" />
+    <EntitySet Name="tblConfigurations" EntityType="ContractManagementSystemDBModel.tblConfiguration" />
+    <EntitySet Name="tblPlants" EntityType="ContractManagementSystemDBModel.tblPlant" />
+    <EntitySet Name="tblPlantLogs" EntityType="ContractManagementSystemDBModel.tblPlantLog" />
+    <EntitySet Name="tblApprovalEscalations" EntityType="ContractManagementSystemDBModel.tblApprovalEscalation" />
+  </EntityContainer>
+  <EntityType Name="tblAlertLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LogAlertUID" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblAlertSystem">
+    <Key>
+      <PropertyRef Name="AlertID" />
+    </Key>
+    <Property Name="AlertID" Type="Int32" Nullable="false" />
+    <Property Name="ContractExpiryReminder1Date" Type="Int32" />
+    <Property Name="ContractExpiryReminder1Duration" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ContractExpiryReminder2Date" Type="Int32" />
+    <Property Name="ContractExpiryReminder2Duration" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ContractExpiryReminder3Date" Type="Int32" />
+    <Property Name="ContractExpiryReminder3Duration" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ContractExpiryReminder4Date" Type="Int32" />
+    <Property Name="ContractExpiryReminder4Duration" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ContractExpiryReminder5Date" Type="Int32" />
+    <Property Name="ContractExpiryReminder5Duration" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="TemplateHod" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="TemplateLegal" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="TemplateFinance" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ContractHod" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ContractLegal" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ContractFinance" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="EsclationHod" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="EsclationLegal" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="EsclationFinance" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="AuditTemplateDate" Type="Int32" />
+    <Property Name="AuditTemplateDuration" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="AuditContractDate" Type="Int32" />
+    <Property Name="AuditClauseDuration" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="AuditClauseDate" Type="Int32" />
+    <Property Name="AuditContractDuration" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OldContractDate" Type="Int32" />
+    <Property Name="OldContractDuration" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblApprovalLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LogApprovalUID" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblApprovalMaster">
+    <Key>
+      <PropertyRef Name="ApprovalID" />
+    </Key>
+    <Property Name="ApprovalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WorkflowType" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Department" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SubDepartment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ApprovalLevel" Type="Int32" />
+    <Property Name="EMPID" Type="Int32" />
+    <Property Name="Plant" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblCategory">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LastModified" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="tblCategoryLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LogCategoryUID" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblClauseAudit">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuditClauseID" Type="Int32" Nullable="false" />
+    <Property Name="AuditClauseComments" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="AuditEmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="AuditLastReviewed" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditStatus" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblClauseMaster" Relationship="ContractManagementSystemDBModel.FK_tblClauseAudit_tblClauseMaster" FromRole="tblClauseAudit" ToRole="tblClauseMaster" />
+  </EntityType>
+  <EntityType Name="tblClauseLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LogClauseUID" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblClauseMaster">
+    <Key>
+      <PropertyRef Name="ClauseClauseID" />
+    </Key>
+    <Property Name="ClauseClauseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClauseClauseTitle" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ClauseClauseDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ClauseClauseText" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ClauseLastModified" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ClauseStatus" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblClauseAudit" Relationship="ContractManagementSystemDBModel.FK_tblClauseAudit_tblClauseMaster" FromRole="tblClauseMaster" ToRole="tblClauseAudit" />
+  </EntityType>
+  <EntityType Name="tblContractAudit">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuditContractD" Type="Int32" Nullable="false" />
+    <Property Name="AuditContractComments" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="AuditEmployeeID" Type="Int32" />
+    <Property Name="AuditLastReviewed" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditStatus" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblContractMaster" Relationship="ContractManagementSystemDBModel.FK_tblContractAudit_tblContractAudit" FromRole="tblContractAudit" ToRole="tblContractMaster" />
+  </EntityType>
+  <EntityType Name="tblContractLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LogContractUID" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblContractMaster">
+    <Key>
+      <PropertyRef Name="ContractID" />
+    </Key>
+    <Property Name="ContractID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ContractName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ContractType" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ContractCategory" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ContractSubCategory" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Department" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SubDepartment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="UploadExistingFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="UploadExistingContractFileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="UploadExistingContractFileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="UploadSignOffContractFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="UploadSignOffContractFileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="UploadSignOffContractFileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Initiator" Type="Int32" />
+    <Property Name="InitiatorComments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="InitiatorStatus" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="InitiatorDraft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ContractDraft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TemplateType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OriginalContractID" Type="Int32" />
+    <Property Name="ContractModificationType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SupportingDoc1" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="SupportingDoc1FileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="SupportingDoc1FileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="SupportingDoc2" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="SupportingDoc2FileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="SupportingDoc2FileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="SupportingDoc3" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="SupportingDoc3FileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="SupportingDoc3FileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="SupportingDoc4" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="SupportingDoc4FileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="SupportingDoc4FileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="SupportingDoc5" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="SupportingDoc5FileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="SupportingDoc5FileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="DateofInitiated" Type="DateTime" Precision="3" />
+    <Property Name="Variables" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LastReviewed" Type="DateTime" Precision="3" />
+    <Property Name="Approver1ID" Type="Int32" Nullable="false" />
+    <Property Name="Approver1Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver1Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver1Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver1ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver1ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver2ID" Type="Int32" />
+    <Property Name="Approver2Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver2Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver2Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver2ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver2ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver3ID" Type="Int32" />
+    <Property Name="Approver3Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver3Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver3Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver3ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver3ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver4ID" Type="Int32" />
+    <Property Name="Approver4Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver4Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver4Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver4ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver4ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver5ID" Type="Int32" />
+    <Property Name="Approver5Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver5Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver5Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver5ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver5ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver6ID" Type="Int32" />
+    <Property Name="Approver6Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver6Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver6Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver6ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver6ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver7ID" Type="Int32" />
+    <Property Name="Approver7Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver7Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver7Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver7ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver7ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver8ID" Type="Int32" />
+    <Property Name="Approver8Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver8Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver8Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver8ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver8ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver9ID" Type="Int32" />
+    <Property Name="Approver9Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver9Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver9Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver9ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver9ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver10ID" Type="Int32" />
+    <Property Name="Approver10Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver10Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver10Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver10ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver10ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="PendingFrom" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="NextApprover" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DefaultVariables" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="RejectedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ModifiedSupportingDoc1" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ModifiedSupportingDoc1FileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="ModifiedSupportingDoc1FileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="InEffectFrom" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="InEffectTo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ReviewerID" Type="Int32" />
+    <Property Name="PhysicalCopyLocation" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="ReviewedOn" Type="DateTime" Precision="3" />
+    <Property Name="ReviewedComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Template" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblContractAudit" Relationship="ContractManagementSystemDBModel.FK_tblContractAudit_tblContractAudit" FromRole="tblContractMaster" ToRole="tblContractAudit" />
+    <Property Name="Modified" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Plant" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblContractModification">
+    <Key>
+      <PropertyRef Name="ContractID" />
+    </Key>
+    <Property Name="ContractID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ContractName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ContractType" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ContractCategory" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ContractSubCategory" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="UploadExistingFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="UploadExistingContractFileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="UploadExistingContractFileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="UploadSignOffContractFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="UploadSignOffContractFileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="UploadSignOffContractFileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Initiator" Type="Int32" />
+    <Property Name="InitiatorComments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="InitiatorStatus" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="InitiatorDraft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ContractDraft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TemplateType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OriginalContractID" Type="Int32" />
+    <Property Name="ContractModificationType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SupportingDoc1" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="SupportingDoc1FileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="SupportingDoc1FileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="SupportingDoc2" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="SupportingDoc2FileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="SupportingDoc2FileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="SupportingDoc3" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="SupportingDoc3FileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="SupportingDoc3FileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="SupportingDoc4" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="SupportingDoc4FileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="SupportingDoc4FileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="SupportingDoc5" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="SupportingDoc5FileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="SupportingDoc5FileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="DateofInitiated" Type="DateTime" Precision="3" />
+    <Property Name="Variables" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LastReviewed" Type="DateTime" Precision="3" />
+    <Property Name="Approver1ID" Type="Int32" Nullable="false" />
+    <Property Name="Approver1Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver1Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver1Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver1ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver1ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver2ID" Type="Int32" />
+    <Property Name="Approver2Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver2Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver2Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver2ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver2ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver3ID" Type="Int32" />
+    <Property Name="Approver3Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver3Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver3Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver3ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver3ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver4ID" Type="Int32" />
+    <Property Name="Approver4Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver4Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver4Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver4ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver4ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver5ID" Type="Int32" />
+    <Property Name="Approver5Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver5Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver5Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver5ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver5ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver6ID" Type="Int32" />
+    <Property Name="Approver6Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver6Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver6Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver6ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver6ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver7ID" Type="Int32" />
+    <Property Name="Approver7Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver7Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver7Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver7ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver7ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver8ID" Type="Int32" />
+    <Property Name="Approver8Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver8Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver8Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver8ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver8ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver9ID" Type="Int32" />
+    <Property Name="Approver9Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver9Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver9Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver9ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver9ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver10ID" Type="Int32" />
+    <Property Name="Approver10Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver10Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver10Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver10ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver10ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="PendingFrom" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="NextApprover" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DefaultVariables" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="RejectedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ModifiedSupportingDoc1" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ModifiedSupportingDoc1FileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="ModifiedSupportingDoc1FileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="InEffectFrom" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="InEffectTo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ReviewerID" Type="Int32" />
+    <Property Name="PhysicalCopyLocation" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="ReviewedOn" Type="DateTime" Precision="3" />
+    <Property Name="ReviewedComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Template" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Department" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SubDepartment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Plant" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblDeligationMatrix">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DeligateFrom" Type="Int32" />
+    <Property Name="DeligateTo" Type="Int32" />
+    <Property Name="StartDate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="EndDate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblDepartment">
+    <Key>
+      <PropertyRef Name="DepartmentID" />
+    </Key>
+    <Property Name="DepartmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LastModified" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PlantName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblDepartmentLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LogDepartmentUID" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblDepartmentMapping">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeID" Type="Int32" />
+    <Property Name="Department" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SubDepartment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblSubCategory">
+    <Key>
+      <PropertyRef Name="SubCategoryID" />
+    </Key>
+    <Property Name="SubCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SubCategoryName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LastModified" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="tblSubCategoryLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LogSubCategoryUID" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblSubDepartment">
+    <Key>
+      <PropertyRef Name="SubDepartmentID" />
+    </Key>
+    <Property Name="SubDepartmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SubDepartmentName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LastModified" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PlantName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblSubDepartmentLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LogSubDepartmentUID" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblTemplateAddendumLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LogTemplateUID" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblTemplateAmendment">
+    <Key>
+      <PropertyRef Name="TempID" />
+    </Key>
+    <Property Name="TempID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Amendments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Extension" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Termination" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblTemplateAudit">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuditTemplateID" Type="Int32" Nullable="false" />
+    <Property Name="AuditTemplateComments" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="AuditEmployeeID" Type="Int32" />
+    <Property Name="AuditLastReviewed" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AuditStatus" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblTemplateLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LogTemplateUID" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblTemplateMaster">
+    <Key>
+      <PropertyRef Name="TemplateID" />
+    </Key>
+    <Property Name="TemplateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Category" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SubCategory" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Department" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SubDepartment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="TemplateSequence" Type="Int32" />
+    <Property Name="Initiator" Type="Int32" />
+    <Property Name="InitiatorStatus" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="InitiatorComments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Template" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="DateofInitiated" Type="DateTime" Precision="3" />
+    <Property Name="LastReviewed" Type="DateTime" Precision="3" />
+    <Property Name="Approver1ID" Type="Int32" />
+    <Property Name="Approver1Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver1Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver1Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver1ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver1ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver2ID" Type="Int32" />
+    <Property Name="Approver2Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver2Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver2Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver2ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver2ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver3ID" Type="Int32" />
+    <Property Name="Approver3Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver3Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver3Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver3ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver3ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver4ID" Type="Int32" />
+    <Property Name="Approver4Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver4Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver4Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver4ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver4ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver5ID" Type="Int32" />
+    <Property Name="Approver5Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver5Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver5Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver5ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver5ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver6ID" Type="Int32" />
+    <Property Name="Approver6Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver6Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver6Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver6ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver6ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver7ID" Type="Int32" />
+    <Property Name="Approver7Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver7Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver7Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver7ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver7ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver8ID" Type="Int32" />
+    <Property Name="Approver8Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver8Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver8Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver8ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver8ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver9ID" Type="Int32" />
+    <Property Name="Approver9Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver9Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver9Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver9ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver9ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver10ID" Type="Int32" />
+    <Property Name="Approver10Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Approver10Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Approver10Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Approver10ReceivedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approver10ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="PendingFrom" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="NextApprover" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="RejectedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="InitiatorTemplate" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ReviewerID" Type="Int32" />
+    <Property Name="PhysicalCopyLocation" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="ReviewedOn" Type="DateTime" Precision="3" />
+    <Property Name="ReviewedComments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblUserLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LogUserUID" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblUserLogin">
+    <Key>
+      <PropertyRef Name="LoginID" />
+    </Key>
+    <Property Name="LoginID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblUserMaster">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserEmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="UserEmployeeName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="UserEmployeeEmail" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="UserEmployeeDesignation" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="UserCategory" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="UserSubCategory" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="UserRoleInitiator" Type="Boolean" Nullable="false" />
+    <Property Name="UserRoleApprover" Type="Boolean" Nullable="false" />
+    <Property Name="UserRoleLegal" Type="Boolean" Nullable="false" />
+    <Property Name="UserRoleFinance" Type="Boolean" Nullable="false" />
+    <Property Name="UserRoleAdmin" Type="Boolean" Nullable="false" />
+    <Property Name="UserRoleReviewer" Type="Boolean" />
+    <Property Name="UserStatus" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="UserHodEmployeeID" Type="Int32" />
+    <Property Name="UserHodEmployeeName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="UserHodEmployeeEmailAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="UserPlant" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="UserRoleFinance2" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblVariableData">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="TypeID" Type="Int32" />
+    <Property Name="Variable" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Value" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Version" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="VariableFrom" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblVariable">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Variables" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="VariableType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="VariableValues" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblVendorLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LogVendorUID" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblVendorMaster">
+    <Key>
+      <PropertyRef Name="VendorVendorID" />
+    </Key>
+    <Property Name="VendorVendorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VendorCorporateIdentificationNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="VendorVendorName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="VendorTypeofEntity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="VendorAuthorisedSignatory" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="VendorRegisteredAddress" Type="String" Nullable="false" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="VendorBranchOffice1" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="VendorBranchOffice2" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="VendorBranchOffice3" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="VendorBranchOffice4" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="VendorBranchOffice5" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_tblClauseAudit_tblClauseMaster">
+    <End Type="ContractManagementSystemDBModel.tblClauseMaster" Role="tblClauseMaster" Multiplicity="1" />
+    <End Type="ContractManagementSystemDBModel.tblClauseAudit" Role="tblClauseAudit" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tblClauseMaster">
+        <PropertyRef Name="ClauseClauseID" />
+      </Principal>
+      <Dependent Role="tblClauseAudit">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblContractAudit_tblContractAudit">
+    <End Type="ContractManagementSystemDBModel.tblContractMaster" Role="tblContractMaster" Multiplicity="1" />
+    <End Type="ContractManagementSystemDBModel.tblContractAudit" Role="tblContractAudit" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tblContractMaster">
+        <PropertyRef Name="ContractID" />
+      </Principal>
+      <Dependent Role="tblContractAudit">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tblDeligationLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LogDeligationUID" Type="Int32" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LogActivity" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedFrom" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedTo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateandTime" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblConfiguration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaperType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PaperSize" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="MarginTop" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="MarginLeft" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="MarginBottom" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="MarginRight" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblPlant">
+    <Key>
+      <PropertyRef Name="PlantID" />
+    </Key>
+    <Property Name="PlantID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PlantName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LastModified" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="tblPlantLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LogPlantUID" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblApprovalEscalation">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Plant" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Department" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SubDepartment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeID" Type="Int32" />
+  </EntityType>
+</Schema>

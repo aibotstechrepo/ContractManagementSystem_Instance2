@@ -1,0 +1,2489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ContractManagementSystemDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAlertLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogAlertUID" Type="int" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LogActivity" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ChangedFrom" Type="varchar(max)" Nullable="false" />
+          <Property Name="ChangedTo" Type="varchar(max)" Nullable="false" />
+          <Property Name="DateandTime" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblAlertSystem">
+          <Key>
+            <PropertyRef Name="AlertID" />
+          </Key>
+          <Property Name="AlertID" Type="int" Nullable="false" />
+          <Property Name="ContractExpiryReminder1Date" Type="int" />
+          <Property Name="ContractExpiryReminder1Duration" Type="varchar" MaxLength="200" />
+          <Property Name="ContractExpiryReminder2Date" Type="int" />
+          <Property Name="ContractExpiryReminder2Duration" Type="varchar" MaxLength="200" />
+          <Property Name="ContractExpiryReminder3Date" Type="int" />
+          <Property Name="ContractExpiryReminder3Duration" Type="varchar" MaxLength="200" />
+          <Property Name="ContractExpiryReminder4Date" Type="int" />
+          <Property Name="ContractExpiryReminder4Duration" Type="varchar" MaxLength="200" />
+          <Property Name="ContractExpiryReminder5Date" Type="int" />
+          <Property Name="ContractExpiryReminder5Duration" Type="varchar" MaxLength="200" />
+          <Property Name="TemplateHod" Type="varchar" MaxLength="200" />
+          <Property Name="TemplateLegal" Type="varchar" MaxLength="200" />
+          <Property Name="TemplateFinance" Type="varchar" MaxLength="200" />
+          <Property Name="ContractHod" Type="varchar" MaxLength="200" />
+          <Property Name="ContractLegal" Type="varchar" MaxLength="200" />
+          <Property Name="ContractFinance" Type="varchar" MaxLength="200" />
+          <Property Name="EsclationHod" Type="varchar" MaxLength="200" />
+          <Property Name="EsclationLegal" Type="varchar" MaxLength="200" />
+          <Property Name="EsclationFinance" Type="varchar" MaxLength="200" />
+          <Property Name="AuditTemplateDate" Type="int" />
+          <Property Name="AuditTemplateDuration" Type="varchar" MaxLength="200" />
+          <Property Name="AuditContractDate" Type="int" />
+          <Property Name="AuditClauseDuration" Type="varchar" MaxLength="200" />
+          <Property Name="AuditClauseDate" Type="int" />
+          <Property Name="AuditContractDuration" Type="varchar" MaxLength="200" />
+          <Property Name="OldContractDate" Type="int" />
+          <Property Name="OldContractDuration" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tblApprovalEscalation">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Plant" Type="varchar" MaxLength="200" />
+          <Property Name="Department" Type="varchar" MaxLength="200" />
+          <Property Name="SubDepartment" Type="varchar" MaxLength="200" />
+          <Property Name="EmployeeID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblApprovalLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogApprovalUID" Type="int" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LogActivity" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ChangedFrom" Type="varchar(max)" Nullable="false" />
+          <Property Name="ChangedTo" Type="varchar(max)" Nullable="false" />
+          <Property Name="DateandTime" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblApprovalMaster">
+          <Key>
+            <PropertyRef Name="ApprovalID" />
+          </Key>
+          <Property Name="ApprovalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkflowType" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Plant" Type="varchar" MaxLength="200" />
+          <Property Name="Department" Type="varchar" MaxLength="200" />
+          <Property Name="SubDepartment" Type="varchar" MaxLength="200" />
+          <Property Name="ApprovalLevel" Type="int" />
+          <Property Name="EMPID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblCategory">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LastModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCategoryLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogCategoryUID" Type="int" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LogActivity" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ChangedFrom" Type="varchar(max)" Nullable="false" />
+          <Property Name="ChangedTo" Type="varchar(max)" Nullable="false" />
+          <Property Name="DateandTime" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblClauseAudit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AuditClauseID" Type="int" Nullable="false" />
+          <Property Name="AuditClauseComments" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="AuditEmployeeID" Type="int" Nullable="false" />
+          <Property Name="AuditLastReviewed" Type="datetime" Nullable="false" />
+          <Property Name="AuditStatus" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblClauseLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogClauseUID" Type="int" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LogActivity" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ChangedFrom" Type="varchar(max)" Nullable="false" />
+          <Property Name="ChangedTo" Type="varchar(max)" Nullable="false" />
+          <Property Name="DateandTime" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblClauseMaster">
+          <Key>
+            <PropertyRef Name="ClauseClauseID" />
+          </Key>
+          <Property Name="ClauseClauseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClauseClauseTitle" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ClauseClauseDescription" Type="varchar" MaxLength="200" />
+          <Property Name="ClauseClauseText" Type="varchar(max)" Nullable="false" />
+          <Property Name="ClauseLastModified" Type="datetime" Nullable="false" />
+          <Property Name="ClauseStatus" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tblConfiguration">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaperType" Type="varchar" MaxLength="200" />
+          <Property Name="PaperSize" Type="varchar" MaxLength="200" />
+          <Property Name="MarginTop" Type="varchar" MaxLength="200" />
+          <Property Name="MarginLeft" Type="varchar" MaxLength="200" />
+          <Property Name="MarginBottom" Type="varchar" MaxLength="200" />
+          <Property Name="MarginRight" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tblContractAudit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AuditContractD" Type="int" Nullable="false" />
+          <Property Name="AuditContractComments" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="AuditEmployeeID" Type="int" />
+          <Property Name="AuditLastReviewed" Type="datetime" Nullable="false" />
+          <Property Name="AuditStatus" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblContractLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogContractUID" Type="int" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LogActivity" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ChangedFrom" Type="varchar(max)" Nullable="false" />
+          <Property Name="ChangedTo" Type="varchar(max)" Nullable="false" />
+          <Property Name="DateandTime" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblContractMaster">
+          <Key>
+            <PropertyRef Name="ContractID" />
+          </Key>
+          <Property Name="ContractID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContractName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ContractType" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ContractCategory" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ContractSubCategory" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Department" Type="varchar" MaxLength="200" />
+          <Property Name="SubDepartment" Type="varchar" MaxLength="200" />
+          <Property Name="UploadExistingFile" Type="varbinary(max)" />
+          <Property Name="UploadExistingContractFileName" Type="varchar" MaxLength="2000" />
+          <Property Name="UploadExistingContractFileType" Type="varchar" MaxLength="2000" />
+          <Property Name="UploadSignOffContractFile" Type="varbinary(max)" />
+          <Property Name="UploadSignOffContractFileName" Type="varchar" MaxLength="2000" />
+          <Property Name="UploadSignOffContractFileType" Type="varchar" MaxLength="2000" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+          <Property Name="Initiator" Type="int" />
+          <Property Name="InitiatorComments" Type="varchar" MaxLength="2000" />
+          <Property Name="InitiatorStatus" Type="varchar" MaxLength="200" />
+          <Property Name="InitiatorDraft" Type="varchar(max)" />
+          <Property Name="ContractDraft" Type="varchar(max)" />
+          <Property Name="TemplateType" Type="varchar" MaxLength="200" />
+          <Property Name="Status" Type="varchar" MaxLength="200" />
+          <Property Name="OriginalContractID" Type="int" />
+          <Property Name="ContractModificationType" Type="varchar" MaxLength="200" />
+          <Property Name="SupportingDoc1" Type="varbinary(max)" />
+          <Property Name="SupportingDoc1FileName" Type="varchar" MaxLength="2000" />
+          <Property Name="SupportingDoc1FileType" Type="varchar" MaxLength="2000" />
+          <Property Name="SupportingDoc2" Type="varbinary(max)" />
+          <Property Name="SupportingDoc2FileName" Type="varchar" MaxLength="2000" />
+          <Property Name="SupportingDoc2FileType" Type="varchar" MaxLength="2000" />
+          <Property Name="SupportingDoc3" Type="varbinary(max)" />
+          <Property Name="SupportingDoc3FileName" Type="varchar" MaxLength="2000" />
+          <Property Name="SupportingDoc3FileType" Type="varchar" MaxLength="2000" />
+          <Property Name="SupportingDoc4" Type="varbinary(max)" />
+          <Property Name="SupportingDoc4FileName" Type="varchar" MaxLength="2000" />
+          <Property Name="SupportingDoc4FileType" Type="varchar" MaxLength="2000" />
+          <Property Name="SupportingDoc5" Type="varbinary(max)" />
+          <Property Name="SupportingDoc5FileName" Type="varchar" MaxLength="2000" />
+          <Property Name="SupportingDoc5FileType" Type="varchar" MaxLength="2000" />
+          <Property Name="DateofInitiated" Type="datetime" />
+          <Property Name="Variables" Type="varchar" MaxLength="200" />
+          <Property Name="LastReviewed" Type="datetime" />
+          <Property Name="Approver1ID" Type="int" Nullable="false" />
+          <Property Name="Approver1Draft" Type="varchar(max)" />
+          <Property Name="Approver1Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver1Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver1ReceivedOn" Type="datetime" />
+          <Property Name="Approver1ApprovedOn" Type="datetime" />
+          <Property Name="Approver2ID" Type="int" />
+          <Property Name="Approver2Draft" Type="varchar(max)" />
+          <Property Name="Approver2Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver2Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver2ReceivedOn" Type="datetime" />
+          <Property Name="Approver2ApprovedOn" Type="datetime" />
+          <Property Name="Approver3ID" Type="int" />
+          <Property Name="Approver3Draft" Type="varchar(max)" />
+          <Property Name="Approver3Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver3Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver3ReceivedOn" Type="datetime" />
+          <Property Name="Approver3ApprovedOn" Type="datetime" />
+          <Property Name="Approver4ID" Type="int" />
+          <Property Name="Approver4Draft" Type="varchar(max)" />
+          <Property Name="Approver4Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver4Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver4ReceivedOn" Type="datetime" />
+          <Property Name="Approver4ApprovedOn" Type="datetime" />
+          <Property Name="Approver5ID" Type="int" />
+          <Property Name="Approver5Draft" Type="varchar(max)" />
+          <Property Name="Approver5Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver5Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver5ReceivedOn" Type="datetime" />
+          <Property Name="Approver5ApprovedOn" Type="datetime" />
+          <Property Name="Approver6ID" Type="int" />
+          <Property Name="Approver6Draft" Type="varchar(max)" />
+          <Property Name="Approver6Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver6Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver6ReceivedOn" Type="datetime" />
+          <Property Name="Approver6ApprovedOn" Type="datetime" />
+          <Property Name="Approver7ID" Type="int" />
+          <Property Name="Approver7Draft" Type="varchar(max)" />
+          <Property Name="Approver7Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver7Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver7ReceivedOn" Type="datetime" />
+          <Property Name="Approver7ApprovedOn" Type="datetime" />
+          <Property Name="Approver8ID" Type="int" />
+          <Property Name="Approver8Draft" Type="varchar(max)" />
+          <Property Name="Approver8Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver8Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver8ReceivedOn" Type="datetime" />
+          <Property Name="Approver8ApprovedOn" Type="datetime" />
+          <Property Name="Approver9ID" Type="int" />
+          <Property Name="Approver9Draft" Type="varchar(max)" />
+          <Property Name="Approver9Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver9Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver9ReceivedOn" Type="datetime" />
+          <Property Name="Approver9ApprovedOn" Type="datetime" />
+          <Property Name="Approver10ID" Type="int" />
+          <Property Name="Approver10Draft" Type="varchar(max)" />
+          <Property Name="Approver10Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver10Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver10ReceivedOn" Type="datetime" />
+          <Property Name="Approver10ApprovedOn" Type="datetime" />
+          <Property Name="PendingFrom" Type="varchar" MaxLength="200" />
+          <Property Name="NextApprover" Type="varchar" MaxLength="200" />
+          <Property Name="DefaultVariables" Type="varchar" MaxLength="200" />
+          <Property Name="RejectedBy" Type="varchar" MaxLength="200" />
+          <Property Name="ModifiedSupportingDoc1" Type="varbinary(max)" />
+          <Property Name="ModifiedSupportingDoc1FileName" Type="varchar" MaxLength="2000" />
+          <Property Name="ModifiedSupportingDoc1FileType" Type="varchar" MaxLength="2000" />
+          <Property Name="InEffectFrom" Type="varchar" MaxLength="200" />
+          <Property Name="InEffectTo" Type="varchar" MaxLength="200" />
+          <Property Name="ReviewerID" Type="int" />
+          <Property Name="PhysicalCopyLocation" Type="varchar" MaxLength="2000" />
+          <Property Name="ReviewedOn" Type="datetime" />
+          <Property Name="ReviewedComments" Type="varchar(max)" />
+          <Property Name="Template" Type="varchar(max)" />
+          <Property Name="Modified" Type="varchar" MaxLength="200" />
+          <Property Name="Plant" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tblContractModification">
+          <Key>
+            <PropertyRef Name="ContractID" />
+          </Key>
+          <Property Name="ContractID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContractName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ContractType" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ContractCategory" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ContractSubCategory" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Department" Type="varchar" MaxLength="200" />
+          <Property Name="SubDepartment" Type="varchar" MaxLength="200" />
+          <Property Name="UploadExistingFile" Type="varbinary(max)" />
+          <Property Name="UploadExistingContractFileName" Type="varchar" MaxLength="2000" />
+          <Property Name="UploadExistingContractFileType" Type="varchar" MaxLength="2000" />
+          <Property Name="UploadSignOffContractFile" Type="varbinary(max)" />
+          <Property Name="UploadSignOffContractFileName" Type="varchar" MaxLength="2000" />
+          <Property Name="UploadSignOffContractFileType" Type="varchar" MaxLength="2000" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+          <Property Name="Initiator" Type="int" />
+          <Property Name="InitiatorComments" Type="varchar" MaxLength="2000" />
+          <Property Name="InitiatorStatus" Type="varchar" MaxLength="200" />
+          <Property Name="InitiatorDraft" Type="varchar(max)" />
+          <Property Name="ContractDraft" Type="varchar(max)" />
+          <Property Name="TemplateType" Type="varchar" MaxLength="200" />
+          <Property Name="Status" Type="varchar" MaxLength="200" />
+          <Property Name="OriginalContractID" Type="int" />
+          <Property Name="ContractModificationType" Type="varchar" MaxLength="200" />
+          <Property Name="SupportingDoc1" Type="varbinary(max)" />
+          <Property Name="SupportingDoc1FileName" Type="varchar" MaxLength="2000" />
+          <Property Name="SupportingDoc1FileType" Type="varchar" MaxLength="2000" />
+          <Property Name="SupportingDoc2" Type="varbinary(max)" />
+          <Property Name="SupportingDoc2FileName" Type="varchar" MaxLength="2000" />
+          <Property Name="SupportingDoc2FileType" Type="varchar" MaxLength="2000" />
+          <Property Name="SupportingDoc3" Type="varbinary(max)" />
+          <Property Name="SupportingDoc3FileName" Type="varchar" MaxLength="2000" />
+          <Property Name="SupportingDoc3FileType" Type="varchar" MaxLength="2000" />
+          <Property Name="SupportingDoc4" Type="varbinary(max)" />
+          <Property Name="SupportingDoc4FileName" Type="varchar" MaxLength="2000" />
+          <Property Name="SupportingDoc4FileType" Type="varchar" MaxLength="2000" />
+          <Property Name="SupportingDoc5" Type="varbinary(max)" />
+          <Property Name="SupportingDoc5FileName" Type="varchar" MaxLength="2000" />
+          <Property Name="SupportingDoc5FileType" Type="varchar" MaxLength="2000" />
+          <Property Name="DateofInitiated" Type="datetime" />
+          <Property Name="Variables" Type="varchar" MaxLength="200" />
+          <Property Name="LastReviewed" Type="datetime" />
+          <Property Name="Approver1ID" Type="int" Nullable="false" />
+          <Property Name="Approver1Draft" Type="varchar(max)" />
+          <Property Name="Approver1Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver1Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver1ReceivedOn" Type="datetime" />
+          <Property Name="Approver1ApprovedOn" Type="datetime" />
+          <Property Name="Approver2ID" Type="int" />
+          <Property Name="Approver2Draft" Type="varchar(max)" />
+          <Property Name="Approver2Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver2Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver2ReceivedOn" Type="datetime" />
+          <Property Name="Approver2ApprovedOn" Type="datetime" />
+          <Property Name="Approver3ID" Type="int" />
+          <Property Name="Approver3Draft" Type="varchar(max)" />
+          <Property Name="Approver3Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver3Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver3ReceivedOn" Type="datetime" />
+          <Property Name="Approver3ApprovedOn" Type="datetime" />
+          <Property Name="Approver4ID" Type="int" />
+          <Property Name="Approver4Draft" Type="varchar(max)" />
+          <Property Name="Approver4Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver4Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver4ReceivedOn" Type="datetime" />
+          <Property Name="Approver4ApprovedOn" Type="datetime" />
+          <Property Name="Approver5ID" Type="int" />
+          <Property Name="Approver5Draft" Type="varchar(max)" />
+          <Property Name="Approver5Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver5Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver5ReceivedOn" Type="datetime" />
+          <Property Name="Approver5ApprovedOn" Type="datetime" />
+          <Property Name="Approver6ID" Type="int" />
+          <Property Name="Approver6Draft" Type="varchar(max)" />
+          <Property Name="Approver6Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver6Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver6ReceivedOn" Type="datetime" />
+          <Property Name="Approver6ApprovedOn" Type="datetime" />
+          <Property Name="Approver7ID" Type="int" />
+          <Property Name="Approver7Draft" Type="varchar(max)" />
+          <Property Name="Approver7Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver7Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver7ReceivedOn" Type="datetime" />
+          <Property Name="Approver7ApprovedOn" Type="datetime" />
+          <Property Name="Approver8ID" Type="int" />
+          <Property Name="Approver8Draft" Type="varchar(max)" />
+          <Property Name="Approver8Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver8Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver8ReceivedOn" Type="datetime" />
+          <Property Name="Approver8ApprovedOn" Type="datetime" />
+          <Property Name="Approver9ID" Type="int" />
+          <Property Name="Approver9Draft" Type="varchar(max)" />
+          <Property Name="Approver9Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver9Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver9ReceivedOn" Type="datetime" />
+          <Property Name="Approver9ApprovedOn" Type="datetime" />
+          <Property Name="Approver10ID" Type="int" />
+          <Property Name="Approver10Draft" Type="varchar(max)" />
+          <Property Name="Approver10Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver10Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver10ReceivedOn" Type="datetime" />
+          <Property Name="Approver10ApprovedOn" Type="datetime" />
+          <Property Name="PendingFrom" Type="varchar" MaxLength="200" />
+          <Property Name="NextApprover" Type="varchar" MaxLength="200" />
+          <Property Name="DefaultVariables" Type="varchar" MaxLength="200" />
+          <Property Name="RejectedBy" Type="varchar" MaxLength="200" />
+          <Property Name="ModifiedSupportingDoc1" Type="varbinary(max)" />
+          <Property Name="ModifiedSupportingDoc1FileName" Type="varchar" MaxLength="2000" />
+          <Property Name="ModifiedSupportingDoc1FileType" Type="varchar" MaxLength="2000" />
+          <Property Name="InEffectFrom" Type="varchar" MaxLength="200" />
+          <Property Name="InEffectTo" Type="varchar" MaxLength="200" />
+          <Property Name="ReviewerID" Type="int" />
+          <Property Name="PhysicalCopyLocation" Type="varchar" MaxLength="2000" />
+          <Property Name="ReviewedOn" Type="datetime" />
+          <Property Name="ReviewedComments" Type="varchar(max)" />
+          <Property Name="Template" Type="varchar(max)" />
+          <Property Name="Plant" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tblDeligationLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogDeligationUID" Type="int" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="200" />
+          <Property Name="LogActivity" Type="varchar" MaxLength="200" />
+          <Property Name="ChangedFrom" Type="varchar(max)" />
+          <Property Name="ChangedTo" Type="varchar(max)" />
+          <Property Name="DateandTime" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tblDeligationMatrix">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeligateFrom" Type="int" />
+          <Property Name="DeligateTo" Type="int" />
+          <Property Name="StartDate" Type="varchar" MaxLength="200" />
+          <Property Name="EndDate" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tblDepartment">
+          <Key>
+            <PropertyRef Name="DepartmentID" />
+          </Key>
+          <Property Name="DepartmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlantName" Type="varchar" MaxLength="200" />
+          <Property Name="DepartmentName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LastModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDepartmentLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogDepartmentUID" Type="int" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LogActivity" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ChangedFrom" Type="varchar(max)" Nullable="false" />
+          <Property Name="ChangedTo" Type="varchar(max)" Nullable="false" />
+          <Property Name="DateandTime" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDepartmentMapping">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="Department" Type="varchar" MaxLength="200" />
+          <Property Name="SubDepartment" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tblPlant">
+          <Key>
+            <PropertyRef Name="PlantID" />
+          </Key>
+          <Property Name="PlantID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlantName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LastModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPlantLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogPlantUID" Type="int" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LogActivity" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ChangedFrom" Type="varchar(max)" Nullable="false" />
+          <Property Name="ChangedTo" Type="varchar(max)" Nullable="false" />
+          <Property Name="DateandTime" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSubCategory">
+          <Key>
+            <PropertyRef Name="SubCategoryID" />
+          </Key>
+          <Property Name="SubCategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="SubCategoryName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LastModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSubCategoryLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogSubCategoryUID" Type="int" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LogActivity" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ChangedFrom" Type="varchar(max)" Nullable="false" />
+          <Property Name="ChangedTo" Type="varchar(max)" Nullable="false" />
+          <Property Name="DateandTime" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSubDepartment">
+          <Key>
+            <PropertyRef Name="SubDepartmentID" />
+          </Key>
+          <Property Name="SubDepartmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlantName" Type="varchar" MaxLength="200" />
+          <Property Name="DepartmentName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="SubDepartmentName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LastModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSubDepartmentLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogSubDepartmentUID" Type="int" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LogActivity" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ChangedFrom" Type="varchar(max)" Nullable="false" />
+          <Property Name="ChangedTo" Type="varchar(max)" Nullable="false" />
+          <Property Name="DateandTime" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTemplateAddendumLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogTemplateUID" Type="int" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LogActivity" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ChangedFrom" Type="varchar(max)" Nullable="false" />
+          <Property Name="ChangedTo" Type="varchar(max)" Nullable="false" />
+          <Property Name="DateandTime" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTemplateAmendments">
+          <Key>
+            <PropertyRef Name="TempID" />
+          </Key>
+          <Property Name="TempID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Amendments" Type="varchar(max)" />
+          <Property Name="Extension" Type="varchar(max)" />
+          <Property Name="Termination" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tblTemplateAudit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AuditTemplateID" Type="int" Nullable="false" />
+          <Property Name="AuditTemplateComments" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="AuditEmployeeID" Type="int" />
+          <Property Name="AuditLastReviewed" Type="datetime" Nullable="false" />
+          <Property Name="AuditStatus" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTemplateLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogTemplateUID" Type="int" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LogActivity" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ChangedFrom" Type="varchar(max)" Nullable="false" />
+          <Property Name="ChangedTo" Type="varchar(max)" Nullable="false" />
+          <Property Name="DateandTime" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTemplateMaster">
+          <Key>
+            <PropertyRef Name="TemplateID" />
+          </Key>
+          <Property Name="TemplateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Category" Type="varchar" MaxLength="200" />
+          <Property Name="SubCategory" Type="varchar" MaxLength="200" />
+          <Property Name="Department" Type="varchar" MaxLength="200" />
+          <Property Name="SubDepartment" Type="varchar" MaxLength="200" />
+          <Property Name="TemplateSequence" Type="int" />
+          <Property Name="Initiator" Type="int" />
+          <Property Name="InitiatorStatus" Type="varchar" MaxLength="200" />
+          <Property Name="InitiatorComments" Type="varchar" MaxLength="2000" />
+          <Property Name="Template" Type="varchar(max)" />
+          <Property Name="Description" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="DateofInitiated" Type="datetime" />
+          <Property Name="LastReviewed" Type="datetime" />
+          <Property Name="Approver1ID" Type="int" />
+          <Property Name="Approver1Draft" Type="varchar(max)" />
+          <Property Name="Approver1Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver1Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver1ReceivedOn" Type="datetime" />
+          <Property Name="Approver1ApprovedOn" Type="datetime" />
+          <Property Name="Approver2ID" Type="int" />
+          <Property Name="Approver2Draft" Type="varchar(max)" />
+          <Property Name="Approver2Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver2Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver2ReceivedOn" Type="datetime" />
+          <Property Name="Approver2ApprovedOn" Type="datetime" />
+          <Property Name="Approver3ID" Type="int" />
+          <Property Name="Approver3Draft" Type="varchar(max)" />
+          <Property Name="Approver3Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver3Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver3ReceivedOn" Type="datetime" />
+          <Property Name="Approver3ApprovedOn" Type="datetime" />
+          <Property Name="Approver4ID" Type="int" />
+          <Property Name="Approver4Draft" Type="varchar(max)" />
+          <Property Name="Approver4Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver4Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver4ReceivedOn" Type="datetime" />
+          <Property Name="Approver4ApprovedOn" Type="datetime" />
+          <Property Name="Approver5ID" Type="int" />
+          <Property Name="Approver5Draft" Type="varchar(max)" />
+          <Property Name="Approver5Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver5Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver5ReceivedOn" Type="datetime" />
+          <Property Name="Approver5ApprovedOn" Type="datetime" />
+          <Property Name="Approver6ID" Type="int" />
+          <Property Name="Approver6Draft" Type="varchar(max)" />
+          <Property Name="Approver6Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver6Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver6ReceivedOn" Type="datetime" />
+          <Property Name="Approver6ApprovedOn" Type="datetime" />
+          <Property Name="Approver7ID" Type="int" />
+          <Property Name="Approver7Draft" Type="varchar(max)" />
+          <Property Name="Approver7Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver7Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver7ReceivedOn" Type="datetime" />
+          <Property Name="Approver7ApprovedOn" Type="datetime" />
+          <Property Name="Approver8ID" Type="int" />
+          <Property Name="Approver8Draft" Type="varchar(max)" />
+          <Property Name="Approver8Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver8Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver8ReceivedOn" Type="datetime" />
+          <Property Name="Approver8ApprovedOn" Type="datetime" />
+          <Property Name="Approver9ID" Type="int" />
+          <Property Name="Approver9Draft" Type="varchar(max)" />
+          <Property Name="Approver9Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver9Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver9ReceivedOn" Type="datetime" />
+          <Property Name="Approver9ApprovedOn" Type="datetime" />
+          <Property Name="Approver10ID" Type="int" />
+          <Property Name="Approver10Draft" Type="varchar(max)" />
+          <Property Name="Approver10Comments" Type="varchar" MaxLength="2000" />
+          <Property Name="Approver10Status" Type="varchar" MaxLength="200" />
+          <Property Name="Approver10ReceivedOn" Type="datetime" />
+          <Property Name="Approver10ApprovedOn" Type="datetime" />
+          <Property Name="PendingFrom" Type="varchar" MaxLength="200" />
+          <Property Name="NextApprover" Type="varchar" MaxLength="200" />
+          <Property Name="RejectedBy" Type="varchar" MaxLength="200" />
+          <Property Name="Status" Type="varchar" MaxLength="200" />
+          <Property Name="InitiatorTemplate" Type="varchar(max)" />
+          <Property Name="ReviewerID" Type="int" />
+          <Property Name="PhysicalCopyLocation" Type="varchar" MaxLength="2000" />
+          <Property Name="ReviewedOn" Type="datetime" />
+          <Property Name="ReviewedComments" Type="varchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="tblUserLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogUserUID" Type="int" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LogActivity" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ChangedFrom" Type="varchar(max)" Nullable="false" />
+          <Property Name="ChangedTo" Type="varchar(max)" Nullable="false" />
+          <Property Name="DateandTime" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUserLogin">
+          <Key>
+            <PropertyRef Name="LoginID" />
+          </Key>
+          <Property Name="LoginID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblUserMaster">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserEmployeeID" Type="int" Nullable="false" />
+          <Property Name="UserEmployeeName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UserEmployeeEmail" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UserEmployeeDesignation" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UserCategory" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UserSubCategory" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UserRoleInitiator" Type="bit" Nullable="false" />
+          <Property Name="UserRoleApprover" Type="bit" Nullable="false" />
+          <Property Name="UserRoleLegal" Type="bit" Nullable="false" />
+          <Property Name="UserRoleFinance" Type="bit" Nullable="false" />
+          <Property Name="UserRoleAdmin" Type="bit" Nullable="false" />
+          <Property Name="UserRoleFinance2" Type="bit" Nullable="false" />
+          <Property Name="UserRoleReviewer" Type="bit" />
+          <Property Name="UserStatus" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UserHodEmployeeID" Type="int" />
+          <Property Name="UserHodEmployeeName" Type="varchar" MaxLength="200" />
+          <Property Name="UserHodEmployeeEmailAddress" Type="varchar" MaxLength="200" />
+          <Property Name="UserPlant" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tblVariableData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="200" />
+          <Property Name="TypeID" Type="int" />
+          <Property Name="Variable" Type="varchar" MaxLength="200" />
+          <Property Name="Value" Type="varchar" MaxLength="2000" />
+          <Property Name="Version" Type="varchar" MaxLength="200" />
+          <Property Name="VariableFrom" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tblVariables">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Variables" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="VariableType" Type="varchar" MaxLength="200" />
+          <Property Name="VariableValues" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tblVendorLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogVendorUID" Type="int" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LogActivity" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ChangedFrom" Type="varchar(max)" Nullable="false" />
+          <Property Name="ChangedTo" Type="varchar(max)" Nullable="false" />
+          <Property Name="DateandTime" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblVendorMaster">
+          <Key>
+            <PropertyRef Name="VendorVendorID" />
+          </Key>
+          <Property Name="VendorVendorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VendorCorporateIdentificationNumber" Type="varchar" MaxLength="200" />
+          <Property Name="VendorVendorName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="VendorTypeofEntity" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="VendorAuthorisedSignatory" Type="varchar" MaxLength="200" />
+          <Property Name="VendorRegisteredAddress" Type="varchar" MaxLength="8000" Nullable="false" />
+          <Property Name="VendorBranchOffice1" Type="varchar" MaxLength="8000" />
+          <Property Name="VendorBranchOffice2" Type="varchar" MaxLength="8000" />
+          <Property Name="VendorBranchOffice3" Type="varchar" MaxLength="8000" />
+          <Property Name="VendorBranchOffice4" Type="varchar" MaxLength="8000" />
+          <Property Name="VendorBranchOffice5" Type="varchar" MaxLength="8000" />
+        </EntityType>
+        <Association Name="FK_tblClauseAudit_tblClauseMaster">
+          <End Role="tblClauseMaster" Type="Self.tblClauseMaster" Multiplicity="1" />
+          <End Role="tblClauseAudit" Type="Self.tblClauseAudit" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblClauseMaster">
+              <PropertyRef Name="ClauseClauseID" />
+            </Principal>
+            <Dependent Role="tblClauseAudit">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblContractAudit_tblContractAudit">
+          <End Role="tblContractMaster" Type="Self.tblContractMaster" Multiplicity="1" />
+          <End Role="tblContractAudit" Type="Self.tblContractAudit" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblContractMaster">
+              <PropertyRef Name="ContractID" />
+            </Principal>
+            <Dependent Role="tblContractAudit">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_tblTemplateMaster_tblCategory' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_tblTemplateMaster_tblCategory" />-->
+        <EntityContainer Name="ContractManagementSystemDBModelStoreContainer">
+          <EntitySet Name="tblAlertLog" EntityType="Self.tblAlertLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAlertSystem" EntityType="Self.tblAlertSystem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblApprovalEscalation" EntityType="Self.tblApprovalEscalation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblApprovalLog" EntityType="Self.tblApprovalLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblApprovalMaster" EntityType="Self.tblApprovalMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCategory" EntityType="Self.tblCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCategoryLog" EntityType="Self.tblCategoryLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblClauseAudit" EntityType="Self.tblClauseAudit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblClauseLog" EntityType="Self.tblClauseLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblClauseMaster" EntityType="Self.tblClauseMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblConfiguration" EntityType="Self.tblConfiguration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblContractAudit" EntityType="Self.tblContractAudit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblContractLog" EntityType="Self.tblContractLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblContractMaster" EntityType="Self.tblContractMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblContractModification" EntityType="Self.tblContractModification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDeligationLog" EntityType="Self.tblDeligationLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDeligationMatrix" EntityType="Self.tblDeligationMatrix" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDepartment" EntityType="Self.tblDepartment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDepartmentLog" EntityType="Self.tblDepartmentLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDepartmentMapping" EntityType="Self.tblDepartmentMapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPlant" EntityType="Self.tblPlant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPlantLog" EntityType="Self.tblPlantLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSubCategory" EntityType="Self.tblSubCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSubCategoryLog" EntityType="Self.tblSubCategoryLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSubDepartment" EntityType="Self.tblSubDepartment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSubDepartmentLog" EntityType="Self.tblSubDepartmentLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTemplateAddendumLog" EntityType="Self.tblTemplateAddendumLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTemplateAmendments" EntityType="Self.tblTemplateAmendments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTemplateAudit" EntityType="Self.tblTemplateAudit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTemplateLog" EntityType="Self.tblTemplateLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTemplateMaster" EntityType="Self.tblTemplateMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserLog" EntityType="Self.tblUserLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserLogin" EntityType="Self.tblUserLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserMaster" EntityType="Self.tblUserMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVariableData" EntityType="Self.tblVariableData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVariables" EntityType="Self.tblVariables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVendorLog" EntityType="Self.tblVendorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVendorMaster" EntityType="Self.tblVendorMaster" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tblClauseAudit_tblClauseMaster" Association="Self.FK_tblClauseAudit_tblClauseMaster">
+            <End Role="tblClauseMaster" EntitySet="tblClauseMaster" />
+            <End Role="tblClauseAudit" EntitySet="tblClauseAudit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblContractAudit_tblContractAudit" Association="Self.FK_tblContractAudit_tblContractAudit">
+            <End Role="tblContractMaster" EntitySet="tblContractMaster" />
+            <End Role="tblContractAudit" EntitySet="tblContractAudit" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ContractManagementSystemDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ContractManagementSystemDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAlertLogs" EntityType="ContractManagementSystemDBModel.tblAlertLog" />
+          <EntitySet Name="tblAlertSystems" EntityType="ContractManagementSystemDBModel.tblAlertSystem" />
+          <EntitySet Name="tblApprovalLogs" EntityType="ContractManagementSystemDBModel.tblApprovalLog" />
+          <EntitySet Name="tblApprovalMasters" EntityType="ContractManagementSystemDBModel.tblApprovalMaster" />
+          <EntitySet Name="tblCategories" EntityType="ContractManagementSystemDBModel.tblCategory" />
+          <EntitySet Name="tblCategoryLogs" EntityType="ContractManagementSystemDBModel.tblCategoryLog" />
+          <EntitySet Name="tblClauseAudits" EntityType="ContractManagementSystemDBModel.tblClauseAudit" />
+          <EntitySet Name="tblClauseLogs" EntityType="ContractManagementSystemDBModel.tblClauseLog" />
+          <EntitySet Name="tblClauseMasters" EntityType="ContractManagementSystemDBModel.tblClauseMaster" />
+          <EntitySet Name="tblContractAudits" EntityType="ContractManagementSystemDBModel.tblContractAudit" />
+          <EntitySet Name="tblContractLogs" EntityType="ContractManagementSystemDBModel.tblContractLog" />
+          <EntitySet Name="tblContractMasters" EntityType="ContractManagementSystemDBModel.tblContractMaster" />
+          <EntitySet Name="tblContractModifications" EntityType="ContractManagementSystemDBModel.tblContractModification" />
+          <EntitySet Name="tblDeligationMatrices" EntityType="ContractManagementSystemDBModel.tblDeligationMatrix" />
+          <EntitySet Name="tblDepartments" EntityType="ContractManagementSystemDBModel.tblDepartment" />
+          <EntitySet Name="tblDepartmentLogs" EntityType="ContractManagementSystemDBModel.tblDepartmentLog" />
+          <EntitySet Name="tblDepartmentMappings" EntityType="ContractManagementSystemDBModel.tblDepartmentMapping" />
+          <EntitySet Name="tblSubCategories" EntityType="ContractManagementSystemDBModel.tblSubCategory" />
+          <EntitySet Name="tblSubCategoryLogs" EntityType="ContractManagementSystemDBModel.tblSubCategoryLog" />
+          <EntitySet Name="tblSubDepartments" EntityType="ContractManagementSystemDBModel.tblSubDepartment" />
+          <EntitySet Name="tblSubDepartmentLogs" EntityType="ContractManagementSystemDBModel.tblSubDepartmentLog" />
+          <EntitySet Name="tblTemplateAddendumLogs" EntityType="ContractManagementSystemDBModel.tblTemplateAddendumLog" />
+          <EntitySet Name="tblTemplateAmendments" EntityType="ContractManagementSystemDBModel.tblTemplateAmendment" />
+          <EntitySet Name="tblTemplateAudits" EntityType="ContractManagementSystemDBModel.tblTemplateAudit" />
+          <EntitySet Name="tblTemplateLogs" EntityType="ContractManagementSystemDBModel.tblTemplateLog" />
+          <EntitySet Name="tblTemplateMasters" EntityType="ContractManagementSystemDBModel.tblTemplateMaster" />
+          <EntitySet Name="tblUserLogs" EntityType="ContractManagementSystemDBModel.tblUserLog" />
+          <EntitySet Name="tblUserLogins" EntityType="ContractManagementSystemDBModel.tblUserLogin" />
+          <EntitySet Name="tblUserMasters" EntityType="ContractManagementSystemDBModel.tblUserMaster" />
+          <EntitySet Name="tblVariableDatas" EntityType="ContractManagementSystemDBModel.tblVariableData" />
+          <EntitySet Name="tblVariables" EntityType="ContractManagementSystemDBModel.tblVariable" />
+          <EntitySet Name="tblVendorLogs" EntityType="ContractManagementSystemDBModel.tblVendorLog" />
+          <EntitySet Name="tblVendorMasters" EntityType="ContractManagementSystemDBModel.tblVendorMaster" />
+          <AssociationSet Name="FK_tblClauseAudit_tblClauseMaster" Association="ContractManagementSystemDBModel.FK_tblClauseAudit_tblClauseMaster">
+            <End Role="tblClauseMaster" EntitySet="tblClauseMasters" />
+            <End Role="tblClauseAudit" EntitySet="tblClauseAudits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblContractAudit_tblContractAudit" Association="ContractManagementSystemDBModel.FK_tblContractAudit_tblContractAudit">
+            <End Role="tblContractMaster" EntitySet="tblContractMasters" />
+            <End Role="tblContractAudit" EntitySet="tblContractAudits" />
+          </AssociationSet>
+          <EntitySet Name="tblDeligationLogs" EntityType="ContractManagementSystemDBModel.tblDeligationLog" />
+          <EntitySet Name="tblConfigurations" EntityType="ContractManagementSystemDBModel.tblConfiguration" />
+          <EntitySet Name="tblPlants" EntityType="ContractManagementSystemDBModel.tblPlant" />
+          <EntitySet Name="tblPlantLogs" EntityType="ContractManagementSystemDBModel.tblPlantLog" />
+          <EntitySet Name="tblApprovalEscalations" EntityType="ContractManagementSystemDBModel.tblApprovalEscalation" />
+        </EntityContainer>
+        <EntityType Name="tblAlertLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogAlertUID" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblAlertSystem">
+          <Key>
+            <PropertyRef Name="AlertID" />
+          </Key>
+          <Property Name="AlertID" Type="Int32" Nullable="false" />
+          <Property Name="ContractExpiryReminder1Date" Type="Int32" />
+          <Property Name="ContractExpiryReminder1Duration" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ContractExpiryReminder2Date" Type="Int32" />
+          <Property Name="ContractExpiryReminder2Duration" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ContractExpiryReminder3Date" Type="Int32" />
+          <Property Name="ContractExpiryReminder3Duration" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ContractExpiryReminder4Date" Type="Int32" />
+          <Property Name="ContractExpiryReminder4Duration" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ContractExpiryReminder5Date" Type="Int32" />
+          <Property Name="ContractExpiryReminder5Duration" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TemplateHod" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TemplateLegal" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TemplateFinance" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ContractHod" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ContractLegal" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ContractFinance" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EsclationHod" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EsclationLegal" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EsclationFinance" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AuditTemplateDate" Type="Int32" />
+          <Property Name="AuditTemplateDuration" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AuditContractDate" Type="Int32" />
+          <Property Name="AuditClauseDuration" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AuditClauseDate" Type="Int32" />
+          <Property Name="AuditContractDuration" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OldContractDate" Type="Int32" />
+          <Property Name="OldContractDuration" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblApprovalLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogApprovalUID" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblApprovalMaster">
+          <Key>
+            <PropertyRef Name="ApprovalID" />
+          </Key>
+          <Property Name="ApprovalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkflowType" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SubDepartment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ApprovalLevel" Type="Int32" />
+          <Property Name="EMPID" Type="Int32" />
+          <Property Name="Plant" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblCategory">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblCategoryLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogCategoryUID" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblClauseAudit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuditClauseID" Type="Int32" Nullable="false" />
+          <Property Name="AuditClauseComments" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="AuditEmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="AuditLastReviewed" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuditStatus" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblClauseMaster" Relationship="ContractManagementSystemDBModel.FK_tblClauseAudit_tblClauseMaster" FromRole="tblClauseAudit" ToRole="tblClauseMaster" />
+        </EntityType>
+        <EntityType Name="tblClauseLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogClauseUID" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblClauseMaster">
+          <Key>
+            <PropertyRef Name="ClauseClauseID" />
+          </Key>
+          <Property Name="ClauseClauseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClauseClauseTitle" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ClauseClauseDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ClauseClauseText" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ClauseLastModified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ClauseStatus" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblClauseAudit" Relationship="ContractManagementSystemDBModel.FK_tblClauseAudit_tblClauseMaster" FromRole="tblClauseMaster" ToRole="tblClauseAudit" />
+        </EntityType>
+        <EntityType Name="tblContractAudit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuditContractD" Type="Int32" Nullable="false" />
+          <Property Name="AuditContractComments" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="AuditEmployeeID" Type="Int32" />
+          <Property Name="AuditLastReviewed" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuditStatus" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblContractMaster" Relationship="ContractManagementSystemDBModel.FK_tblContractAudit_tblContractAudit" FromRole="tblContractAudit" ToRole="tblContractMaster" />
+        </EntityType>
+        <EntityType Name="tblContractLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogContractUID" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblContractMaster">
+          <Key>
+            <PropertyRef Name="ContractID" />
+          </Key>
+          <Property Name="ContractID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContractName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ContractType" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ContractCategory" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ContractSubCategory" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SubDepartment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UploadExistingFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="UploadExistingContractFileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="UploadExistingContractFileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="UploadSignOffContractFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="UploadSignOffContractFileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="UploadSignOffContractFileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Initiator" Type="Int32" />
+          <Property Name="InitiatorComments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="InitiatorStatus" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="InitiatorDraft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ContractDraft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TemplateType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OriginalContractID" Type="Int32" />
+          <Property Name="ContractModificationType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SupportingDoc1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SupportingDoc1FileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="SupportingDoc1FileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="SupportingDoc2" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SupportingDoc2FileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="SupportingDoc2FileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="SupportingDoc3" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SupportingDoc3FileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="SupportingDoc3FileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="SupportingDoc4" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SupportingDoc4FileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="SupportingDoc4FileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="SupportingDoc5" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SupportingDoc5FileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="SupportingDoc5FileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="DateofInitiated" Type="DateTime" Precision="3" />
+          <Property Name="Variables" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastReviewed" Type="DateTime" Precision="3" />
+          <Property Name="Approver1ID" Type="Int32" Nullable="false" />
+          <Property Name="Approver1Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver1Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver1Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver1ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver1ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver2ID" Type="Int32" />
+          <Property Name="Approver2Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver2Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver2Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver2ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver2ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver3ID" Type="Int32" />
+          <Property Name="Approver3Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver3Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver3Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver3ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver3ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver4ID" Type="Int32" />
+          <Property Name="Approver4Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver4Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver4Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver4ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver4ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver5ID" Type="Int32" />
+          <Property Name="Approver5Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver5Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver5Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver5ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver5ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver6ID" Type="Int32" />
+          <Property Name="Approver6Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver6Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver6Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver6ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver6ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver7ID" Type="Int32" />
+          <Property Name="Approver7Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver7Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver7Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver7ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver7ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver8ID" Type="Int32" />
+          <Property Name="Approver8Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver8Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver8Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver8ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver8ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver9ID" Type="Int32" />
+          <Property Name="Approver9Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver9Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver9Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver9ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver9ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver10ID" Type="Int32" />
+          <Property Name="Approver10Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver10Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver10Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver10ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver10ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="PendingFrom" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NextApprover" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DefaultVariables" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RejectedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedSupportingDoc1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ModifiedSupportingDoc1FileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedSupportingDoc1FileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="InEffectFrom" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="InEffectTo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ReviewerID" Type="Int32" />
+          <Property Name="PhysicalCopyLocation" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="ReviewedOn" Type="DateTime" Precision="3" />
+          <Property Name="ReviewedComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Template" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblContractAudit" Relationship="ContractManagementSystemDBModel.FK_tblContractAudit_tblContractAudit" FromRole="tblContractMaster" ToRole="tblContractAudit" />
+          <Property Name="Modified" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Plant" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblContractModification">
+          <Key>
+            <PropertyRef Name="ContractID" />
+          </Key>
+          <Property Name="ContractID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContractName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ContractType" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ContractCategory" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ContractSubCategory" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UploadExistingFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="UploadExistingContractFileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="UploadExistingContractFileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="UploadSignOffContractFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="UploadSignOffContractFileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="UploadSignOffContractFileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Initiator" Type="Int32" />
+          <Property Name="InitiatorComments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="InitiatorStatus" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="InitiatorDraft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ContractDraft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TemplateType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OriginalContractID" Type="Int32" />
+          <Property Name="ContractModificationType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SupportingDoc1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SupportingDoc1FileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="SupportingDoc1FileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="SupportingDoc2" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SupportingDoc2FileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="SupportingDoc2FileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="SupportingDoc3" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SupportingDoc3FileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="SupportingDoc3FileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="SupportingDoc4" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SupportingDoc4FileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="SupportingDoc4FileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="SupportingDoc5" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SupportingDoc5FileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="SupportingDoc5FileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="DateofInitiated" Type="DateTime" Precision="3" />
+          <Property Name="Variables" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastReviewed" Type="DateTime" Precision="3" />
+          <Property Name="Approver1ID" Type="Int32" Nullable="false" />
+          <Property Name="Approver1Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver1Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver1Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver1ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver1ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver2ID" Type="Int32" />
+          <Property Name="Approver2Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver2Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver2Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver2ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver2ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver3ID" Type="Int32" />
+          <Property Name="Approver3Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver3Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver3Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver3ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver3ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver4ID" Type="Int32" />
+          <Property Name="Approver4Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver4Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver4Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver4ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver4ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver5ID" Type="Int32" />
+          <Property Name="Approver5Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver5Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver5Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver5ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver5ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver6ID" Type="Int32" />
+          <Property Name="Approver6Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver6Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver6Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver6ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver6ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver7ID" Type="Int32" />
+          <Property Name="Approver7Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver7Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver7Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver7ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver7ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver8ID" Type="Int32" />
+          <Property Name="Approver8Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver8Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver8Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver8ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver8ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver9ID" Type="Int32" />
+          <Property Name="Approver9Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver9Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver9Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver9ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver9ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver10ID" Type="Int32" />
+          <Property Name="Approver10Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver10Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver10Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver10ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver10ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="PendingFrom" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NextApprover" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DefaultVariables" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RejectedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedSupportingDoc1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ModifiedSupportingDoc1FileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedSupportingDoc1FileType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="InEffectFrom" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="InEffectTo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ReviewerID" Type="Int32" />
+          <Property Name="PhysicalCopyLocation" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="ReviewedOn" Type="DateTime" Precision="3" />
+          <Property Name="ReviewedComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Template" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SubDepartment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Plant" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblDeligationMatrix">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeligateFrom" Type="Int32" />
+          <Property Name="DeligateTo" Type="Int32" />
+          <Property Name="StartDate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EndDate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblDepartment">
+          <Key>
+            <PropertyRef Name="DepartmentID" />
+          </Key>
+          <Property Name="DepartmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PlantName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblDepartmentLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogDepartmentUID" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblDepartmentMapping">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="Department" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SubDepartment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblSubCategory">
+          <Key>
+            <PropertyRef Name="SubCategoryID" />
+          </Key>
+          <Property Name="SubCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SubCategoryName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblSubCategoryLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogSubCategoryUID" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblSubDepartment">
+          <Key>
+            <PropertyRef Name="SubDepartmentID" />
+          </Key>
+          <Property Name="SubDepartmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SubDepartmentName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PlantName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblSubDepartmentLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogSubDepartmentUID" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblTemplateAddendumLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogTemplateUID" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblTemplateAmendment">
+          <Key>
+            <PropertyRef Name="TempID" />
+          </Key>
+          <Property Name="TempID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Amendments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Extension" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Termination" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblTemplateAudit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuditTemplateID" Type="Int32" Nullable="false" />
+          <Property Name="AuditTemplateComments" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="AuditEmployeeID" Type="Int32" />
+          <Property Name="AuditLastReviewed" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuditStatus" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblTemplateLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogTemplateUID" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblTemplateMaster">
+          <Key>
+            <PropertyRef Name="TemplateID" />
+          </Key>
+          <Property Name="TemplateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SubCategory" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SubDepartment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TemplateSequence" Type="Int32" />
+          <Property Name="Initiator" Type="Int32" />
+          <Property Name="InitiatorStatus" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="InitiatorComments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Template" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="DateofInitiated" Type="DateTime" Precision="3" />
+          <Property Name="LastReviewed" Type="DateTime" Precision="3" />
+          <Property Name="Approver1ID" Type="Int32" />
+          <Property Name="Approver1Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver1Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver1Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver1ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver1ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver2ID" Type="Int32" />
+          <Property Name="Approver2Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver2Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver2Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver2ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver2ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver3ID" Type="Int32" />
+          <Property Name="Approver3Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver3Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver3Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver3ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver3ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver4ID" Type="Int32" />
+          <Property Name="Approver4Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver4Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver4Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver4ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver4ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver5ID" Type="Int32" />
+          <Property Name="Approver5Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver5Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver5Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver5ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver5ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver6ID" Type="Int32" />
+          <Property Name="Approver6Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver6Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver6Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver6ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver6ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver7ID" Type="Int32" />
+          <Property Name="Approver7Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver7Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver7Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver7ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver7ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver8ID" Type="Int32" />
+          <Property Name="Approver8Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver8Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver8Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver8ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver8ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver9ID" Type="Int32" />
+          <Property Name="Approver9Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver9Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver9Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver9ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver9ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver10ID" Type="Int32" />
+          <Property Name="Approver10Draft" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Approver10Comments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Approver10Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Approver10ReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Approver10ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="PendingFrom" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NextApprover" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RejectedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="InitiatorTemplate" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ReviewerID" Type="Int32" />
+          <Property Name="PhysicalCopyLocation" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="ReviewedOn" Type="DateTime" Precision="3" />
+          <Property Name="ReviewedComments" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblUserLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogUserUID" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblUserLogin">
+          <Key>
+            <PropertyRef Name="LoginID" />
+          </Key>
+          <Property Name="LoginID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblUserMaster">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserEmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="UserEmployeeName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UserEmployeeEmail" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UserEmployeeDesignation" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UserCategory" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UserSubCategory" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UserRoleInitiator" Type="Boolean" Nullable="false" />
+          <Property Name="UserRoleApprover" Type="Boolean" Nullable="false" />
+          <Property Name="UserRoleLegal" Type="Boolean" Nullable="false" />
+          <Property Name="UserRoleFinance" Type="Boolean" Nullable="false" />
+          <Property Name="UserRoleAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="UserRoleReviewer" Type="Boolean" />
+          <Property Name="UserStatus" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UserHodEmployeeID" Type="Int32" />
+          <Property Name="UserHodEmployeeName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UserHodEmployeeEmailAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UserPlant" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UserRoleFinance2" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblVariableData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TypeID" Type="Int32" />
+          <Property Name="Variable" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Version" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="VariableFrom" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblVariable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Variables" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="VariableType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="VariableValues" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblVendorLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogVendorUID" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblVendorMaster">
+          <Key>
+            <PropertyRef Name="VendorVendorID" />
+          </Key>
+          <Property Name="VendorVendorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorCorporateIdentificationNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="VendorVendorName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="VendorTypeofEntity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="VendorAuthorisedSignatory" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="VendorRegisteredAddress" Type="String" Nullable="false" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="VendorBranchOffice1" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="VendorBranchOffice2" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="VendorBranchOffice3" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="VendorBranchOffice4" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="VendorBranchOffice5" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_tblClauseAudit_tblClauseMaster">
+          <End Type="ContractManagementSystemDBModel.tblClauseMaster" Role="tblClauseMaster" Multiplicity="1" />
+          <End Type="ContractManagementSystemDBModel.tblClauseAudit" Role="tblClauseAudit" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblClauseMaster">
+              <PropertyRef Name="ClauseClauseID" />
+            </Principal>
+            <Dependent Role="tblClauseAudit">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblContractAudit_tblContractAudit">
+          <End Type="ContractManagementSystemDBModel.tblContractMaster" Role="tblContractMaster" Multiplicity="1" />
+          <End Type="ContractManagementSystemDBModel.tblContractAudit" Role="tblContractAudit" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblContractMaster">
+              <PropertyRef Name="ContractID" />
+            </Principal>
+            <Dependent Role="tblContractAudit">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblDeligationLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogDeligationUID" Type="Int32" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LogActivity" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedFrom" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedTo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateandTime" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblConfiguration">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaperType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PaperSize" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MarginTop" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MarginLeft" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MarginBottom" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MarginRight" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblPlant">
+          <Key>
+            <PropertyRef Name="PlantID" />
+          </Key>
+          <Property Name="PlantID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlantName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblPlantLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogPlantUID" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LogActivity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedFrom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateandTime" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblApprovalEscalation">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Plant" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SubDepartment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeID" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ContractManagementSystemDBModelStoreContainer" CdmEntityContainer="ContractManagementSystemDBEntities">
+          <EntitySetMapping Name="tblAlertLogs">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblAlertLog">
+              <MappingFragment StoreEntitySet="tblAlertLog">
+                <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
+                <ScalarProperty Name="ChangedTo" ColumnName="ChangedTo" />
+                <ScalarProperty Name="ChangedFrom" ColumnName="ChangedFrom" />
+                <ScalarProperty Name="LogActivity" ColumnName="LogActivity" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LogAlertUID" ColumnName="LogAlertUID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAlertSystems">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblAlertSystem">
+              <MappingFragment StoreEntitySet="tblAlertSystem">
+                <ScalarProperty Name="OldContractDuration" ColumnName="OldContractDuration" />
+                <ScalarProperty Name="OldContractDate" ColumnName="OldContractDate" />
+                <ScalarProperty Name="AuditContractDuration" ColumnName="AuditContractDuration" />
+                <ScalarProperty Name="AuditClauseDate" ColumnName="AuditClauseDate" />
+                <ScalarProperty Name="AuditClauseDuration" ColumnName="AuditClauseDuration" />
+                <ScalarProperty Name="AuditContractDate" ColumnName="AuditContractDate" />
+                <ScalarProperty Name="AuditTemplateDuration" ColumnName="AuditTemplateDuration" />
+                <ScalarProperty Name="AuditTemplateDate" ColumnName="AuditTemplateDate" />
+                <ScalarProperty Name="EsclationFinance" ColumnName="EsclationFinance" />
+                <ScalarProperty Name="EsclationLegal" ColumnName="EsclationLegal" />
+                <ScalarProperty Name="EsclationHod" ColumnName="EsclationHod" />
+                <ScalarProperty Name="ContractFinance" ColumnName="ContractFinance" />
+                <ScalarProperty Name="ContractLegal" ColumnName="ContractLegal" />
+                <ScalarProperty Name="ContractHod" ColumnName="ContractHod" />
+                <ScalarProperty Name="TemplateFinance" ColumnName="TemplateFinance" />
+                <ScalarProperty Name="TemplateLegal" ColumnName="TemplateLegal" />
+                <ScalarProperty Name="TemplateHod" ColumnName="TemplateHod" />
+                <ScalarProperty Name="ContractExpiryReminder5Duration" ColumnName="ContractExpiryReminder5Duration" />
+                <ScalarProperty Name="ContractExpiryReminder5Date" ColumnName="ContractExpiryReminder5Date" />
+                <ScalarProperty Name="ContractExpiryReminder4Duration" ColumnName="ContractExpiryReminder4Duration" />
+                <ScalarProperty Name="ContractExpiryReminder4Date" ColumnName="ContractExpiryReminder4Date" />
+                <ScalarProperty Name="ContractExpiryReminder3Duration" ColumnName="ContractExpiryReminder3Duration" />
+                <ScalarProperty Name="ContractExpiryReminder3Date" ColumnName="ContractExpiryReminder3Date" />
+                <ScalarProperty Name="ContractExpiryReminder2Duration" ColumnName="ContractExpiryReminder2Duration" />
+                <ScalarProperty Name="ContractExpiryReminder2Date" ColumnName="ContractExpiryReminder2Date" />
+                <ScalarProperty Name="ContractExpiryReminder1Duration" ColumnName="ContractExpiryReminder1Duration" />
+                <ScalarProperty Name="ContractExpiryReminder1Date" ColumnName="ContractExpiryReminder1Date" />
+                <ScalarProperty Name="AlertID" ColumnName="AlertID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblApprovalLogs">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblApprovalLog">
+              <MappingFragment StoreEntitySet="tblApprovalLog">
+                <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
+                <ScalarProperty Name="ChangedTo" ColumnName="ChangedTo" />
+                <ScalarProperty Name="ChangedFrom" ColumnName="ChangedFrom" />
+                <ScalarProperty Name="LogActivity" ColumnName="LogActivity" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LogApprovalUID" ColumnName="LogApprovalUID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblApprovalMasters">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblApprovalMaster">
+              <MappingFragment StoreEntitySet="tblApprovalMaster">
+                <ScalarProperty Name="Plant" ColumnName="Plant" />
+                <ScalarProperty Name="EMPID" ColumnName="EMPID" />
+                <ScalarProperty Name="ApprovalLevel" ColumnName="ApprovalLevel" />
+                <ScalarProperty Name="SubDepartment" ColumnName="SubDepartment" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="WorkflowType" ColumnName="WorkflowType" />
+                <ScalarProperty Name="ApprovalID" ColumnName="ApprovalID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCategories">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblCategory">
+              <MappingFragment StoreEntitySet="tblCategory">
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCategoryLogs">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblCategoryLog">
+              <MappingFragment StoreEntitySet="tblCategoryLog">
+                <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
+                <ScalarProperty Name="ChangedTo" ColumnName="ChangedTo" />
+                <ScalarProperty Name="ChangedFrom" ColumnName="ChangedFrom" />
+                <ScalarProperty Name="LogActivity" ColumnName="LogActivity" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LogCategoryUID" ColumnName="LogCategoryUID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblClauseAudits">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblClauseAudit">
+              <MappingFragment StoreEntitySet="tblClauseAudit">
+                <ScalarProperty Name="AuditStatus" ColumnName="AuditStatus" />
+                <ScalarProperty Name="AuditLastReviewed" ColumnName="AuditLastReviewed" />
+                <ScalarProperty Name="AuditEmployeeID" ColumnName="AuditEmployeeID" />
+                <ScalarProperty Name="AuditClauseComments" ColumnName="AuditClauseComments" />
+                <ScalarProperty Name="AuditClauseID" ColumnName="AuditClauseID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblClauseLogs">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblClauseLog">
+              <MappingFragment StoreEntitySet="tblClauseLog">
+                <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
+                <ScalarProperty Name="ChangedTo" ColumnName="ChangedTo" />
+                <ScalarProperty Name="ChangedFrom" ColumnName="ChangedFrom" />
+                <ScalarProperty Name="LogActivity" ColumnName="LogActivity" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LogClauseUID" ColumnName="LogClauseUID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblClauseMasters">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblClauseMaster">
+              <MappingFragment StoreEntitySet="tblClauseMaster">
+                <ScalarProperty Name="ClauseStatus" ColumnName="ClauseStatus" />
+                <ScalarProperty Name="ClauseLastModified" ColumnName="ClauseLastModified" />
+                <ScalarProperty Name="ClauseClauseText" ColumnName="ClauseClauseText" />
+                <ScalarProperty Name="ClauseClauseDescription" ColumnName="ClauseClauseDescription" />
+                <ScalarProperty Name="ClauseClauseTitle" ColumnName="ClauseClauseTitle" />
+                <ScalarProperty Name="ClauseClauseID" ColumnName="ClauseClauseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblContractAudits">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblContractAudit">
+              <MappingFragment StoreEntitySet="tblContractAudit">
+                <ScalarProperty Name="AuditStatus" ColumnName="AuditStatus" />
+                <ScalarProperty Name="AuditLastReviewed" ColumnName="AuditLastReviewed" />
+                <ScalarProperty Name="AuditEmployeeID" ColumnName="AuditEmployeeID" />
+                <ScalarProperty Name="AuditContractComments" ColumnName="AuditContractComments" />
+                <ScalarProperty Name="AuditContractD" ColumnName="AuditContractD" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblContractLogs">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblContractLog">
+              <MappingFragment StoreEntitySet="tblContractLog">
+                <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
+                <ScalarProperty Name="ChangedTo" ColumnName="ChangedTo" />
+                <ScalarProperty Name="ChangedFrom" ColumnName="ChangedFrom" />
+                <ScalarProperty Name="LogActivity" ColumnName="LogActivity" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LogContractUID" ColumnName="LogContractUID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblContractMasters">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblContractMaster">
+              <MappingFragment StoreEntitySet="tblContractMaster">
+                <ScalarProperty Name="Plant" ColumnName="Plant" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="Template" ColumnName="Template" />
+                <ScalarProperty Name="ReviewedComments" ColumnName="ReviewedComments" />
+                <ScalarProperty Name="ReviewedOn" ColumnName="ReviewedOn" />
+                <ScalarProperty Name="PhysicalCopyLocation" ColumnName="PhysicalCopyLocation" />
+                <ScalarProperty Name="ReviewerID" ColumnName="ReviewerID" />
+                <ScalarProperty Name="InEffectTo" ColumnName="InEffectTo" />
+                <ScalarProperty Name="InEffectFrom" ColumnName="InEffectFrom" />
+                <ScalarProperty Name="ModifiedSupportingDoc1FileType" ColumnName="ModifiedSupportingDoc1FileType" />
+                <ScalarProperty Name="ModifiedSupportingDoc1FileName" ColumnName="ModifiedSupportingDoc1FileName" />
+                <ScalarProperty Name="ModifiedSupportingDoc1" ColumnName="ModifiedSupportingDoc1" />
+                <ScalarProperty Name="RejectedBy" ColumnName="RejectedBy" />
+                <ScalarProperty Name="DefaultVariables" ColumnName="DefaultVariables" />
+                <ScalarProperty Name="NextApprover" ColumnName="NextApprover" />
+                <ScalarProperty Name="PendingFrom" ColumnName="PendingFrom" />
+                <ScalarProperty Name="Approver10ApprovedOn" ColumnName="Approver10ApprovedOn" />
+                <ScalarProperty Name="Approver10ReceivedOn" ColumnName="Approver10ReceivedOn" />
+                <ScalarProperty Name="Approver10Status" ColumnName="Approver10Status" />
+                <ScalarProperty Name="Approver10Comments" ColumnName="Approver10Comments" />
+                <ScalarProperty Name="Approver10Draft" ColumnName="Approver10Draft" />
+                <ScalarProperty Name="Approver10ID" ColumnName="Approver10ID" />
+                <ScalarProperty Name="Approver9ApprovedOn" ColumnName="Approver9ApprovedOn" />
+                <ScalarProperty Name="Approver9ReceivedOn" ColumnName="Approver9ReceivedOn" />
+                <ScalarProperty Name="Approver9Status" ColumnName="Approver9Status" />
+                <ScalarProperty Name="Approver9Comments" ColumnName="Approver9Comments" />
+                <ScalarProperty Name="Approver9Draft" ColumnName="Approver9Draft" />
+                <ScalarProperty Name="Approver9ID" ColumnName="Approver9ID" />
+                <ScalarProperty Name="Approver8ApprovedOn" ColumnName="Approver8ApprovedOn" />
+                <ScalarProperty Name="Approver8ReceivedOn" ColumnName="Approver8ReceivedOn" />
+                <ScalarProperty Name="Approver8Status" ColumnName="Approver8Status" />
+                <ScalarProperty Name="Approver8Comments" ColumnName="Approver8Comments" />
+                <ScalarProperty Name="Approver8Draft" ColumnName="Approver8Draft" />
+                <ScalarProperty Name="Approver8ID" ColumnName="Approver8ID" />
+                <ScalarProperty Name="Approver7ApprovedOn" ColumnName="Approver7ApprovedOn" />
+                <ScalarProperty Name="Approver7ReceivedOn" ColumnName="Approver7ReceivedOn" />
+                <ScalarProperty Name="Approver7Status" ColumnName="Approver7Status" />
+                <ScalarProperty Name="Approver7Comments" ColumnName="Approver7Comments" />
+                <ScalarProperty Name="Approver7Draft" ColumnName="Approver7Draft" />
+                <ScalarProperty Name="Approver7ID" ColumnName="Approver7ID" />
+                <ScalarProperty Name="Approver6ApprovedOn" ColumnName="Approver6ApprovedOn" />
+                <ScalarProperty Name="Approver6ReceivedOn" ColumnName="Approver6ReceivedOn" />
+                <ScalarProperty Name="Approver6Status" ColumnName="Approver6Status" />
+                <ScalarProperty Name="Approver6Comments" ColumnName="Approver6Comments" />
+                <ScalarProperty Name="Approver6Draft" ColumnName="Approver6Draft" />
+                <ScalarProperty Name="Approver6ID" ColumnName="Approver6ID" />
+                <ScalarProperty Name="Approver5ApprovedOn" ColumnName="Approver5ApprovedOn" />
+                <ScalarProperty Name="Approver5ReceivedOn" ColumnName="Approver5ReceivedOn" />
+                <ScalarProperty Name="Approver5Status" ColumnName="Approver5Status" />
+                <ScalarProperty Name="Approver5Comments" ColumnName="Approver5Comments" />
+                <ScalarProperty Name="Approver5Draft" ColumnName="Approver5Draft" />
+                <ScalarProperty Name="Approver5ID" ColumnName="Approver5ID" />
+                <ScalarProperty Name="Approver4ApprovedOn" ColumnName="Approver4ApprovedOn" />
+                <ScalarProperty Name="Approver4ReceivedOn" ColumnName="Approver4ReceivedOn" />
+                <ScalarProperty Name="Approver4Status" ColumnName="Approver4Status" />
+                <ScalarProperty Name="Approver4Comments" ColumnName="Approver4Comments" />
+                <ScalarProperty Name="Approver4Draft" ColumnName="Approver4Draft" />
+                <ScalarProperty Name="Approver4ID" ColumnName="Approver4ID" />
+                <ScalarProperty Name="Approver3ApprovedOn" ColumnName="Approver3ApprovedOn" />
+                <ScalarProperty Name="Approver3ReceivedOn" ColumnName="Approver3ReceivedOn" />
+                <ScalarProperty Name="Approver3Status" ColumnName="Approver3Status" />
+                <ScalarProperty Name="Approver3Comments" ColumnName="Approver3Comments" />
+                <ScalarProperty Name="Approver3Draft" ColumnName="Approver3Draft" />
+                <ScalarProperty Name="Approver3ID" ColumnName="Approver3ID" />
+                <ScalarProperty Name="Approver2ApprovedOn" ColumnName="Approver2ApprovedOn" />
+                <ScalarProperty Name="Approver2ReceivedOn" ColumnName="Approver2ReceivedOn" />
+                <ScalarProperty Name="Approver2Status" ColumnName="Approver2Status" />
+                <ScalarProperty Name="Approver2Comments" ColumnName="Approver2Comments" />
+                <ScalarProperty Name="Approver2Draft" ColumnName="Approver2Draft" />
+                <ScalarProperty Name="Approver2ID" ColumnName="Approver2ID" />
+                <ScalarProperty Name="Approver1ApprovedOn" ColumnName="Approver1ApprovedOn" />
+                <ScalarProperty Name="Approver1ReceivedOn" ColumnName="Approver1ReceivedOn" />
+                <ScalarProperty Name="Approver1Status" ColumnName="Approver1Status" />
+                <ScalarProperty Name="Approver1Comments" ColumnName="Approver1Comments" />
+                <ScalarProperty Name="Approver1Draft" ColumnName="Approver1Draft" />
+                <ScalarProperty Name="Approver1ID" ColumnName="Approver1ID" />
+                <ScalarProperty Name="LastReviewed" ColumnName="LastReviewed" />
+                <ScalarProperty Name="Variables" ColumnName="Variables" />
+                <ScalarProperty Name="DateofInitiated" ColumnName="DateofInitiated" />
+                <ScalarProperty Name="SupportingDoc5FileType" ColumnName="SupportingDoc5FileType" />
+                <ScalarProperty Name="SupportingDoc5FileName" ColumnName="SupportingDoc5FileName" />
+                <ScalarProperty Name="SupportingDoc5" ColumnName="SupportingDoc5" />
+                <ScalarProperty Name="SupportingDoc4FileType" ColumnName="SupportingDoc4FileType" />
+                <ScalarProperty Name="SupportingDoc4FileName" ColumnName="SupportingDoc4FileName" />
+                <ScalarProperty Name="SupportingDoc4" ColumnName="SupportingDoc4" />
+                <ScalarProperty Name="SupportingDoc3FileType" ColumnName="SupportingDoc3FileType" />
+                <ScalarProperty Name="SupportingDoc3FileName" ColumnName="SupportingDoc3FileName" />
+                <ScalarProperty Name="SupportingDoc3" ColumnName="SupportingDoc3" />
+                <ScalarProperty Name="SupportingDoc2FileType" ColumnName="SupportingDoc2FileType" />
+                <ScalarProperty Name="SupportingDoc2FileName" ColumnName="SupportingDoc2FileName" />
+                <ScalarProperty Name="SupportingDoc2" ColumnName="SupportingDoc2" />
+                <ScalarProperty Name="SupportingDoc1FileType" ColumnName="SupportingDoc1FileType" />
+                <ScalarProperty Name="SupportingDoc1FileName" ColumnName="SupportingDoc1FileName" />
+                <ScalarProperty Name="SupportingDoc1" ColumnName="SupportingDoc1" />
+                <ScalarProperty Name="ContractModificationType" ColumnName="ContractModificationType" />
+                <ScalarProperty Name="OriginalContractID" ColumnName="OriginalContractID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TemplateType" ColumnName="TemplateType" />
+                <ScalarProperty Name="ContractDraft" ColumnName="ContractDraft" />
+                <ScalarProperty Name="InitiatorDraft" ColumnName="InitiatorDraft" />
+                <ScalarProperty Name="InitiatorStatus" ColumnName="InitiatorStatus" />
+                <ScalarProperty Name="InitiatorComments" ColumnName="InitiatorComments" />
+                <ScalarProperty Name="Initiator" ColumnName="Initiator" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UploadSignOffContractFileType" ColumnName="UploadSignOffContractFileType" />
+                <ScalarProperty Name="UploadSignOffContractFileName" ColumnName="UploadSignOffContractFileName" />
+                <ScalarProperty Name="UploadSignOffContractFile" ColumnName="UploadSignOffContractFile" />
+                <ScalarProperty Name="UploadExistingContractFileType" ColumnName="UploadExistingContractFileType" />
+                <ScalarProperty Name="UploadExistingContractFileName" ColumnName="UploadExistingContractFileName" />
+                <ScalarProperty Name="UploadExistingFile" ColumnName="UploadExistingFile" />
+                <ScalarProperty Name="SubDepartment" ColumnName="SubDepartment" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="ContractSubCategory" ColumnName="ContractSubCategory" />
+                <ScalarProperty Name="ContractCategory" ColumnName="ContractCategory" />
+                <ScalarProperty Name="ContractType" ColumnName="ContractType" />
+                <ScalarProperty Name="ContractName" ColumnName="ContractName" />
+                <ScalarProperty Name="ContractID" ColumnName="ContractID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblContractModifications">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblContractModification">
+              <MappingFragment StoreEntitySet="tblContractModification">
+                <ScalarProperty Name="Plant" ColumnName="Plant" />
+                <ScalarProperty Name="SubDepartment" ColumnName="SubDepartment" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Template" ColumnName="Template" />
+                <ScalarProperty Name="ReviewedComments" ColumnName="ReviewedComments" />
+                <ScalarProperty Name="ReviewedOn" ColumnName="ReviewedOn" />
+                <ScalarProperty Name="PhysicalCopyLocation" ColumnName="PhysicalCopyLocation" />
+                <ScalarProperty Name="ReviewerID" ColumnName="ReviewerID" />
+                <ScalarProperty Name="InEffectTo" ColumnName="InEffectTo" />
+                <ScalarProperty Name="InEffectFrom" ColumnName="InEffectFrom" />
+                <ScalarProperty Name="ModifiedSupportingDoc1FileType" ColumnName="ModifiedSupportingDoc1FileType" />
+                <ScalarProperty Name="ModifiedSupportingDoc1FileName" ColumnName="ModifiedSupportingDoc1FileName" />
+                <ScalarProperty Name="ModifiedSupportingDoc1" ColumnName="ModifiedSupportingDoc1" />
+                <ScalarProperty Name="RejectedBy" ColumnName="RejectedBy" />
+                <ScalarProperty Name="DefaultVariables" ColumnName="DefaultVariables" />
+                <ScalarProperty Name="NextApprover" ColumnName="NextApprover" />
+                <ScalarProperty Name="PendingFrom" ColumnName="PendingFrom" />
+                <ScalarProperty Name="Approver10ApprovedOn" ColumnName="Approver10ApprovedOn" />
+                <ScalarProperty Name="Approver10ReceivedOn" ColumnName="Approver10ReceivedOn" />
+                <ScalarProperty Name="Approver10Status" ColumnName="Approver10Status" />
+                <ScalarProperty Name="Approver10Comments" ColumnName="Approver10Comments" />
+                <ScalarProperty Name="Approver10Draft" ColumnName="Approver10Draft" />
+                <ScalarProperty Name="Approver10ID" ColumnName="Approver10ID" />
+                <ScalarProperty Name="Approver9ApprovedOn" ColumnName="Approver9ApprovedOn" />
+                <ScalarProperty Name="Approver9ReceivedOn" ColumnName="Approver9ReceivedOn" />
+                <ScalarProperty Name="Approver9Status" ColumnName="Approver9Status" />
+                <ScalarProperty Name="Approver9Comments" ColumnName="Approver9Comments" />
+                <ScalarProperty Name="Approver9Draft" ColumnName="Approver9Draft" />
+                <ScalarProperty Name="Approver9ID" ColumnName="Approver9ID" />
+                <ScalarProperty Name="Approver8ApprovedOn" ColumnName="Approver8ApprovedOn" />
+                <ScalarProperty Name="Approver8ReceivedOn" ColumnName="Approver8ReceivedOn" />
+                <ScalarProperty Name="Approver8Status" ColumnName="Approver8Status" />
+                <ScalarProperty Name="Approver8Comments" ColumnName="Approver8Comments" />
+                <ScalarProperty Name="Approver8Draft" ColumnName="Approver8Draft" />
+                <ScalarProperty Name="Approver8ID" ColumnName="Approver8ID" />
+                <ScalarProperty Name="Approver7ApprovedOn" ColumnName="Approver7ApprovedOn" />
+                <ScalarProperty Name="Approver7ReceivedOn" ColumnName="Approver7ReceivedOn" />
+                <ScalarProperty Name="Approver7Status" ColumnName="Approver7Status" />
+                <ScalarProperty Name="Approver7Comments" ColumnName="Approver7Comments" />
+                <ScalarProperty Name="Approver7Draft" ColumnName="Approver7Draft" />
+                <ScalarProperty Name="Approver7ID" ColumnName="Approver7ID" />
+                <ScalarProperty Name="Approver6ApprovedOn" ColumnName="Approver6ApprovedOn" />
+                <ScalarProperty Name="Approver6ReceivedOn" ColumnName="Approver6ReceivedOn" />
+                <ScalarProperty Name="Approver6Status" ColumnName="Approver6Status" />
+                <ScalarProperty Name="Approver6Comments" ColumnName="Approver6Comments" />
+                <ScalarProperty Name="Approver6Draft" ColumnName="Approver6Draft" />
+                <ScalarProperty Name="Approver6ID" ColumnName="Approver6ID" />
+                <ScalarProperty Name="Approver5ApprovedOn" ColumnName="Approver5ApprovedOn" />
+                <ScalarProperty Name="Approver5ReceivedOn" ColumnName="Approver5ReceivedOn" />
+                <ScalarProperty Name="Approver5Status" ColumnName="Approver5Status" />
+                <ScalarProperty Name="Approver5Comments" ColumnName="Approver5Comments" />
+                <ScalarProperty Name="Approver5Draft" ColumnName="Approver5Draft" />
+                <ScalarProperty Name="Approver5ID" ColumnName="Approver5ID" />
+                <ScalarProperty Name="Approver4ApprovedOn" ColumnName="Approver4ApprovedOn" />
+                <ScalarProperty Name="Approver4ReceivedOn" ColumnName="Approver4ReceivedOn" />
+                <ScalarProperty Name="Approver4Status" ColumnName="Approver4Status" />
+                <ScalarProperty Name="Approver4Comments" ColumnName="Approver4Comments" />
+                <ScalarProperty Name="Approver4Draft" ColumnName="Approver4Draft" />
+                <ScalarProperty Name="Approver4ID" ColumnName="Approver4ID" />
+                <ScalarProperty Name="Approver3ApprovedOn" ColumnName="Approver3ApprovedOn" />
+                <ScalarProperty Name="Approver3ReceivedOn" ColumnName="Approver3ReceivedOn" />
+                <ScalarProperty Name="Approver3Status" ColumnName="Approver3Status" />
+                <ScalarProperty Name="Approver3Comments" ColumnName="Approver3Comments" />
+                <ScalarProperty Name="Approver3Draft" ColumnName="Approver3Draft" />
+                <ScalarProperty Name="Approver3ID" ColumnName="Approver3ID" />
+                <ScalarProperty Name="Approver2ApprovedOn" ColumnName="Approver2ApprovedOn" />
+                <ScalarProperty Name="Approver2ReceivedOn" ColumnName="Approver2ReceivedOn" />
+                <ScalarProperty Name="Approver2Status" ColumnName="Approver2Status" />
+                <ScalarProperty Name="Approver2Comments" ColumnName="Approver2Comments" />
+                <ScalarProperty Name="Approver2Draft" ColumnName="Approver2Draft" />
+                <ScalarProperty Name="Approver2ID" ColumnName="Approver2ID" />
+                <ScalarProperty Name="Approver1ApprovedOn" ColumnName="Approver1ApprovedOn" />
+                <ScalarProperty Name="Approver1ReceivedOn" ColumnName="Approver1ReceivedOn" />
+                <ScalarProperty Name="Approver1Status" ColumnName="Approver1Status" />
+                <ScalarProperty Name="Approver1Comments" ColumnName="Approver1Comments" />
+                <ScalarProperty Name="Approver1Draft" ColumnName="Approver1Draft" />
+                <ScalarProperty Name="Approver1ID" ColumnName="Approver1ID" />
+                <ScalarProperty Name="LastReviewed" ColumnName="LastReviewed" />
+                <ScalarProperty Name="Variables" ColumnName="Variables" />
+                <ScalarProperty Name="DateofInitiated" ColumnName="DateofInitiated" />
+                <ScalarProperty Name="SupportingDoc5FileType" ColumnName="SupportingDoc5FileType" />
+                <ScalarProperty Name="SupportingDoc5FileName" ColumnName="SupportingDoc5FileName" />
+                <ScalarProperty Name="SupportingDoc5" ColumnName="SupportingDoc5" />
+                <ScalarProperty Name="SupportingDoc4FileType" ColumnName="SupportingDoc4FileType" />
+                <ScalarProperty Name="SupportingDoc4FileName" ColumnName="SupportingDoc4FileName" />
+                <ScalarProperty Name="SupportingDoc4" ColumnName="SupportingDoc4" />
+                <ScalarProperty Name="SupportingDoc3FileType" ColumnName="SupportingDoc3FileType" />
+                <ScalarProperty Name="SupportingDoc3FileName" ColumnName="SupportingDoc3FileName" />
+                <ScalarProperty Name="SupportingDoc3" ColumnName="SupportingDoc3" />
+                <ScalarProperty Name="SupportingDoc2FileType" ColumnName="SupportingDoc2FileType" />
+                <ScalarProperty Name="SupportingDoc2FileName" ColumnName="SupportingDoc2FileName" />
+                <ScalarProperty Name="SupportingDoc2" ColumnName="SupportingDoc2" />
+                <ScalarProperty Name="SupportingDoc1FileType" ColumnName="SupportingDoc1FileType" />
+                <ScalarProperty Name="SupportingDoc1FileName" ColumnName="SupportingDoc1FileName" />
+                <ScalarProperty Name="SupportingDoc1" ColumnName="SupportingDoc1" />
+                <ScalarProperty Name="ContractModificationType" ColumnName="ContractModificationType" />
+                <ScalarProperty Name="OriginalContractID" ColumnName="OriginalContractID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TemplateType" ColumnName="TemplateType" />
+                <ScalarProperty Name="ContractDraft" ColumnName="ContractDraft" />
+                <ScalarProperty Name="InitiatorDraft" ColumnName="InitiatorDraft" />
+                <ScalarProperty Name="InitiatorStatus" ColumnName="InitiatorStatus" />
+                <ScalarProperty Name="InitiatorComments" ColumnName="InitiatorComments" />
+                <ScalarProperty Name="Initiator" ColumnName="Initiator" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UploadSignOffContractFileType" ColumnName="UploadSignOffContractFileType" />
+                <ScalarProperty Name="UploadSignOffContractFileName" ColumnName="UploadSignOffContractFileName" />
+                <ScalarProperty Name="UploadSignOffContractFile" ColumnName="UploadSignOffContractFile" />
+                <ScalarProperty Name="UploadExistingContractFileType" ColumnName="UploadExistingContractFileType" />
+                <ScalarProperty Name="UploadExistingContractFileName" ColumnName="UploadExistingContractFileName" />
+                <ScalarProperty Name="UploadExistingFile" ColumnName="UploadExistingFile" />
+                <ScalarProperty Name="ContractSubCategory" ColumnName="ContractSubCategory" />
+                <ScalarProperty Name="ContractCategory" ColumnName="ContractCategory" />
+                <ScalarProperty Name="ContractType" ColumnName="ContractType" />
+                <ScalarProperty Name="ContractName" ColumnName="ContractName" />
+                <ScalarProperty Name="ContractID" ColumnName="ContractID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDeligationMatrices">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblDeligationMatrix">
+              <MappingFragment StoreEntitySet="tblDeligationMatrix">
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="DeligateTo" ColumnName="DeligateTo" />
+                <ScalarProperty Name="DeligateFrom" ColumnName="DeligateFrom" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDepartments">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblDepartment">
+              <MappingFragment StoreEntitySet="tblDepartment">
+                <ScalarProperty Name="PlantName" ColumnName="PlantName" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDepartmentLogs">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblDepartmentLog">
+              <MappingFragment StoreEntitySet="tblDepartmentLog">
+                <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
+                <ScalarProperty Name="ChangedTo" ColumnName="ChangedTo" />
+                <ScalarProperty Name="ChangedFrom" ColumnName="ChangedFrom" />
+                <ScalarProperty Name="LogActivity" ColumnName="LogActivity" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LogDepartmentUID" ColumnName="LogDepartmentUID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDepartmentMappings">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblDepartmentMapping">
+              <MappingFragment StoreEntitySet="tblDepartmentMapping">
+                <ScalarProperty Name="SubDepartment" ColumnName="SubDepartment" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSubCategories">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblSubCategory">
+              <MappingFragment StoreEntitySet="tblSubCategory">
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSubCategoryLogs">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblSubCategoryLog">
+              <MappingFragment StoreEntitySet="tblSubCategoryLog">
+                <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
+                <ScalarProperty Name="ChangedTo" ColumnName="ChangedTo" />
+                <ScalarProperty Name="ChangedFrom" ColumnName="ChangedFrom" />
+                <ScalarProperty Name="LogActivity" ColumnName="LogActivity" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LogSubCategoryUID" ColumnName="LogSubCategoryUID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSubDepartments">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblSubDepartment">
+              <MappingFragment StoreEntitySet="tblSubDepartment">
+                <ScalarProperty Name="PlantName" ColumnName="PlantName" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="SubDepartmentName" ColumnName="SubDepartmentName" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="SubDepartmentID" ColumnName="SubDepartmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSubDepartmentLogs">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblSubDepartmentLog">
+              <MappingFragment StoreEntitySet="tblSubDepartmentLog">
+                <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
+                <ScalarProperty Name="ChangedTo" ColumnName="ChangedTo" />
+                <ScalarProperty Name="ChangedFrom" ColumnName="ChangedFrom" />
+                <ScalarProperty Name="LogActivity" ColumnName="LogActivity" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LogSubDepartmentUID" ColumnName="LogSubDepartmentUID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTemplateAddendumLogs">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblTemplateAddendumLog">
+              <MappingFragment StoreEntitySet="tblTemplateAddendumLog">
+                <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
+                <ScalarProperty Name="ChangedTo" ColumnName="ChangedTo" />
+                <ScalarProperty Name="ChangedFrom" ColumnName="ChangedFrom" />
+                <ScalarProperty Name="LogActivity" ColumnName="LogActivity" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LogTemplateUID" ColumnName="LogTemplateUID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTemplateAmendments">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblTemplateAmendment">
+              <MappingFragment StoreEntitySet="tblTemplateAmendments">
+                <ScalarProperty Name="Termination" ColumnName="Termination" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="Amendments" ColumnName="Amendments" />
+                <ScalarProperty Name="TempID" ColumnName="TempID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTemplateAudits">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblTemplateAudit">
+              <MappingFragment StoreEntitySet="tblTemplateAudit">
+                <ScalarProperty Name="AuditStatus" ColumnName="AuditStatus" />
+                <ScalarProperty Name="AuditLastReviewed" ColumnName="AuditLastReviewed" />
+                <ScalarProperty Name="AuditEmployeeID" ColumnName="AuditEmployeeID" />
+                <ScalarProperty Name="AuditTemplateComments" ColumnName="AuditTemplateComments" />
+                <ScalarProperty Name="AuditTemplateID" ColumnName="AuditTemplateID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTemplateLogs">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblTemplateLog">
+              <MappingFragment StoreEntitySet="tblTemplateLog">
+                <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
+                <ScalarProperty Name="ChangedTo" ColumnName="ChangedTo" />
+                <ScalarProperty Name="ChangedFrom" ColumnName="ChangedFrom" />
+                <ScalarProperty Name="LogActivity" ColumnName="LogActivity" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LogTemplateUID" ColumnName="LogTemplateUID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTemplateMasters">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblTemplateMaster">
+              <MappingFragment StoreEntitySet="tblTemplateMaster">
+                <ScalarProperty Name="ReviewedComments" ColumnName="ReviewedComments" />
+                <ScalarProperty Name="ReviewedOn" ColumnName="ReviewedOn" />
+                <ScalarProperty Name="PhysicalCopyLocation" ColumnName="PhysicalCopyLocation" />
+                <ScalarProperty Name="ReviewerID" ColumnName="ReviewerID" />
+                <ScalarProperty Name="InitiatorTemplate" ColumnName="InitiatorTemplate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RejectedBy" ColumnName="RejectedBy" />
+                <ScalarProperty Name="NextApprover" ColumnName="NextApprover" />
+                <ScalarProperty Name="PendingFrom" ColumnName="PendingFrom" />
+                <ScalarProperty Name="Approver10ApprovedOn" ColumnName="Approver10ApprovedOn" />
+                <ScalarProperty Name="Approver10ReceivedOn" ColumnName="Approver10ReceivedOn" />
+                <ScalarProperty Name="Approver10Status" ColumnName="Approver10Status" />
+                <ScalarProperty Name="Approver10Comments" ColumnName="Approver10Comments" />
+                <ScalarProperty Name="Approver10Draft" ColumnName="Approver10Draft" />
+                <ScalarProperty Name="Approver10ID" ColumnName="Approver10ID" />
+                <ScalarProperty Name="Approver9ApprovedOn" ColumnName="Approver9ApprovedOn" />
+                <ScalarProperty Name="Approver9ReceivedOn" ColumnName="Approver9ReceivedOn" />
+                <ScalarProperty Name="Approver9Status" ColumnName="Approver9Status" />
+                <ScalarProperty Name="Approver9Comments" ColumnName="Approver9Comments" />
+                <ScalarProperty Name="Approver9Draft" ColumnName="Approver9Draft" />
+                <ScalarProperty Name="Approver9ID" ColumnName="Approver9ID" />
+                <ScalarProperty Name="Approver8ApprovedOn" ColumnName="Approver8ApprovedOn" />
+                <ScalarProperty Name="Approver8ReceivedOn" ColumnName="Approver8ReceivedOn" />
+                <ScalarProperty Name="Approver8Status" ColumnName="Approver8Status" />
+                <ScalarProperty Name="Approver8Comments" ColumnName="Approver8Comments" />
+                <ScalarProperty Name="Approver8Draft" ColumnName="Approver8Draft" />
+                <ScalarProperty Name="Approver8ID" ColumnName="Approver8ID" />
+                <ScalarProperty Name="Approver7ApprovedOn" ColumnName="Approver7ApprovedOn" />
+                <ScalarProperty Name="Approver7ReceivedOn" ColumnName="Approver7ReceivedOn" />
+                <ScalarProperty Name="Approver7Status" ColumnName="Approver7Status" />
+                <ScalarProperty Name="Approver7Comments" ColumnName="Approver7Comments" />
+                <ScalarProperty Name="Approver7Draft" ColumnName="Approver7Draft" />
+                <ScalarProperty Name="Approver7ID" ColumnName="Approver7ID" />
+                <ScalarProperty Name="Approver6ApprovedOn" ColumnName="Approver6ApprovedOn" />
+                <ScalarProperty Name="Approver6ReceivedOn" ColumnName="Approver6ReceivedOn" />
+                <ScalarProperty Name="Approver6Status" ColumnName="Approver6Status" />
+                <ScalarProperty Name="Approver6Comments" ColumnName="Approver6Comments" />
+                <ScalarProperty Name="Approver6Draft" ColumnName="Approver6Draft" />
+                <ScalarProperty Name="Approver6ID" ColumnName="Approver6ID" />
+                <ScalarProperty Name="Approver5ApprovedOn" ColumnName="Approver5ApprovedOn" />
+                <ScalarProperty Name="Approver5ReceivedOn" ColumnName="Approver5ReceivedOn" />
+                <ScalarProperty Name="Approver5Status" ColumnName="Approver5Status" />
+                <ScalarProperty Name="Approver5Comments" ColumnName="Approver5Comments" />
+                <ScalarProperty Name="Approver5Draft" ColumnName="Approver5Draft" />
+                <ScalarProperty Name="Approver5ID" ColumnName="Approver5ID" />
+                <ScalarProperty Name="Approver4ApprovedOn" ColumnName="Approver4ApprovedOn" />
+                <ScalarProperty Name="Approver4ReceivedOn" ColumnName="Approver4ReceivedOn" />
+                <ScalarProperty Name="Approver4Status" ColumnName="Approver4Status" />
+                <ScalarProperty Name="Approver4Comments" ColumnName="Approver4Comments" />
+                <ScalarProperty Name="Approver4Draft" ColumnName="Approver4Draft" />
+                <ScalarProperty Name="Approver4ID" ColumnName="Approver4ID" />
+                <ScalarProperty Name="Approver3ApprovedOn" ColumnName="Approver3ApprovedOn" />
+                <ScalarProperty Name="Approver3ReceivedOn" ColumnName="Approver3ReceivedOn" />
+                <ScalarProperty Name="Approver3Status" ColumnName="Approver3Status" />
+                <ScalarProperty Name="Approver3Comments" ColumnName="Approver3Comments" />
+                <ScalarProperty Name="Approver3Draft" ColumnName="Approver3Draft" />
+                <ScalarProperty Name="Approver3ID" ColumnName="Approver3ID" />
+                <ScalarProperty Name="Approver2ApprovedOn" ColumnName="Approver2ApprovedOn" />
+                <ScalarProperty Name="Approver2ReceivedOn" ColumnName="Approver2ReceivedOn" />
+                <ScalarProperty Name="Approver2Status" ColumnName="Approver2Status" />
+                <ScalarProperty Name="Approver2Comments" ColumnName="Approver2Comments" />
+                <ScalarProperty Name="Approver2Draft" ColumnName="Approver2Draft" />
+                <ScalarProperty Name="Approver2ID" ColumnName="Approver2ID" />
+                <ScalarProperty Name="Approver1ApprovedOn" ColumnName="Approver1ApprovedOn" />
+                <ScalarProperty Name="Approver1ReceivedOn" ColumnName="Approver1ReceivedOn" />
+                <ScalarProperty Name="Approver1Status" ColumnName="Approver1Status" />
+                <ScalarProperty Name="Approver1Comments" ColumnName="Approver1Comments" />
+                <ScalarProperty Name="Approver1Draft" ColumnName="Approver1Draft" />
+                <ScalarProperty Name="Approver1ID" ColumnName="Approver1ID" />
+                <ScalarProperty Name="LastReviewed" ColumnName="LastReviewed" />
+                <ScalarProperty Name="DateofInitiated" ColumnName="DateofInitiated" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Template" ColumnName="Template" />
+                <ScalarProperty Name="InitiatorComments" ColumnName="InitiatorComments" />
+                <ScalarProperty Name="InitiatorStatus" ColumnName="InitiatorStatus" />
+                <ScalarProperty Name="Initiator" ColumnName="Initiator" />
+                <ScalarProperty Name="TemplateSequence" ColumnName="TemplateSequence" />
+                <ScalarProperty Name="SubDepartment" ColumnName="SubDepartment" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TemplateID" ColumnName="TemplateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserLogs">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblUserLog">
+              <MappingFragment StoreEntitySet="tblUserLog">
+                <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
+                <ScalarProperty Name="ChangedTo" ColumnName="ChangedTo" />
+                <ScalarProperty Name="ChangedFrom" ColumnName="ChangedFrom" />
+                <ScalarProperty Name="LogActivity" ColumnName="LogActivity" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LogUserUID" ColumnName="LogUserUID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserLogins">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblUserLogin">
+              <MappingFragment StoreEntitySet="tblUserLogin">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserMasters">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblUserMaster">
+              <MappingFragment StoreEntitySet="tblUserMaster">
+                <ScalarProperty Name="UserRoleFinance2" ColumnName="UserRoleFinance2" />
+                <ScalarProperty Name="UserPlant" ColumnName="UserPlant" />
+                <ScalarProperty Name="UserHodEmployeeEmailAddress" ColumnName="UserHodEmployeeEmailAddress" />
+                <ScalarProperty Name="UserHodEmployeeName" ColumnName="UserHodEmployeeName" />
+                <ScalarProperty Name="UserHodEmployeeID" ColumnName="UserHodEmployeeID" />
+                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+                <ScalarProperty Name="UserRoleReviewer" ColumnName="UserRoleReviewer" />
+                <ScalarProperty Name="UserRoleAdmin" ColumnName="UserRoleAdmin" />
+                <ScalarProperty Name="UserRoleFinance" ColumnName="UserRoleFinance" />
+                <ScalarProperty Name="UserRoleLegal" ColumnName="UserRoleLegal" />
+                <ScalarProperty Name="UserRoleApprover" ColumnName="UserRoleApprover" />
+                <ScalarProperty Name="UserRoleInitiator" ColumnName="UserRoleInitiator" />
+                <ScalarProperty Name="UserSubCategory" ColumnName="UserSubCategory" />
+                <ScalarProperty Name="UserCategory" ColumnName="UserCategory" />
+                <ScalarProperty Name="UserEmployeeDesignation" ColumnName="UserEmployeeDesignation" />
+                <ScalarProperty Name="UserEmployeeEmail" ColumnName="UserEmployeeEmail" />
+                <ScalarProperty Name="UserEmployeeName" ColumnName="UserEmployeeName" />
+                <ScalarProperty Name="UserEmployeeID" ColumnName="UserEmployeeID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVariableDatas">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblVariableData">
+              <MappingFragment StoreEntitySet="tblVariableData">
+                <ScalarProperty Name="VariableFrom" ColumnName="VariableFrom" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Variable" ColumnName="Variable" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVariables">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblVariable">
+              <MappingFragment StoreEntitySet="tblVariables">
+                <ScalarProperty Name="VariableValues" ColumnName="VariableValues" />
+                <ScalarProperty Name="VariableType" ColumnName="VariableType" />
+                <ScalarProperty Name="Variables" ColumnName="Variables" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVendorLogs">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblVendorLog">
+              <MappingFragment StoreEntitySet="tblVendorLog">
+                <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
+                <ScalarProperty Name="ChangedTo" ColumnName="ChangedTo" />
+                <ScalarProperty Name="ChangedFrom" ColumnName="ChangedFrom" />
+                <ScalarProperty Name="LogActivity" ColumnName="LogActivity" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LogVendorUID" ColumnName="LogVendorUID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVendorMasters">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblVendorMaster">
+              <MappingFragment StoreEntitySet="tblVendorMaster">
+                <ScalarProperty Name="VendorBranchOffice5" ColumnName="VendorBranchOffice5" />
+                <ScalarProperty Name="VendorBranchOffice4" ColumnName="VendorBranchOffice4" />
+                <ScalarProperty Name="VendorBranchOffice3" ColumnName="VendorBranchOffice3" />
+                <ScalarProperty Name="VendorBranchOffice2" ColumnName="VendorBranchOffice2" />
+                <ScalarProperty Name="VendorBranchOffice1" ColumnName="VendorBranchOffice1" />
+                <ScalarProperty Name="VendorRegisteredAddress" ColumnName="VendorRegisteredAddress" />
+                <ScalarProperty Name="VendorAuthorisedSignatory" ColumnName="VendorAuthorisedSignatory" />
+                <ScalarProperty Name="VendorTypeofEntity" ColumnName="VendorTypeofEntity" />
+                <ScalarProperty Name="VendorVendorName" ColumnName="VendorVendorName" />
+                <ScalarProperty Name="VendorCorporateIdentificationNumber" ColumnName="VendorCorporateIdentificationNumber" />
+                <ScalarProperty Name="VendorVendorID" ColumnName="VendorVendorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDeligationLogs">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblDeligationLog">
+              <MappingFragment StoreEntitySet="tblDeligationLog">
+                <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
+                <ScalarProperty Name="ChangedTo" ColumnName="ChangedTo" />
+                <ScalarProperty Name="ChangedFrom" ColumnName="ChangedFrom" />
+                <ScalarProperty Name="LogActivity" ColumnName="LogActivity" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LogDeligationUID" ColumnName="LogDeligationUID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblConfigurations">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblConfiguration">
+              <MappingFragment StoreEntitySet="tblConfiguration">
+                <ScalarProperty Name="MarginRight" ColumnName="MarginRight" />
+                <ScalarProperty Name="MarginBottom" ColumnName="MarginBottom" />
+                <ScalarProperty Name="MarginLeft" ColumnName="MarginLeft" />
+                <ScalarProperty Name="MarginTop" ColumnName="MarginTop" />
+                <ScalarProperty Name="PaperSize" ColumnName="PaperSize" />
+                <ScalarProperty Name="PaperType" ColumnName="PaperType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPlants">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblPlant">
+              <MappingFragment StoreEntitySet="tblPlant">
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="PlantName" ColumnName="PlantName" />
+                <ScalarProperty Name="PlantID" ColumnName="PlantID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPlantLogs">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblPlantLog">
+              <MappingFragment StoreEntitySet="tblPlantLog">
+                <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
+                <ScalarProperty Name="ChangedTo" ColumnName="ChangedTo" />
+                <ScalarProperty Name="ChangedFrom" ColumnName="ChangedFrom" />
+                <ScalarProperty Name="LogActivity" ColumnName="LogActivity" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LogPlantUID" ColumnName="LogPlantUID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblApprovalEscalations">
+            <EntityTypeMapping TypeName="ContractManagementSystemDBModel.tblApprovalEscalation">
+              <MappingFragment StoreEntitySet="tblApprovalEscalation">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="SubDepartment" ColumnName="SubDepartment" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Plant" ColumnName="Plant" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

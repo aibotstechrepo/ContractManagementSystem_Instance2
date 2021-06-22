@@ -1,0 +1,818 @@
+﻿@model ContractManagementSystem.Models.tblUserMaster
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    string CurrentUserID()
+    {
+        string userName = string.Empty;
+
+        if (HttpContext.Current.Request.IsAuthenticated)
+        {
+            userName = HttpContext.Current.User.Identity.Name.Split('|')[1];
+        }
+
+        return userName;
+
+    }
+}
+<style>
+    #ApproversTable tbody tr {
+        border-bottom: 1px solid #ebedf2;
+        border-top: 1px solid #ebedf2;
+    }
+</style>
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-head-row">
+                                <div class="card-title">
+                                    <b>User Deligation</b>
+                                </div>
+
+                                <div class="card-tools form-inline">
+                                    <button type="button" class="btn btn-sm btn-success btn_success" onclick="SaveDeligation();" title="Save Deligate" style="font-size:14px;">Save Deligate</button>
+                                    <span id="RemoveDeligate_Button_2" style="display:none;">&nbsp;&nbsp;</span><button type="button" id="RemoveDeligate_Button" class="btn btn-sm btn-danger btn_danger" title="Remove Deligation" onclick="RemoveDeligation();" style="display:none;">Remove Deligation</button>
+                                    &nbsp;&nbsp;<button type="button" class="btn btn-sm btn-light" title="History" data-toggle="modal" data-target="#LogModel"><i class="flaticon-clock-1" aria-hidden="true"></i>&nbsp;&nbsp;History</button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="card" style="height:450px; margin-bottom:2px;">
+                                        <div class="card-header">
+
+                                            <div class="row align-items-center">
+                                                <div class="col-sm-8">
+                                                    <input type="hidden" class="DeligateSearchType" />
+                                                    <h3><b>Deligation From</b></h3>
+                                                </div>
+                                                <div class="col-sm-4 text-right">
+                                                    @if (User.IsInRole("admin"))
+                                                    {
+                                                        <button class="btn btn-sm btn-light btn_create" title="Search Deligate" id="Search_Admin" onclick="SearchModal(this.id);" data-toggle="modal"> Search User</button>
+
+                                                    }
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+
+                                                    <div class="table-responsive">
+                                                        <table id="ApproversTable" class="display table table-bordered table-striped table-hover">
+
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td style="width:30%;"><label><b>Employee ID</b></label></td>
+                                                                    <td style="width:70%;"><h5 id="Employee_ID"></h5></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><label><b>Name</b></label></td>
+                                                                    <td><h5 id="Employee_Name"></h5></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><label><b>Email ID</b></label></td>
+                                                                    <td><h5 id="Employee_Email"></h5></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><label><b>Roles</b></label></td>
+                                                                    <td><h5 id="Employee_Roles"></h5></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><label><b>Duration From</b></label></td>
+                                                                    <td>
+                                                                        <div class="input-group date" id="datetimepicker9" data-target-input="nearest">
+                                                                            <input type="text" maxlength="50" id="terminationdatecontractfrom" class="form-control datetimepicker-input" data-target="#datetimepicker9" />
+                                                                            <div class="input-group-append" data-target="#datetimepicker9" data-toggle="datetimepicker">
+                                                                                <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><label><b>Duration To</b></label></td>
+                                                                    <td>
+                                                                        <div class="input-group date" id="datetimepicker10" data-target-input="nearest">
+                                                                            <input type="text" maxlength="50" id="terminationdatecontractto" class="form-control datetimepicker-input" data-target="#datetimepicker10" />
+                                                                            <div class="input-group-append" data-target="#datetimepicker10" data-toggle="datetimepicker">
+                                                                                <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="card" style="height:450px; margin-bottom:2px;">
+                                        <div class="card-header">
+                                            <div class="row align-items-center">
+                                                <div class="col-sm-8">
+                                                    <h3><b>Deligating To</b></h3>
+                                                </div>
+                                                <div class="col-sm-4 text-right">
+                                                    <button class="btn btn-sm btn-light btn_create" title="Search Deligate" data-toggle="modal" id="Search_Others" onclick="SearchModal(this.id);"> Search User</button>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="card-body">
+
+
+                                            <div class="row">
+                                                <div class="col-sm-12">
+
+                                                    <div class="table-responsive">
+                                                        <table id="ApproversTable" class="display table table-bordered table-striped table-hover">
+
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td style="width:30%;"><label><b>Employee ID</b></label></td>
+                                                                    <td style="width:70%;"><h5 id="DeligateEmployeeID"></h5></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><label><b>Name</b></label></td>
+                                                                    <td><h5 id="DeligateEmployeeName"></h5></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><label><b>Email ID</b></label></td>
+                                                                    <td><h5 id="DeligateEmployeeEmail"></h5></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><label><b>Roles</b></label></td>
+                                                                    <td><h5 id="DeligateEmployeeRoles"></h5></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="searchmodal" role="dialog" tabindex="-1">
+    <div class="text-right model_body_position">
+    </div>
+
+    <div class="modal-dialog" style="max-width:80%;">
+
+        <div class="modal-content">
+
+
+            <div class="modal-header modalheadercolor websitecolour">
+                <label style="font-size: 20px !important;"><b>Search Employee</b></label>
+                <button data-dismiss="modal" class="modaldismissarrow text-right btn btn-sm btn-light btn_close" title="Close"> Close</button>
+            </div>
+            <div class="modal-body" style="height:480px;">
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <div class="form-group form-inline">
+                            <div class="col-md-2">
+                                <label class="col-form-label"><b>Search By :</b></label>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-control" id="UserSearchOption" name="UserSearchType" style="padding-bottom:3px;padding-top:3px;">
+                                    <option> Employee ID </option>
+                                    <option> Employee Name </option>
+                                    <option> Employee Email Address </option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" maxlength="50" onkeyup="this.value = this.value.replace(/[^a-zA-Z0-9@('@')._-\s]/g, '');" class="form-control input-full" placeholder="Type here and click search" id="EmployeeDetail" />
+                            </div>
+                            <div class="col-md-2">
+                                <center>
+                                    <button class="btn btn-sm btn-light btn_create" id="valbtn" onclick="UserID();">Search User</button>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <center><h3><b id="UsererrorCode"></b></h3></center>
+                    </div>
+                </div>
+
+                <br />
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="tableFixHead_search">
+                            <table id="ApproversTable" class="display table table-bordered  appoverTabel">
+                                <thead>
+                                    <tr>
+                                        <th><center>Select User</center></th>
+                                        <th><center>Employee ID</center></th>
+                                        <th><center>Employee Name</center></th>
+                                        <th><center>Employee Email Address</center></th>
+                                        <th><center>Department</center></th>
+                                        <th><center>Sub Department</center></th>
+                                        <th><center>Employee Designation</center></th>
+                                        <th><center>Employee Role (s)</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblUsersSearchList"></tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="LogModel" role="dialog" tabindex="-1">
+    @*<div class="text-right model_body_position">
+            <a href="" data-dismiss="modal" class="modaldismissarrow"><i class="flaticon-error fa-3x " aria-hidden="true"></i></a>
+        </div>*@
+
+    <div class="modal-dialog" style="max-width: 80%;">
+
+        <div class="modal-content">
+
+            <div class="modal-header modalheadercolor websitecolour">
+                <label style="font-size: 20px !important;"><b>Deligation Modified History</b></label>
+                <button type="button" class="btn btn-sm btn-light btn_close" data-dismiss="modal" title="Close">Close</button>
+
+            </div>
+            <div class="modal-body" style="height:450px; overflow: auto;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="tableFixHead_LogHistory">
+                            <table class="table table-bordered">
+
+                                <thead>
+
+                                    <tr>
+                                        <th><center>Date and Time</center></th>
+                                        <th><center>Modified By</center></th>
+                                        <th><center>Activity</center></th>
+                                        <th><center>Changed From</center></th>
+                                        <th><center>Changed To</center></th>
+
+                                    </tr>
+
+                                </thead>
+
+                                <tbody id="tblAlertLogList">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                @*<hr />
+
+                    <div class="card-action text-right card_footer_button">
+                        <input type="submit" class="btn btn-success" value="Select" id="CaptureHodList">
+                        <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel" />
+
+                    </div>*@
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modalload"><!-- Place at bottom of page --></div>
+
+
+<script src="../../Content/assets/js/core/jquery.3.2.1.min.js"></script>
+
+
+<script>
+    function UserID() {
+
+        var EmployeeDetails = $("#EmployeeDetail").val();
+        var tblBasicUser = "";
+        if (EmployeeDetails.length > 0) {
+            $("#UsererrorCode").html("");
+            var OptionToSearch = $("#UserSearchOption").val();
+            $.ajax({
+                type: "POST",
+                url: "/Deligation/getHodDetails",
+                data: { EmployeeDetails: EmployeeDetails, OptionToSearch: OptionToSearch },
+
+
+                success: function (response) {
+                    tblUserList = "";
+                    console.log(response);
+                    if (response.length > 0) {
+
+                        $("#UsererrorCode").css({ "color": "green" });
+                        $("#UsererrorCode").html("Record found.");
+
+                        $.each($(response), function (index, value) {
+                            var UserRole = "";
+                            if (value.UserRoleAdmin == true) {
+                                UserRole = UserRole + "Admin";
+                            }
+
+                            if (value.UserRoleInitiator == true) {
+
+                                if (UserRole.length > 0) {
+                                    UserRole = UserRole + ", Initiator";
+                                }
+                                else {
+                                    UserRole = UserRole + "Initiator";
+                                }
+                            }
+                            if (value.UserRoleApprover == true) {
+                                if (UserRole.length > 0) {
+                                    UserRole = UserRole + ", Approver";
+                                }
+                                else {
+                                    UserRole = UserRole + "Approver";
+                                }
+                            }
+                            if (value.UserRoleFinance == true) {
+                                if (UserRole.length > 0) {
+                                    UserRole = UserRole + ", Finance Approver";
+                                }
+                                else {
+                                    UserRole = UserRole + "Finance Approver";
+                                }
+                            }
+                             if (value.UserRoleFinance2 == true) {
+                                if (UserRole.length > 0) {
+                                    UserRole = UserRole + ", Finance 2";
+                                }
+                                else {
+                                    UserRole = UserRole + "Finance 2";
+                                }
+                            }
+
+                            if (value.UserRoleLegal == true) {
+                                if (UserRole.length > 0) {
+
+                                    UserRole = UserRole + ", Legal Approver";
+                                }
+                                else {
+                                    UserRole = UserRole + "Legal Approver";
+                                }
+                            }
+                            //if (value.UserRoleReviewer == true) {
+
+                            //    if (UserRole.length > 0) {
+                            //        UserRole = UserRole + ", Reviewer";
+                            //    }
+                            //    else {
+                            //        UserRole = UserRole + "Reviewer";
+                            //    }
+                            //}
+
+                            var select = "";
+
+                            var str2 = "Approver";
+                            var CurrentUserRole = $("#Employee_Roles").text();
+                            var SearchType = $(".DeligateSearchType").attr('id');
+                            var DeligationFrom = $("#Employee_ID").html(); 
+
+                            if (SearchType == "Search_Others") {
+                                
+                                if ((value.UserEmployeeID != DeligationFrom)) {
+                                    if ((value.UserEmployeeID != "@CurrentUserID()")) {
+                                        if ((CurrentUserRole == UserRole) && (value.UserStatus == "Active"))
+                                        {
+                                        select = '<button class="btn btn-sm btn-primary" data-dismiss="modal" id="' + value.UserEmployeeID + '" onclick="SelectFunction(' + value.UserEmployeeID + ');">Select</button>';
+                              
+                                        }
+                                        else {
+                                        select = '<h5 style="color:red;" title="' + value.UserEmployeeName + ' does not belongs to role '+ CurrentUserRole +'."><i class="fas fa-exclamation-circle" aria-hidden="true">&nbsp;Restricted</i></h5>';
+                             
+                                        }
+                                    }
+                                    else {
+                                        select = '<h5 style="color:red;" title="' + value.UserEmployeeName + ' is current logged in user."><i class="fas fa-exclamation-circle" aria-hidden="true">&nbsp;Restricted</i></h5>';
+                              
+                                    }
+                                    
+                                }
+                                else {
+                                    select = '<h5 style="color:red;" title="' + value.UserEmployeeName + ' is already assigned to Deligation From field."><i class="fas fa-exclamation-circle" aria-hidden="true">&nbsp;Restricted</i></h5>';
+                                }
+                            }
+                            else if (SearchType == "Search_Admin") {
+                                //if ((value.UserEmployeeID != "@CurrentUserID()") && (value.UserStatus == "Active")) {
+                                if (value.UserStatus == "Active") {
+                                    select = '<button class="btn btn-sm btn-primary" data-dismiss="modal" id="' + value.UserEmployeeID + '" onclick="SelectFunction(' + value.UserEmployeeID + ');">Select</button>';
+                                }
+                                else {
+                                    select = '<h5 style="color:red;" title="' + value.UserEmployeeName + ' is current logged in user."><i class="fas fa-exclamation-circle" aria-hidden="true">&nbsp;Restricted</i></h5>';
+                              
+                                }
+                            }
+
+
+                            //alert(UserRole);
+
+                            tblBasicUser = tblBasicUser + '<tr><td><center>' + select + '</center></td><td id="' + value.UserEmployeeID + '_ID">' + value.UserEmployeeID + '</td><td id="' + value.UserEmployeeID + '_Name">' + value.UserEmployeeName + '</td><td id="' + value.UserEmployeeID + '_Email">' + value.UserEmployeeEmail + '</td><td>' + value.UserCategory + '</td><td>' + value.UserSubCategory + '</td><td>' + value.UserEmployeeDesignation + '</td><td id="' + value.UserEmployeeID + '_Role">' + UserRole + '</td></tr>';
+                        });
+                        $("#tblUsersSearchList").html(tblBasicUser);
+
+
+                    }
+                    else {
+                        $("#UsererrorCode").css({ "color": "red" });
+                        $("#UsererrorCode").html("No Record found.");
+                    }
+                }
+            });
+        }
+        else {
+            $("#hodemployeeid").val("");
+            $("#UsererrorCode").css({ "color": "red" });
+            $("#UsererrorCode").html("Please enter the Employee ID / Name / Email to search");
+        }
+    }
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        var employeeid = "@CurrentUserID()";
+
+        $.ajax({
+            async: false,
+            type: "POST",
+            url: "/Deligation/GetEmployeeDetails",
+            data: { employeeid: employeeid },
+
+            success: function (response) {
+                if (response[0] == "success") {
+                    //  alert(response[1])
+                    $("#Employee_ID").html(employeeid);
+                    $("#Employee_Name").html(response[1]);
+                    $("#Employee_Email").html(response[2]);
+                    $("#Employee_Roles").html(response[3]);
+
+                    $.ajax({
+                        async: false,
+                        type: "POST",
+                        url: "/Deligation/DeligationExistCheck",
+                        data: { employeeid: employeeid },
+
+                        success: function (response) {
+                            if (response[0] == "success") {
+                                var employeeid = response[1];
+                                var DeligateToDate = response[2];
+                                var DeligateFromDate = response[3];
+
+                                if (employeeid.length > 0) {
+                                    $.ajax({
+                                        async: false,
+                                        type: "POST",
+                                        url: "/Deligation/GetEmployeeDetails",
+                                        data: { employeeid: employeeid },
+
+                                        success: function (response) {
+                                            if (response[0] == "success") {
+                                                $('#DeligateEmployeeID').html(employeeid);
+                                                $('#DeligateEmployeeName').html(response[1]);
+                                                $('#DeligateEmployeeEmail').html(response[2]);
+                                                $('#DeligateEmployeeRoles').html(response[3]);
+
+                                                $('#terminationdatecontractto').val(DeligateToDate);
+                                                $('#terminationdatecontractfrom').val(DeligateFromDate);
+                                                $("#RemoveDeligate_Button").show();
+                                                $("#RemoveDeligate_Button_2").show();
+                                            }
+                                        },
+
+                                    });
+                                }
+                            }
+                        },
+
+                    });
+                }
+            },
+
+        });
+    })
+</script>
+
+<script type="text/javascript">
+
+    $(function () {
+        $('#datetimepicker9').datetimepicker({
+            format: 'L',
+            format: 'DD/MM/YYYY'
+        });
+    });
+    $(function () {
+        $('#datetimepicker10').datetimepicker({
+            format: 'L',
+            format: 'DD/MM/YYYY'
+        });
+    });
+</script>
+
+<script>
+    function SelectFunction(EmployeeID) {
+        var SearchType = $(".DeligateSearchType").attr('id');
+
+        if (SearchType == "Search_Others") {
+            $('#DeligateEmployeeID').html($('#' + EmployeeID + '_ID').html());
+            $('#DeligateEmployeeName').html($('#' + EmployeeID + '_Name').html());
+            $('#DeligateEmployeeEmail').html($('#' + EmployeeID + '_Email').html());
+            $('#DeligateEmployeeRoles').html($('#' + EmployeeID + '_Role').html());
+        }
+        else if (SearchType == "Search_Admin") {
+            $('#DeligateEmployeeID').html("");
+            $('#DeligateEmployeeName').html("");
+            $('#DeligateEmployeeEmail').html("");
+            $('#DeligateEmployeeRoles').html("");
+
+            $('#terminationdatecontractto').val("");
+             $('#terminationdatecontractfrom').val("");
+
+            $("#Employee_ID").html($('#' + EmployeeID + '_ID').html());
+            $("#Employee_Name").html($('#' + EmployeeID + '_Name').html());
+            $("#Employee_Email").html($('#' + EmployeeID + '_Email').html());
+            $("#Employee_Roles").html($('#' + EmployeeID + '_Role').html());
+
+            
+            DeligateOnChange();
+
+            var employeeid = EmployeeID;
+            $.ajax({
+                async: false,
+                type: "POST",
+                url: "/Deligation/DeligationExistCheck",
+                data: { employeeid: employeeid },
+
+                success: function (response) {
+                    if (response[0] == "success") {
+                        var employeeid = response[1];
+                        var DeligateToDate = response[2];
+                        var DeligateFromDate = response[3];
+                        
+                        if (employeeid.length > 0) {
+                            $.ajax({
+                                async: false,
+                                type: "POST",
+                                url: "/Deligation/GetEmployeeDetails",
+                                data: { employeeid: employeeid },
+
+                                success: function (response) {
+                                    if (response[0] == "success") {
+                                        $('#DeligateEmployeeID').html(employeeid);
+                                        $('#DeligateEmployeeName').html(response[1]);
+                                        $('#DeligateEmployeeEmail').html(response[2]);
+                                        $('#DeligateEmployeeRoles').html(response[3]);
+
+                                        $("#Employee_ID").html($('#' + EmployeeID + '_ID').html());
+                                        $("#Employee_Name").html($('#' + EmployeeID + '_Name').html());
+                                        $("#Employee_Email").html($('#' + EmployeeID + '_Email').html());
+                                        $("#Employee_Roles").html($('#' + EmployeeID + '_Role').html());
+
+                                        $('#terminationdatecontractto').val(DeligateToDate);
+                                         $('#terminationdatecontractfrom').val(DeligateFromDate);
+                                        $("#RemoveDeligate_Button").show();
+                                        $("#RemoveDeligate_Button_2").show();
+
+                                    }
+                                },
+
+                            });
+                        }
+                    }
+                },
+
+            });
+
+
+
+        }
+    }
+</script>
+
+<script>
+    function SearchModal(ID) {
+
+        $("#tblUsersSearchList").html("");
+        $("#UsererrorCode").html("");
+        $("#EmployeeDetail").val("");
+
+        $('.DeligateSearchType').attr('id', ID);
+        $("#searchmodal").modal('show');
+
+    }
+</script>
+
+<script>
+    function SaveDeligation() {
+        var EmployeeID = $("#Employee_ID").text();
+        var DeligateID = $("#DeligateEmployeeID").text();
+        var DeligateDate = $("#terminationdatecontractto").val();
+        var DeligateFromDate = $("#terminationdatecontractfrom").val();
+
+        if (EmployeeID.length > 0) {
+            if (DeligateID.length > 0) {
+                if (DeligateDate.length > 0) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/Deligation/SaveDeligationToDB",
+                        data: { EmployeeID: EmployeeID, DeligateID: DeligateID, DeligateDate: DeligateDate,DeligateFromDate: DeligateFromDate },
+
+
+                        success: function (response) {
+                            if (response == "success") {
+                                swal("Deligation Saved", {
+                                    icon: "success",
+                                }).then(function (result) {
+                                    if (result) {
+                                        window.location.reload();
+                                    }
+                                });
+                            }
+                            else {
+                                swal({
+                                    icon: "error",
+                                    text: "Unable to Save Data. Please try again",
+                                }).then(function (error) {
+                                    if (error) {
+                                        window.location.reload();
+                                    }
+                                });
+                            }
+                        },
+
+                    });
+                }
+                else {
+                    swal({
+                        text: '"Deligation To" is required.',
+                        icon: 'warning',
+                    });
+                }
+            }
+            else {
+                swal({
+                    text: 'Deligate User Details is required.',
+                    icon: 'warning',
+                });
+            }
+        } else {
+            swal({
+                text: 'User Details is required.',
+                icon: 'warning',
+            });
+        }
+    }
+</script>
+
+<script>
+    function RemoveDeligation() {
+        var EmployeeID = $("#Employee_ID").text();
+        $.ajax({
+            type: "POST",
+            url: "/Deligation/RemoveDeligationFromDB",
+            data: { EmployeeID: EmployeeID },
+
+
+            success: function (response) {
+                if (response == "success") {
+                    swal("Deligation Removed Successfully", {
+                        icon: "success",
+                    }).then(function (result) {
+                        if (result) {
+                            window.location.reload();
+                        }
+                    });
+                }
+                else {
+                    swal({
+                        icon: "error",
+                        text: "Unable to Remove Deligation. Please try again",
+                    }).then(function (error) {
+                        if (error) {
+                            window.location.reload();
+                        }
+                    });
+                }
+            },
+
+        });
+    }
+</script>
+
+<script>
+    $(function () {
+        // alert("hello");
+        //var ID = 0;
+        var tblLog = "";
+        var DeligationID = "@CurrentUserID()"; 
+        var NameFrom = "";
+        var NameTo = "";
+        $.ajax({
+            type: 'POST',
+            url: '/Deligation/getLogDetail',
+            data: { DeligationID: DeligationID },
+
+
+            success: function (response) {
+                //alert(response.LogUserID);
+                $.each($(response), function (index, value) {
+                    var From = value.ChangedFrom;
+                    var To = value.ChangedTo;
+                    
+                    $.ajax({
+                            async: false,
+                            type: 'POST',
+                            url: '/Deligation/DeligateIDName',
+                            data: { From: From, To:To },
+
+                            success: function (response) {
+                                NameFrom = response[0];
+                                NameTo = response[1];
+                            }
+                        });
+                    tblLog = tblLog + '<tr><td><center>' + value.DateandTime + '</center></td><td><center>' + value.ModifiedBy + '</center></td><td style="text-align: left;">' + value.LogActivity + '</td><td style="text-align: left;">' + value.ChangedFrom + ' - ' + NameFrom + '</td><td style="text-align: left;">' + value.ChangedTo + ' - ' + NameTo + '</td></tr>';
+                });
+                $("#tblAlertLogList").html(tblLog);
+            }
+        });
+    });
+
+    
+    function DeligateOnChange() {
+        var tblLog = "";
+        var DeligationID = $("#Employee_ID").html();
+        $("#tblAlertLogList").html("");
+        var NameFrom = "";
+        var NameTo = "";
+        $.ajax({
+            async: false,
+            type: 'POST',
+            url: '/Deligation/getLogDetail',
+            data: { DeligationID: DeligationID },
+
+
+            success: function (response) {
+                //alert(response.LogUserID);
+                $.each($(response), function (index, value) {
+                    var From = value.ChangedFrom;
+                    var To = value.ChangedTo;
+                    
+                    $.ajax({
+                        async: false,
+                            type: 'POST',
+                            url: '/Deligation/DeligateIDName',
+                            data: { From: From, To:To },
+
+                            success: function (response) {
+                                NameFrom = response[0];
+                                NameTo = response[1];
+                            }
+                        });
+                    
+                    tblLog = tblLog + '<tr><td><center>' + value.DateandTime + '</center></td><td><center>' + value.ModifiedBy + '</center></td><td style="text-align: left;">' + value.LogActivity + '</td><td style="text-align: left;">' + value.ChangedFrom + ' - ' + NameFrom + '</td><td style="text-align: left;">' + value.ChangedTo + ' - ' + NameTo + '</td></tr>';
+                });
+                $("#tblAlertLogList").html(tblLog);
+            }
+        });
+    }
+</script>

@@ -1,0 +1,2111 @@
+------Info(2021-01-18 05:42:01.5101)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Default Quartz.NET properties loaded from embedded resource file
+
+------Debug(2021-01-18 05:42:01.8332)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:TaskSchedulingThreadPool configured with max concurrency of 10 and TaskScheduler ThreadPoolTaskScheduler.
+
+------Info(2021-01-18 05:42:01.8661)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+
+------Info(2021-01-18 05:42:01.8801)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz Scheduler v.3.0.7.0 created.
+
+------Info(2021-01-18 05:42:01.8871)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:RAMJobStore initialized.
+
+------Info(2021-01-18 05:42:01.8871)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Scheduler meta-data: Quartz Scheduler (v3.0.7.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 10 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+
+------Info(2021-01-18 05:42:01.9060)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz scheduler 'DefaultQuartzScheduler' initialized
+
+------Info(2021-01-18 05:42:01.9060)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz scheduler version: 3.0.7.0
+
+------Info(2021-01-18 05:42:01.9301)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+
+------Debug(2021-01-18 05:42:01.9359)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 05:42:01.9638)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 05:42:01.9848)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.18ed36d0-bb03-414b-81fb-cd4d31c71886', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 05:42:02.2458)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 05:42:02.2875)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.18ed36d0-bb03-414b-81fb-cd4d31c71886
+
+------Info(2021-01-18 05:42:03.0258)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing Login Page
+
+------Info(2021-01-18 05:42:11.6818)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Attempt UID Login
+
+------Info(2021-01-18 05:42:11.6818)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing DB for Login
+
+------Info(2021-01-18 05:42:11.7237)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accesed DB, Checking User Details: User Found
+
+------Debug(2021-01-18 05:42:37.5783)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Error(2021-01-18 05:42:37.5783)VINOD-PC------
+                       Exception Type:System.Data.Entity.Core.EntityException |                       Exception Message:The underlying provider failed on Open. |                       Stack Trace: |                       Additional Info:'Account' Controller , 'Login 'Action HTTP POST Main exception
+
+------Error(2021-01-18 05:42:37.5783)VINOD-PC------
+                       Exception Type:System.Data.Entity.Core.EntityException |                       Exception Message:The underlying provider failed on Open. |                       Stack Trace: |                       Additional Info:Job DEFAULT.18ed36d0-bb03-414b-81fb-cd4d31c71886 threw an unhandled Exception: 
+
+------Error(2021-01-18 05:42:37.6142)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.18ed36d0-bb03-414b-81fb-cd4d31c71886 threw an exception.
+
+------Debug(2021-01-18 05:42:37.6291)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Info(2021-01-18 05:42:57.2600)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Attempt UID Login
+
+------Info(2021-01-18 05:42:57.2600)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing DB for Login
+
+------Info(2021-01-18 05:42:57.2869)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accesed DB, Checking User Details: User Found
+
+------Debug(2021-01-18 05:43:01.2508)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Error(2021-01-18 05:43:07.5061)VINOD-PC------
+                       Exception Type:System.Data.Entity.Core.EntityException |                       Exception Message:The underlying provider failed on Open. |                       Stack Trace: |                       Additional Info:'Account' Controller , 'Login 'Action HTTP POST Main exception
+
+------Info(2021-01-18 05:51:57.3826)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Default Quartz.NET properties loaded from embedded resource file
+
+------Debug(2021-01-18 05:51:57.5292)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:TaskSchedulingThreadPool configured with max concurrency of 10 and TaskScheduler ThreadPoolTaskScheduler.
+
+------Info(2021-01-18 05:51:57.5601)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+
+------Info(2021-01-18 05:51:57.5770)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz Scheduler v.3.0.7.0 created.
+
+------Info(2021-01-18 05:51:57.5870)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:RAMJobStore initialized.
+
+------Info(2021-01-18 05:51:57.5870)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Scheduler meta-data: Quartz Scheduler (v3.0.7.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 10 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+
+------Info(2021-01-18 05:51:57.6071)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz scheduler 'DefaultQuartzScheduler' initialized
+
+------Info(2021-01-18 05:51:57.6071)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz scheduler version: 3.0.7.0
+
+------Info(2021-01-18 05:51:57.6289)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+
+------Debug(2021-01-18 05:51:57.6339)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 05:51:57.6628)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 05:51:57.6867)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.a2616185-490e-439d-b08b-86e1c1c720d4', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 05:51:57.8363)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 05:51:57.8683)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.a2616185-490e-439d-b08b-86e1c1c720d4
+
+------Info(2021-01-18 05:51:57.9810)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing Login Page
+
+------Error(2021-01-18 05:52:11.8112)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.a2616185-490e-439d-b08b-86e1c1c720d4 threw an unhandled Exception: 
+
+------Error(2021-01-18 05:52:11.8358)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.a2616185-490e-439d-b08b-86e1c1c720d4 threw an exception.
+
+------Debug(2021-01-18 05:52:11.8697)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 05:52:21.1713)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Info(2021-01-18 05:53:12.8348)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Default Quartz.NET properties loaded from embedded resource file
+
+------Debug(2021-01-18 05:53:12.9645)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:TaskSchedulingThreadPool configured with max concurrency of 10 and TaskScheduler ThreadPoolTaskScheduler.
+
+------Info(2021-01-18 05:53:13.0013)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+
+------Info(2021-01-18 05:53:13.0193)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz Scheduler v.3.0.7.0 created.
+
+------Info(2021-01-18 05:53:13.0277)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:RAMJobStore initialized.
+
+------Info(2021-01-18 05:53:13.0277)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Scheduler meta-data: Quartz Scheduler (v3.0.7.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 10 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+
+------Info(2021-01-18 05:53:13.0452)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz scheduler 'DefaultQuartzScheduler' initialized
+
+------Info(2021-01-18 05:53:13.0452)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz scheduler version: 3.0.7.0
+
+------Info(2021-01-18 05:53:13.0692)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+
+------Debug(2021-01-18 05:53:13.0752)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 05:53:13.1120)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 05:53:13.1310)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.1ec1d91e-00dd-42de-9ee6-f718f50218f7', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Info(2021-01-18 05:53:13.4531)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing Login Page
+
+------Debug(2021-01-18 05:53:13.4801)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 05:53:13.5120)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.1ec1d91e-00dd-42de-9ee6-f718f50218f7
+
+------Info(2021-01-18 05:53:21.7305)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Attempt UID Login
+
+------Info(2021-01-18 05:53:21.7451)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing DB for Login
+
+------Info(2021-01-18 05:53:21.7650)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accesed DB, Checking User Details: User Found
+
+------Error(2021-01-18 05:53:24.7693)VINOD-PC------
+                       Exception Type:System.Data.Entity.Core.EntityException |                       Exception Message:The underlying provider failed on Open. |                       Stack Trace: |                       Additional Info:'Account' Controller , 'Login 'Action HTTP POST Main exception
+
+------Error(2021-01-18 05:53:24.8651)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.1ec1d91e-00dd-42de-9ee6-f718f50218f7 threw an unhandled Exception: 
+
+------Error(2021-01-18 05:53:24.9249)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.1ec1d91e-00dd-42de-9ee6-f718f50218f7 threw an exception.
+
+------Debug(2021-01-18 05:53:24.9439)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 05:53:36.6380)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 05:54:02.4006)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Info(2021-01-18 05:55:01.7330)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Default Quartz.NET properties loaded from embedded resource file
+
+------Debug(2021-01-18 05:55:01.8437)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:TaskSchedulingThreadPool configured with max concurrency of 10 and TaskScheduler ThreadPoolTaskScheduler.
+
+------Info(2021-01-18 05:55:01.8806)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+
+------Info(2021-01-18 05:55:01.8975)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz Scheduler v.3.0.7.0 created.
+
+------Info(2021-01-18 05:55:01.9075)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:RAMJobStore initialized.
+
+------Info(2021-01-18 05:55:01.9185)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Scheduler meta-data: Quartz Scheduler (v3.0.7.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 10 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+
+------Info(2021-01-18 05:55:01.9185)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz scheduler 'DefaultQuartzScheduler' initialized
+
+------Info(2021-01-18 05:55:01.9354)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz scheduler version: 3.0.7.0
+
+------Info(2021-01-18 05:55:01.9534)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+
+------Debug(2021-01-18 05:55:01.9534)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 05:55:01.9853)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 05:55:02.0032)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.6221429c-6cd5-4c0b-8f04-601acb91d285', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 05:55:02.1139)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 05:55:02.1359)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.6221429c-6cd5-4c0b-8f04-601acb91d285
+
+------Info(2021-01-18 05:55:02.2835)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing Login Page
+
+------Info(2021-01-18 05:55:06.9873)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Attempt UID Login
+
+------Info(2021-01-18 05:55:06.9973)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing DB for Login
+
+------Info(2021-01-18 05:55:07.0132)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accesed DB, Checking User Details: User Found
+
+------Info(2021-01-18 05:57:35.8920)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Default Quartz.NET properties loaded from embedded resource file
+
+------Debug(2021-01-18 05:57:36.0147)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:TaskSchedulingThreadPool configured with max concurrency of 10 and TaskScheduler ThreadPoolTaskScheduler.
+
+------Info(2021-01-18 05:57:36.0486)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+
+------Info(2021-01-18 05:57:36.0646)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz Scheduler v.3.0.7.0 created.
+
+------Info(2021-01-18 05:57:36.0735)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:RAMJobStore initialized.
+
+------Info(2021-01-18 05:57:36.0895)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Scheduler meta-data: Quartz Scheduler (v3.0.7.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 10 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+
+------Info(2021-01-18 05:57:36.0895)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz scheduler 'DefaultQuartzScheduler' initialized
+
+------Info(2021-01-18 05:57:36.1094)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz scheduler version: 3.0.7.0
+
+------Info(2021-01-18 05:57:36.1274)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+
+------Debug(2021-01-18 05:57:36.1344)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 05:57:36.1643)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 05:57:36.1882)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.1cc53c25-d45f-4026-8b27-b96a3f1d5d9d', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 05:57:36.3072)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 05:57:36.3528)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.1cc53c25-d45f-4026-8b27-b96a3f1d5d9d
+
+------Info(2021-01-18 05:57:36.5268)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing Login Page
+
+------Info(2021-01-18 05:57:41.0027)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Attempt UID Login
+
+------Info(2021-01-18 05:57:41.0197)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing DB for Login
+
+------Info(2021-01-18 05:57:41.0447)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accesed DB, Checking User Details: User Found
+
+------Error(2021-01-18 05:57:46.9717)VINOD-PC------
+                       Exception Type:System.Data.Entity.Core.EntityException |                       Exception Message:The underlying provider failed on Open. |                       Stack Trace: |                       Additional Info:'Account' Controller , 'Login 'Action HTTP POST Main exception
+
+------Error(2021-01-18 05:57:46.9717)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.1cc53c25-d45f-4026-8b27-b96a3f1d5d9d threw an unhandled Exception: 
+
+------Error(2021-01-18 05:57:47.0116)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.1cc53c25-d45f-4026-8b27-b96a3f1d5d9d threw an exception.
+
+------Debug(2021-01-18 05:57:47.0296)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 05:58:03.0753)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Info(2021-01-18 09:56:42.7134)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Default Quartz.NET properties loaded from embedded resource file
+
+------Debug(2021-01-18 09:56:42.8318)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:TaskSchedulingThreadPool configured with max concurrency of 10 and TaskScheduler ThreadPoolTaskScheduler.
+
+------Info(2021-01-18 09:56:42.8674)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+
+------Info(2021-01-18 09:56:42.8914)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz Scheduler v.3.0.7.0 created.
+
+------Info(2021-01-18 09:56:42.9033)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:RAMJobStore initialized.
+
+------Info(2021-01-18 09:56:42.9200)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Scheduler meta-data: Quartz Scheduler (v3.0.7.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 10 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+
+------Info(2021-01-18 09:56:42.9301)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz scheduler 'DefaultQuartzScheduler' initialized
+
+------Info(2021-01-18 09:56:42.9301)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz scheduler version: 3.0.7.0
+
+------Info(2021-01-18 09:56:42.9595)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+
+------Debug(2021-01-18 09:56:42.9595)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 09:56:42.9924)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 09:56:43.0131)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.7d2f7848-2bee-437b-9f44-1d8379414788', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 09:56:43.2350)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 09:56:43.2610)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.7d2f7848-2bee-437b-9f44-1d8379414788
+
+------Info(2021-01-18 09:56:43.3784)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing Login Page
+
+------Info(2021-01-18 09:56:56.0814)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Attempt UID Login
+
+------Info(2021-01-18 09:56:56.0914)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing DB for Login
+
+------Info(2021-01-18 09:56:56.1043)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accesed DB, Checking User Details: User Found
+
+------Error(2021-01-18 09:56:58.2813)VINOD-PC------
+                       Exception Type:System.Data.Entity.Core.EntityException |                       Exception Message:The underlying provider failed on Open. |                       Stack Trace: |                       Additional Info:'Account' Controller , 'Login 'Action HTTP POST Main exception
+
+------Error(2021-01-18 09:56:58.3198)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.7d2f7848-2bee-437b-9f44-1d8379414788 threw an unhandled Exception: 
+
+------Error(2021-01-18 09:56:58.3338)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.7d2f7848-2bee-437b-9f44-1d8379414788 threw an exception.
+
+------Debug(2021-01-18 09:56:58.3487)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 09:57:11.3563)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Info(2021-01-18 09:57:39.4463)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Default Quartz.NET properties loaded from embedded resource file
+
+------Debug(2021-01-18 09:57:39.6119)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:TaskSchedulingThreadPool configured with max concurrency of 10 and TaskScheduler ThreadPoolTaskScheduler.
+
+------Info(2021-01-18 09:57:39.6528)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+
+------Info(2021-01-18 09:57:39.6687)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz Scheduler v.3.0.7.0 created.
+
+------Info(2021-01-18 09:57:39.6797)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:RAMJobStore initialized.
+
+------Info(2021-01-18 09:57:39.6937)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Scheduler meta-data: Quartz Scheduler (v3.0.7.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 10 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+
+------Info(2021-01-18 09:57:39.6937)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz scheduler 'DefaultQuartzScheduler' initialized
+
+------Info(2021-01-18 09:57:39.7116)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz scheduler version: 3.0.7.0
+
+------Info(2021-01-18 09:57:39.7266)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+
+------Debug(2021-01-18 09:57:39.7266)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 09:57:39.7575)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 09:57:39.7814)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.409125cd-26a7-4514-9131-bc40988cfcc4', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 09:57:39.9071)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 09:57:39.9390)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.409125cd-26a7-4514-9131-bc40988cfcc4
+
+------Info(2021-01-18 09:57:40.2622)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing Login Page
+
+------Error(2021-01-18 09:57:41.2565)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.409125cd-26a7-4514-9131-bc40988cfcc4 threw an unhandled Exception: 
+
+------Error(2021-01-18 09:57:41.2775)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.409125cd-26a7-4514-9131-bc40988cfcc4 threw an exception.
+
+------Debug(2021-01-18 09:57:41.2994)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Info(2021-01-18 09:57:53.3180)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Attempt UID Login
+
+------Info(2021-01-18 09:57:53.3360)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing DB for Login
+
+------Info(2021-01-18 09:57:53.3529)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accesed DB, Checking User Details: User Found
+
+------Info(2021-01-18 09:57:53.4068)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accesed DB, Account NOt Found
+
+------Debug(2021-01-18 09:58:07.9065)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 09:58:31.7990)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Info(2021-01-18 09:58:45.0620)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Attempt UID Login
+
+------Info(2021-01-18 09:58:45.0700)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing DB for Login
+
+------Info(2021-01-18 09:58:45.0820)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accesed DB, Checking User Details: User Found
+
+------Info(2021-01-18 09:58:45.1109)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accesed DB, Account NOt Found
+
+------Debug(2021-01-18 09:58:58.3586)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Info(2021-01-18 10:01:12.0793)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Default Quartz.NET properties loaded from embedded resource file
+
+------Debug(2021-01-18 10:01:12.1930)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:TaskSchedulingThreadPool configured with max concurrency of 10 and TaskScheduler ThreadPoolTaskScheduler.
+
+------Info(2021-01-18 10:01:12.2418)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+
+------Info(2021-01-18 10:01:12.2658)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz Scheduler v.3.0.7.0 created.
+
+------Info(2021-01-18 10:01:12.2777)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:RAMJobStore initialized.
+
+------Info(2021-01-18 10:01:12.2957)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Scheduler meta-data: Quartz Scheduler (v3.0.7.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 10 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+
+------Info(2021-01-18 10:01:12.3117)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz scheduler 'DefaultQuartzScheduler' initialized
+
+------Info(2021-01-18 10:01:12.3246)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz scheduler version: 3.0.7.0
+
+------Info(2021-01-18 10:01:12.3476)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+
+------Debug(2021-01-18 10:01:12.3535)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:01:12.3914)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 10:01:12.4154)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.58e5587c-8f9b-4878-9687-abd4f4212491', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 10:01:12.5640)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:01:12.6069)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.58e5587c-8f9b-4878-9687-abd4f4212491
+
+------Info(2021-01-18 10:01:12.7546)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing Login Page
+
+------Error(2021-01-18 10:01:13.4956)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.58e5587c-8f9b-4878-9687-abd4f4212491 threw an unhandled Exception: 
+
+------Error(2021-01-18 10:01:13.5130)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.58e5587c-8f9b-4878-9687-abd4f4212491 threw an exception.
+
+------Debug(2021-01-18 10:01:13.5279)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 10:01:36.4379)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:02:05.5397)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Info(2021-01-18 10:02:31.7363)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Default Quartz.NET properties loaded from embedded resource file
+
+------Debug(2021-01-18 10:02:31.8500)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:TaskSchedulingThreadPool configured with max concurrency of 10 and TaskScheduler ThreadPoolTaskScheduler.
+
+------Info(2021-01-18 10:02:31.8869)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+
+------Info(2021-01-18 10:02:31.9029)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz Scheduler v.3.0.7.0 created.
+
+------Info(2021-01-18 10:02:31.9129)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:RAMJobStore initialized.
+
+------Info(2021-01-18 10:02:31.9129)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Scheduler meta-data: Quartz Scheduler (v3.0.7.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 10 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+
+------Info(2021-01-18 10:02:31.9328)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz scheduler 'DefaultQuartzScheduler' initialized
+
+------Info(2021-01-18 10:02:31.9328)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz scheduler version: 3.0.7.0
+
+------Info(2021-01-18 10:02:31.9577)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+
+------Debug(2021-01-18 10:02:31.9577)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:02:31.9916)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 10:02:32.0126)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 10:02:32.1323)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:02:32.1592)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Info(2021-01-18 10:02:32.3008)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing Login Page
+
+------Error(2021-01-18 10:02:33.0199)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 10:02:33.0199)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 10:02:33.0438)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 10:02:55.4977)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:03:20.0876)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:03:59.0711)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Info(2021-01-18 10:04:28.2321)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Attempt UID Login
+
+------Debug(2021-01-18 10:04:30.2618)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Info(2021-01-18 10:04:34.1691)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing DB for Login
+
+------Info(2021-01-18 10:04:37.0105)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accesed DB, Checking User Details: User Found
+
+------Info(2021-01-18 10:04:47.2779)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accesed DB, Account NOt Found
+
+------Debug(2021-01-18 10:04:57.4803)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:05:23.9716)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 10:05:31.9806)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 10:05:31.9906)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:05:31.9906)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Error(2021-01-18 10:05:32.0714)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 10:05:32.0714)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 10:05:32.0893)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 10:06:01.4011)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:06:29.0855)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:06:56.0224)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:07:22.6191)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:07:47.7706)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:08:11.4156)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 10:08:31.9884)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 10:08:31.9884)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:08:31.9884)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Error(2021-01-18 10:08:32.0936)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 10:08:32.1006)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 10:08:32.1006)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 10:08:55.3428)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:09:20.7029)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:09:50.5422)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:10:16.5828)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:10:42.7032)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:11:09.0173)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 10:11:31.9862)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 10:11:31.9992)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Debug(2021-01-18 10:11:31.9992)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Error(2021-01-18 10:11:32.0800)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 10:11:32.0880)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 10:11:32.0880)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 10:11:56.5187)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:12:21.3770)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:12:45.3001)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:13:09.0637)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:13:33.8871)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:14:00.2544)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:14:27.8000)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 10:14:31.9919)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 10:14:32.0168)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:14:32.0168)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Error(2021-01-18 10:14:32.1056)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 10:14:32.1056)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 10:14:32.1195)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 10:15:00.3595)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:15:27.1277)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:15:55.6054)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:16:25.3668)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:16:49.3408)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:17:15.5141)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 10:17:31.9818)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 10:17:31.9958)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:17:31.9958)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Error(2021-01-18 10:17:32.0726)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 10:17:32.0726)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 10:17:32.0906)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 10:17:56.2289)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:18:21.1695)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:18:49.8393)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:19:13.7917)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:19:43.3685)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:20:08.8250)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 10:20:31.9825)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 10:20:31.9925)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Debug(2021-01-18 10:20:31.9925)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Error(2021-01-18 10:20:32.0803)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 10:20:32.0923)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 10:20:32.1012)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 10:20:57.4075)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:21:25.2097)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:21:53.7810)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:22:21.7226)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:22:49.5993)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:23:19.2412)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 10:23:31.9838)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 10:23:32.0049)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:23:32.0049)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Error(2021-01-18 10:23:32.1166)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 10:23:32.1166)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 10:23:32.1365)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 10:24:00.7158)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:24:25.0278)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:24:50.3744)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:25:13.7097)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:25:43.6355)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:26:08.8221)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 10:26:31.9897)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 10:26:32.0295)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Debug(2021-01-18 10:26:32.0295)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Error(2021-01-18 10:26:32.1413)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 10:26:32.1513)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 10:26:32.1513)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 10:27:00.4775)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:27:25.1943)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:27:49.1391)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:28:17.2931)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:28:46.8413)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:29:11.1652)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 10:29:31.9834)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 10:29:31.9993)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:29:31.9993)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Error(2021-01-18 10:29:32.0861)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 10:29:32.0861)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 10:29:32.1001)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 10:29:57.3586)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:30:26.8257)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:30:50.3362)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:31:20.3400)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:31:45.1282)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:32:09.4919)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 10:32:31.9806)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 10:32:31.9886)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Debug(2021-01-18 10:32:31.9886)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Error(2021-01-18 10:32:32.0524)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 10:32:32.0524)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 10:32:32.0684)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 10:33:01.7271)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:33:27.2968)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:33:56.7892)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:34:26.7067)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:34:52.1153)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:35:15.4411)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 10:35:31.9841)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 10:35:32.0269)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:35:32.0269)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Error(2021-01-18 10:35:32.1246)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 10:35:32.1306)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 10:35:32.1306)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 10:35:55.2542)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:36:24.4931)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:36:51.7938)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:37:16.9658)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:37:45.4813)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:38:12.9265)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 10:38:31.9828)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 10:38:32.0038)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Debug(2021-01-18 10:38:32.0047)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Error(2021-01-18 10:38:32.0895)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 10:38:32.0895)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 10:38:32.1015)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 10:39:01.6979)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:39:29.4875)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:39:59.3515)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:40:25.8338)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:40:51.9282)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:41:15.9899)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 10:41:31.9819)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 10:41:31.9928)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:41:31.9928)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Error(2021-01-18 10:41:32.0826)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 10:41:32.0826)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 10:41:32.1035)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 10:41:55.6772)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:42:22.2405)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:42:46.7720)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:43:10.1014)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:43:33.8201)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:44:03.2987)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 10:44:31.9860)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 10:44:31.9950)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:44:31.9950)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Error(2021-01-18 10:44:32.0918)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 10:44:32.1047)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 10:44:32.1167)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 10:44:58.1392)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:45:26.2479)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:45:50.6767)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:46:14.4926)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:46:39.9268)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:47:07.8165)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 10:47:31.9882)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 10:47:31.9882)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:47:32.0042)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Error(2021-01-18 10:47:32.1099)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 10:47:32.1208)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 10:47:32.1308)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 10:47:56.7047)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:48:24.7102)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:48:49.3624)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:49:17.4843)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:49:45.1123)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:50:11.7740)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 10:50:31.9745)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 10:50:31.9745)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Debug(2021-01-18 10:50:31.9745)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Error(2021-01-18 10:50:32.0744)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 10:50:32.0824)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 10:50:32.0824)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 10:51:00.4459)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:51:28.6114)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:51:51.8375)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:52:18.4173)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:52:44.4566)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:53:08.6469)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 10:53:31.9860)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 10:53:32.0199)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Debug(2021-01-18 10:53:32.0199)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Error(2021-01-18 10:53:32.1226)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 10:53:32.1326)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 10:53:32.1326)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 10:53:59.4053)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:54:22.9428)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:54:46.5558)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:55:16.1670)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:55:45.4040)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:56:09.5235)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 10:56:31.9795)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 10:56:32.0264)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Debug(2021-01-18 10:56:32.0264)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Error(2021-01-18 10:56:32.1191)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 10:56:32.1191)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 10:56:32.1341)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 10:56:59.5184)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:57:29.4787)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:57:58.5730)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:58:26.8011)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:58:51.5578)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:59:17.6124)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 10:59:31.9847)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 10:59:32.0037)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 10:59:32.0047)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Error(2021-01-18 10:59:32.1164)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 10:59:32.1164)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 10:59:32.1333)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 10:59:57.5985)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:00:24.1848)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:00:50.6561)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:01:17.8813)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:01:47.8675)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:02:14.9673)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 11:02:31.9868)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 11:02:32.0246)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:02:32.0246)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Error(2021-01-18 11:02:32.1513)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 11:02:32.1602)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 11:02:32.1602)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 11:02:55.8421)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:03:21.9513)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:03:51.7860)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:04:18.0324)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:04:45.2859)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:05:13.3393)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 11:05:31.9827)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 11:05:31.9904)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:05:31.9904)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Error(2021-01-18 11:05:32.0951)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 11:05:32.1031)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 11:05:32.1031)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 11:05:58.8964)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:06:28.6523)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:06:52.8732)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:07:21.7559)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:07:48.6779)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:08:13.1513)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 11:08:31.9840)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 11:08:32.0229)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:08:32.0229)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Error(2021-01-18 11:08:32.1206)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 11:08:32.1206)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 11:08:32.1366)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 11:09:00.8612)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:09:30.8512)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:09:56.2252)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:10:25.0237)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:10:50.6724)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:11:15.6987)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 11:11:31.9841)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 11:11:32.0031)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Debug(2021-01-18 11:11:32.0031)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Error(2021-01-18 11:11:32.0849)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 11:11:32.0849)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 11:11:32.1028)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 11:11:59.7275)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:12:27.9031)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:12:52.4066)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:13:22.1221)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:13:48.3576)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:14:12.9317)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 11:14:31.9860)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 11:14:32.0210)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:14:32.0210)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Error(2021-01-18 11:14:32.1596)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 11:14:32.1666)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 11:14:32.1666)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 11:14:59.0585)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Info(2021-01-18 11:15:28.2296)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Attempt UID Login
+
+------Info(2021-01-18 11:15:28.2406)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing DB for Login
+
+------Debug(2021-01-18 11:15:28.2406)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Info(2021-01-18 11:15:28.2555)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accesed DB, Checking User Details: User Found
+
+------Info(2021-01-18 11:15:29.5365)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accesed DB, Checking User Details: Password Match
+
+------Info(2021-01-18 11:15:29.5631)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accesed DB, Checking User Details: Checking Status
+
+------Info(2021-01-18 11:15:29.5723)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accesed DB, Checking User Details: User is Active
+
+------Info(2021-01-18 11:15:30.0180)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing Home Dashboard Page
+
+------Info(2021-01-18 11:15:30.0529)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing DB for Dashboard
+
+------Info(2021-01-18 11:15:39.2217)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Attempt Home ContractStatistics
+
+------Info(2021-01-18 11:15:39.2317)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing DB for Contract Statistic Details : Checking Status
+
+------Info(2021-01-18 11:15:39.6326)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accesed DB, Checking Contract Statistic Details : Status Count Found
+
+------Info(2021-01-18 11:15:39.7693)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Attempt Home ContractStatistics
+
+------Info(2021-01-18 11:15:39.7772)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing DB for Contract Statistic Details : Checking Status
+
+------Info(2021-01-18 11:15:40.0365)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accesed DB, Checking Contract Statistic Details : Status Count Found
+
+------Debug(2021-01-18 11:15:57.4614)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:16:21.2325)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:16:45.1396)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:17:09.1986)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 11:17:31.9807)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 11:17:32.0240)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Debug(2021-01-18 11:17:32.0240)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Error(2021-01-18 11:17:32.1593)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 11:17:32.1693)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 11:17:32.1783)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 11:17:58.2099)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:18:23.6395)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Info(2021-01-18 11:18:42.6147)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Attempt Vendor Repository
+
+------Info(2021-01-18 11:18:42.6147)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing DB for Vendor Repository
+
+------Info(2021-01-18 11:18:44.9514)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Attempt Home ContractStatistics
+
+------Info(2021-01-18 11:18:44.9603)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing DB for Contract Statistic Details : Checking Status
+
+------Info(2021-01-18 11:18:45.1837)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accesed DB, Checking Contract Statistic Details : Status Count Found
+
+------Debug(2021-01-18 11:18:49.4081)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:19:15.6330)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:19:42.2780)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:20:08.1309)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 11:20:31.9874)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 11:20:32.0153)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:20:32.0153)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Error(2021-01-18 11:20:32.1270)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 11:20:32.1370)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 11:20:32.1469)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 11:20:55.1336)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:21:21.2224)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:21:46.2684)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:22:15.3879)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:22:42.0447)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:23:08.5391)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 11:23:31.9785)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 11:23:32.0135)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Debug(2021-01-18 11:23:32.0135)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Error(2021-01-18 11:23:32.1422)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 11:23:32.1494)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 11:23:32.1494)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 11:24:00.5819)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:24:29.1689)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:24:52.7460)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:25:17.5937)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:25:44.7789)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:26:13.2271)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 11:26:31.9836)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 11:26:32.0245)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Debug(2021-01-18 11:26:32.0245)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Error(2021-01-18 11:26:32.1541)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 11:26:32.1611)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 11:26:32.1611)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 11:27:00.9018)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:27:28.9170)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:27:55.0266)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:28:19.9470)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:28:43.6344)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:29:07.9796)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 11:29:31.9913)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 11:29:32.0362)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:29:32.0362)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Error(2021-01-18 11:29:32.1459)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 11:29:32.1459)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 11:29:32.1668)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 11:29:57.8091)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:30:23.4066)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:30:51.2649)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:31:16.0003)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:31:44.7594)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:32:12.9736)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 11:32:31.9886)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 11:32:32.0184)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Debug(2021-01-18 11:32:32.0184)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Error(2021-01-18 11:32:32.1198)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 11:32:32.1198)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 11:32:32.1328)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 11:32:56.3294)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:33:22.9268)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:33:52.1700)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:34:21.1823)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:34:44.4496)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:35:11.9071)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 11:35:31.9885)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 11:35:32.0373)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Debug(2021-01-18 11:35:32.0373)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Error(2021-01-18 11:35:32.1989)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 11:35:32.2089)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 11:35:32.2089)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 11:36:00.6822)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:36:28.8807)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:36:58.1657)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:37:24.9062)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:37:53.8252)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:38:21.7372)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 11:38:31.9796)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 11:38:32.0134)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:38:32.0134)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80
+
+------Error(2021-01-18 11:38:32.1531)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an unhandled Exception: 
+
+------Error(2021-01-18 11:38:32.1531)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.bc986426-3615-4b1b-a289-b9d42c107f80 threw an exception.
+
+------Debug(2021-01-18 11:38:32.1670)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 11:38:57.3578)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:39:23.9616)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:39:52.9613)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:40:22.8676)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:40:46.1037)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Info(2021-01-18 11:40:51.2327)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Attempt Vendor Repository
+
+------Info(2021-01-18 11:40:51.2327)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Attempt UID Logout
+
+------Info(2021-01-18 11:40:51.2427)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing DB for Vendor Repository
+
+------Info(2021-01-18 11:40:51.2427)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing DB for Logout
+
+------Info(2021-01-18 11:40:51.2826)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Setting Auth Cookie and Redericting to user
+
+------Info(2021-01-18 11:40:51.3434)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing Login Page
+
+------Info(2021-01-18 11:42:56.7234)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Default Quartz.NET properties loaded from embedded resource file
+
+------Debug(2021-01-18 11:42:56.8777)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:TaskSchedulingThreadPool configured with max concurrency of 10 and TaskScheduler ThreadPoolTaskScheduler.
+
+------Info(2021-01-18 11:42:56.9206)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+
+------Info(2021-01-18 11:42:56.9355)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz Scheduler v.3.0.7.0 created.
+
+------Info(2021-01-18 11:42:56.9437)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:RAMJobStore initialized.
+
+------Info(2021-01-18 11:42:56.9437)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Scheduler meta-data: Quartz Scheduler (v3.0.7.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 10 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+
+------Info(2021-01-18 11:42:56.9634)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz scheduler 'DefaultQuartzScheduler' initialized
+
+------Info(2021-01-18 11:42:56.9634)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz scheduler version: 3.0.7.0
+
+------Info(2021-01-18 11:42:56.9874)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+
+------Debug(2021-01-18 11:42:56.9928)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:42:57.0223)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 11:42:57.0452)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.3dc73c3b-e974-49ee-96eb-a4cb330e4964', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 11:42:57.1719)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:42:57.2018)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.3dc73c3b-e974-49ee-96eb-a4cb330e4964
+
+------Info(2021-01-18 11:42:57.4023)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing Login Page
+
+------Error(2021-01-18 11:42:58.5064)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.3dc73c3b-e974-49ee-96eb-a4cb330e4964 threw an unhandled Exception: 
+
+------Error(2021-01-18 11:42:58.5223)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.3dc73c3b-e974-49ee-96eb-a4cb330e4964 threw an exception.
+
+------Debug(2021-01-18 11:42:58.5393)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Debug(2021-01-18 11:43:25.1979)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Info(2021-01-18 11:54:09.1167)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Default Quartz.NET properties loaded from embedded resource file
+
+------Debug(2021-01-18 11:54:09.2533)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:TaskSchedulingThreadPool configured with max concurrency of 10 and TaskScheduler ThreadPoolTaskScheduler.
+
+------Info(2021-01-18 11:54:09.2832)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+
+------Info(2021-01-18 11:54:09.3032)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz Scheduler v.3.0.7.0 created.
+
+------Info(2021-01-18 11:54:09.3181)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:RAMJobStore initialized.
+
+------Info(2021-01-18 11:54:09.3351)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Scheduler meta-data: Quartz Scheduler (v3.0.7.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 10 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+
+------Info(2021-01-18 11:54:09.3351)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz scheduler 'DefaultQuartzScheduler' initialized
+
+------Info(2021-01-18 11:54:09.3600)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Quartz scheduler version: 3.0.7.0
+
+------Info(2021-01-18 11:54:09.3839)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+
+------Debug(2021-01-18 11:54:09.3839)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:54:09.4201)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 1 triggers
+
+------Debug(2021-01-18 11:54:09.4428)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Producing instance of Job 'DEFAULT.05fd13e6-2368-4d0f-91cd-f3919ff2927b', class=ContractManagementSystem.Controllers.ContractExpiry
+
+------Debug(2021-01-18 11:54:09.5694)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Batch acquisition of 0 triggers
+
+------Debug(2021-01-18 11:54:09.6014)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Calling Execute on job DEFAULT.05fd13e6-2368-4d0f-91cd-f3919ff2927b
+
+------Info(2021-01-18 11:54:09.7779)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing Login Page
+
+------Error(2021-01-18 11:54:10.8510)VINOD-PC------
+                       Exception Type:System.NullReferenceException |                       Exception Message:Object reference not set to an instance of an object. |                       Stack Trace: |                       Additional Info:Job DEFAULT.05fd13e6-2368-4d0f-91cd-f3919ff2927b threw an unhandled Exception: 
+
+------Error(2021-01-18 11:54:10.8670)VINOD-PC------
+                       Exception Type:Quartz.SchedulerException |                       Exception Message:Job threw an unhandled exception. |                       Stack Trace: |                       Additional Info:Job DEFAULT.05fd13e6-2368-4d0f-91cd-f3919ff2927b threw an exception.
+
+------Debug(2021-01-18 11:54:10.8859)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Trigger instruction : NoInstruction
+
+------Info(2021-01-18 11:54:16.3487)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Attempt UID Login
+
+------Info(2021-01-18 11:54:16.3667)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing DB for Login
+
+------Info(2021-01-18 11:54:16.3916)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accesed DB, Checking User Details: User Found
+
+------Info(2021-01-18 11:54:16.4694)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accesed DB, Checking User Details: Password Match
+
+------Info(2021-01-18 11:54:16.5023)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accesed DB, Checking User Details: Checking Status
+
+------Info(2021-01-18 11:54:16.5133)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accesed DB, Checking User Details: User is Active
+
+------Info(2021-01-18 11:54:16.5811)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing Home Dashboard Page
+
+------Info(2021-01-18 11:54:16.5932)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing DB for Dashboard
+
+------Info(2021-01-18 11:54:19.9943)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Attempt Home ContractStatistics
+
+------Info(2021-01-18 11:54:19.9943)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Attempt Home ContractStatistics
+
+------Info(2021-01-18 11:54:20.0142)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing DB for Contract Statistic Details : Checking Status
+
+------Info(2021-01-18 11:54:19.9943)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing DB for Contract Statistic Details : Checking Status
+
+------Info(2021-01-18 11:54:20.4431)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accesed DB, Checking Contract Statistic Details : Status Count Found
+
+------Info(2021-01-18 11:54:20.4431)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accesed DB, Checking Contract Statistic Details : Status Count Found
+
+------Info(2021-01-18 11:54:24.0133)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Attempt UID Logout
+
+------Info(2021-01-18 11:54:24.0353)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing DB for Logout
+
+------Info(2021-01-18 11:54:24.0353)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Setting Auth Cookie and Redericting to user
+
+------Info(2021-01-18 11:54:24.0353)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing Home Dashboard Page
+
+------Info(2021-01-18 11:54:24.0772)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing DB for Dashboard
+
+------Info(2021-01-18 11:54:24.1340)VINOD-PC------
+                       Exception Type: |                       Exception Message: |                       Stack Trace: |                       Additional Info:Accessing Login Page
+

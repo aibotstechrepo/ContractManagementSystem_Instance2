@@ -1,0 +1,491 @@
+﻿@model ContractManagementSystem.Models.tblVendorMaster
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    //Layout = "";
+    string CurrentUserID()
+    {
+        string userName = string.Empty;
+
+        if (HttpContext.Current.Request.IsAuthenticated)
+        {
+            userName = HttpContext.Current.User.Identity.Name.Split('|')[1];
+        }
+
+        return userName;
+
+    }
+
+}
+
+
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            <div class="page-header">
+                <h4 class="page-title">Vendor Master</h4>
+                <ul class="breadcrumbs">
+                    <li class="nav-home">
+                        <a href="~/Home/Dashboard">
+                            <i class="flaticon-home"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Vendor/Repository">Vendor Master</a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        New Vendor
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            @*<div class="card-title"><b>New Vendor</b></div>*@
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="card-title"><b>New Vendor</b></div>
+                                </div>
+
+                                <div class="col-sm-6 text-right">
+                                    <button @*onclick="window.location = '/Vendor/Repository'"*@ id="discard" class="btn btn-sm btn-light" value="Discard"><i class="flaticon-interface-5" aria-hidden="true"></i>&nbsp;&nbsp;Cancel</button>&nbsp;
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            @******************************Integrted on 14/3/20***************************@
+                            @using (Html.BeginForm("New", "Vendor", FormMethod.Post))
+                            //*****************************Integrted on 14/3/20************************
+                            {
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <input type="hidden" value="@CurrentUserID()" name="UserID" />
+                                            <label for="name">Name<span class="asteriskicon"> *</span></label>
+                                            <input type="text" id="vendorname" maxlength="180" @*pattern="[A-Za-z\s]+"*@ name="VendorVendorName" class="form-control" oninvalid="InvalidName(this);" oninput="InvalidName(this);" placeholder="Enter Vendor Name" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="entity">Type of Entity<span class="asteriskicon"> *</span></label>
+                                            <input type="text" class="form-control" maxlength="180" @*pattern="[A-Za-z\s]+"*@ name="VendorTypeofEntity" oninvalid="InvalidEntity(this);" oninput="InvalidEntity(this);" id="type_of_entity_vendor" list="type_of_entity" placeholder=" --  Select type of Entity  -- " required />
+                                            <datalist id="type_of_entity">
+                                            </datalist>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="cin">GSTN</label>
+                                            <input type="text" id="vendorcin" maxlength="180" pattern="[a-zA-Z0-9]+" name="VendorCorporateIdentificationNumber" class="form-control" oninvalid="InvalidCIN(this);" oninput="InvalidCIN(this);" placeholder="Enter GSTN">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label for="signatory">Authorised Signatory</label>
+                                            <input type="text" id="vendorauthorisedsignatoryname" maxlength="180" @*onkeyup="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"*@ name="VendorAuthorisedSignatory" class="form-control" placeholder="Enter Authorised Signatory Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label for="reg address">Registered Address<span class="asteriskicon"> *</span></label>
+                                            <textarea class="form-control text_area_description text_area" maxlength="1800" @*onkeyup="this.value = this.value.replace(/[^a-zA-Z0-9\s.,#]/g, '')"*@ name="VendorRegisteredAddress" id="vendorregisteredaddress" oninvalid="InvalidAddress(this);" oninput="InvalidAddress(this);" placeholder="Enter Registered Address" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" id="back_to_branch_button">
+                                    <div class="col-lg-12">
+                                        <div class="form-group" id="branch_address1">
+                                            <button type="button" class="btn btn-light" onclick="add_branch1();"><i class="flaticon-plus"></i>&nbsp; Add Branch Details</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="branch_address2">
+                                </div>
+
+                                <div class="card-action text-right card_footer_button">
+                                    <button type="submit" class="btn btn-success btn_SaveClearDiscard">
+                                        Save
+                                    </button>
+                                    <button type="button" id="ClearForms" class="btn btn-secondary btn_SaveClearDiscard">
+                                        Clear
+                                    </button>
+                                    <button type="button" id="discard2" class="btn btn-danger btn_SaveClearDiscard">
+                                        Cancel
+                                    </button>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modalload"><!-- Place at bottom of page --></div>
+
+
+<script src="../../Content/assets/js/core/jquery.3.2.1.min.js"></script>
+
+
+<script>
+    $(function () {
+        $.ajax({
+            type: "POST",
+            url: "/Vendor/entity_list",
+            data: '{name: "' + $("#txtName").val() + '" }',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+
+                str = "";
+                for (var i = 0; i < response.length; ++i) {
+                    //alert(response[i]);
+                    str += '<option value="' + response[i] + '" />'; // Storing options in variable
+                }
+
+                var my_list = document.getElementById("type_of_entity");
+                my_list.innerHTML = str;
+
+            },
+            //failure: function (response) {
+            //    alert(response.responseText);
+            //},
+            //error: function (response) {
+            //    alert(response.responseText);
+            //}
+
+        });
+    });
+
+</script>
+
+<script>
+    function add_branch1() {
+        var x = '<label for="reg address">Branch 1 Address</label><div class="row"><div class="col-sm-9"><textarea maxlength="1800" /*onkeyup="address1();"*/ id="branchaddress1" class="form-control text_area_description text_area" placeholder="Enter Branch Address" name="VendorBranchOffice1"></textarea></div><div class="col-sm-3 button_align"><button type="button" class="btn btn-sm btn-light" onclick="add_branch2()" id="branch_00";><i class="flaticon-plus" aria-hidden="true"></i>&nbsp;&nbsp;Add</button>&nbsp;<button type="button" class="btn btn-sm btn-light" onclick="back_to_branch();" id="branch_01"><i class="flaticon-interface-5" aria-hidden="true"></i>&nbsp;&nbsp;Remove</button></div></div>';
+        document.getElementById('branch_address1').innerHTML = x;
+    }
+
+    function back_to_branch() {
+        var x = '<div class="col-lg-12"><div class="form-group" id="branch_address1"><button type="button" class="btn btn-light" onclick="add_branch1();"><i class="flaticon-plus"></i>&nbsp; Add Branch Details</button></div ></div >';
+        document.getElementById('back_to_branch_button').innerHTML = x;
+    }
+
+    function add_branch2() {
+        var x = '<div class="row"><div class="col-lg-12"><div class="form-group"><label for="reg address">Branch 2 Address</label><div class="row"><div class="col-sm-9"><textarea id="branchaddress2" /*onkeyup="address2();"*/ maxlength="1800" class="form-control text_area_description text_area" placeholder="Enter Branch Address" name="VendorBranchOffice2"></textarea></div><div class="col-sm-3 button_align"><button type="button" class="btn btn-sm btn-light" onclick="add_branch3();" id="branch_10"><i class="flaticon-plus" aria-hidden="true"></i>&nbsp;&nbsp;Add</button>&nbsp;<button type="button" class="btn btn-sm btn-light" onclick="remove_branch2();" id="branch_11"><i class="flaticon-interface-5" aria-hidden="true"></i>&nbsp;&nbsp;Remove</button></div></div></div></div></div><div id="add_branch3"></div>';
+        document.getElementById('branch_address2').innerHTML = x;
+        document.getElementById("branch_00").disabled = true;
+        document.getElementById("branch_01").disabled = true;
+
+    }
+
+    function remove_branch2() {
+        document.getElementById('branch_address2').innerHTML = "";//.style.display = "none";
+        document.getElementById("branch_00").disabled = false;
+        document.getElementById("branch_01").disabled = false;
+    }
+
+    function add_branch3() {
+        var x = '<div class="row"><div class="col-lg-12"><div class="form-group"><label for="reg address">Branch 3 Address</label><div class="row"><div class="col-sm-9"><textarea id="branchaddress3" /*onkeyup="address3();"*/ maxlength="1800" class="form-control text_area_description text_area" placeholder="Enter Branch Address" name="VendorBranchOffice3"></textarea></div><div class="col-sm-3 button_align"><button type="button" class="btn btn-sm btn-light" onclick="add_branch4();" id="branch_20"><i class="flaticon-plus" aria-hidden="true"></i>&nbsp;&nbsp;Add</button>&nbsp;<button type="button" class="btn btn-sm btn-light" onclick="remove_branch3();" id="branch_21"><i class="flaticon-interface-5" aria-hidden="true"></i>&nbsp;&nbsp;Remove</button></div></div></div></div></div><div id="add_branch4"></div>';
+        document.getElementById('add_branch3').innerHTML = x;
+        document.getElementById("branch_10").disabled = true;
+        document.getElementById("branch_11").disabled = true;
+    }
+
+    function remove_branch3() {
+        document.getElementById('add_branch3').innerHTML = "";//.style.display = "none";
+        document.getElementById("branch_10").disabled = false;
+        document.getElementById("branch_11").disabled = false;
+    }
+
+    function add_branch4() {
+        var x = '<div class="row"><div class="col-lg-12"><div class="form-group"><label for="reg address">Branch 4 Address</label><div class="row"><div class="col-sm-9"><textarea id="branchaddress4" /*onkeyup="address4();"*/ maxlength="1800" class="form-control text_area_description text_area" placeholder="Enter Branch Address" name="VendorBranchOffice4"></textarea></div><div class="col-sm-3 button_align"><button type="button" class="btn btn-sm btn-light" onclick="add_branch5();" id="branch_30"><i class="flaticon-plus" aria-hidden="true"></i>&nbsp;&nbsp;Add</button>&nbsp;<button type="button" class="btn btn-sm btn-light" onclick="remove_branch4();" id="branch_31"><i class="flaticon-interface-5" aria-hidden="true"></i>&nbsp;&nbsp;Remove</button></div></div></div></div></div><div id="add_branch5"></div>';
+        document.getElementById('add_branch4').innerHTML = x;
+        document.getElementById("branch_20").disabled = true;
+        document.getElementById("branch_21").disabled = true;
+    }
+
+
+    function remove_branch4() {
+        document.getElementById('add_branch4').innerHTML = "";//.style.display = "none";
+        document.getElementById("branch_20").disabled = false;
+        document.getElementById("branch_21").disabled = false;
+    }
+
+    function add_branch5() {
+        var x = '<div class="row"><div class="col-lg-12"><div class="form-group"><label for="reg address">Branch 5 Address</label><div class="row"><div class="col-sm-9"><textarea id="branchaddress5" /*onkeyup="address5();"*/ maxlength="1800" class="form-control text_area_description text_area" placeholder="Enter Branch Address" name="VendorBranchOffice5"></textarea></div><div class="col-sm-3 button_align"><button type="button" class="btn btn-sm btn-light" onclick="remove_branch5();"><i class="flaticon-interface-5" aria-hidden="true"></i>&nbsp;&nbsp;Remove</button></div></div></div></div>';
+        document.getElementById('add_branch5').innerHTML = x;
+        document.getElementById("branch_30").disabled = true;
+        document.getElementById("branch_31").disabled = true;
+    }
+
+    function remove_branch5() {
+        document.getElementById('add_branch5').innerHTML = "";//.style.display = "none";
+        document.getElementById("branch_30").disabled = false;
+        document.getElementById("branch_31").disabled = false;
+    }
+
+
+</script>
+@*<script>
+
+    function address1() {
+
+        var toedit = document.getElementById("branchaddress1").value;
+        var txt = toedit.replace(/[^a-zA-Z0-9\s.,#]/g, '');
+        document.getElementById("branchaddress1").value = txt;
+    }
+    function address2() {
+
+        var toedit = document.getElementById("branchaddress2").value;
+        var txt = toedit.replace(/[^a-zA-Z0-9\s.,#]/g, '');
+        document.getElementById("branchaddress2").value = txt;
+    }
+    function address3() {
+
+        var toedit = document.getElementById("branchaddress3").value;
+        var txt = toedit.replace(/[^a-zA-Z0-9\s.,#]/g, '');
+        document.getElementById("branchaddress3").value = txt;
+    }
+    function address4() {
+
+        var toedit = document.getElementById("branchaddress4").value;
+        var txt = toedit.replace(/[^a-zA-Z0-9\s.,#]/g, '');
+        document.getElementById("branchaddress4").value = txt;
+    }
+    function address5() {
+
+        var toedit = document.getElementById("branchaddress5").value;
+        var txt = toedit.replace(/[^a-zA-Z0-9\s.,#]/g, '');
+        document.getElementById("branchaddress5").value = txt;
+    }
+</script>*@
+
+<script>
+    function InvalidName(textbox) {
+        if (textbox.value === '') {
+            textbox.setCustomValidity
+                ('Enter an Vendor Name');
+            //document.getElementById("myDiv").style.borderColor = "red";
+            textbox.style.borderColor = "red";
+
+        }
+        else if (textbox.validity.patternMismatch) {
+            textbox.setCustomValidity('Numbers and Special Characters are not allowed');
+        }
+        else {
+            textbox.setCustomValidity('');
+            textbox.style.borderColor = "#31ce36";
+        }
+
+        return true;
+    }
+    function InvalidEntity(textbox) {
+        if (textbox.value === '') {
+            textbox.setCustomValidity
+                ('Select an Entity type');
+            //document.getElementById("myDiv").style.borderColor = "red";
+            textbox.style.borderColor = "red";
+        }
+        else if (textbox.validity.patternMismatch) {
+            textbox.setCustomValidity('Numbers and Special Characters are not allowed');
+        }
+        else {
+            textbox.setCustomValidity('');
+            textbox.style.borderColor = "#31ce36";
+        }
+
+        return true;
+    }
+    function InvalidCIN(textbox) {
+        if (textbox.validity.patternMismatch) {
+            textbox.setCustomValidity('Space and Special Characters are not allowed');
+        }
+        else {
+            textbox.setCustomValidity('');
+            textbox.style.borderColor = "#31ce36";
+        }
+        return true;
+    }
+
+    //function InvalidSign(textbox) {
+    //    if (textbox.validity.patternMismatch) {
+    //        textbox.setCustomValidity('Numbers and Special Characters are not allowed');
+    //    }
+    //    else {
+    //        textbox.setCustomValidity('');
+    //        textbox.style.borderColor = "#31ce36";
+    //    }
+    //    return true;
+    //}
+
+    function InvalidSignatory(textbox) {
+        if (textbox.value === '') {
+            textbox.setCustomValidity
+                ('Enter an Authorised Signatory Name');
+            //document.getElementById("myDiv").style.borderColor = "red";
+            textbox.style.borderColor = "red";
+        }
+        else if (textbox.validity.patternMismatch) {
+            textbox.setCustomValidity('Numbers and Special Characters are not allowed');
+        }
+        else {
+            textbox.setCustomValidity('');
+            textbox.style.borderColor = "#31ce36";
+        }
+
+        return true;
+    }
+    function InvalidAddress(textbox) {
+        if (textbox.value === '') {
+            textbox.setCustomValidity
+                ('Enter an Registered Address');
+            //document.getElementById("myDiv").style.borderColor = "red";
+            // textbox.style.borderColor = "red";
+        }
+
+        else {
+            textbox.setCustomValidity('');
+            textbox.style.borderColor = "#31ce36";
+        }
+
+        return true;
+    }
+
+</script>
+
+<script>
+
+    $('#ClearForms').click(function (e) {
+
+        swal({
+            title: 'Are you sure?',
+            text: "You want to Clear all input fields !",
+            type: 'warning',
+            buttons: {
+                confirm: {
+                    text: 'Yes, Clear it !',
+                    className: 'btn btn-success'
+                },
+                cancel: {
+                    visible: true,
+                      text: 'No, Cancel it !',
+                    className: 'btn btn-danger'
+                }
+            }
+        }).then(function (value) {
+            if (value == true) {
+                $('#vendorname').val('');
+                $('#type_of_entity_vendor').val('');
+                $('#vendorcin').val('');
+                $('#vendorauthorisedsignatoryname').val('');
+                $('#vendorregisteredaddress').val('');
+                $('#branchaddress1').val('');
+                $('#branchaddress2').val('');
+                $('#branchaddress3').val('');
+                $('#branchaddress4').val('');
+                $('#branchaddress5').val('');
+
+                swal({
+                    title: 'Cleared!',
+                    text: 'Your form has been Cleared.',
+                    type: 'success',
+                    buttons: {
+                        confirm: {
+                            className: 'btn btn-success'
+                        }
+                    }
+                });
+            } else {
+                swal.close();
+            }
+        });
+    });
+</script>
+@******************************Integrated 14/3/20***************************@
+@if (Model != null)
+{
+    <script>
+        $(function () {
+            swal("Vendor : @Model.VendorVendorName created successfully !", {
+            icon: "success",
+
+        })
+              .then(function (result) {
+                        if (result) {
+
+                    window.location = "/Vendor/Repository";
+                }
+            });
+            });
+    </script>
+}
+@****************************************************@
+
+<script>
+
+    $('#discard').click(function (e) {
+
+        swal({
+            title: 'Are you sure?',
+            text: "You want to Cancel !",
+            type: 'warning',
+            buttons: {
+                cancel: {
+                    visible: true,
+                    text: 'No, Keep it !',
+                    className: 'btn btn-success'
+                },
+                confirm: {
+                    text: 'Yes, Cancel it !',
+                    className: 'btn btn-danger'
+                },
+
+            }
+        }).then(function (value) {
+            if (value == true) {
+                window.location = '/Vendor/Repository'
+
+            }
+        });
+    });
+     $('#discard2').click(function (e) {
+
+        swal({
+            title: 'Are you sure?',
+            text: "You want to Cancel !",
+            type: 'warning',
+            buttons: {
+                cancel: {
+                    visible: true,
+                    text: 'No, Keep it !',
+                    className: 'btn btn-success'
+                },
+                confirm: {
+                    text: 'Yes, Cancel it !',
+                    className: 'btn btn-danger'
+                },
+
+            }
+        }).then(function (value) {
+            if (value == true) {
+                window.location = '/Vendor/Repository'
+
+            }
+        });
+    });
+</script>

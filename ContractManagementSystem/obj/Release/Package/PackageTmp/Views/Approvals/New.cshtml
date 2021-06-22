@@ -1,0 +1,2756 @@
+﻿@model IEnumerable<ContractManagementSystem.Models.tblUserMaster>
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    string CurrentUserID()
+    {
+        string userName = string.Empty;
+
+        if (HttpContext.Current.Request.IsAuthenticated)
+        {
+            userName = HttpContext.Current.User.Identity.Name.Split('|')[1];
+        }
+
+        return userName;
+
+    }
+}
+
+
+
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            @*<div class="page-header">
+                <h4 class="page-title">Approval Workflow</h4>
+                <ul class="breadcrumbs">
+                    <li class="nav-home">
+                        <a href="~/Home/Dashboard">
+                            <i class="flaticon-home"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        Approval Workflow
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        New Workflow
+                    </li>
+                </ul>
+            </div>*@
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            @*<div class="card-title"><b>New Clause</b></div>*@
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="card-title"><b>Approval Workflow</b></div>
+                                </div>
+
+                                <div class="col-sm-8 text-right redirectionallink">
+                                    <button type="button" class="btn btn-sm btn-light" id="Edit_Approal" style="display:none;"><i class="flaticon-pencil" aria-hidden="true"></i>&nbsp; Edit</button>
+                                    <button type="button" id="Submit_Button" onclick="SubmitApproversToDB();" class="btn btn-sm btn-light" style="color:green;display:none;"><i class="flaticon-success"></i>&nbsp; Save Changes</button>
+                                    <button @*onclick="window.location = '/Approvals/Repository'"*@ id="discard"style="display:none;" value="Discard" class="btn btn-sm btn-light"><i class="flaticon-error" aria-hidden="true"></i>&nbsp;&nbsp;Cancel Changes</button>
+                                    <button class="btn btn-sm btn-light" title="History" data-toggle="modal" data-target="#LogModel"><i class="flaticon-clock-1" aria-hidden="true"></i>&nbsp;History</button>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            @*@using (Html.BeginForm("Approver", "Approvals", FormMethod.Post))
+                                {*@
+                            <form>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="Category">Workflow Type<span class="asteriskicon"> *</span></label>
+                                            <select class="form-control" onchange="WorkflowDetails();" id="WorkflowType" name="WorkflowType" style="padding-bottom:3px;padding-top:3px;">
+                                                <option selected disabled>-- Select --</option>
+                                                <option>Template</option>
+                                                <option>Contract</option>
+                                                @*<option>Contract - Modified</option>*@
+                                                
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="Cluster">Department <span class="asteriskicon"> *</span></label>
+                                            <select class="form-control" id="clustercategory" onchange="WorkflowDetails();" required="required" style="padding-bottom:3px;padding-top:3px;">
+                                                <option selected value="">-- Select --</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="Finance">Sub Department <span class="asteriskicon"> *</span></label>
+
+                                            <select class="form-control" id="approversubcategory" onchange="WorkflowDetails();" required="required" style="padding-bottom:3px;padding-top:3px;">
+                                                <option selected value="">-- Select --</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header CardHeader_Approvers">
+                                                <div class="row align-items-center">
+                                                    <div class="col-sm-6">
+                                                        <div class="card-title"><h5><b>Approver Level 1</b></h5></div>
+                                                    </div>
+                                                    <div class="col-sm-6 text-right">
+                                                        <button type="button" id="ALevel1" style="color:blue;" onclick="SearchModal(this.id);" class="btn btn-sm btn-light Approval_readony" disabled data-toggle="modal"><i class="flaticon-search-2" aria-hidden="true"></i>&nbsp; Search User</button>
+                                                        &nbsp;<button type="button" style="color:red;" id="btnRemoveApprover1" class="btn btn-sm btn-light Approval_readony" disabled title="select checkbox to remove"><i class="flaticon-interface-5" aria-hidden="true"></i>&nbsp; Remove</button>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+
+                                                <div class="row">
+                                                    <div class="col-lg-12 text-right">
+
+                                                        <input type="hidden" id="ApproverEmployeeID" />
+                                                        <input type="hidden" id="ApproverEmployeeName" />
+
+                                                        <input type="hidden" id="ApproverEmployeeEmail" />
+                                                        <input type="hidden" id="ApproverEmployeeDesignation" />
+                                                        <input type="hidden" id="ApproverEmployeeRoles" />
+                                                        <input type="hidden" id="ApproverEmployeeSubCategory" />
+                                                        <input type="hidden" id="ApproverEmployeeCategory" />
+
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="table-responsive">
+                                                                    <table id="ApproversTable1" class="display table table-bordered  appoverTabel">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th><center>Select Approver</center></th>
+                                                                                <th><center>Employee ID</center></th>
+                                                                                <th><center>Employee Name</center></th>
+                                                                                <th><center>Employee Email Address</center></th>
+                                                                                <th><center>Employee Designation</center></th>
+                                                                                <th><center>Employee Role (s)</center></th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody id="aprrovallist1">
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header CardHeader_Approvers">
+                                                <div class="row align-items-center">
+                                                    <div class="col-sm-6">
+                                                        <div class="card-title"><h5><b>Approver Level 2</b></h5></div>
+                                                    </div>
+                                                    <div class="col-sm-6 text-right">
+                                                        <button type="button" id="ALevel2" onclick="SearchModal(this.id);" class="btn btn-sm btn-light Approval_readony" disabled data-toggle="modal" style="color:blue;"> <i class="flaticon-search-2" aria-hidden="true"></i>&nbsp; Search User</button>
+                                                        &nbsp;<button type="button" id="btnRemoveApprover2" class="btn btn-sm btn-light Approval_readony" disabled title="select checkbox to remove" style="color:red;"><i class="flaticon-interface-5" aria-hidden="true"></i>&nbsp; Remove</button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+
+                                                <div class="row">
+                                                    <div class="col-lg-12 text-right">
+
+                                                        <input type="hidden" id="Approver2EmployeeID" />
+                                                        <input type="hidden" id="Approver2EmployeeName" />
+
+                                                        <input type="hidden" id="Approver2EmployeeEmail" />
+                                                        <input type="hidden" id="Approver2EmployeeDesignation" />
+                                                        <input type="hidden" id="Approver2EmployeeRoles" />
+                                                        <input type="hidden" id="Approver2EmployeeSubCategory" />
+                                                        <input type="hidden" id="Approver2EmployeeCategory" />
+
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="table-responsive">
+                                                                    <table id="ApproversTable2" class="display table table-bordered  appoverTabel">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th><center>Select Approver</center></th>
+                                                                                <th><center>Employee ID</center></th>
+                                                                                <th><center>Employee Name</center></th>
+                                                                                <th><center>Employee Email Address</center></th>
+                                                                                <th><center>Employee Designation</center></th>
+                                                                                <th><center>Employee Role (s)</center></th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody id="aprrovallist2">
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header CardHeader_Approvers">
+                                                <div class="row align-items-center">
+                                                    <div class="col-sm-6">
+                                                        <div class="card-title"><h5><b>Approver Level 3</b></h5></div>
+                                                    </div>
+                                                    <div class="col-sm-6 text-right">
+                                                        <button type="button" class="btn btn-sm btn-light Approval_readony" disabled data-toggle="modal" id="ALevel3" style="color:blue;" onclick="SearchModal(this.id);"> <i class="flaticon-search-2" aria-hidden="true"></i>&nbsp; Search User</button>
+                                                        &nbsp; <button type="button" id="btnRemoveApprover3" class="btn btn-sm btn-light Approval_readony" disabled style="color:red;" title="select checkbox to remove"><i class="flaticon-interface-5" aria-hidden="true"></i>&nbsp; Remove</button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+
+                                                <div class="row">
+                                                    <div class="col-lg-12 text-right">
+
+                                                        <input type="hidden" id="Approver3EmployeeID" />
+                                                        <input type="hidden" id="Approver3EmployeeName" />
+
+                                                        <input type="hidden" id="Approver3EmployeeEmail" />
+                                                        <input type="hidden" id="Approver3EmployeeDesignation" />
+                                                        <input type="hidden" id="Approver3EmployeeRoles" />
+                                                        <input type="hidden" id="Approver3EmployeeSubCategory" />
+                                                        <input type="hidden" id="Approver3EmployeeCategory" />
+
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="table-responsive">
+                                                                    <table id="ApproversTable3" class="display table table-bordered  appoverTabel">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th><center>Select Approver</center></th>
+                                                                                <th><center>Employee ID</center></th>
+                                                                                <th><center>Employee Name</center></th>
+                                                                                <th><center>Employee Email Address</center></th>
+                                                                                <th><center>Employee Designation</center></th>
+                                                                                <th><center>Employee Role (s)</center></th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody id="aprrovallist3">
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header CardHeader_Approvers">
+                                                <div class="row align-items-center">
+                                                    <div class="col-sm-6">
+                                                        <div class="card-title"><h5><b>Approver Level 4</b></h5></div>
+                                                    </div>
+                                                    <div class="col-sm-6 text-right">
+                                                        <button type="button" class="btn btn-sm btn-light Approval_readony" disabled data-toggle="modal" id="ALevel4" style="color:blue;" onclick="SearchModal(this.id);"> <i class="flaticon-search-2" aria-hidden="true"></i>&nbsp; Search User</button>
+                                                        &nbsp;<button type="button" id="btnRemoveApprover4" class="btn btn-sm btn-light Approval_readony" disabled style="color:red;" title="select checkbox to remove"><i class="flaticon-interface-5" aria-hidden="true"></i>&nbsp; Remove</button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+
+                                                <div class="row">
+                                                    <div class="col-lg-12 text-right">
+
+                                                        <input type="hidden" id="Approver4EmployeeID" />
+                                                        <input type="hidden" id="Approver4EmployeeName" />
+
+                                                        <input type="hidden" id="Approver4EmployeeEmail" />
+                                                        <input type="hidden" id="Approver4EmployeeDesignation" />
+                                                        <input type="hidden" id="Approver4EmployeeRoles" />
+                                                        <input type="hidden" id="Approver4EmployeeSubCategory" />
+                                                        <input type="hidden" id="Approver4EmployeeCategory" />
+
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="table-responsive">
+                                                                    <table id="ApproversTable4" class="display table table-bordered  appoverTabel">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th><center>Select Approver</center></th>
+                                                                                <th><center>Employee ID</center></th>
+                                                                                <th><center>Employee Name</center></th>
+                                                                                <th><center>Employee Email Address</center></th>
+                                                                                <th><center>Employee Designation</center></th>
+                                                                                <th><center>Employee Role (s)</center></th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody id="aprrovallist4">
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header CardHeader_Approvers">
+                                                <div class="row align-items-center">
+                                                    <div class="col-sm-6">
+                                                        <div class="card-title"><h5><b>Approver Level 5</b></h5></div>
+                                                    </div>
+                                                    <div class="col-sm-6 text-right">
+                                                        <button type="button" class="btn btn-sm btn-light Approval_readony" disabled data-toggle="modal" id="ALevel5" style="color:blue;" onclick="SearchModal(this.id);"> <i class="flaticon-search-2" aria-hidden="true"></i>&nbsp; Search User</button>
+                                                        &nbsp;<button type="button" id="btnRemoveApprover5" class="btn btn-sm btn-light Approval_readony" disabled style="color:red;" title="select checkbox to remove"><i class="flaticon-interface-5" aria-hidden="true"></i>&nbsp; Remove</button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+
+                                                <div class="row">
+                                                    <div class="col-lg-12 text-right">
+
+                                                        <input type="hidden" id="Approver5EmployeeID" />
+                                                        <input type="hidden" id="Approver5EmployeeName" />
+
+                                                        <input type="hidden" id="Approver5EmployeeEmail" />
+                                                        <input type="hidden" id="Approver5EmployeeDesignation" />
+                                                        <input type="hidden" id="Approver5EmployeeRoles" />
+                                                        <input type="hidden" id="Approver5EmployeeSubCategory" />
+                                                        <input type="hidden" id="Approver5EmployeeCategory" />
+
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="table-responsive">
+                                                                    <table id="ApproversTable5" class="display table table-bordered  appoverTabel">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th><center>Select Approver</center></th>
+                                                                                <th><center>Employee ID</center></th>
+                                                                                <th><center>Employee Name</center></th>
+                                                                                <th><center>Employee Email Address</center></th>
+                                                                                <th><center>Employee Designation</center></th>
+                                                                                <th><center>Employee Role (s)</center></th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody id="aprrovallist5">
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header CardHeader_Approvers">
+                                                <div class="row align-items-center">
+                                                    <div class="col-sm-6">
+                                                        <div class="card-title"><h5><b>Approver Level 6</b></h5></div>
+                                                    </div>
+                                                    <div class="col-sm-6 text-right">
+                                                        <button type="button" class="btn btn-sm btn-light Approval_readony" disabled data-toggle="modal" style="color:blue;" id="ALevel6" onclick="SearchModal(this.id);"> <i class="flaticon-search-2" aria-hidden="true"></i>&nbsp; Search User</button>
+                                                        &nbsp;<button type="button" id="btnRemoveApprover6" class="btn btn-sm btn-light Approval_readony" disabled style="color:red;" title="select checkbox to remove"><i class="flaticon-interface-5" aria-hidden="true"></i>&nbsp; Remove</button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+
+                                                <div class="row">
+                                                    <div class="col-lg-12 text-right">
+
+                                                        <input type="hidden" id="Approver6EmployeeID" />
+                                                        <input type="hidden" id="Approver6EmployeeName" />
+
+                                                        <input type="hidden" id="Approver6EmployeeEmail" />
+                                                        <input type="hidden" id="Approver6EmployeeDesignation" />
+                                                        <input type="hidden" id="Approver6EmployeeRoles" />
+                                                        <input type="hidden" id="Approver6EmployeeSubCategory" />
+                                                        <input type="hidden" id="Approver6EmployeeCategory" />
+
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="table-responsive">
+                                                                    <table id="ApproversTable6" class="display table table-bordered  appoverTabel">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th><center>Select Approver</center></th>
+                                                                                <th><center>Employee ID</center></th>
+                                                                                <th><center>Employee Name</center></th>
+                                                                                <th><center>Employee Email Address</center></th>
+                                                                                <th><center>Employee Designation</center></th>
+                                                                                <th><center>Employee Role (s)</center></th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody id="aprrovallist6">
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header CardHeader_Approvers">
+                                                <div class="row align-items-center">
+                                                    <div class="col-sm-6">
+                                                        <div class="card-title"><h5><b>Approver Level 7</b></h5></div>
+                                                    </div>
+                                                    <div class="col-sm-6 text-right">
+                                                        <button type="button" class="btn btn-sm btn-light Approval_readony" disabled data-toggle="modal" id="ALevel7" style="color:blue;" onclick="SearchModal(this.id);"> <i class="flaticon-search-2" aria-hidden="true"></i>&nbsp; Search User</button>
+                                                        &nbsp;<button type="button" id="btnRemoveApprover7" class="btn btn-sm btn-light Approval_readony" disabled style="color:red;" title="select checkbox to remove"><i class="flaticon-interface-5" aria-hidden="true"></i>&nbsp; Remove</button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+
+                                                <div class="row">
+                                                    <div class="col-lg-12 text-right">
+
+                                                        <input type="hidden" id="Approver7EmployeeID" />
+                                                        <input type="hidden" id="Approver7EmployeeName" />
+
+                                                        <input type="hidden" id="Approver7EmployeeEmail" />
+                                                        <input type="hidden" id="Approver7EmployeeDesignation" />
+                                                        <input type="hidden" id="Approver7EmployeeRoles" />
+                                                        <input type="hidden" id="Approver7EmployeeSubCategory" />
+                                                        <input type="hidden" id="Approver7EmployeeCategory" />
+
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="table-responsive">
+                                                                    <table id="ApproversTable7" class="display table table-bordered  appoverTabel">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th><center>Select Approver</center></th>
+                                                                                <th><center>Employee ID</center></th>
+                                                                                <th><center>Employee Name</center></th>
+                                                                                <th><center>Employee Email Address</center></th>
+                                                                                <th><center>Employee Designation</center></th>
+                                                                                <th><center>Employee Role (s)</center></th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody id="aprrovallist7">
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header CardHeader_Approvers">
+                                                <div class="row align-items-center">
+                                                    <div class="col-sm-6">
+                                                        <div class="card-title"><h5><b>Approver Level 8</b></h5></div>
+                                                    </div>
+                                                    <div class="col-sm-6 text-right">
+                                                        <button type="button" class="btn btn-sm btn-light Approval_readony" disabled data-toggle="modal" style="color:blue;" id="ALevel8" onclick="SearchModal(this.id);"> <i class="flaticon-search-2" aria-hidden="true"></i>&nbsp; Search User</button>
+                                                        &nbsp;<button type="button" id="btnRemoveApprover8" class="btn btn-sm btn-light Approval_readony" disabled style="color:red;" title="select checkbox to remove"><i class="flaticon-interface-5" aria-hidden="true"></i>&nbsp; Remove</button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+
+                                                <div class="row">
+                                                    <div class="col-lg-12 text-right">
+
+                                                        <input type="hidden" id="Approver8EmployeeID" />
+                                                        <input type="hidden" id="Approver8EmployeeName" />
+
+                                                        <input type="hidden" id="Approver8EmployeeEmail" />
+                                                        <input type="hidden" id="Approver8EmployeeDesignation" />
+                                                        <input type="hidden" id="Approver8EmployeeRoles" />
+                                                        <input type="hidden" id="Approver8EmployeeSubCategory" />
+                                                        <input type="hidden" id="Approver8EmployeeCategory" />
+
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="table-responsive">
+                                                                    <table id="ApproversTable8" class="display table table-bordered  appoverTabel">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th><center>Select Approver</center></th>
+                                                                                <th><center>Employee ID</center></th>
+                                                                                <th><center>Employee Name</center></th>
+                                                                                <th><center>Employee Email Address</center></th>
+                                                                                <th><center>Employee Designation</center></th>
+                                                                                <th><center>Employee Role (s)</center></th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody id="aprrovallist8">
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header CardHeader_Approvers">
+                                                <div class="row align-items-center">
+                                                    <div class="col-sm-6">
+                                                        <div class="card-title"><h5><b>Approver Level 9</b></h5></div>
+                                                    </div>
+                                                    <div class="col-sm-6 text-right">
+                                                        <button type="button" style="color:blue;" class="btn btn-sm btn-light Approval_readony" disabled data-toggle="modal" id="ALevel9" onclick="SearchModal(this.id);"> <i class="flaticon-search-2" aria-hidden="true"></i>&nbsp; Search User</button>
+                                                        &nbsp;<button type="button" style="color:red;" id="btnRemoveApprover9" class="btn btn-sm btn-light Approval_readony" disabled title="select checkbox to remove"><i class="flaticon-interface-5" aria-hidden="true"></i>&nbsp; Remove</button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+
+                                                <div class="row">
+                                                    <div class="col-lg-12 text-right">
+
+                                                        <input type="hidden" id="Approver9EmployeeID" />
+                                                        <input type="hidden" id="Approver9EmployeeName" />
+
+                                                        <input type="hidden" id="Approver9EmployeeEmail" />
+                                                        <input type="hidden" id="Approver9EmployeeDesignation" />
+                                                        <input type="hidden" id="Approver9EmployeeRoles" />
+                                                        <input type="hidden" id="Approver9EmployeeSubCategory" />
+                                                        <input type="hidden" id="Approver9EmployeeCategory" />
+
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="table-responsive">
+                                                                    <table id="ApproversTable9" class="display table table-bordered  appoverTabel">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th><center>Select Approver</center></th>
+                                                                                <th><center>Employee ID</center></th>
+                                                                                <th><center>Employee Name</center></th>
+                                                                                <th><center>Employee Email Address</center></th>
+                                                                                <th><center>Employee Designation</center></th>
+                                                                                <th><center>Employee Role (s)</center></th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody id="aprrovallist9">
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header CardHeader_Approvers">
+                                                <div class="row align-items-center">
+                                                    <div class="col-sm-6">
+                                                        <div class="card-title"><h5><b>Approver Level 10</b></h5></div>
+                                                    </div>
+                                                    <div class="col-sm-6 text-right">
+                                                        <button type="button" style="color:blue;" class="btn btn-sm btn-light Approval_readony" disabled data-toggle="modal" id="ALevel10" onclick="SearchModal(this.id);"> <i class="flaticon-search-2" aria-hidden="true"></i>&nbsp; Search User</button>
+                                                        &nbsp;<button type="button" style="color:red;" id="btnRemoveApprover10" class="btn btn-sm btn-light Approval_readony" disabled title="select checkbox to remove"><i class="flaticon-interface-5" aria-hidden="true"></i>&nbsp; Remove</button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+
+                                                <div class="row">
+                                                    <div class="col-lg-12 text-right">
+
+                                                        <input type="hidden" id="Approver10EmployeeID" />
+                                                        <input type="hidden" id="Approver10EmployeeName" />
+
+                                                        <input type="hidden" id="Approver10EmployeeEmail" />
+                                                        <input type="hidden" id="Approver10EmployeeDesignation" />
+                                                        <input type="hidden" id="Approver10EmployeeRoles" />
+                                                        <input type="hidden" id="Approver10EmployeeSubCategory" />
+                                                        <input type="hidden" id="Approver10EmployeeCategory" />
+
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="table-responsive">
+                                                                    <table id="ApproversTable10" class="display table table-bordered  appoverTabel">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th><center>Select Approver</center></th>
+                                                                                <th><center>Employee ID</center></th>
+                                                                                <th><center>Employee Name</center></th>
+                                                                                <th><center>Employee Email Address</center></th>
+                                                                                <th><center>Employee Designation</center></th>
+                                                                                <th><center>Employee Role (s)</center></th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody id="aprrovallist10">
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-action text-right card_footer_button">
+                                    @*<input type="button" onclick="SubmitApproversToDB();" class="btn btn-success" value="Create" />
+                                        <button type="reset" class="btn btn-danger" id="ClearForms">Clear</button>*@
+                                    <button type="button" id="Submit_Button2" onclick="SubmitApproversToDB();" class="btn btn-success" style="font-size:17px;display:none;">
+                                        <b>Save Changes</b>
+                                    </button>
+                                </div>
+                                @*}*@
+                            </form>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="searchmodal" role="dialog" tabindex="-1">
+    @*<div class="text-right model_body_position">
+            <a href="" data-dismiss="modal" class="modaldismissarrow"><i class="flaticon-error fa-3x " aria-hidden="true"></i></a>
+        </div>*@
+
+    <div class="modal-dialog" style="max-width:80%;">
+        <div class="modal-content">
+            <div class="modal-header modalheadercolor websitecolour">
+                <label style="font-size: 20px !important;"><b>Search Employee</b></label>
+                <button data-dismiss="modal" class="modaldismissarrow text-right btn btn-sm btn-light btn_close" title="Close">Close</button>
+            </div>
+            <div class="modal-body" style="height:480px; overflow: auto;">
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <div class="form-group form-inline">
+                            <div class="col-md-2">
+                                <label class="col-form-label"><b>Search By :</b></label>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-control" id="UserSearchOption" name="UserSearchType" style="padding-bottom:3px;padding-top:3px;">
+                                    <option> Employee ID </option>
+                                    <option> Employee Name </option>
+                                    <option> Employee Email Address </option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="hidden" class="ApproverLevel_Id" />
+                                <input type="text" onkeyup="this.value = this.value.replace(/[^a-zA-Z0-9@('@')._-\s]/g, '');" class="form-control input-full" placeholder="Type here and click search" id="EmployeeDetail" />
+                            </div>
+                            <div class="col-md-2">
+                                <center>
+                                    <button class="btn btn-sm btn-light btn_create" id="valbtn" onclick="UserID();">Search User</button>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <center><h3><b id="UsererrorCode"></b></h3></center>
+                    </div>
+                </div>
+
+                <br />
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="tableFixHead_search">
+                            <table id="Approvers_Table" class="display table table-bordered appoverTabel">
+                                <thead>
+                                    <tr>
+                                        <th><center>Select User</center></th>
+                                        <th><center>Employee ID</center></th>
+                                        <th><center>Employee Name</center></th>
+                                        <th><center>Employee Email Address</center></th>
+                                        <th><center>Department</center></th>
+                                        <th><center>Sub Department</center></th>
+                                        <th><center>Employee Designation</center></th>
+                                        <th><center>Employee Role (s)</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblUsersSearchList"></tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="LogModel" role="dialog" tabindex="-1">
+    @*<div class="text-right model_body_position">
+            <a href="" data-dismiss="modal" class="modaldismissarrow"><i class="flaticon-error fa-3x " aria-hidden="true"></i></a>
+        </div>*@
+
+    <div class="modal-dialog" style="max-width: 80%;">
+
+        <div class="modal-content">
+
+            <div class="modal-header modalheadercolor websitecolour">
+                <label style="font-size: 20px !important;"><b>Approver Modified History</b></label>
+                <button data-dismiss="modal" class="modaldismissarrow text-right btn btn-sm btn-light btn_close" title="Close">Close</button>
+            </div>
+            <div class="modal-body" style="height:450px; overflow: auto;">
+                <div class="row">
+                    <div class="col-lg-12  text-right">
+                        <div class="tableFixHead_LogHistory">
+                            <table class="table table-bordered">
+
+                                <thead>
+
+                                    <tr>
+                                        <th><center>Date and Time</center></th>
+                                        <th><center>Modified By</center></th>
+                                        <th><center>Activity</center></th>
+                                        <th><center>Changed From</center></th>
+                                        <th><center>Changed To</center></th>
+
+                                    </tr>
+
+                                </thead>
+
+                                <tbody id="tblApprovalLogList">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                @*<hr />
+
+                    <div class="card-action text-right card_footer_button">
+                        <input type="submit" class="btn btn-success" value="Select" id="CaptureHodList">
+                        <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel" />
+                    </div>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modalload"><!-- Place at bottom of page --></div>
+
+
+
+
+<script src="../../Content/assets/js/core/jquery.3.2.1.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#basic-datatables').DataTable({
+        });
+    });
+</script>
+
+<script>
+     $(function () {
+        var ID = $("#hiddenID").val();
+        var tblLog = "";
+
+        $.ajax({
+            type: "POST",
+            url: "/Approvals/getLogDetail",
+            data: { ID: ID },
+
+
+            success: function (response) {
+
+                //.get().reverse()
+                //alert(response.LogUserID);
+                $.each($(response), function (index, value) {
+                    tblLog = tblLog + '<tr><td><center>' + value.DateandTime + '</center></td><td><center>' + value.ModifiedBy + '<center></td><td  style="text-align: left;">' + value.LogActivity + '</td><td style="text-align: left;">' + value.ChangedFrom + '</td><td style="text-align: left;">' + value.ChangedTo + '</td></tr>';
+                });
+                $("#tblApprovalLogList").html(tblLog);
+            },
+            failure: function (response) {
+                alert(response);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    });
+</script>
+
+<script>
+
+    $(document).ready(function () {
+        var table = $('#multiSelect-Hod').DataTable({
+            "bSortCellsTop": true,
+            responsive: true,
+            "iDisplayLength": 25,
+            "order": [
+                [0, "desc"]]
+        });
+
+        $('input.search').on('keyup change', function () {
+            var rel = $(this).attr("rel");
+            table.columns(rel).search(this.value).draw();
+        });
+    });
+</script>
+
+<script>
+
+    $(document).ready(function () {
+        var table = $('#multiselect-legal').DataTable({
+            "bSortCellsTop": true,
+            responsive: true,
+            "iDisplayLength": 25,
+            "order": [
+                [0, "desc"]]
+        });
+
+        $('input.search').on('keyup change', function () {
+            var rel = $(this).attr("rel");
+            table.columns(rel).search(this.value).draw();
+        });
+    });
+</script>
+
+<script>
+
+    $(document).ready(function () {
+        var table = $('#multiselect-finance').DataTable({
+            "bSortCellsTop": true,
+            responsive: true,
+            "iDisplayLength": 25,
+            "order": [
+                [0, "desc"]]
+        });
+
+        $('input.search').on('keyup change', function () {
+            var rel = $(this).attr("rel");
+            table.columns(rel).search(this.value).draw();
+        });
+    });
+</script>
+
+
+<script>
+    $(function () {
+        //  alert("hello");
+        var CurrentUserID = "@CurrentUserID()";
+        $.ajax({
+            type: "POST",
+            url: "/Approvals/getCategory",
+            data: { CurrentUserID: CurrentUserID },
+
+             dataType: "json",
+
+
+            success: function (response) {
+                //alert("Hello: " + response);
+                var x = document.getElementById("clustercategory");
+                //x.innerHTML = "-- select --";
+                //x.disabled = true;
+                //var option = document.createElement("option");
+                //option.disabled = true;
+                //option.text = "-- select --";
+
+                //option.text = "-- Select Category --";
+                //x.add(option);
+                $.each(response, function (index, value) {
+                    var option = document.createElement("option");
+                    option.text = value;
+                    x.add(option);
+                });
+            },
+
+            failure: function (response) {
+                //alert(response.responseText);
+            },
+            error: function (response) {
+                //alert(response.responseText);
+            }
+
+        });
+
+        $("#clustercategory").change(function () {
+             //var CurrentUserID = "@CurrentUserID()";
+            var user_category_id = $(this).val();
+            //alert("data :" + deptid);
+            $.ajax({
+                url: '/Approvals/getSubCategory',
+                type: 'post',
+                data: { user_category_id: user_category_id },
+
+                dataType: 'json',
+                success: function (response) {
+
+                    $('#approversubcategory')
+                        .find('option')
+                        .remove();
+
+                    var x = document.getElementById("approversubcategory");
+
+                    var option = document.createElement("option");
+                    option.text = "-- Select --";
+                    option.value = "";
+
+                    x.add(option);
+                    $.each(response, function (index, value) {
+                        var option = document.createElement("option");
+                        option.text = value;
+                        x.add(option);
+                    });
+                }
+            });
+        });
+    });
+
+</script>
+
+
+<script>
+
+    function AddedUser(EmpID) {
+        var AppUsers = [];
+
+        var Userlist = document.getElementsByClassName("ApproverDetails");
+
+        for (var i = 0; i < Userlist.length; i++) {
+            var UID = Userlist[i].innerHTML;
+            AppUsers.push(UID);
+            if (UID == EmpID) {
+                return false;
+            }
+        }
+        console.log(AppUsers);
+        return true;
+
+    }
+    function CheckLimit() {
+        var ApproverLevel = $('.ApproverLevel_Id').attr('id');
+
+        if (ApproverLevel == 'ALevel1') {
+            var Userlist = document.getElementsByClassName("EmployeeIdDetails1").length;
+        }
+        else if (ApproverLevel == 'ALevel2') {
+            var Userlist = document.getElementsByClassName("EmployeeIdDetails2").length;
+        }
+        else if (ApproverLevel == 'ALevel3') {
+            var Userlist = document.getElementsByClassName("EmployeeIdDetails3").length;
+        }
+        else if (ApproverLevel == 'ALevel4') {
+            var Userlist = document.getElementsByClassName("EmployeeIdDetails4").length;
+        }
+        else if (ApproverLevel == 'ALevel5') {
+            var Userlist = document.getElementsByClassName("EmployeeIdDetails5").length;
+        }
+        else if (ApproverLevel == 'ALevel6') {
+            var Userlist = document.getElementsByClassName("EmployeeIdDetails6").length;
+        }
+        else if (ApproverLevel == 'ALevel7') {
+            var Userlist = document.getElementsByClassName("EmployeeIdDetails7").length;
+        }
+        else if (ApproverLevel == 'ALevel8') {
+            var Userlist = document.getElementsByClassName("EmployeeIdDetails8").length;
+        }
+        else if (ApproverLevel == 'ALevel9') {
+            var Userlist = document.getElementsByClassName("EmployeeIdDetails9").length;
+        }
+        else if (ApproverLevel == 'ALevel10') {
+            var Userlist = document.getElementsByClassName("EmployeeIdDetails10").length;
+        }
+
+        if (Userlist < 10) {
+
+            $('.btn_add').attr('disabled', false);
+            return true;
+        }
+        $('.btn_add').attr('disabled', true);
+        return false;
+
+    }
+
+
+
+</script>
+<script>
+
+    $("#btnRemoveApprover1").click(function () {
+        $("#ApproversTable1 tbody").find('input[name="record"]').each(function () {
+            if ($(this).is(":checked")) {
+                $(this).parents("tr").remove();
+            }
+            CheckLimit();
+        });
+
+    });
+    $("#btnRemoveApprover2").click(function () {
+        $("#ApproversTable2 tbody").find('input[name="record"]').each(function () {
+            if ($(this).is(":checked")) {
+                $(this).parents("tr").remove();
+            }
+            CheckLimit();
+        });
+
+    });
+    $("#btnRemoveApprover3").click(function () {
+        $("#ApproversTable3 tbody").find('input[name="record"]').each(function () {
+            if ($(this).is(":checked")) {
+                $(this).parents("tr").remove();
+            }
+            CheckLimit();
+        });
+
+    });
+    $("#btnRemoveApprover4").click(function () {
+        $("#ApproversTable4 tbody").find('input[name="record"]').each(function () {
+            if ($(this).is(":checked")) {
+                $(this).parents("tr").remove();
+            }
+            CheckLimit();
+        });
+
+    });
+    $("#btnRemoveApprover5").click(function () {
+        $("#ApproversTable5 tbody").find('input[name="record"]').each(function () {
+            if ($(this).is(":checked")) {
+                $(this).parents("tr").remove();
+            }
+            CheckLimit();
+        });
+
+    });
+    $("#btnRemoveApprover6").click(function () {
+        $("#ApproversTable6 tbody").find('input[name="record"]').each(function () {
+            if ($(this).is(":checked")) {
+                $(this).parents("tr").remove();
+            }
+            CheckLimit();
+        });
+
+    });
+    $("#btnRemoveApprover7").click(function () {
+        $("#ApproversTable7 tbody").find('input[name="record"]').each(function () {
+            if ($(this).is(":checked")) {
+                $(this).parents("tr").remove();
+            }
+            CheckLimit();
+        });
+
+    });
+    $("#btnRemoveApprover8").click(function () {
+        $("#ApproversTable8 tbody").find('input[name="record"]').each(function () {
+            if ($(this).is(":checked")) {
+                $(this).parents("tr").remove();
+            }
+            CheckLimit();
+        });
+
+    });
+    $("#btnRemoveApprover9").click(function () {
+        $("#ApproversTable9 tbody").find('input[name="record"]').each(function () {
+            if ($(this).is(":checked")) {
+                $(this).parents("tr").remove();
+            }
+            CheckLimit();
+        });
+
+    });
+    $("#btnRemoveApprover10").click(function () {
+        $("#ApproversTable10 tbody").find('input[name="record"]').each(function () {
+            if ($(this).is(":checked")) {
+                $(this).parents("tr").remove();
+            }
+            CheckLimit();
+        });
+
+    });
+</script>
+
+
+
+<script>
+    function SubmitApproversToDB() {
+        var WorkflowType = $("#WorkflowType").val();
+        var ApproverCluster = $("#clustercategory").val();
+        var ApproverFunction = $("#approversubcategory").val();
+        var CurrentUserID = @CurrentUserID();
+       
+        var UID1 = [];
+        var UID2 = [];
+        var UID3 = [];
+        var UID4 = [];
+        var UID5 = [];
+        var UID6 = [];
+        var UID7 = [];
+        var UID8 = [];
+        var UID9 = [];
+        var UID10 = [];
+
+
+        var Userlist1 = document.getElementsByClassName("EmployeeIdDetails1");
+        var Userlist2 = document.getElementsByClassName("EmployeeIdDetails2");
+        var Userlist3 = document.getElementsByClassName("EmployeeIdDetails3");
+        var Userlist4 = document.getElementsByClassName("EmployeeIdDetails4");
+        var Userlist5 = document.getElementsByClassName("EmployeeIdDetails5");
+        var Userlist6 = document.getElementsByClassName("EmployeeIdDetails6");
+        var Userlist7 = document.getElementsByClassName("EmployeeIdDetails7");
+        var Userlist8 = document.getElementsByClassName("EmployeeIdDetails8");
+        var Userlist9 = document.getElementsByClassName("EmployeeIdDetails9");
+        var Userlist10 = document.getElementsByClassName("EmployeeIdDetails10");
+
+
+           for (var i = 0; i < Userlist1.length; i++) {
+               UID1.push(Userlist1[i].innerHTML);
+        }
+        for (var i = 0; i < Userlist2.length; i++) {
+            UID2.push(Userlist2[i].innerHTML);
+        }
+        for (var i = 0; i < Userlist3.length; i++) {
+            UID3.push(Userlist3[i].innerHTML);
+        }
+        for (var i = 0; i < Userlist4.length; i++) {
+            UID4.push(Userlist4[i].innerHTML);
+        }
+        for (var i = 0; i < Userlist5.length; i++) {
+            UID5.push(Userlist5[i].innerHTML);
+        }
+        for (var i = 0; i < Userlist6.length; i++) {
+            UID6.push(Userlist6[i].innerHTML);
+        }
+        for (var i = 0; i < Userlist7.length; i++) {
+            UID7.push(Userlist7[i].innerHTML);
+        }
+        for (var i = 0; i < Userlist8.length; i++) {
+            UID8.push(Userlist8[i].innerHTML);
+        }
+        for (var i = 0; i < Userlist9.length; i++) {
+            UID9.push(Userlist9[i].innerHTML);
+        }
+        for (var i = 0; i < Userlist10.length; i++) {
+            UID10.push(Userlist10[i].innerHTML);
+        }
+
+        if (WorkflowType == "Template") {
+           //alert(("" + WorkflowType));
+           
+                    if (Userlist1.length > 0) {
+                        $.ajax({
+                            url: '/Approvals/SubmitApproversToDB',
+                            type: 'POST',
+                            data: { WorkflowType: WorkflowType, ApproverCluster: ApproverCluster, ApproverFunction: ApproverFunction, UID1: UID1, UID2: UID2, UID3: UID3, UID4: UID4, UID5: UID5, UID6: UID6, UID7: UID7, UID8: UID8, UID9: UID9, UID10: UID10, CurrentUserID: CurrentUserID },
+
+                            dataType: 'json',
+                            success: function (response) {
+                                // console.log(response);
+                                if (response == "success") {
+                                    swal("Approval Workflow updated successfully", {
+                                        icon: "success",
+                                        buttons: {
+                                            confirm: {
+                                                visible: true
+                                            }
+                                        }
+                                    }).then(function (result) {
+                                        if (result == true) {
+                                            window.location = "/Approvals/New";
+                                        }
+                                    });
+
+                                }
+                                else {
+                                    swal("Unable to create workflow. Contact System Admin for support.", {
+
+                                        icon: "error",
+                                        buttons: {
+                                            confirm: {
+                                                visible: true
+                                            }
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    }
+                    else {
+                        swal("Minimum of One Approver Level Required", {
+                            icon: "warning",
+                        });
+                    }
+        }
+
+        else {
+            if ((WorkflowType != null) && (ApproverCluster != null) && (ApproverFunction != null)) {
+                if ((ApproverCluster == "-- Select --") || (ApproverFunction == "-- Select --"))
+                {
+                    swal("Select Department and Sub Department", {
+                            icon: "warning",
+                    });
+                }
+                else
+                {
+                    //alert(("" + WorkflowType));
+                    if (Userlist1.length > 0 && Userlist2.length > 0) {
+                        $.ajax({
+                            url: '/Approvals/SubmitApproversToDB',
+                            type: 'POST',
+                            data: { WorkflowType: WorkflowType, ApproverCluster: ApproverCluster, ApproverFunction: ApproverFunction, UID1: UID1, UID2: UID2, UID3: UID3, UID4: UID4, UID5: UID5, UID6: UID6, UID7: UID7, UID8: UID8, UID9: UID9, UID10: UID10, CurrentUserID: CurrentUserID },
+
+                            dataType: 'json',
+                            success: function (response) {
+                                // console.log(response);
+                                if (response == "success") {
+                                    swal("Approval Workflow updated successfully", {
+                                        icon: "success",
+                                        buttons: {
+                                            confirm: {
+                                                visible: true
+                                            }
+                                        }
+                                    }).then(function (result) {
+                                        if (result == true) {
+                                            window.location = "/Approvals/New";
+                                        }
+                                    });
+
+                                }
+                                else {
+                                    swal("Unable to create workflow. Contact System Admin for support.", {
+
+                                        icon: "error",
+                                        buttons: {
+                                            confirm: {
+                                                visible: true
+                                            }
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    }
+                    else {
+                        swal("Minimum of two Approver Level Required", {
+                            icon: "warning",
+                        });
+                    }
+                }
+
+            }
+            else {
+                swal("All fields are required", {
+                            icon: "warning",
+                        });
+            }
+        }
+       
+    }
+</script>
+
+
+
+<script>
+
+    $('#discard').click(function (e) {
+
+        swal({
+            title: 'Are you sure ?',
+            text: "You want to Cancel ! ",
+            type: 'warning',
+            buttons: {
+                cancel: {
+                    visible: true,
+                    text: 'No, Keep it !',
+                    className: 'btn btn-success'
+                },
+                confirm: {
+                    text: 'Yes, Cancel it !',
+                    className: 'btn btn-danger'
+                },
+
+            }
+        }).then(function (value) {
+            if (value == true) {
+                window.location = '/Approvals/New'
+
+            }
+        });
+    });
+</script>
+
+<script>
+    function UserID() {
+
+        var EmployeeDetails = $("#EmployeeDetail").val();
+        var Department = $("#clustercategory").val();
+        var SubDepartment = $("#approversubcategory").val();
+        //alert(Department + " : " + SubDepartment);
+        var WorkflowType = $("#WorkflowType").val();
+
+        var tblBasicUser = "";
+        if (EmployeeDetails.length > 0) {
+            $("#UsererrorCode").html("");
+            var OptionToSearch = $("#UserSearchOption").val();
+            $.ajax({
+                type: "POST",
+                url: "/Approvals/getHodDetails",
+                data: { EmployeeDetails: EmployeeDetails, OptionToSearch: OptionToSearch },
+
+
+                success: function (response) {
+                    tblUserList = "";
+                    console.log(response);
+                    if (response.length > 0) {
+
+                        $("#UsererrorCode").css({ "color": "green" });
+                        $("#UsererrorCode").html("Record found.");
+
+                        $.each($(response), function (index, value) {
+                            var UserRole = "";
+                            if (value.UserRoleAdmin == true) {
+                                UserRole = UserRole + "Admin";
+                            }
+
+                            if (value.UserRoleInitiator == true) {
+
+                                if (UserRole.length > 0) {
+                                    UserRole = UserRole + ", Initiator";
+                                }
+                                else {
+                                    UserRole = UserRole + "Initiator";
+                                }
+                            }
+                            if (value.UserRoleApprover == true) {
+                                if (UserRole.length > 0) {
+                                    UserRole = UserRole + ", Approver";
+                                }
+                                else {
+                                    UserRole = UserRole + "Approver";
+                                }
+                            }
+                            if (value.UserRoleFinance == true) {
+                                if (UserRole.length > 0) {
+                                    UserRole = UserRole + ", Finance Approver";
+                                }
+                                else {
+                                    UserRole = UserRole + "Finance Approver";
+                                }
+                            }
+
+                            if (value.UserRoleLegal == true) {
+                                if (UserRole.length > 0) {
+
+                                    UserRole = UserRole + ", Legal Approver";
+                                }
+                                else {
+                                    UserRole = UserRole + "Legal Approver";
+                                }
+                            }
+                            if (value.UserRoleReviewer == true) {
+
+                                if (UserRole.length > 0) {
+                                    UserRole = UserRole + ", Reviewer";
+                                }
+                                else {
+                                    UserRole = UserRole + "Reviewer";
+                                }
+                            }
+                            if (value.UserRoleFinance2 == true) {
+
+                                if (UserRole.length > 0) {
+                                    UserRole = UserRole + ", Finance 2";
+                                }
+                                else {
+                                    UserRole = UserRole + "Finance 2";
+                                }
+                            }
+                            var select = "";
+
+                            var EmployeeID = value.UserEmployeeID;
+                            var EmployeeDept = value.UserCategory;
+                            var EmployeeSubDept = value.UserSubCategory;
+
+                            var str2 = "Approver";
+                            if ((UserRole.indexOf(str2) != -1) && (value.UserStatus == "Active")) {
+
+                                var cmpDpt = Department.trim().localeCompare(EmployeeDept.trim());
+                                var cmpSubDpt = SubDepartment.trim().localeCompare(EmployeeSubDept.trim());
+
+                                var EmpDept = Department.trim();
+                                var EmpSubDept = SubDepartment.trim();
+
+                                var MappingCount = false;
+
+                                if (WorkflowType == "Template") {
+                                    var legalrole = "Legal Approver"
+                                    if ((UserRole.indexOf(legalrole) != -1)) {
+                                        select = '<button class="btn btn-sm btn-primary btn_add" id="' + value.UserEmployeeID + '" onclick="SelectFunction(' + value.UserEmployeeID + ');">Select</button>';
+
+                                    }
+                                    else {
+                                        select = '<h5 style="color:red;" title="' + value.UserEmployeeName + ' is not an Legal Approver"><i class="fas fa-exclamation-circle" aria-hidden="true">&nbsp;Restricted</i></h5>';
+
+                                    }
+                                }
+                                else {
+                                        if ((cmpDpt == 0) && (cmpSubDpt == 0)) {
+                                            //alert("inside if");
+
+                                            select = '<button class="btn btn-sm btn-primary btn_add" id="' + value.UserEmployeeID + '" onclick="SelectFunction(' + value.UserEmployeeID + ');">Select</button>';
+
+                                        }
+                                        else if (MappingCount) {
+
+
+                                            select = '<button class="btn btn-sm btn-primary btn_add" id="' + value.UserEmployeeID + '" onclick="SelectFunction(' + value.UserEmployeeID + ');">Select</button>';
+
+                                        }
+                                        else {
+                                            //alert("inside if else");
+
+                                            $.ajax({
+                                                async: false,
+                                                url: '/Approvals/DepartmentMappingCheck',
+                                                type: 'POST',
+                                                data: { EmployeeID: EmployeeID, EmpDept: EmpDept, EmpSubDept: EmpSubDept },
+
+                                                dataType: 'json',
+                                                success: function (response) {
+                                                    if (response != "Error") {
+                                                        if (response > 0) {
+                                                            //alert(response);
+                                                            select = '<button class="btn btn-sm btn-primary btn_add" id="' + value.UserEmployeeID + '" onclick="SelectFunction(' + value.UserEmployeeID + ');">Select</button>';
+
+                                                        }
+                                                        else {
+                                                            select = '<h5 style="color:red;" title="' + value.UserEmployeeName + ' does not belongs to selected Department and Sub Department"><i class="fas fa-exclamation-circle" aria-hidden="true">&nbsp;Restricted</i></h5>';
+                                                        }
+                                                    }
+                                                    else {
+                                                        select = '<h5 style="color:red; title="' + value.UserEmployeeName + ' does not belongs to selected Department and Sub Department""><i class="fas fa-exclamation-circle" aria-hidden="true">&nbsp;Restricted</i></h5>';
+                                                    }
+                                                }
+                                            });
+
+                                            //alert("inside if else complete");
+                                            //
+                                        }
+                                }
+                                
+
+                            }
+                            else {
+                                //alert("inside else");
+                                select = '<h5 style="color:red;" title="' + value.UserEmployeeName + ' is not an Approver and currently not active."><i class="fas fa-exclamation-circle" aria-hidden="true">&nbsp;Restricted</i></h5>';
+
+                            }
+
+                            tblBasicUser = tblBasicUser + '<tr><td>' + select + '</td><td id="' + value.UserEmployeeID + '_ID">' + value.UserEmployeeID + '</td><td id="' + value.UserEmployeeID + '_Name">' + value.UserEmployeeName + '</td><td id="' + value.UserEmployeeID + '_Email">' + value.UserEmployeeEmail + '</td><td id="' + value.UserEmployeeID + '_Cat">' + value.UserCategory + '</td><td id="' + value.UserEmployeeID + '_Sub">' + value.UserSubCategory + '</td><td id="' + value.UserEmployeeID + '_Desg">' + value.UserEmployeeDesignation + '</td><td id="' + value.UserEmployeeID + '_Role">' + UserRole + '</td></tr>';
+                        });
+                        $("#tblUsersSearchList").html(tblBasicUser);
+                    }
+                    else {
+                        $("#UsererrorCode").css({ "color": "red" });
+                        $("#UsererrorCode").html("No Record found.");
+                    }
+                }
+            });
+        }
+        else {
+            $("#hodemployeeid").val("");
+            $("#UsererrorCode").css({ "color": "red" });
+            $("#UsererrorCode").html("Please enter the Employee ID / Name / Email to search");
+        }
+
+    }
+
+</script>
+<script>
+    function SelectFunction(EmployeeID) {
+        $('#ApproverEmployeeID').val($('#' + EmployeeID + '_ID').html());
+        $('#ApproverEmployeeName').val($('#' + EmployeeID + '_Name').html());
+        $('#ApproverEmployeeEmail').val($('#' + EmployeeID + '_Email').html());
+        $('#ApproverEmployeeRoles').val($('#' + EmployeeID + '_Role').html());
+        $('#ApproverEmployeeDesignation').val($('#' + EmployeeID + '_Desg').html());
+        $('#ApproverEmployeeCategory').val($('#' + EmployeeID + '_Cat').html());
+        $('#ApproverEmployeeSubCategory').val($('#' + EmployeeID + '_Sub').html());
+        var EmployeeID = $("#ApproverEmployeeID").val();
+        var EmployeeName = $("#ApproverEmployeeName").val();
+        var EmployeeEmail = $("#ApproverEmployeeEmail").val();
+        var EmployeeDesignation = $("#ApproverEmployeeDesignation").val();
+        var EmployeeRole = $("#ApproverEmployeeRoles").val();
+
+        var ApproverLevel = $('.ApproverLevel_Id').attr('id');
+        if (ApproverLevel == "ALevel1") {
+            if (EmployeeRole.indexOf('Approver') !== -1) {
+
+                if (CheckLimit()) {
+                    var AlreadyAdded = AddedUser(EmployeeID);
+                    if (AlreadyAdded) {
+                        var htmlData = "<tr><td><input type='checkbox'  name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails1 ApproverDetails'>" + EmployeeID + "</td><td>" + EmployeeName + "</td><td>" + EmployeeEmail + "</td><td>" + EmployeeDesignation + "</td><td>" + EmployeeRole + "</td></tr>";
+
+                        $("#ApproversTable1 tbody").append(htmlData);
+                        // $("#searchmodal").modal('hide');
+                        $("#UsererrorCode").css({ "color": "green" });
+                        $("#UsererrorCode").html("User added to Approver list.");
+                        CheckLimit();
+                    }
+                    else {
+                        //alert("User already added");
+                        $("#searchmodal").show();
+                        $("#UsererrorCode").css({ "color": "red" });
+                        $("#UsererrorCode").html("User already added.");
+
+                    }
+                }
+            }
+            else {
+                $("#searchmodal").modal('show');
+                $("#UsererrorCode").css({ "color": "red" });
+                $("#UsererrorCode").html(EmployeeName + ' is not approver');
+                //alert("Initator cannot be nominated as approver");
+            }
+        }
+        else if (ApproverLevel == "ALevel2") {
+            if (EmployeeRole.indexOf('Approver') !== -1) {
+
+                if (CheckLimit()) {
+                    var AlreadyAdded = AddedUser(EmployeeID);
+                    if (AlreadyAdded) {
+                        var htmlData = "<tr><td><input type='checkbox'  name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails2 ApproverDetails'>" + EmployeeID + "</td><td>" + EmployeeName + "</td><td>" + EmployeeEmail + "</td><td>" + EmployeeDesignation + "</td><td>" + EmployeeRole + "</td></tr>";
+
+                        $("#ApproversTable2 tbody").append(htmlData);
+                        // $("#searchmodal").modal('hide');
+                        $("#UsererrorCode").css({ "color": "green" });
+                        $("#UsererrorCode").html("User added to Approver list.");
+                        CheckLimit();
+                    }
+                    else {
+                        //alert("User already added");
+                        $("#searchmodal").show();
+                        $("#UsererrorCode").css({ "color": "red" });
+                        $("#UsererrorCode").html("User already added.");
+
+                    }
+                }
+            }
+            else {
+                $("#searchmodal").modal('show');
+                $("#UsererrorCode").css({ "color": "red" });
+                $("#UsererrorCode").html(EmployeeName + ' is not approver');
+                //alert("Initator cannot be nominated as approver");
+            }
+        }
+        else if (ApproverLevel == "ALevel3") {
+            if (EmployeeRole.indexOf('Approver') !== -1) {
+
+                if (CheckLimit()) {
+                    var AlreadyAdded = AddedUser(EmployeeID);
+                    if (AlreadyAdded) {
+                        var htmlData = "<tr><td><input type='checkbox'  name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails3 ApproverDetails'>" + EmployeeID + "</td><td>" + EmployeeName + "</td><td>" + EmployeeEmail + "</td><td>" + EmployeeDesignation + "</td><td>" + EmployeeRole + "</td></tr>";
+
+                        $("#ApproversTable3 tbody").append(htmlData);
+                        // $("#searchmodal").modal('hide');
+                        $("#UsererrorCode").css({ "color": "green" });
+                        $("#UsererrorCode").html("User added to Approver list.");
+                        CheckLimit();
+                    }
+                    else {
+                        //alert("User already added");
+                        $("#searchmodal").show();
+                        $("#UsererrorCode").css({ "color": "red" });
+                        $("#UsererrorCode").html("User already added.");
+
+                    }
+                }
+            }
+            else {
+                $("#searchmodal").modal('show');
+                $("#UsererrorCode").css({ "color": "red" });
+                $("#UsererrorCode").html(EmployeeName + ' is not approver');
+                //alert("Initator cannot be nominated as approver");
+            }
+        }
+
+        else if (ApproverLevel == "ALevel4") {
+            if (EmployeeRole.indexOf('Approver') !== -1) {
+
+                if (CheckLimit()) {
+                    var AlreadyAdded = AddedUser(EmployeeID);
+                    if (AlreadyAdded) {
+                        var htmlData = "<tr><td><input type='checkbox'  name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails4 ApproverDetails'>" + EmployeeID + "</td><td>" + EmployeeName + "</td><td>" + EmployeeEmail + "</td><td>" + EmployeeDesignation + "</td><td>" + EmployeeRole + "</td></tr>";
+
+                        $("#ApproversTable4 tbody").append(htmlData);
+                        // $("#searchmodal").modal('hide');
+                        $("#UsererrorCode").css({ "color": "green" });
+                        $("#UsererrorCode").html("User added to Approver list.");
+                        CheckLimit();
+                    }
+                    else {
+                        //alert("User already added");
+                        $("#searchmodal").show();
+                        $("#UsererrorCode").css({ "color": "red" });
+                        $("#UsererrorCode").html("User already added.");
+
+                    }
+                }
+            }
+            else {
+                $("#searchmodal").modal('show');
+                $("#UsererrorCode").css({ "color": "red" });
+                $("#UsererrorCode").html(EmployeeName + ' is not approver');
+                //alert("Initator cannot be nominated as approver");
+            }
+        }
+
+        else if (ApproverLevel == "ALevel5") {
+            if (EmployeeRole.indexOf('Approver') !== -1) {
+
+                if (CheckLimit()) {
+                    var AlreadyAdded = AddedUser(EmployeeID);
+                    if (AlreadyAdded) {
+                        var htmlData = "<tr><td><input type='checkbox'  name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails5 ApproverDetails'>" + EmployeeID + "</td><td>" + EmployeeName + "</td><td>" + EmployeeEmail + "</td><td>" + EmployeeDesignation + "</td><td>" + EmployeeRole + "</td></tr>";
+
+                        $("#ApproversTable5 tbody").append(htmlData);
+                        // $("#searchmodal").modal('hide');
+                        $("#UsererrorCode").css({ "color": "green" });
+                        $("#UsererrorCode").html("User added to Approver list.");
+                        CheckLimit();
+                    }
+                    else {
+                        //alert("User already added");
+                        $("#searchmodal").show();
+                        $("#UsererrorCode").css({ "color": "red" });
+                        $("#UsererrorCode").html("User already added.");
+
+                    }
+                }
+            }
+            else {
+                $("#searchmodal").modal('show');
+                $("#UsererrorCode").css({ "color": "red" });
+                $("#UsererrorCode").html(EmployeeName + ' is not approver');
+                //alert("Initator cannot be nominated as approver");
+            }
+        }
+
+        else if (ApproverLevel == "ALevel6") {
+            if (EmployeeRole.indexOf('Approver') !== -1) {
+
+                if (CheckLimit()) {
+                    var AlreadyAdded = AddedUser(EmployeeID);
+                    if (AlreadyAdded) {
+                        var htmlData = "<tr><td><input type='checkbox'  name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails6 ApproverDetails'>" + EmployeeID + "</td><td>" + EmployeeName + "</td><td>" + EmployeeEmail + "</td><td>" + EmployeeDesignation + "</td><td>" + EmployeeRole + "</td></tr>";
+
+                        $("#ApproversTable6 tbody").append(htmlData);
+                        // $("#searchmodal").modal('hide');
+                        $("#UsererrorCode").css({ "color": "green" });
+                        $("#UsererrorCode").html("User added to Approver list.");
+                        CheckLimit();
+                    }
+                    else {
+                        //alert("User already added");
+                        $("#searchmodal").show();
+                        $("#UsererrorCode").css({ "color": "red" });
+                        $("#UsererrorCode").html("User already added.");
+
+                    }
+                }
+            }
+            else {
+                $("#searchmodal").modal('show');
+                $("#UsererrorCode").css({ "color": "red" });
+                $("#UsererrorCode").html(EmployeeName + ' is not approver');
+                //alert("Initator cannot be nominated as approver");
+            }
+        }
+
+        else if (ApproverLevel == "ALevel7") {
+            if (EmployeeRole.indexOf('Approver') !== -1) {
+
+                if (CheckLimit()) {
+                    var AlreadyAdded = AddedUser(EmployeeID);
+                    if (AlreadyAdded) {
+                        var htmlData = "<tr><td><input type='checkbox'  name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails7 ApproverDetails'>" + EmployeeID + "</td><td>" + EmployeeName + "</td><td>" + EmployeeEmail + "</td><td>" + EmployeeDesignation + "</td><td>" + EmployeeRole + "</td></tr>";
+
+                        $("#ApproversTable7 tbody").append(htmlData);
+                        // $("#searchmodal").modal('hide');
+                        $("#UsererrorCode").css({ "color": "green" });
+                        $("#UsererrorCode").html("User added to Approver list.");
+                        CheckLimit();
+                    }
+                    else {
+                        //alert("User already added");
+                        $("#searchmodal").show();
+                        $("#UsererrorCode").css({ "color": "red" });
+                        $("#UsererrorCode").html("User already added.");
+
+                    }
+                }
+            }
+            else {
+                $("#searchmodal").modal('show');
+                $("#UsererrorCode").css({ "color": "red" });
+                $("#UsererrorCode").html(EmployeeName + ' is not approver');
+                //alert("Initator cannot be nominated as approver");
+            }
+        }
+
+        else if (ApproverLevel == "ALevel8") {
+            if (EmployeeRole.indexOf('Approver') !== -1) {
+
+                if (CheckLimit()) {
+                    var AlreadyAdded = AddedUser(EmployeeID);
+                    if (AlreadyAdded) {
+                        var htmlData = "<tr><td><input type='checkbox'  name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails8 ApproverDetails'>" + EmployeeID + "</td><td>" + EmployeeName + "</td><td>" + EmployeeEmail + "</td><td>" + EmployeeDesignation + "</td><td>" + EmployeeRole + "</td></tr>";
+
+                        $("#ApproversTable8 tbody").append(htmlData);
+                        // $("#searchmodal").modal('hide');
+                        $("#UsererrorCode").css({ "color": "green" });
+                        $("#UsererrorCode").html("User added to Approver list.");
+                        CheckLimit();
+                    }
+                    else {
+                        //alert("User already added");
+                        $("#searchmodal").show();
+                        $("#UsererrorCode").css({ "color": "red" });
+                        $("#UsererrorCode").html("User already added.");
+
+                    }
+                }
+            }
+            else {
+                $("#searchmodal").modal('show');
+                $("#UsererrorCode").css({ "color": "red" });
+                $("#UsererrorCode").html(EmployeeName + ' is not approver');
+                //alert("Initator cannot be nominated as approver");
+            }
+        }
+
+        else if (ApproverLevel == "ALevel9") {
+            if (EmployeeRole.indexOf('Approver') !== -1) {
+
+                if (CheckLimit()) {
+                    var AlreadyAdded = AddedUser(EmployeeID);
+                    if (AlreadyAdded) {
+                        var htmlData = "<tr><td><input type='checkbox'  name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails9 ApproverDetails'>" + EmployeeID + "</td><td>" + EmployeeName + "</td><td>" + EmployeeEmail + "</td><td>" + EmployeeDesignation + "</td><td>" + EmployeeRole + "</td></tr>";
+
+                        $("#ApproversTable9 tbody").append(htmlData);
+                        // $("#searchmodal").modal('hide');
+                        $("#UsererrorCode").css({ "color": "green" });
+                        $("#UsererrorCode").html("User added to Approver list.");
+                        CheckLimit();
+                    }
+                    else {
+                        //alert("User already added");
+                        $("#searchmodal").show();
+                        $("#UsererrorCode").css({ "color": "red" });
+                        $("#UsererrorCode").html("User already added.");
+
+                    }
+                }
+            }
+            else {
+                $("#searchmodal").modal('show');
+                $("#UsererrorCode").css({ "color": "red" });
+                $("#UsererrorCode").html(EmployeeName + ' is not approver');
+                //alert("Initator cannot be nominated as approver");
+            }
+        }
+
+        else if (ApproverLevel == "ALevel10") {
+            if (EmployeeRole.indexOf('Approver') !== -1) {
+
+                if (CheckLimit()) {
+                    var AlreadyAdded = AddedUser(EmployeeID);
+                    if (AlreadyAdded) {
+                        var htmlData = "<tr><td><input type='checkbox'  name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails10 ApproverDetails'>" + EmployeeID + "</td><td>" + EmployeeName + "</td><td>" + EmployeeEmail + "</td><td>" + EmployeeDesignation + "</td><td>" + EmployeeRole + "</td></tr>";
+
+                        $("#ApproversTable10 tbody").append(htmlData);
+                        // $("#searchmodal").modal('hide');
+                        $("#UsererrorCode").css({ "color": "green" });
+                        $("#UsererrorCode").html("User added to Approver list.");
+                        CheckLimit();
+                    }
+                    else {
+                        //alert("User already added");
+                        $("#searchmodal").show();
+                        $("#UsererrorCode").css({ "color": "red" });
+                        $("#UsererrorCode").html("User already added.");
+
+                    }
+                }
+            }
+            else {
+                $("#searchmodal").modal('show');
+                $("#UsererrorCode").css({ "color": "red" });
+                $("#UsererrorCode").html(EmployeeName + ' is not approver');
+                //alert("Initator cannot be nominated as approver");
+            }
+        }
+    }
+
+
+</script>
+
+
+<script>
+    function SearchModal(ID) {
+        var Department = $("#clustercategory").val();
+        var SubDepartment = $("#approversubcategory").val();
+        var WorkflowType = $("#WorkflowType").val();
+        if (WorkflowType == "Template") {
+           
+            if (ID == "ALevel1") {
+                $('.ApproverLevel_Id').attr('id', ID);
+                $("#searchmodal").modal('show');
+
+            }
+            if (ID == "ALevel2") {
+                if (document.getElementsByClassName("EmployeeIdDetails1").length > 0) {
+                    $('.ApproverLevel_Id').attr('id', ID);
+                    $("#searchmodal").modal('show');
+                }
+                else {
+                    $("#searchmodal").modal('hide');
+                    swal({
+                        text: 'minimum of one approver required in level 1, to add approver in level 2.',
+                        icon: 'warning',
+                    });
+                }
+            }
+            if (ID == "ALevel3") {
+                if (document.getElementsByClassName("EmployeeIdDetails2").length > 0) {
+                    $('.ApproverLevel_Id').attr('id', ID);
+                    $("#searchmodal").modal('show');
+                }
+                else {
+                    $("#searchmodal").modal('hide');
+                    swal({
+                        text: 'minimum of one approver required in level 2, to add approver in level 3.',
+                        icon: 'warning',
+                    });
+                }
+            }
+            if (ID == "ALevel4") {
+                if (document.getElementsByClassName("EmployeeIdDetails3").length > 0) {
+                    $('.ApproverLevel_Id').attr('id', ID);
+                    $("#searchmodal").modal('show');
+                }
+                else {
+                    $("#searchmodal").modal('hide');
+                    swal({
+                        text: 'minimum of one approver required in level 3, to add approver in level 4.',
+                        icon: 'warning',
+                    });
+                }
+            }
+            if (ID == "ALevel5") {
+                if (document.getElementsByClassName("EmployeeIdDetails4").length > 0) {
+                    $('.ApproverLevel_Id').attr('id', ID);
+                    $("#searchmodal").modal('show');
+                }
+                else {
+                    $("#searchmodal").modal('hide');
+                    swal({
+                        text: 'minimum of one approver required in level 4, to add approver in level 5.',
+                        icon: 'warning',
+                    });
+                }
+            }
+            if (ID == "ALevel6") {
+                if (document.getElementsByClassName("EmployeeIdDetails5").length > 0) {
+                    $('.ApproverLevel_Id').attr('id', ID);
+                    $("#searchmodal").modal('show');
+                }
+                else {
+                    $("#searchmodal").modal('hide');
+                    swal({
+                        text: 'minimum of one approver required in level 5, to add approver in level 6.',
+                        icon: 'warning',
+                    });
+                }
+            }
+            if (ID == "ALevel7") {
+                if (document.getElementsByClassName("EmployeeIdDetails6").length > 0) {
+                    $('.ApproverLevel_Id').attr('id', ID);
+                    $("#searchmodal").modal('show');
+                }
+                else {
+                    $("#searchmodal").modal('hide');
+                    swal({
+                        text: 'minimum of one approver required in level 6, to add approver in level 7.',
+                        icon: 'warning',
+                    });
+                }
+            }
+            if (ID == "ALevel8") {
+                if (document.getElementsByClassName("EmployeeIdDetails7").length > 0) {
+                    $('.ApproverLevel_Id').attr('id', ID);
+                    $("#searchmodal").modal('show');
+                }
+                else {
+                    $("#searchmodal").modal('hide');
+                    swal({
+                        text: 'minimum of one approver required in level 7, to add approver in level 8.',
+                        icon: 'warning',
+                    });
+                }
+            }
+            if (ID == "ALevel9") {
+                if (document.getElementsByClassName("EmployeeIdDetails8").length > 0) {
+                    $('.ApproverLevel_Id').attr('id', ID);
+                    $("#searchmodal").modal('show');
+                }
+                else {
+                    $("#searchmodal").modal('hide');
+                    swal({
+                        text: 'minimum of one approver required in level 8, to add approver in level 9.',
+                        icon: 'warning',
+                    });
+                }
+            }
+            if (ID == "ALevel10") {
+                if (document.getElementsByClassName("EmployeeIdDetails9").length > 0) {
+                    $('.ApproverLevel_Id').attr('id', ID);
+                    $("#searchmodal").modal('show');
+                }
+                else {
+                    $("#searchmodal").modal('hide');
+                    swal({
+                        text: 'minimum of one approver required in level 9, to add approver in level 10.',
+                        icon: 'warning',
+                    });
+                }
+            }
+       
+        }
+        else {
+             if ((Department.length > 0) && (SubDepartment.length > 0)) {
+            if (ID == "ALevel1") {
+                $('.ApproverLevel_Id').attr('id', ID);
+                $("#searchmodal").modal('show');
+
+            }
+            if (ID == "ALevel2") {
+                if (document.getElementsByClassName("EmployeeIdDetails1").length > 0) {
+                    $('.ApproverLevel_Id').attr('id', ID);
+                    $("#searchmodal").modal('show');
+                }
+                else {
+                    $("#searchmodal").modal('hide');
+                    swal({
+                        text: 'minimum of one approver required in level 1, to add approver in level 2.',
+                        icon: 'warning',
+                    });
+                }
+            }
+            if (ID == "ALevel3") {
+                if (document.getElementsByClassName("EmployeeIdDetails2").length > 0) {
+                    $('.ApproverLevel_Id').attr('id', ID);
+                    $("#searchmodal").modal('show');
+                }
+                else {
+                    $("#searchmodal").modal('hide');
+                    swal({
+                        text: 'minimum of one approver required in level 2, to add approver in level 3.',
+                        icon: 'warning',
+                    });
+                }
+            }
+            if (ID == "ALevel4") {
+                if (document.getElementsByClassName("EmployeeIdDetails3").length > 0) {
+                    $('.ApproverLevel_Id').attr('id', ID);
+                    $("#searchmodal").modal('show');
+                }
+                else {
+                    $("#searchmodal").modal('hide');
+                    swal({
+                        text: 'minimum of one approver required in level 3, to add approver in level 4.',
+                        icon: 'warning',
+                    });
+                }
+            }
+            if (ID == "ALevel5") {
+                if (document.getElementsByClassName("EmployeeIdDetails4").length > 0) {
+                    $('.ApproverLevel_Id').attr('id', ID);
+                    $("#searchmodal").modal('show');
+                }
+                else {
+                    $("#searchmodal").modal('hide');
+                    swal({
+                        text: 'minimum of one approver required in level 4, to add approver in level 5.',
+                        icon: 'warning',
+                    });
+                }
+            }
+            if (ID == "ALevel6") {
+                if (document.getElementsByClassName("EmployeeIdDetails5").length > 0) {
+                    $('.ApproverLevel_Id').attr('id', ID);
+                    $("#searchmodal").modal('show');
+                }
+                else {
+                    $("#searchmodal").modal('hide');
+                    swal({
+                        text: 'minimum of one approver required in level 5, to add approver in level 6.',
+                        icon: 'warning',
+                    });
+                }
+            }
+            if (ID == "ALevel7") {
+                if (document.getElementsByClassName("EmployeeIdDetails6").length > 0) {
+                    $('.ApproverLevel_Id').attr('id', ID);
+                    $("#searchmodal").modal('show');
+                }
+                else {
+                    $("#searchmodal").modal('hide');
+                    swal({
+                        text: 'minimum of one approver required in level 6, to add approver in level 7.',
+                        icon: 'warning',
+                    });
+                }
+            }
+            if (ID == "ALevel8") {
+                if (document.getElementsByClassName("EmployeeIdDetails7").length > 0) {
+                    $('.ApproverLevel_Id').attr('id', ID);
+                    $("#searchmodal").modal('show');
+                }
+                else {
+                    $("#searchmodal").modal('hide');
+                    swal({
+                        text: 'minimum of one approver required in level 7, to add approver in level 8.',
+                        icon: 'warning',
+                    });
+                }
+            }
+            if (ID == "ALevel9") {
+                if (document.getElementsByClassName("EmployeeIdDetails8").length > 0) {
+                    $('.ApproverLevel_Id').attr('id', ID);
+                    $("#searchmodal").modal('show');
+                }
+                else {
+                    $("#searchmodal").modal('hide');
+                    swal({
+                        text: 'minimum of one approver required in level 8, to add approver in level 9.',
+                        icon: 'warning',
+                    });
+                }
+            }
+            if (ID == "ALevel10") {
+                if (document.getElementsByClassName("EmployeeIdDetails9").length > 0) {
+                    $('.ApproverLevel_Id').attr('id', ID);
+                    $("#searchmodal").modal('show');
+                }
+                else {
+                    $("#searchmodal").modal('hide');
+                    swal({
+                        text: 'minimum of one approver required in level 9, to add approver in level 10.',
+                        icon: 'warning',
+                    });
+                }
+            }
+        }
+                else {
+                    $("#searchmodal").modal('hide');
+                    swal({
+                        text: 'select Department and Sub Department to search',
+                        icon: 'warning',
+                    });
+                }
+        }
+       
+    }
+</script>
+
+
+<script>
+
+    function WorkflowDetails() {
+
+        var ApprovalCluster = $("#clustercategory").val();
+        var ApprovalFunction = $("#approversubcategory").val();
+        var workflowType = $("#WorkflowType").val();
+        //  alert(workflowType);
+        //$("#WorkflowType").attr('disabled', 'disabled');
+        //$("#discard").show();
+        $("#tblUsersSearchList").html("");
+        $("#UsererrorCode").html("");
+
+        $("#ApproversTable1 tbody").html("");
+                    $("#ApproversTable2 tbody").html("");
+                    $("#ApproversTable3 tbody").html("");
+                    $("#ApproversTable4 tbody").html("");
+                    $("#ApproversTable5 tbody").html("");
+                    $("#ApproversTable6 tbody").html("");
+                    $("#ApproversTable7 tbody").html("");
+                    $("#ApproversTable8 tbody").html("");
+                    $("#ApproversTable9 tbody").html("");
+                    $("#ApproversTable10 tbody").html("");
+        if (workflowType == "Template") {
+            $("#clustercategory").attr('disabled', 'disabled');
+            $("#approversubcategory").attr('disabled', 'disabled');
+            $("#clustercategory").val("");
+            $("#approversubcategory").val("");
+
+            //$("#Submit_Button").show();
+            //$("#Submit_Button2").show();
+             //$("#discard").hide();
+             $.ajax({
+                url: '/Approvals/CheckApprovalWorkflowExist',
+                type: 'POST',
+                data: { ApprovalCluster: ApprovalCluster, ApprovalFunction: ApprovalFunction, workflowType: workflowType },
+
+                dataType: 'json',
+                success: function (response) {
+                    $("#ApproversTable1 tbody").html("");
+                    $("#ApproversTable2 tbody").html("");
+                    $("#ApproversTable3 tbody").html("");
+                    $("#ApproversTable4 tbody").html("");
+                    $("#ApproversTable5 tbody").html("");
+                    $("#ApproversTable6 tbody").html("");
+                    $("#ApproversTable7 tbody").html("");
+                    $("#ApproversTable8 tbody").html("");
+                    $("#ApproversTable9 tbody").html("");
+                    $("#ApproversTable10 tbody").html("");
+
+                    //$(".Approval_readony").removeAttr('disabled');
+                    $("#Edit_Approal").show();
+                    //$("#Submit_Button").hide();
+                    //$("#Submit_Button2").hide();
+                    // alert(response);
+
+                    $.each(response, function (index, value) {
+
+                        if (value.ApprovalLevel == 1) {
+
+                            var EmployeeID = value.EMPID;
+
+                            $.ajax({
+                                url: '/Approvals/GetUserById',
+                                type: 'POST',
+                                data: { EmployeeID: EmployeeID },
+                                dataType: 'json',
+                                success: function (response) {
+
+                                    if (response[0] == "success") {
+                                        var htmlData = "<tr><td><input type='checkbox' disabled name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails1 ApproverDetails'>" + EmployeeID + "</td><td>" + response[1] + "</td><td>" + response[2] + "</td><td>" + response[3] + "</td><td>" + response[4] + "</td></tr>";
+
+                                        $("#ApproversTable1 tbody").append(htmlData);
+                                        $("#Edit_Approal").show();
+                                        $("#Edit_Approal").removeAttr('disabled');
+                                        $("#Submit_Button").hide();
+                                        $("#Submit_Button2").hide();
+                                        $("#discard").hide();
+                                        $(".Approval_readony").attr('disabled', 'disabled');
+                                    }
+
+                                }
+                            });
+                        }
+
+                        else if (value.ApprovalLevel == 2) {
+                            var EmployeeID = value.EMPID;
+                            $.ajax({
+                                url: '/Approvals/GetUserById',
+                                type: 'POST',
+                                data: { EmployeeID: EmployeeID },
+                                dataType: 'json',
+                                success: function (response) {
+                                    // alert(response);
+                                    if (response[0] == "success") {
+                                        var htmlData = "<tr><td><input type='checkbox' disabled name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails2 ApproverDetails'>" + EmployeeID + "</td><td>" + response[1] + "</td><td>" + response[2] + "</td><td>" + response[3] + "</td><td>" + response[4] + "</td></tr>";
+                                        $("#ApproversTable2 tbody").append(htmlData);
+                                        $("#Edit_Approal").show();
+                                        $("#Edit_Approal").removeAttr('disabled');
+                                        $("#Submit_Button").hide();
+                                        $("#Submit_Button2").hide();
+                                        $("#discard").hide();
+                                        $(".Approval_readony").attr('disabled', 'disabled');
+                                    }
+
+                                }
+                            });
+                        }
+                        else if (value.ApprovalLevel == 3) {
+                            var EmployeeID = value.EMPID;
+                            $.ajax({
+                                url: '/Approvals/GetUserById',
+                                type: 'POST',
+                                data: { EmployeeID: EmployeeID },
+                                dataType: 'json',
+                                success: function (response) {
+                                    // alert(response);
+                                    if (response[0] == "success") {
+                                        var htmlData = "<tr><td><input type='checkbox' disabled name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails3 ApproverDetails'>" + EmployeeID + "</td><td>" + response[1] + "</td><td>" + response[2] + "</td><td>" + response[3] + "</td><td>" + response[4] + "</td></tr>";
+                                        $("#ApproversTable3 tbody").append(htmlData);
+                                        $("#Edit_Approal").show();
+                                        $("#Edit_Approal").removeAttr('disabled');
+                                        $("#Submit_Button").hide();
+                                        $("#Submit_Button2").hide();
+                                        $("#discard").hide();
+                                        $(".Approval_readony").attr('disabled', 'disabled');
+                                    }
+
+                                }
+                            });
+                        }
+                        else if (value.ApprovalLevel == 4) {
+                            var EmployeeID = value.EMPID;
+                            $.ajax({
+                                url: '/Approvals/GetUserById',
+                                type: 'POST',
+                                data: { EmployeeID: EmployeeID },
+                                dataType: 'json',
+                                success: function (response) {
+                                    // alert(response);
+                                    if (response[0] == "success") {
+                                        var htmlData = "<tr><td><input type='checkbox' disabled name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails4 ApproverDetails'>" + EmployeeID + "</td><td>" + response[1] + "</td><td>" + response[2] + "</td><td>" + response[3] + "</td><td>" + response[4] + "</td></tr>";
+                                        $("#ApproversTable4 tbody").append(htmlData);
+                                        $("#Edit_Approal").show();
+                                        $("#Edit_Approal").removeAttr('disabled');
+                                        $("#Submit_Button").hide();
+                                        $("#Submit_Button2").hide();
+                                        $("#discard").hide();
+                                        $(".Approval_readony").attr('disabled', 'disabled');
+                                    }
+
+                                }
+                            });
+                        }
+                        else if (value.ApprovalLevel == 5) {
+                            var EmployeeID = value.EMPID;
+                            $.ajax({
+                                url: '/Approvals/GetUserById',
+                                type: 'POST',
+                                data: { EmployeeID: EmployeeID },
+                                dataType: 'json',
+                                success: function (response) {
+                                    // alert(response);
+                                    if (response[0] == "success") {
+                                        var htmlData = "<tr><td><input type='checkbox' disabled name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails5 ApproverDetails'>" + EmployeeID + "</td><td>" + response[1] + "</td><td>" + response[2] + "</td><td>" + response[3] + "</td><td>" + response[4] + "</td></tr>";
+                                        $("#ApproversTable5 tbody").append(htmlData);
+                                        $("#Edit_Approal").show();
+                                        $("#Edit_Approal").removeAttr('disabled');
+                                        $("#Submit_Button").hide();
+                                        $("#Submit_Button2").hide();
+                                        $("#discard").hide();
+                                        $(".Approval_readony").attr('disabled', 'disabled');
+                                    }
+
+                                }
+                            });
+                        }
+                        else if (value.ApprovalLevel == 6) {
+                            var EmployeeID = value.EMPID;
+                            $.ajax({
+                                url: '/Approvals/GetUserById',
+                                type: 'POST',
+                                data: { EmployeeID: EmployeeID },
+                                dataType: 'json',
+                                success: function (response) {
+                                    // alert(response);
+                                    if (response[0] == "success") {
+                                        var htmlData = "<tr><td><input type='checkbox' disabled name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails6 ApproverDetails'>" + EmployeeID + "</td><td>" + response[1] + "</td><td>" + response[2] + "</td><td>" + response[3] + "</td><td>" + response[4] + "</td></tr>";
+                                        $("#ApproversTable6 tbody").append(htmlData);
+                                        $("#Edit_Approal").show();
+                                        $("#Edit_Approal").removeAttr('disabled');
+                                        $("#Submit_Button").hide();
+                                        $("#Submit_Button2").hide();
+                                        $("#discard").hide();
+                                        $(".Approval_readony").attr('disabled', 'disabled');
+                                    }
+
+                                }
+                            });
+                        }
+                        else if (value.ApprovalLevel == 7) {
+                            var EmployeeID = value.EMPID;
+                            $.ajax({
+                                url: '/Approvals/GetUserById',
+                                type: 'POST',
+                                data: { EmployeeID: EmployeeID },
+                                dataType: 'json',
+                                success: function (response) {
+                                    // alert(response);
+                                    if (response[0] == "success") {
+                                        var htmlData = "<tr><td><input type='checkbox' disabled name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails7 ApproverDetails'>" + EmployeeID + "</td><td>" + response[1] + "</td><td>" + response[2] + "</td><td>" + response[3] + "</td><td>" + response[4] + "</td></tr>";
+                                        $("#ApproversTable7 tbody").append(htmlData);
+                                        $("#Edit_Approal").show();
+                                        $("#Edit_Approal").removeAttr('disabled');
+                                        $("#Submit_Button").hide();
+                                         $("#Submit_Button2").hide();
+                                        $("#discard").hide();
+                                        $(".Approval_readony").attr('disabled', 'disabled');
+                                    }
+
+                                }
+                            });
+                        }
+                        else if (value.ApprovalLevel == 8) {
+                            var EmployeeID = value.EMPID;
+                            $.ajax({
+                                url: '/Approvals/GetUserById',
+                                type: 'POST',
+                                data: { EmployeeID: EmployeeID },
+                                dataType: 'json',
+                                success: function (response) {
+                                    // alert(response);
+                                    if (response[0] == "success") {
+                                        var htmlData = "<tr><td><input type='checkbox' disabled name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails8 ApproverDetails'>" + EmployeeID + "</td><td>" + response[1] + "</td><td>" + response[2] + "</td><td>" + response[3] + "</td><td>" + response[4] + "</td></tr>";
+                                        $("#ApproversTable8 tbody").append(htmlData);
+                                        $("#Edit_Approal").show();
+                                        $("#Edit_Approal").removeAttr('disabled');
+                                        $("#Submit_Button").hide();
+                                        $("#Submit_Button2").hide();
+                                        $("#discard").hide();
+                                        $(".Approval_readony").attr('disabled', 'disabled');
+                                    }
+
+                                }
+                            });
+                        }
+                        else if (value.ApprovalLevel == 9) {
+                            var EmployeeID = value.EMPID;
+                            $.ajax({
+                                url: '/Approvals/GetUserById',
+                                type: 'POST',
+                                data: { EmployeeID: EmployeeID },
+                                dataType: 'json',
+                                success: function (response) {
+                                    // alert(response);
+                                    if (response[0] == "success") {
+                                        var htmlData = "<tr><td><input type='checkbox' disabled name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails9 ApproverDetails'>" + EmployeeID + "</td><td>" + response[1] + "</td><td>" + response[2] + "</td><td>" + response[3] + "</td><td>" + response[4] + "</td></tr>";
+                                        $("#ApproversTable9 tbody").append(htmlData);
+                                        $("#Edit_Approal").show();
+                                        $("#Edit_Approal").removeAttr('disabled');
+                                        $("#Submit_Button").hide();
+                                         $("#Submit_Button2").hide();
+                                        $("#discard").hide();
+                                        $(".Approval_readony").attr('disabled', 'disabled');
+                                    }
+
+                                }
+                            });
+                        }
+                        else if (value.ApprovalLevel == 10) {
+                            var EmployeeID = value.EMPID;
+                            $.ajax({
+                                url: '/Approvals/GetUserById',
+                                type: 'POST',
+                                data: { EmployeeID: EmployeeID },
+                                dataType: 'json',
+                                success: function (response) {
+                                    // alert(response);
+                                    if (response[0] == "success") {
+                                        var htmlData = "<tr><td><input type='checkbox' disabled name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails10 ApproverDetails'>" + EmployeeID + "</td><td>" + response[1] + "</td><td>" + response[2] + "</td><td>" + response[3] + "</td><td>" + response[4] + "</td></tr>";
+                                        $("#ApproversTable10 tbody").append(htmlData);
+                                        $("#Edit_Approal").show();
+                                        $("#Edit_Approal").removeAttr('disabled');
+                                        $("#Submit_Button").hide();
+                                         $("#Submit_Button2").hide();
+                                        $("#discard").hide();
+                                        $(".Approval_readony").attr('disabled', 'disabled');
+
+                                    }
+
+                                }
+                            });
+                        }
+                    });
+
+
+                }
+            });
+        }
+
+        else {
+            $("#clustercategory").removeAttr('disabled', 'disabled');
+            $("#approversubcategory").removeAttr('disabled', 'disabled');
+            //$("#Submit_Button").show();
+            //$("#Submit_Button2").show();
+             //$("#discard").hide();
+            if ((ApprovalCluster).length > 1 && (ApprovalFunction).length > 1 && (workflowType).length > 1) {
+
+            $.ajax({
+                url: '/Approvals/CheckApprovalWorkflowExist',
+                type: 'POST',
+                data: { ApprovalCluster: ApprovalCluster, ApprovalFunction: ApprovalFunction, workflowType: workflowType },
+
+                dataType: 'json',
+                success: function (response) {
+                    $("#ApproversTable1 tbody").html("");
+                    $("#ApproversTable2 tbody").html("");
+                    $("#ApproversTable3 tbody").html("");
+                    $("#ApproversTable4 tbody").html("");
+                    $("#ApproversTable5 tbody").html("");
+                    $("#ApproversTable6 tbody").html("");
+                    $("#ApproversTable7 tbody").html("");
+                    $("#ApproversTable8 tbody").html("");
+                    $("#ApproversTable9 tbody").html("");
+                    $("#ApproversTable10 tbody").html("");
+
+                    //$(".Approval_readony").removeAttr('disabled');
+                    $("#Edit_Approal").show();
+                    //$("#Submit_Button").hide();
+                    //$("#Submit_Button2").hide();
+                    // alert(response);
+
+                    $.each(response, function (index, value) {
+
+                        if (value.ApprovalLevel == 1) {
+
+                            var EmployeeID = value.EMPID;
+
+                            $.ajax({
+                                url: '/Approvals/GetUserById',
+                                type: 'POST',
+                                data: { EmployeeID: EmployeeID },
+                                dataType: 'json',
+                                success: function (response) {
+
+                                    if (response[0] == "success") {
+                                        var htmlData = "<tr><td><input type='checkbox' disabled name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails1 ApproverDetails'>" + EmployeeID + "</td><td>" + response[1] + "</td><td>" + response[2] + "</td><td>" + response[3] + "</td><td>" + response[4] + "</td></tr>";
+
+                                        $("#ApproversTable1 tbody").append(htmlData);
+                                        $("#Edit_Approal").show();
+                                        $("#Edit_Approal").removeAttr('disabled');
+                                        $("#Submit_Button").hide();
+                                        $("#Submit_Button2").hide();
+                                        $("#discard").hide();
+                                        $(".Approval_readony").attr('disabled', 'disabled');
+                                    }
+
+                                }
+                            });
+                        }
+
+                        else if (value.ApprovalLevel == 2) {
+                            var EmployeeID = value.EMPID;
+                            $.ajax({
+                                url: '/Approvals/GetUserById',
+                                type: 'POST',
+                                data: { EmployeeID: EmployeeID },
+                                dataType: 'json',
+                                success: function (response) {
+                                    // alert(response);
+                                    if (response[0] == "success") {
+                                        var htmlData = "<tr><td><input type='checkbox' disabled name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails2 ApproverDetails'>" + EmployeeID + "</td><td>" + response[1] + "</td><td>" + response[2] + "</td><td>" + response[3] + "</td><td>" + response[4] + "</td></tr>";
+                                        $("#ApproversTable2 tbody").append(htmlData);
+                                        $("#Edit_Approal").show();
+                                        $("#Edit_Approal").removeAttr('disabled');
+                                        $("#Submit_Button").hide();
+                                        $("#Submit_Button2").hide();
+                                        $("#discard").hide();
+                                        $(".Approval_readony").attr('disabled', 'disabled');
+                                    }
+
+                                }
+                            });
+                        }
+                        else if (value.ApprovalLevel == 3) {
+                            var EmployeeID = value.EMPID;
+                            $.ajax({
+                                url: '/Approvals/GetUserById',
+                                type: 'POST',
+                                data: { EmployeeID: EmployeeID },
+                                dataType: 'json',
+                                success: function (response) {
+                                    // alert(response);
+                                    if (response[0] == "success") {
+                                        var htmlData = "<tr><td><input type='checkbox' disabled name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails3 ApproverDetails'>" + EmployeeID + "</td><td>" + response[1] + "</td><td>" + response[2] + "</td><td>" + response[3] + "</td><td>" + response[4] + "</td></tr>";
+                                        $("#ApproversTable3 tbody").append(htmlData);
+                                        $("#Edit_Approal").show();
+                                        $("#Edit_Approal").removeAttr('disabled');
+                                        $("#Submit_Button").hide();
+                                        $("#Submit_Button2").hide();
+                                        $("#discard").hide();
+                                        $(".Approval_readony").attr('disabled', 'disabled');
+                                    }
+
+                                }
+                            });
+                        }
+                        else if (value.ApprovalLevel == 4) {
+                            var EmployeeID = value.EMPID;
+                            $.ajax({
+                                url: '/Approvals/GetUserById',
+                                type: 'POST',
+                                data: { EmployeeID: EmployeeID },
+                                dataType: 'json',
+                                success: function (response) {
+                                    // alert(response);
+                                    if (response[0] == "success") {
+                                        var htmlData = "<tr><td><input type='checkbox' disabled name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails4 ApproverDetails'>" + EmployeeID + "</td><td>" + response[1] + "</td><td>" + response[2] + "</td><td>" + response[3] + "</td><td>" + response[4] + "</td></tr>";
+                                        $("#ApproversTable4 tbody").append(htmlData);
+                                        $("#Edit_Approal").show();
+                                        $("#Edit_Approal").removeAttr('disabled');
+                                        $("#Submit_Button").hide();
+                                         $("#Submit_Button2").hide();
+                                        $("#discard").hide();
+                                        $(".Approval_readony").attr('disabled', 'disabled');
+                                    }
+
+                                }
+                            });
+                        }
+                        else if (value.ApprovalLevel == 5) {
+                            var EmployeeID = value.EMPID;
+                            $.ajax({
+                                url: '/Approvals/GetUserById',
+                                type: 'POST',
+                                data: { EmployeeID: EmployeeID },
+                                dataType: 'json',
+                                success: function (response) {
+                                    // alert(response);
+                                    if (response[0] == "success") {
+                                        var htmlData = "<tr><td><input type='checkbox' disabled name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails5 ApproverDetails'>" + EmployeeID + "</td><td>" + response[1] + "</td><td>" + response[2] + "</td><td>" + response[3] + "</td><td>" + response[4] + "</td></tr>";
+                                        $("#ApproversTable5 tbody").append(htmlData);
+                                        $("#Edit_Approal").show();
+                                        $("#Edit_Approal").removeAttr('disabled');
+                                        $("#Submit_Button").hide();
+                                         $("#Submit_Button2").hide();
+                                        $("#discard").hide();
+                                        $(".Approval_readony").attr('disabled', 'disabled');
+                                    }
+
+                                }
+                            });
+                        }
+                        else if (value.ApprovalLevel == 6) {
+                            var EmployeeID = value.EMPID;
+                            $.ajax({
+                                url: '/Approvals/GetUserById',
+                                type: 'POST',
+                                data: { EmployeeID: EmployeeID },
+                                dataType: 'json',
+                                success: function (response) {
+                                    // alert(response);
+                                    if (response[0] == "success") {
+                                        var htmlData = "<tr><td><input type='checkbox' disabled name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails6 ApproverDetails'>" + EmployeeID + "</td><td>" + response[1] + "</td><td>" + response[2] + "</td><td>" + response[3] + "</td><td>" + response[4] + "</td></tr>";
+                                        $("#ApproversTable6 tbody").append(htmlData);
+                                        $("#Edit_Approal").show();
+                                        $("#Edit_Approal").removeAttr('disabled');
+                                        $("#Submit_Button").hide();
+                                        $("#Submit_Button2").hide();
+                                        $("#discard").hide();
+                                        $(".Approval_readony").attr('disabled', 'disabled');
+                                    }
+
+                                }
+                            });
+                        }
+                        else if (value.ApprovalLevel == 7) {
+                            var EmployeeID = value.EMPID;
+                            $.ajax({
+                                url: '/Approvals/GetUserById',
+                                type: 'POST',
+                                data: { EmployeeID: EmployeeID },
+                                dataType: 'json',
+                                success: function (response) {
+                                    // alert(response);
+                                    if (response[0] == "success") {
+                                        var htmlData = "<tr><td><input type='checkbox' disabled name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails7 ApproverDetails'>" + EmployeeID + "</td><td>" + response[1] + "</td><td>" + response[2] + "</td><td>" + response[3] + "</td><td>" + response[4] + "</td></tr>";
+                                        $("#ApproversTable7 tbody").append(htmlData);
+                                        $("#Edit_Approal").show();
+                                        $("#Edit_Approal").removeAttr('disabled');
+                                        $("#Submit_Button").hide();
+                                         $("#Submit_Button2").hide();
+                                        $("#discard").hide();
+                                        $(".Approval_readony").attr('disabled', 'disabled');
+                                    }
+
+                                }
+                            });
+                        }
+                        else if (value.ApprovalLevel == 8) {
+                            var EmployeeID = value.EMPID;
+                            $.ajax({
+                                url: '/Approvals/GetUserById',
+                                type: 'POST',
+                                data: { EmployeeID: EmployeeID },
+                                dataType: 'json',
+                                success: function (response) {
+                                    // alert(response);
+                                    if (response[0] == "success") {
+                                        var htmlData = "<tr><td><input type='checkbox' disabled name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails8 ApproverDetails'>" + EmployeeID + "</td><td>" + response[1] + "</td><td>" + response[2] + "</td><td>" + response[3] + "</td><td>" + response[4] + "</td></tr>";
+                                        $("#ApproversTable8 tbody").append(htmlData);
+                                        $("#Edit_Approal").show();
+                                        $("#Edit_Approal").removeAttr('disabled');
+                                        $("#Submit_Button").hide();
+                                         $("#Submit_Button2").hide();
+                                        $("#discard").hide();
+                                        $(".Approval_readony").attr('disabled', 'disabled');
+                                    }
+
+                                }
+                            });
+                        }
+                        else if (value.ApprovalLevel == 9) {
+                            var EmployeeID = value.EMPID;
+                            $.ajax({
+                                url: '/Approvals/GetUserById',
+                                type: 'POST',
+                                data: { EmployeeID: EmployeeID },
+                                dataType: 'json',
+                                success: function (response) {
+                                    // alert(response);
+                                    if (response[0] == "success") {
+                                        var htmlData = "<tr><td><input type='checkbox' disabled name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails9 ApproverDetails'>" + EmployeeID + "</td><td>" + response[1] + "</td><td>" + response[2] + "</td><td>" + response[3] + "</td><td>" + response[4] + "</td></tr>";
+                                        $("#ApproversTable9 tbody").append(htmlData);
+                                        $("#Edit_Approal").show();
+                                        $("#Edit_Approal").removeAttr('disabled');
+                                        $("#Submit_Button").hide();
+                                         $("#Submit_Button2").hide();
+                                        $("#discard").hide();
+                                        $(".Approval_readony").attr('disabled', 'disabled');
+                                    }
+
+                                }
+                            });
+                        }
+                        else if (value.ApprovalLevel == 10) {
+                            var EmployeeID = value.EMPID;
+                            $.ajax({
+                                url: '/Approvals/GetUserById',
+                                type: 'POST',
+                                data: { EmployeeID: EmployeeID },
+                                dataType: 'json',
+                                success: function (response) {
+                                    // alert(response);
+                                    if (response[0] == "success") {
+                                        var htmlData = "<tr><td><input type='checkbox' disabled name='record' class = 'larger'/></td><td class = 'EmployeeIdDetails10 ApproverDetails'>" + EmployeeID + "</td><td>" + response[1] + "</td><td>" + response[2] + "</td><td>" + response[3] + "</td><td>" + response[4] + "</td></tr>";
+                                        $("#ApproversTable10 tbody").append(htmlData);
+                                        $("#Edit_Approal").show();
+                                        $("#Edit_Approal").removeAttr('disabled');
+                                        $("#Submit_Button").hide();
+                                          $("#Submit_Button2").hide();
+                                        $("#discard").hide();
+                                        $(".Approval_readony").attr('disabled', 'disabled');
+
+                                    }
+
+                                }
+                            });
+                        }
+                    });
+
+
+                }
+            });
+        }
+     }
+       
+    }
+</script>
+
+<script>
+    $("#Edit_Approal").click(function () {
+        swal(" Are you sure you want to Edit !", {
+            icon: "warning",
+            buttons: {
+                cancel: {
+                    visible: true,
+                    text: 'No, Cancel it !',
+                    className: 'btn btn-danger'
+                },
+                confirm: {
+                    text: 'Yes, Edit it !',
+                    className: 'btn btn-success'
+                }
+            }
+        }).then(function (result) {
+
+            if (result == true) {
+                $("#Edit_Approal").attr('disabled', 'disabled');
+                $("#Submit_Button").show();
+                 $("#Submit_Button2").show();
+                $("#discard").show();
+
+                $(".Approval_readony").removeAttr('disabled');
+                $("input[type='checkbox']").removeAttr('disabled');
+                $("#WorkflowType").attr('disabled', 'disabled');
+                $("#clustercategory").attr('disabled', 'disabled');
+                $("#approversubcategory").attr('disabled', 'disabled');
+            }
+            else {
+                //swal("Cancelled", " ", "error");
+            }
+        });
+
+    });
+</script>

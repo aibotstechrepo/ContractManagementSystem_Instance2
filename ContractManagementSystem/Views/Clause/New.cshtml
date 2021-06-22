@@ -1,0 +1,432 @@
+﻿@model ContractManagementSystem.Models.tblClauseMaster
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    //Layout = "";
+    string CurrentUserID()
+    {
+        string userName = string.Empty;
+
+        if (HttpContext.Current.Request.IsAuthenticated)
+        {
+            userName = HttpContext.Current.User.Identity.Name.Split('|')[1];
+        }
+        return userName;
+    }
+}
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            <div class="page-header">
+                <h4 class="page-title">Clauses</h4>
+                <ul class="breadcrumbs">
+                    <li class="nav-home">
+                        <a href="~/Home/Dashboard">
+                            <i class="flaticon-home"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Clause/Repository">Clause</a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/Clause/New">New</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="card-title"><b>New Clause</b></div>
+                                </div>
+
+                                <div class="col-sm-6 text-right redirectionallink">
+                                    <button @*onclick="window.location = '/Clause/Repository'"*@ id="discard" class="btn btn-sm btn-cancel"><i class="far fa-trash-alt" aria-hidden="true"></i>&nbsp;&nbsp;Discard</button>&nbsp;
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="card-body">
+                            @using (Html.BeginForm("New", "Clause", FormMethod.Post))
+                            {
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <input type="hidden" value="@CurrentUserID()" name="UserID" />
+                                            <label for="title">Clause Title<span class="asteriskicon"> *</span></label>
+                                            <input type="text" id="clausetitle" pattern="[A-Za-z\s]+" oninvalid="InvalidTitle(this);" oninput="InvalidTitle(this);" class="form-control" name="ClauseClauseTitle" placeholder="Enter Clause Title" required>
+                                        </div>
+                                    </div>
+                                    @*<div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="type">Clause Type<span class="asteriskicon"> *</span></label>
+                                                <input type="text" id="clausetype" oninvalid="InvalidType(this);" oninput="InvalidType(this);" class="form-control" name="ClauseClauseType" placeholder="Enter Clause Type" required>
+                                            </div>
+                                        </div>*@
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label for="description">Clause Description</label>
+                                            <textarea class="form-control text_area" onkeyup="this.value = this.value.replace(/[^a-zA-Z0-9.,\s]/g, '');" name="ClauseClauseDescription" id="clausedescription" placeholder="Enter Clause Description"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label for="text">Clause Text<span class="asteriskicon"> *</span></label>
+                                            @*<textarea class="form-control text_area_description text_area" id="clausetext" oninvalid="InvalidText(this);" oninput="InvalidText(this);" name="ClauseClauseText" placeholder="Enter Clause Text" required></textarea>*@
+                                            <textarea name="editor1" id="IDofEditor"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-action text-right card_footer_button">
+                                    <button type="submit" class="btn  btn-success">
+                                        <i class="far fa-save"></i>
+                                        &nbsp;Create
+                                    </button>
+                                    <button type="button" id="ClearForms" class="btn  btn-danger">
+                                        <i class="fa fa-eraser" aria-hidden="true"></i> &nbsp;Clear
+                                    </button>
+                                </div>
+     
+                                
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modalload"><!-- Place at bottom of page --></div>
+
+
+<script src="../../Content/assets/js/core/jquery.3.2.1.min.js"></script>
+
+<script>
+    function expandTextarea(Class) {
+        var x = document.getElementsByClassName(Class);
+        for (i = 0; i < x.length; i++) {
+            x[i].addEventListener('keyup', function () {
+                this.style.overflow = 'hidden';
+                this.style.height = 0;
+                this.style.height = this.scrollHeight + 'px';
+            }, false);
+        }
+    }
+    expandTextarea("text_area");
+</script>
+
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+
+        CKEDITOR.replace('editor1', {
+            bodyClass: 'document-editor',
+             contentsCss: ['../../Content/ckeditor/contents.css','../../Content/ckeditor/mystyles.css'],
+            height: 300, 
+            removePlugins: 'lite',
+            
+            // extraAllowedContent: 'span',
+            //         on :
+            //{
+            //     instanceReady : function ( evt )
+            //   {
+            //     // Hide the editor top bar.
+            //     document.getElementById('cke_1_top').style.display = 'none';
+            // }
+
+            // blockedKeystrokes: [13]
+        });
+        //CKEDITOR.config.enterMode = CKEDITOR.ENTER_BR;
+       // CKEDITOR.instances.IDofEditor.execCommand('lite-acceptall');
+        //CKEDITOR.config.removeButtons = 'lite-acceptall';
+        CKEDITOR.disableAutoInLine = true;
+        CKEDITOR.config.allowedContent = true;
+        
+                                          //CKEDITOR.config.readOnly = true;
+                                          //CKEDITOR.config.enterMode = CKEDITOR.ENTER_BR;
+
+
+                                          CKEDITOR.scriptLoader.load('../../Content/assets/js/plugin/webfont/webfont.min.js');
+                                          // CKEDITOR.config.fullPage = true;
+                                          // CKEDITOR.config.blockedKeystrokes( CKEDITOR.CTRL + 120, false );
+                                          CKEDITOR.config.keystrokes = [[CKEDITOR.CTRL + 90 /*Shift-Enter*/, 'null ']];
+                                          CKEDITOR.config.removePlugins = 'elementspath,resize';
+
+
+                                            
+                                            
+                                                        //CKEDITOR.config.removePlugins = 'contextmenu,liststyle,tabletools,tableselection';
+                                                        //CKEDITOR.config.keystrokes =
+                                                        // [
+                                                        //     [ CKEDITOR.CTRL + 90 /*Z*/, 'undo' ],
+                                                        // ];
+                                            // CKEDITOR.inline('editor1', {
+                                                                //     blockedKeystrokes: [120, CKEDITOR.CTRL + 120]
+                                                                // });
+                                                                //CKEDITOR.config.readOnly = true;
+                                                                // Add code to display your toolbar here (example)
+                                                                CKEDITOR.on('paste', function (evt) {
+                                                                    // Create a standalone filter passing 'p' and 'b' elements.
+                                                                    var filter = new CKEDITOR.filter('p b'),
+                                                                        // Parse the HTML string to a pseudo-DOM structure.
+                                                                        fragment = CKEDITOR.htmlParser.fragment.fromHtml(evt.data.dataValue),
+                                                                        writer = new CKEDITOR.htmlParser.basicWriter();
+                                                                    filter.applyTo(fragment);
+                                                                    fragment.writeHtml(writer);
+                                                                    evt.data.dataValue = writer.getHtml();
+                                                                });
+
+
+                                                            CKEDITOR.instances.IDofEditor.on("contentDom", function () {
+                                                                CKEDITOR.instances.IDofEditor.editable().on("contextmenu", function (ev) {
+                                                                    var sel = CKEDITOR.instances.IDofEditor.getSelection();
+                                                                    if (!(sel && !sel.isLocked)) { retrun; }
+                                                                    var el = sel.getStartElement();
+                                                                    if ((el && el.is && el.is("del"))) {
+                                                                        ev.cancel();
+                                                                        CKEDITOR.instances.IDofEditor.on("contentDom", function () {
+                                                                            CKEDITOR.instances.IDofEditor.editable().on("contextmenu", function (ev) {
+                                                                                var sel = CKEDITOR.instances.IDofEditor.getSelection();
+                                                                                if (!(sel && !sel.isLocked)) { retrun; }
+                                                                                var el = sel.getStartElement();
+                                                                                if ((el && el.is && el.is("del"))) {
+                                                                                    ev.cancel();
+                                                                                    ev.stop();
+                                                                                }
+                                                                            }, null, null, 1);
+                                                                        });
+                                                                    }
+                                                                    if ((el && el.is && el.is("ins"))) {
+                                                                        ev.cancel();
+                                                                        CKEDITOR.instances.IDofEditor.on("contentDom", function () {
+                                                                            CKEDITOR.instances.IDofEditor.editable().on("contextmenu", function (ev) {
+                                                                                var sel = CKEDITOR.instances.IDofEditor.getSelection();
+                                                                                if (!(sel && !sel.isLocked)) { retrun; }
+                                                                                var el = sel.getStartElement();
+                                                                                if ((el && el.is && el.is("ins"))) {
+                                                                                    ev.cancel();
+                                                                                    ev.stop();
+                                                                                }
+                                                                            }, null, null, 1);
+                                                                        });
+                                                                    }
+                                                                    if ((el && el.is && el.is("h4"))) {
+                                                                        ev.cancel();
+                                                                        CKEDITOR.instances.IDofEditor.on("contentDom", function () {
+                                                                            CKEDITOR.instances.IDofEditor.editable().on("contextmenu", function (ev) {
+                                                                                var sel = CKEDITOR.instances.IDofEditor.getSelection();
+                                                                                if (!(sel && !sel.isLocked)) { retrun; }
+                                                                                var el = sel.getStartElement();
+                                                                                if ((el && el.is && el.is("h4"))) {
+                                                                                    ev.cancel();
+                                                                                    ev.stop();
+                                                                                }
+                                                                            }, null, null, 1);
+                                                                        });
+                                                                    }
+                                                                    if ((el && el.is && el.is("p"))) {
+                                                                        ev.cancel();
+                                                                        CKEDITOR.instances.IDofEditor.on("contentDom", function () {
+                                                                            CKEDITOR.instances.IDofEditor.editable().on("contextmenu", function (ev) {
+                                                                                var sel = CKEDITOR.instances.IDofEditor.getSelection();
+                                                                                if (!(sel && !sel.isLocked)) { retrun; }
+                                                                                var el = sel.getStartElement();
+                                                                                if ((el && el.is && el.is("p"))) {
+                                                                                    ev.cancel();
+                                                                                    ev.stop();
+                                                                                }
+                                                                            }, null, null, 1);
+                                                                        });
+                                                                    }
+                                                                    if ((el && el.is && el.is("span"))) {
+                                                                        ev.cancel();
+                                                                        CKEDITOR.instances.IDofEditor.on("contentDom", function () {
+                                                                            CKEDITOR.instances.IDofEditor.editable().on("contextmenu", function (ev) {
+                                                                                var sel = CKEDITOR.instances.IDofEditor.getSelection();
+                                                                                if (!(sel && !sel.isLocked)) { retrun; }
+                                                                                var el = sel.getStartElement();
+                                                                                if ((el && el.is && el.is("span"))) {
+                                                                                    ev.cancel();
+                                                                                    ev.stop();
+                                                                                }
+                                                                            }, null, null, 1);
+                                                                        });
+                                                                    }
+                                                                });
+                                                            });
+</script>
+
+<script>
+    function InvalidTitle(textbox) {
+        //alert("Hello" );
+        if (textbox.value === '') {
+            textbox.setCustomValidity
+                ('Enter an Clause Title');
+            textbox.style.borderColor = "red";
+
+        }
+        else if (textbox.validity.patternMismatch) {
+            textbox.setCustomValidity('Numbers and Special Characters are not allowed');
+        }
+        else {
+            textbox.setCustomValidity('');
+            textbox.style.borderColor = "#31ce36";
+        }
+
+        return true;
+    }
+    function InvalidType(textbox) {
+        //alert("Hello" );
+        if (textbox.value === '') {
+            textbox.setCustomValidity
+                ('Enter an Clause Type');
+            textbox.style.borderColor = "red";
+
+        } else {
+            textbox.setCustomValidity('');
+            textbox.style.borderColor = "#31ce36";
+        }
+
+        return true;
+    }
+    function InvalidText(textbox) {
+        //alert("Hello" );
+        if (textbox.value === '') {
+            textbox.setCustomValidity
+                ('Enter an Clause Text');
+            textbox.style.borderColor = "red";
+
+        } else {
+            textbox.setCustomValidity('');
+            textbox.style.borderColor = "#31ce36";
+        }
+
+        return true;
+    }
+    function InvalidCategory(textbox) {
+        //alert("Hello" );
+        if (textbox.value === '') {
+            textbox.setCustomValidity
+                ('Select an Category');
+            textbox.style.borderColor = "red";
+
+        } else {
+            textbox.setCustomValidity('');
+            textbox.style.borderColor = "#31ce36";
+        }
+
+        return true;
+    }
+</script>
+
+<script>
+
+    $('#ClearForms').click(function (e) {
+        swal({
+            title: 'Are you sure?',
+            text: "You want to Clear all input fields!",
+            type: 'warning',
+            buttons: {
+                confirm: {
+                    text: 'Yes, Clear it!',
+                    className: 'btn btn-success'
+                },
+                cancel: {
+                    visible: true,
+                    className: 'btn btn-warning'
+                }
+            }
+        }).then(function (result) {
+            if (result == true) {
+                $('#clausetitle').val('');
+                $('#clausetype').val('');
+                $('#clausedescription').val('');
+                $('#clausetext').val('');
+                $('#CategoryNames').val('');
+                $('#ClauseClauseSubCategory').val('');
+                CKEDITOR.instances.IDofEditor.setData('');
+                swal({
+                    title: 'Cleared!',
+                    text: 'Your form has been Cleared.',
+                    type: 'success',
+                    buttons: {
+                        confirm: {
+                            className: 'btn btn-success'
+                        }
+                    }
+                });
+            } else {
+                swal.close();
+            }
+        });
+    });
+</script>
+@*<script type="text/javascript">
+        $('#test').click(function () {
+                alert(@ViewBag.saveStatus);
+            });
+
+    </script>*@
+
+@*****************Integrated (Pooja) on 13/3/20**************@
+@if (Model != null)
+{
+    <script>
+        $(function () {
+            swal("Clause : @Model.ClauseClauseTitle created successfully !", {
+            icon: "success",
+        })
+           // .then((Update) => {
+           //     if (Update) {
+
+                .then(function (result) {
+                        if (result) {
+                    window.location = "/Clause/Repository";
+                }
+            });
+            });
+    </script>
+}
+@*****************************************************************@
+
+<script>
+
+    $('#discard').click(function (e) {
+
+        swal({
+            title: 'Are you sure?',
+            text: "You want to Discard the Form!",
+            type: 'warning',
+            buttons: {
+                cancel: {
+                    visible: true,
+                    text: 'Cancel !',
+                    className: 'btn btn-warning'
+                },
+                confirm: {
+                    text: 'Yes, Discard it!',
+                    className: 'btn btn-danger'
+                },
+
+            }
+        }).then(function (value) {
+            if (value == true) {
+               window.location = '/Clause/Repository'
+
+            }
+        });
+    });
+</script>

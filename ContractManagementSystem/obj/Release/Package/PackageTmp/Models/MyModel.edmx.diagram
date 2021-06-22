@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="961ae6da98774884976a1c06705afbcd" Name="Diagram1" ZoomLevel="10">
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblAlertLog" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblAlertSystem" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblApprovalLog" Width="1.5" PointX="6.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblApprovalMaster" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblCategory" Width="1.5" PointX="8.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblCategoryLog" Width="1.5" PointX="8.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblClauseAudit" Width="1.5" PointX="5" PointY="1" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblClauseLog" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblClauseMaster" Width="1.5" PointX="2.75" PointY="1" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblContractAudit" Width="1.5" PointX="3" PointY="12.5" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblContractLog" Width="1.5" PointX="10.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblContractMaster" Width="1.5" PointX="0.75" PointY="2" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblContractModification" Width="1.5" PointX="6.75" PointY="10.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblDeligationMatrix" Width="1.5" PointX="10.75" PointY="8.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblDepartment" Width="1.5" PointX="8.75" PointY="11.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblDepartmentLog" Width="1.5" PointX="10.75" PointY="11.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblDepartmentMapping" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblSubCategory" Width="1.5" PointX="12.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblSubCategoryLog" Width="1.5" PointX="12.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblSubDepartment" Width="1.5" PointX="12.75" PointY="10.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblSubDepartmentLog" Width="1.5" PointX="12.75" PointY="13.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblTemplateAddendumLog" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblTemplateAmendment" Width="1.5" PointX="14.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblTemplateAudit" Width="1.5" PointX="14.75" PointY="7.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblTemplateLog" Width="1.5" PointX="14.75" PointY="10.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblTemplateMaster" Width="1.5" PointX="14.75" PointY="14.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblUserLog" Width="1.5" PointX="2.75" PointY="15.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblUserLogin" Width="1.5" PointX="8.75" PointY="15.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblUserMaster" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblVariableData" Width="1.5" PointX="16.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblVariable" Width="1.5" PointX="16.75" PointY="9.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblVendorLog" Width="1.5" PointX="16.75" PointY="12.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblVendorMaster" Width="1.5" PointX="16.75" PointY="16.75" />
+        <AssociationConnector Association="ContractManagementSystemDBModel.FK_tblClauseAudit_tblClauseMaster" />
+        <AssociationConnector Association="ContractManagementSystemDBModel.FK_tblContractAudit_tblContractAudit" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblDeligationLog" Width="1.5" PointX="19.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblConfiguration" Width="1.5" PointX="11.375" PointY="17.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblPlant" Width="1.5" PointX="3.375" PointY="19.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblPlantLog" Width="1.5" PointX="19.375" PointY="4.75" />
+        <EntityTypeShape EntityType="ContractManagementSystemDBModel.tblApprovalEscalation" Width="1.5" PointX="19.375" PointY="8.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
